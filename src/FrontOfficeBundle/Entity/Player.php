@@ -56,6 +56,13 @@ class Player
      */
     private $age;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="player")
+     */
+    private $invitation;
+
 
     /**
      * Get id
@@ -180,5 +187,50 @@ class Player
     public function getAge()
     {
         return $this->age;
+    }
+
+    public function __toString()
+    {
+        return $this -> username;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->invitation = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add invitation
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitation
+     * @return Player
+     */
+    public function addInvitation(\FrontOfficeBundle\Entity\Invitation $invitation)
+    {
+        $this->invitation[] = $invitation;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitation
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitation
+     */
+    public function removeInvitation(\FrontOfficeBundle\Entity\Invitation $invitation)
+    {
+        $this->invitation->removeElement($invitation);
+    }
+
+    /**
+     * Get invitation
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitation()
+    {
+        return $this->invitation;
     }
 }

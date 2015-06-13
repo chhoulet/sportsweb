@@ -37,4 +37,18 @@ class InvitationRepository extends EntityRepository
 
 		return $query ->getResult();
 	}
+
+	# Query affichant les invitations acceptées par un player:
+	public function seeInvitation($player)
+	{
+		$query = $this -> getEntityManager() -> createQuery('
+			SELECT i 
+			FROM FrontOfficeBundle:Invitation i 
+			JOIN i.player j 
+			WHERE i.accepted = true 
+			AND j.username LIKE :player')
+		->setParameter('player', $player);
+
+		return $query -> getResult();
+	}
 }

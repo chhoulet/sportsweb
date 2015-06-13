@@ -70,6 +70,14 @@ class Invitation
      */
     private $dateAccepted;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Player", inversedBy="invitation")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
+     */
+    private $player;
+
 
     /**
      * Get id
@@ -240,5 +248,28 @@ class Invitation
     public function getDateAccepted()
     {
         return $this->dateAccepted;
+    }
+
+    /**
+     * Set player
+     *
+     * @param \FrontOfficeBundle\Entity\Player $player
+     * @return Invitation
+     */
+    public function setPlayer(\FrontOfficeBundle\Entity\Player $player = null)
+    {
+        $this->player = $player;
+
+        return $this;
+    }
+
+    /**
+     * Get player
+     *
+     * @return \FrontOfficeBundle\Entity\Player 
+     */
+    public function getPlayer()
+    {
+        return $this->player;
     }
 }
