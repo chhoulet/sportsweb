@@ -1,0 +1,244 @@
+<?php
+
+namespace FrontOfficeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Invitation
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="FrontOfficeBundle\Entity\InvitationRepository")
+ */
+class Invitation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="string", length=450)
+     */
+    private $content;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateInvit", type="datetime")
+     */
+    private $dateInvit;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sport", type="string", length=255)
+     */
+    private $sport;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="place", type="string", length=255)
+     */
+    private $place;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateCreated", type="datetime")
+     */
+    private $dateCreated;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="accepted", type="boolean")
+     */
+    private $accepted;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateAccepted", type="datetime")
+     */
+    private $dateAccepted;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Invitation
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set dateInvit
+     *
+     * @param \DateTime $dateInvit
+     * @return Invitation
+     */
+    public function setDateInvit($dateInvit)
+    {
+        $this->dateInvit = $dateInvit;
+
+        return $this;
+    }
+
+    /**
+     * Get dateInvit
+     *
+     * @return \DateTime 
+     */
+    public function getDateInvit()
+    {
+        return $this->dateInvit;
+    }
+
+    /**
+     * Set sport
+     *
+     * @param string $sport
+     * @return Invitation
+     */
+    public function setSport($sport)
+    {
+        $this->sport = $sport;
+
+        return $this;
+    }
+
+    /**
+     * Get sport
+     *
+     * @return string 
+     */
+    public function getSport()
+    {
+        return $this->sport;
+    }
+
+    /**
+     * Set place
+     *
+     * @param string $place
+     * @return Invitation
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get place
+     *
+     * @return string 
+     */
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    /**
+     * Set dateCreated
+     *
+     * @param \DateTime $dateCreated
+     * @return Invitation
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreated
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
+    }
+
+    /**
+     * Set accepted
+     *
+     * @param boolean $accepted
+     * @return Invitation
+     */
+    public function setAccepted($accepted)
+    {
+        $this->accepted = $accepted;
+
+        return $this;
+    }
+
+    /**
+     * Get accepted
+     *
+     * @return boolean 
+     */
+    public function getAccepted()
+    {
+        return $this->accepted;
+    }
+
+    /**
+     * Set dateAccepted
+     *
+     * @param \DateTime $dateAccepted
+     * @return Invitation
+     */
+    public function setDateAccepted($dateAccepted)
+    {
+        $this->dateAccepted = $dateAccepted;
+
+        return $this;
+    }
+
+    /**
+     * Get dateAccepted
+     *
+     * @return \DateTime 
+     */
+    public function getDateAccepted()
+    {
+        return $this->dateAccepted;
+    }
+}
