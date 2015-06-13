@@ -8,6 +8,10 @@ class HomepageController extends Controller
 {
     public function homepageAction()
     {
-        return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig');
+    	$em = $this -> getDoctrine()->getManager();
+    	$getInvitation = $em -> getREpository('FrontOfficeBundle:Invitation') -> getInvitation();
+
+        return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
+        	array('getInvitation' => $getInvitation));
     }
 }

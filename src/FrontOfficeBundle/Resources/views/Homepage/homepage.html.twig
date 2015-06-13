@@ -1,3 +1,9 @@
-Coucou
+Coucou Cyril !!
 
 <a href="{{ path('back_office_homepage')}}">Acces au BO</a>
+
+{% for invit in getInvitation %}
+
+	{{ invit.content }}{{ invit.dateInvit }}{{ invit.sport }}{{ invit.place}}
+
+{% endfor %}
