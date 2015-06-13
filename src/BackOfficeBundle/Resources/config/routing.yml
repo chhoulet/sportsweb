@@ -1,3 +1,3 @@
 back_office_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: BackOfficeBundle:Default:index }
+    path:     /homepageBackOffice
+    defaults: { _controller: BackOfficeBundle:Homepage:homepage }
