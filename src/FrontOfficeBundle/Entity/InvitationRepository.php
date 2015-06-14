@@ -73,4 +73,33 @@ class InvitationRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function nbInvitations()
+	{
+		$query = $this -> getEntityManager() -> createQuery('
+			SELECT COUNT(i.id) 
+			FROM FrontOfficeBundle:Invitation i');
+
+		return $query -> getSingleScalarResult();
+	}
+
+	public function nbInvitationsAccepted()
+	{
+		$query = $this -> getEntityManager() -> createQuery('
+			SELECT COUNT(i.id) 
+			FROM FrontOfficeBundle:Invitation i
+			WHERE i.accepted = true');
+
+		return $query -> getSingleScalarResult();
+	}
+
+	public function nbInvitationsDenied()
+	{
+		$query = $this -> getEntityManager() -> createQuery('
+			SELECT COUNT(i.id) 
+			FROM FrontOfficeBundle:Invitation i
+			WHERE i.accepted = false');
+
+		return $query -> getSingleScalarResult();
+	}
 }
