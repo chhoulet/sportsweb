@@ -51,4 +51,26 @@ class InvitationRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function invitFoot()
+	{
+		$query = $this -> getEntityManager() -> createQuery('
+			SELECT i 
+			FROM FrontOfficeBundle:Invitation i 
+			WHERE i.sport LIKE :foot')
+		->setParameter('foot','football');
+
+		return $query -> getResult();
+	}
+
+	public function invitBasket()
+	{
+		$query = $this -> getEntityManager() -> createQuery('
+			SELECT i 
+			FROM FrontOfficeBundle:Invitation i 
+			WHERE i.sport LIKE :bask')
+		->setParameter('bask','basket');
+
+		return $query -> getResult();
+	}
 }
