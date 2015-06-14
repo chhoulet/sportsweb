@@ -20,7 +20,7 @@ class InvitationRepository extends EntityRepository
 			FROM FrontOfficeBundle:Invitation i 
 			WHERE i.accepted = false
 			ORDER BY i.dateCreated DESC')
-		->seMaxResults(50);
+		->setMaxResults(50);
 
 		return $query -> getResult();
 	}
