@@ -82,7 +82,7 @@ class Invitation
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Ground", inversedBy="invitation")
-     * @ORM\JoinColumn(name="ground_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="ground_id", referencedColumnName="id", nullable=true)
      */
     private $ground;
 

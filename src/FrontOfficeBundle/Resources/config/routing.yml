@@ -1,3 +1,8 @@
 front_office_homepage:
     path:     /
     defaults: { _controller: FrontOfficeBundle:Homepage:homepage }
+
+# Routes gerant les invitations:
+front_office_invitation_new:
+    path:     /new 
+    defaults: { _controller: FrontOfficeBundle:Invitation:new }
