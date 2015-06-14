@@ -56,6 +56,14 @@ class Matches
      */
     private $score;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Ground", inversedBy="matches")
+     * @ORM\JoinColumn(name="ground_id", referencedColumnName="id")
+     */
+    private $ground;
+
 
     /**
      * Get id
@@ -180,5 +188,28 @@ class Matches
     public function getScore()
     {
         return $this->score;
+    }
+
+    /**
+     * Set ground
+     *
+     * @param \FrontOfficeBundle\Entity\Ground $ground
+     * @return Matches
+     */
+    public function setGround(\FrontOfficeBundle\Entity\Ground $ground = null)
+    {
+        $this->ground = $ground;
+
+        return $this;
+    }
+
+    /**
+     * Get ground
+     *
+     * @return \FrontOfficeBundle\Entity\Ground 
+     */
+    public function getGround()
+    {
+        return $this->ground;
     }
 }

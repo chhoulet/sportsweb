@@ -56,6 +56,13 @@ class Ground
      */
     private $openingHours;
 
+     /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Matches", mappedBy="ground")
+     */
+    private $matches;
+
 
     /**
      * Get id
@@ -180,5 +187,50 @@ class Ground
     public function getOpeningHours()
     {
         return $this->openingHours;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->matches = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add matches
+     *
+     * @param \FrontOfficeBundle\Entity\Matches $matches
+     * @return Ground
+     */
+    public function addMatch(\FrontOfficeBundle\Entity\Matches $matches)
+    {
+        $this->matches[] = $matches;
+
+        return $this;
+    }
+
+    /**
+     * Remove matches
+     *
+     * @param \FrontOfficeBundle\Entity\Matches $matches
+     */
+    public function removeMatch(\FrontOfficeBundle\Entity\Matches $matches)
+    {
+        $this->matches->removeElement($matches);
+    }
+
+    /**
+     * Get matches
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMatches()
+    {
+        return $this->matches;
     }
 }
