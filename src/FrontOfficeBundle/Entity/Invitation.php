@@ -66,7 +66,7 @@ class Invitation
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateAccepted", type="datetime")
+     * @ORM\Column(name="dateAccepted", type="datetime", nullable=true)
      */
     private $dateAccepted;
 
@@ -77,6 +77,14 @@ class Invitation
      * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
      */
     private $player;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Ground", inversedBy="invitation")
+     * @ORM\JoinColumn(name="ground_id", referencedColumnName="id")
+     */
+    private $ground;
 
 
     /**
@@ -271,5 +279,28 @@ class Invitation
     public function getPlayer()
     {
         return $this->player;
+    }
+
+    /**
+     * Set ground
+     *
+     * @param \FrontOfficeBundle\Entity\Ground $ground
+     * @return Invitation
+     */
+    public function setGround(\FrontOfficeBundle\Entity\Ground $ground = null)
+    {
+        $this->ground = $ground;
+
+        return $this;
+    }
+
+    /**
+     * Get ground
+     *
+     * @return \FrontOfficeBundle\Entity\Ground 
+     */
+    public function getGround()
+    {
+        return $this->ground;
     }
 }

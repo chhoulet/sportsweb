@@ -240,37 +240,4 @@ class Ground
     {
         return $this->matches;
     }
-
-    /**
-     * Add invitation
-     *
-     * @param \FrontOfficeBundle\Entity\Invitation $invitation
-     * @return Ground
-     */
-    public function addInvitation(\FrontOfficeBundle\Entity\Invitation $invitation)
-    {
-        $this->invitation[] = $invitation;
-
-        return $this;
-    }
-
-    /**
-     * Remove invitation
-     *
-     * @param \FrontOfficeBundle\Entity\Invitation $invitation
-     */
-    public function removeInvitation(\FrontOfficeBundle\Entity\Invitation $invitation)
-    {
-        $this->invitation->removeElement($invitation);
-    }
-
-    /**
-     * Get invitation
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getInvitation()
-    {
-        return $this->invitation;
-    }
 }
