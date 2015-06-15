@@ -16,6 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="{{ asset('css/full-width-pics.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/blog-post.css') }}" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,6 +60,9 @@
                             <a href="{{ path('fos_user_registration_register') }}">Connectez-vous</a>
                         </li>
                     {% endif %}
+                    <li>
+                        <a href="{{ path('front_office_blog_homepage') }}">Blog</a>
+                    </li>
                     <li>
                         <a href="#">Contact</a>
                     </li>

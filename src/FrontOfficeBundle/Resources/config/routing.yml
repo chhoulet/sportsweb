@@ -8,5 +8,10 @@ front_office_invitation_new:
     defaults: { _controller: FrontOfficeBundle:Invitation:new }
 
 front_office_invitation_response:
-	path:     /response/{id}
-	defaults: { _controller: FrontOfficeBundle:Invitation:response}
+    path:     /response/{id}
+    defaults: { _controller: FrontOfficeBundle:Invitation:response}
+
+#Routes administrant le blog:
+front_office_blog_homepage:
+    path:    /blogHomepage 
+    defaults: { _controller: FrontOfficeBundle:Blog:homepage}
