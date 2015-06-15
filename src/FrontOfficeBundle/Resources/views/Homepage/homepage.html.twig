@@ -1,70 +1,70 @@
 {% extends 'FrontOfficeBundle::layout.html.twig' %}
 
-{% block content %}
+    {% block content %}
 
- 	<section>
-    	<div class="container">
-            <div class="row">
- 				<h1 style="text-align:center;margin-top:-50px;margin-bottom:-45px;">Sports Web - Trouve tes partenaires :</h1>
- 			</div>
- 		</div>
- 	</section>
-    <!-- Image backgrounds are set within the full-width-pics.css file. -->
-    <header>
-        <img class="img-responsive img-center" src="../images/football.jpg" style="width:1140px;height:800px;" alt="football">
-    </header>
+     	<section>
+        	<div class="container">
+                <div class="row">
+     				<h1 style="text-align:center;margin-top:-50px;margin-bottom:-45px;">Sports Web - Trouve tes partenaires :</h1>
+     			</div>
+     		</div>
+     	</section>
+        <!-- Image backgrounds are set within the full-width-pics.css file. -->
+        <header>
+            <img class="img-responsive img-center" src="../images/football.jpg" style="width:1140px;height:800px;" alt="football">
+        </header>
 
-    <!-- Content Section -->
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h3 class="section-heading">Joue au football :</h3>
-                        {% for invit in invitFoot %}
-                        	<p class="lead section-lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-		                    <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
-		                    <p class="lead section-lead">Je t'invite à un match le {{ invit.dateInvit | date('d-m-Y H:i:s')}} à {{ invit.place}}.</p>
-		                {% endfor %}
-		                    <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
-		                
+        <!-- Content Section -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="section-heading">Joue au football :</h3>
+                            {% for invit in invitFoot %}
+                            	<p class="lead section-lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    		                    <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+    		                    <p class="lead section-lead">Je t'invite à un match le {{ invit.dateInvit | date('d-m-Y H:i:s')}} à {{ invit.place}}.</p>
+    		                {% endfor %}
+    		                    <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+    		                
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section>
-    	<div class="container">
-            <div class="row">
-            	<div class="col-lg-12">
-				    <!-- Fixed Height Image Aside -->
-				    <!-- Image backgrounds are set within the full-width-pics.css file. -->
-				    <aside class="image-bg-fixed-height">
-				    	<img class="img-responsive img-center" src="../images/basket.jpg" style="margin-top:-125px;" alt="basket">
-					</aside>
-				</div>
-			</div>
-        </div>
-	</section><br><br><br><br>
-
-	<hr>
-
-    <!-- Content Section -->
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h3 class="section-heading" style="padding-top:70px;">Joue au basket :</h3>
-	                    {% for invit in invitBasket %}
-                        	<p class="lead section-lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-		                    <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
-		                    <p class="lead section-lead">Je t'invite à un match le {{ invit.dateInvit | date('d-m-Y H:i:s')}} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p>
-		                {% endfor %}
-		                    <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
-                </div>
+        <section>
+        	<div class="container">
+                <div class="row">
+                	<div class="col-lg-12">
+    				    <!-- Fixed Height Image Aside -->
+    				    <!-- Image backgrounds are set within the full-width-pics.css file. -->
+    				    <aside class="image-bg-fixed-height">
+    				    	<img class="img-responsive img-center" src="../images/basket.jpg" style="margin-top:-125px;" alt="basket">
+    					</aside>
+    				</div>
+    			</div>
             </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </section>
+    	</section><br><br><br><br>
+
+    	<hr>
+
+        <!-- Content Section -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="section-heading" style="padding-top:70px;">Joue au basket :</h3>
+    	                    {% for invit in invitBasket %}
+                            	<p class="lead section-lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    		                    <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+    		                    <p class="lead section-lead">Je t'invite à un match le {{ invit.dateInvit | date('d-m-Y H:i:s')}} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p>
+    		                {% endfor %}
+    		                    <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </section>
 
    {% endblock %}

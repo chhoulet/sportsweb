@@ -39,17 +39,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="{{ path('front_office_homepage') }}">SPORTS WEB</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="{{ path('back_office_homepage')}}">Back Office</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('front_office_invitation_new')}}">Création Invitation</a>
-                    </li>
+                    {% if (is_granted('ROLE_SUPER_ADMIN')) %}
+                        <li>
+                            <a href="{{ path('back_office_homepage') }}">Back Office</a>
+                        </li>
+                    {% endif %}
+
+                    {% if (is_granted('ROLE_USER')) %}
+                        <li>
+                            <a href="{{ path('front_office_invitation_new') }}">Création Invitation</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{{ path('fos_user_registration_register') }}">Connectez-vous</a>
+                        </li>
+                    {% endif %}
                     <li>
                         <a href="#">Contact</a>
                     </li>
