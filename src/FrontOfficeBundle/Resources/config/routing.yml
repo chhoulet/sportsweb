@@ -6,3 +6,7 @@ front_office_homepage:
 front_office_invitation_new:
     path:     /new 
     defaults: { _controller: FrontOfficeBundle:Invitation:new }
+
+front_office_invitation_response:
+	path:     /response/{id}
+	defaults: { _controller: FrontOfficeBundle:Invitation:response}
