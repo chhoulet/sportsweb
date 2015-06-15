@@ -8,6 +8,11 @@ class HomepageController extends Controller
 {
     public function homepageAction()
     {
-        return $this->render('BackOfficeBundle:Homepage:homepage.html.twig');
+    	
+ 
+        return $this -> render('BackOfficeBundle:Homepage:homepage.html.twig', 
+        	array('invitations'          => $invitations,
+        		  'nbInvitationsAccepted'=> $nbInvitationsAccepted,
+        		  'nbInvitationsDenied'  => $nbInvitationsDenied));
     }
 }

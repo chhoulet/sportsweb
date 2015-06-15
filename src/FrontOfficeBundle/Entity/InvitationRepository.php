@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class InvitationRepository extends EntityRepository
 {
-	# Query alimentant la homepage du site:
+	# Query sélectionnant les 50 dernières invitations:
 	public function getInvitation()
 	{
 		$query = $this -> getEntityManager()-> createQuery('
@@ -52,6 +52,7 @@ class InvitationRepository extends EntityRepository
 		return $query -> getResult();
 	}
 
+	# invitations par sport :
 	public function invitFoot()
 	{
 		$query = $this -> getEntityManager() -> createQuery('
