@@ -10,7 +10,9 @@ class BlogController extends Controller
 	public function homepageAction()
 	{
 		$em = $this ->getDoctrine()->getManager();
+		$article = $em -> getRepository('FrontOfficeBundle:Article') -> getArticle();
 
-		return $this ->render('FrontOfficeBundle:Blog:homepage.html.twig');
+		return $this ->render('FrontOfficeBundle:Blog:homepage.html.twig', 
+			array('article'=>$article));
 	}
 }
