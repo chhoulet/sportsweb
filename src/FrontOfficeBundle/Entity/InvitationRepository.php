@@ -58,7 +58,8 @@ class InvitationRepository extends EntityRepository
 		$query = $this -> getEntityManager() -> createQuery('
 			SELECT i 
 			FROM FrontOfficeBundle:Invitation i 
-			WHERE i.sport LIKE :foot')
+			WHERE i.sport LIKE :foot
+			AND i.accepted = false')
 		->setParameter('foot','football');
 
 		return $query -> getResult();
@@ -69,7 +70,8 @@ class InvitationRepository extends EntityRepository
 		$query = $this -> getEntityManager() -> createQuery('
 			SELECT i 
 			FROM FrontOfficeBundle:Invitation i 
-			WHERE i.sport LIKE :bask')
+			WHERE i.sport LIKE :bask
+			AND i.accepted = false')
 		->setParameter('bask','basket');
 
 		return $query -> getResult();

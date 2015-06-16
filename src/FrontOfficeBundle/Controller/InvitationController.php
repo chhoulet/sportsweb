@@ -35,6 +35,8 @@ class InvitationController extends Controller
 		$invitation = $em -> getRepository('FrontOfficeBundle:Invitation') -> find($id);
 		$invitation -> setAccepted(true);
 		$invitation -> setDateAccepted(new \DateTime('now'));
+		$em -> persist($invitation);
+		$em -> flush();
 
 		$this ->get('session') ->getFlashBag('sucess', 'Vous venez d\'accepter cette invitation. Un e-mail de confirmation vient de vous être envoyé. Bon match !');
 
