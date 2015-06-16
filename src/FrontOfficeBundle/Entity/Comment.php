@@ -45,17 +45,17 @@ class Comment
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Article", inversedBy="comment")
-     * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
+     * @ORM\Column(name="author", type="string", length=255)
      */
-    private $article;
+    private $author;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Article", inversedBy="comment")
+     * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
      */
-    private $author;
+    private $article;
 
 
     /**
