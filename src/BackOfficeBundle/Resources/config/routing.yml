@@ -1,3 +1,7 @@
 back_office_homepage:
     path:     /homepageBackOffice
     defaults: { _controller: BackOfficeBundle:Homepage:homepage }
+
+back_office_article_new:
+    path:     /new
+    defaults: { _controller: BackOfficeBundle:Article:new}
