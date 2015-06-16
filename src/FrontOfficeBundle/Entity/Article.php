@@ -43,6 +43,13 @@ class Article
     private $author;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="category", type="string", length=255)
+     */
+    private $category;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateCreated", type="date")
@@ -55,6 +62,13 @@ class Article
      * @ORM\Column(name="dateUpdated", type="date")
      */
     private $dateUpdated;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Comment", mappedBy="article")
+     */
+    private $comment;
 
 
     /**
@@ -180,5 +194,68 @@ class Article
     public function getDateUpdated()
     {
         return $this->dateUpdated;
+    }
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     * @return Article
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comment = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \FrontOfficeBundle\Entity\Comment $comment
+     * @return Article
+     */
+    public function addComment(\FrontOfficeBundle\Entity\Comment $comment)
+    {
+        $this->comment[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \FrontOfficeBundle\Entity\Comment $comment
+     */
+    public function removeComment(\FrontOfficeBundle\Entity\Comment $comment)
+    {
+        $this->comment->removeElement($comment);
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }
