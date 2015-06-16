@@ -14,6 +14,7 @@ class BlogController extends Controller
 	{
 		$em = $this ->getDoctrine()->getManager();
 		$article = $em -> getRepository('FrontOfficeBundle:Article') -> getArticle();
+
 		$comment = new Comment();
 		$form = $this -> createForm(new CommentType(), $comment);
 
@@ -22,7 +23,7 @@ class BlogController extends Controller
 		if ($form -> isValid())
 		{
 			$comment -> setDateCreated(new \DateTime('now'));
-			$comment ->setArticle($article);
+			$comment -> setArticle($article);
 			$em -> persist($comment);
 			$em -> flush();
 
@@ -34,10 +35,10 @@ class BlogController extends Controller
 				  'form'   => $form -> createView()));
 	}
 
-	public function listAction($category)
+	public function listAction()
 	{
 		$em = $this ->getDoctrine()->getManager();
-		$article = $em -> getRepository('FrontOfficeBundle:Article') ->triArticle($category);
+		$article = $em -> getRepository('FrontOfficeBundle:Article') ->findAll();
 
 		return $this -> render('FrontOfficeBundle:Blog:list.html.twig', 
 			array('article' => $article));

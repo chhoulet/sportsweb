@@ -17,7 +17,7 @@ front_office_blog_homepage:
     defaults: { _controller: FrontOfficeBundle:Blog:homepage}
 
 front_office_blog_list:
-    path:    /list/{category}
-    defaults: { _controller: FrontOfficeBundle:Blog:list, category:football}
+    path:    /list/
+    defaults: { _controller: FrontOfficeBundle:Blog:list}
     requirements:
-        category: (football | basket)
+        # category: (football | basket)
