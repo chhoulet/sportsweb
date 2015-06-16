@@ -27,7 +27,7 @@
 		                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
 		                <hr>
 		                <p>{{ art.content }}</p>
-		                <a class="btn btn-primary" href="#">Lire tout <span class="glyphicon glyphicon-chevron-right"></span></a>
+		                <a class="btn btn-primary" href="{{ path('front_office_blog_one',{id:art.id}) }}">Lire tout <span class="glyphicon glyphicon-chevron-right"></span></a>
 
 		                <hr>
 	            	{% endfor %}

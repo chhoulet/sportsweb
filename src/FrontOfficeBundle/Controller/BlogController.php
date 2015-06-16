@@ -43,4 +43,13 @@ class BlogController extends Controller
 		return $this -> render('FrontOfficeBundle:Blog:list.html.twig', 
 			array('article' => $article));
 	}
+
+	public function oneAction($id)
+	{
+		$em = $this ->getDoctrine()->getManager();
+		$article = $em -> getRepository('FrontOfficeBundle:Article') ->find($id);
+
+		return $this -> render('FrontOfficeBundle:Blog:one.html.twig', 
+			array('article'=>$article));
+	}
 }

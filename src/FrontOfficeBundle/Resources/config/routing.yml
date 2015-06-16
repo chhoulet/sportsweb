@@ -13,11 +13,15 @@ front_office_invitation_response:
 
 #Routes administrant le blog:
 front_office_blog_homepage:
-    path:    /blogHomepage 
+    path:     /blogHomepage 
     defaults: { _controller: FrontOfficeBundle:Blog:homepage}
 
 front_office_blog_list:
-    path:    /list/
+    path:     /list/
     defaults: { _controller: FrontOfficeBundle:Blog:list}
     requirements:
         # category: (football | basket)
+
+front_office_blog_one:
+    path:     /One/{id}
+    defaults: { _controller: FrontOfficeBundle:Blog:one}
