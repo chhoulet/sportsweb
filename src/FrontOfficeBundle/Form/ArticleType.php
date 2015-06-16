@@ -18,8 +18,8 @@ class ArticleType extends AbstractType
             ->add('title')
             ->add('content')
             ->add('author')
-            ->add('category', 'choice', array('choices' => array('Foot' => 'Football',
-                                                                 'Bask' => 'Basket')))
+            ->add('category', 'choice', array('choices' => array('football' => 'Football',
+                                                                 'basket' => 'Basket')))
             ->add('Editer', 'submit')
         ;
     }

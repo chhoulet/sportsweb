@@ -15,3 +15,9 @@ front_office_invitation_response:
 front_office_blog_homepage:
     path:    /blogHomepage 
     defaults: { _controller: FrontOfficeBundle:Blog:homepage}
+
+front_office_blog_list:
+    path:    /list/{category}
+    defaults: { _controller: FrontOfficeBundle:Blog:list, category:football}
+    requirements:
+        category: (football | basket)
