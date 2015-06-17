@@ -59,14 +59,20 @@
                         </li>
                     {% else %}
                         <li>
-                            <a href="{{ path('fos_user_registration_register') }}">Connectez-vous</a>
+                            <a href="{{ path('fos_user_security_login') }}">Connectez-vous</a>
                         </li>
                     {% endif %}
                     <li>
                         <a href="{{ path('front_office_blog_homepage') }}">Blog</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="{{ path('fos_user_registration_register') }}">Créer mon compte</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fos_user_profile_edit') }}">Mon compte</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fos_user_change_password') }}">Changement de mot de passe</a>
                     </li>
                 </ul>
             </div>

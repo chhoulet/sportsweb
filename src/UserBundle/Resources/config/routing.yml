@@ -1,9 +1,9 @@
 # Formulaire d'identification :
-fos_user_security:
+fos_user_security_login:
    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
 # Formulaire d'édition de profil :
-fos_user_profile:
+fos_user_profile_edit:
    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
    prefix: /profile
 

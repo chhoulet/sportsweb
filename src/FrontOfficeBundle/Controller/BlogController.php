@@ -44,12 +44,27 @@ class BlogController extends Controller
 			array('article' => $article));
 	}
 
-	public function oneAction($id)
+	public function oneAction(Request $request, $id)
 	{
 		$em = $this ->getDoctrine()->getManager();
 		$article = $em -> getRepository('FrontOfficeBundle:Article') ->find($id);
+		$comment = new Comment();
+		$form = $this -> createForm(new CommentType(), $comment);
+
+		$form -> handleRequest($request);
+
+		if ($form -> isValid())
+		{
+			$comment -> setDateCreated(new \DateTime('now'));
+			$comment -> setArticle($article);
+			$em -> persist($comment);
+			$em -> flush();
+
+			return $this -> redirect($this ->generateurl('front_office_blog_one', array('id'=>$id)));
+		}
 
 		return $this -> render('FrontOfficeBundle:Blog:one.html.twig', 
-			array('article'=>$article));
+			array('article'=> $article,
+				  'form'   => $form -> createView()));
 	}
 }
