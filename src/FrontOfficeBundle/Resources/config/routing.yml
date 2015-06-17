@@ -4,7 +4,7 @@ front_office_homepage:
 
 # Routes gerant les invitations:
 front_office_invitation_new:
-    path:     /new 
+    path:     /newInvitation
     defaults: { _controller: FrontOfficeBundle:Invitation:new }
 
 front_office_invitation_response:
