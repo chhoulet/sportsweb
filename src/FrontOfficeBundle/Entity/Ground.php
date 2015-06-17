@@ -45,6 +45,13 @@ class Ground
     /**
      * @var string
      *
+     * @ORM\Column(name="place", type="string", length=255)
+     */
+    private $place;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="phoneNumber", type="string", length=255)
      */
     private $phoneNumber;
@@ -55,6 +62,14 @@ class Ground
      * @ORM\Column(name="openingHours", type="string", length=255)
      */
     private $openingHours;
+
+    /**
+     * @var date
+     *
+     * @ORM\Column(name="dateCreated", type="date")
+     */
+    private $dateCreated;
+
 
      /**
      * @var string
@@ -272,5 +287,51 @@ class Ground
     public function getInvitation()
     {
         return $this->invitation;
+    }
+
+    /**
+     * Set place
+     *
+     * @param string $place
+     * @return Ground
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get place
+     *
+     * @return string 
+     */
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    /**
+     * Set dateCreated
+     *
+     * @param \DateTime $dateCreated
+     * @return Ground
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreated
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
     }
 }

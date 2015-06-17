@@ -33,7 +33,9 @@
     	                <hr>
 
     	                <!-- Post Content -->
-    	                <p class="lead">{{ art.content }}</p>
+    	                <p class="lead">{{ art.content }}</p><br><br>
+
+                        <a href="{{path('front_office_blog_one',{id:art.id}) }}"><button>Détails :</button></a>
 
     	                <hr>
             	    {% endfor %}

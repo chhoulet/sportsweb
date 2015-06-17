@@ -2,6 +2,12 @@ back_office_homepage:
     path:     /homepageBackOffice
     defaults: { _controller: BackOfficeBundle:Homepage:homepage }
 
+# Routes gerant l'administration du blog:
 back_office_article_new:
     path:     /new
     defaults: { _controller: BackOfficeBundle:Article:new}
+
+#  Routes gerant l'administration des terrains de sport :
+back_office_ground_new:
+    path:     /newGround
+    defaults: { _controller: BackOfficeBundle:Ground:new}
