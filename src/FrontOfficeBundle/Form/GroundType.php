@@ -17,7 +17,9 @@ class GroundType extends AbstractType
         $builder
             ->add('name')
             ->add('address')
-            ->add('sport')
+            ->add('sport','choice', array('choices'=> array('football'    => 'Football',
+                                                            'basket'      => 'Basket',
+                                                            'foot_basket' => 'Foot/Basket' )))
             ->add('place')
             ->add('phoneNumber')
             ->add('openingHours')
