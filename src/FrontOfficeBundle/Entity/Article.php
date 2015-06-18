@@ -72,6 +72,13 @@ class Article
     private $dateUpdated;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateValidated", type="date", nullable = true)
+     */
+    private $dateValidated;
+
+    /**
      * @var string
      *
      * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Comment", mappedBy="article")
@@ -288,5 +295,28 @@ class Article
     public function getValidationAdmin()
     {
         return $this->validationAdmin;
+    }
+
+    /**
+     * Set dateValidated
+     *
+     * @param \DateTime $dateValidated
+     * @return Article
+     */
+    public function setDateValidated($dateValidated)
+    {
+        $this->dateValidated = $dateValidated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateValidated
+     *
+     * @return \DateTime 
+     */
+    public function getDateValidated()
+    {
+        return $this->dateValidated;
     }
 }

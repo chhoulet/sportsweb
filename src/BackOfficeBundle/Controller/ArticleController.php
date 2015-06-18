@@ -48,4 +48,16 @@ class ArticleController extends Controller
             array('article' => $article));
     }
 
+    public function responseAction($id)
+    {
+        $em = $this -> getDoctrine()->getManager();
+        $article = $em -> getRepository('FrontOfficeBundle:Article') -> find($id);
+        $article -> setValidationAdmin(true);
+        $article -> setDateValidated(new \DateTime('now'));
+        $em -> persist($article);
+        $em -> flush($article);
+
+        return $this -> redirect($this -> generateUrl('back_office_article_admin'));
+    }
+
 }

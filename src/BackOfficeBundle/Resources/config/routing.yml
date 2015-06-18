@@ -11,6 +11,10 @@ back_office_article_admin:
     path:     /adminArticle
     defaults: { _controller: BackOfficeBundle:Article:admin}
 
+back_office_article_response:
+    path:     /response/{id}
+    defaults: { _controller: BackOfficeBundle:Article:response}
+
 back_office_article_delete:
     path:     /delete/{id}
     defaults: { _controller: BackOfficeBundle:Article:delete}
