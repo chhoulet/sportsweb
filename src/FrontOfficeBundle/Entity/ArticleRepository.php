@@ -17,6 +17,7 @@ class ArticleRepository extends EntityRepository
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT a 
 			FROM FrontOfficeBundle:Article a 
+			WHERE a.validationAdmin = true
 			ORDER BY a.dateCreated DESC')
 		->setMaxResults(1);
 
@@ -39,7 +40,8 @@ class ArticleRepository extends EntityRepository
 		$query = $this -> getEntitymanager()->createQuery('
 			SELECT a 
 			FROM FrontOfficeBundle:Article a 
-			WHERE a.validationAdmin = false');
+			WHERE a.validationAdmin = false
+			ORDER BY a.dateCreated DESC');
 
 		return $query -> getResult();
 	}

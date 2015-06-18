@@ -19,6 +19,7 @@ class ArticleController extends Controller
         if ($form -> isValid())
         {
             $article -> setDateCreated(new \DateTime('now'));
+            $article -> setValidationAdmin(true);
             $em -> persist($article);
             $em -> flush();
 

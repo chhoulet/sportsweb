@@ -60,7 +60,7 @@ class Article
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateCreated", type="date")
+     * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;
 

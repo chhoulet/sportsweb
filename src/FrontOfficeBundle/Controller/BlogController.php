@@ -3,7 +3,8 @@
 namespace FrontOfficeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use FrontOfficeBundle\Article;
+use FrontOfficeBundle\Entity\Article;
+use FrontOfficeBundle\Form\ArticleType;
 use FrontOfficeBundle\Entity\Comment;
 use FrontOfficeBundle\Form\CommentType;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,11 +15,11 @@ class BlogController extends Controller
 	{
 		$em = $this -> getDoctrine()->getmanager();
 		$article = $em -> getRepository('FrontOfficeBundle:Article')->getArticle();
+
+		# Code permettant la creation des commentaires des articles du blog :
 		$comment = new Comment();
 		$form = $this -> createForm(new CommentType(), $comment);
-
 		$form -> handleRequest($request);
-
 		if ($form -> isValid())
 		{
 			$comment -> setArticle($article);
@@ -29,9 +30,25 @@ class BlogController extends Controller
 			return $this -> redirect($this -> generateUrl('front_office_blog_homepage'));
 		}
 
+		#Code permettant la creation des articles du blog :
+		$articleUser = new Article();
+		$formArticle = $this -> createForm(new ArticleType(), $articleUser);
+		$formArticle ->handleRequest($request);
+		if ($formArticle -> isValid())
+		{
+			$articleUser -> setDateCreated(new \datetime('now'));
+			$articleUser -> setValidationAdmin(false);
+			$em -> persist($articleUser);
+			$em -> flush();
+
+			return $this -> redirect($this -> generateurl('front_office_blog_homepage'));
+		}
+
+
 		return $this -> render('FrontOfficeBundle:Blog:homepage.html.twig',
 		    array('article' => $article,
-		    	  'form'    => $form -> createView()));
+		    	  'form'    => $form -> createView(),
+		    	  'formArticle'=> $formArticle -> createView()));
 
 	}
 		
