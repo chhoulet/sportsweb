@@ -1,0 +1,35 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		
+			<div class="container">
+
+	        	<div class="row">
+
+					<h2> Liste des articles non-controlés :</h2>
+
+						{% for art in article %}
+
+			                <h2>
+			                    <a href="#">{{ art.title }}</a>
+			                </h2>
+			                <p class="lead">
+			                    by <a href="index.php">{{ art.author }}</a>
+			                </p>
+			                <p><span class="glyphicon glyphicon-time"></span> {{ art.dateCreated | date('d-m-Y H:i:s')}}</p>
+			                <hr>
+			                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+			                <hr>
+			                <p>{{ art.content }}</p>
+			                <a class="btn btn-primary" href="{{ path('front_office_blog_one',{id:art.id}) }}">Lire tout <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+		                	<hr>
+
+	            		{% endfor %}
+	            		
+	            </div>
+			
+			</div>
+		
+	{% endblock %}

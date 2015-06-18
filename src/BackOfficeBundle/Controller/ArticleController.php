@@ -39,4 +39,13 @@ class ArticleController extends Controller
         return $this ->redirect($this -> generateUrl('front_office_blog_homepage'));
     }
 
+    public function adminAction()
+    {
+        $em = $this -> getDoctrine()-> getManager();
+        $article = $em -> getRepository('FrontOfficeBundle:Article') -> validArticle();
+
+        return $this -> render('BackOfficeBundle:Article:admin.html.twig', 
+            array('article' => $article));
+    }
+
 }
