@@ -28,4 +28,16 @@ class ArticleController extends Controller
 		return $this -> render('BackOfficeBundle:Article:new.html.twig',
 		 	array('form' => $form ->createView()));
 	}
+
+	public function deleteAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$article = $this -> getRepository('FrontOfficeBundle:Article') -> find($id);
+		$em -> remove($article);
+		$em -> flush();
+
+		return $this ->redirect($this -> generateUrl('front_office_blog_homepage'));
+	}
+
+	
 }
