@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * User
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="UserBundle\Entity\UserRepository")
  */
 class User extends BaseUser
 {
@@ -65,7 +65,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        
+
         $this->invitation = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
