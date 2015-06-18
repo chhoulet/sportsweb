@@ -14,7 +14,7 @@ class BlogController extends Controller
 	{
 		$em = $this -> getDoctrine()->getmanager();
 		$article = $em -> getRepository('FrontOfficeBundle:Article')->getArticle();
-		/*$comment = new Comment();
+		$comment = new Comment();
 		$form = $this -> createForm(new CommentType(), $comment);
 
 		$form -> handleRequest($request);
@@ -22,16 +22,16 @@ class BlogController extends Controller
 		if ($form -> isValid())
 		{
 			$comment -> setArticle($article);
-			$comment -> setDateCreated(new \date('now'));
+			$comment -> setDateCreated(new \DateTime('now'));
 			$em -> persist($comment);
 			$em -> flush();
 
 			return $this -> redirect($this -> generateUrl('front_office_blog_homepage'));
-		}*/
+		}
 
 		return $this -> render('FrontOfficeBundle:Blog:homepage.html.twig',
-		    array('article' => $article
-		    	  /*'form'    => $form ->createView()*/));
+		    array('article' => $article,
+		    	  'form'    => $form -> createView()));
 
 	}
 		

@@ -20,7 +20,7 @@ class ArticleRepository extends EntityRepository
 			ORDER BY a.dateCreated DESC')
 		->setMaxResults(1);
 
-		return $query -> getResult();
+		return $query -> getSingleResult();
 	}
 
 	public function triArticle($category)

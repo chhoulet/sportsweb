@@ -18,7 +18,6 @@ class CommentType extends AbstractType
             ->add('title')
             ->add('content')
             ->add('author')
-            ->add('article')
             ->add('Valider', 'submit')
         ;
     }
