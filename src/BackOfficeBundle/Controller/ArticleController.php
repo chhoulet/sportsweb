@@ -37,7 +37,7 @@ class ArticleController extends Controller
         $em -> remove($article);
         $em -> flush();
 
-        return $this ->redirect($this -> generateUrl('front_office_blog_homepage'));
+        return $this ->redirect($this -> generateUrl('back_office_article_admin'));
     }
 
     public function adminAction()
