@@ -42,6 +42,14 @@ class Article
      */
     private $author;
 
+     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="validationAdmin", type="boolean")
+     */
+    private $validationAdmin;
+
+
     /**
      * @var string
      *
@@ -257,5 +265,28 @@ class Article
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * Set validationAdmin
+     *
+     * @param boolean $validationAdmin
+     * @return Article
+     */
+    public function setValidationAdmin($validationAdmin)
+    {
+        $this->validationAdmin = $validationAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Get validationAdmin
+     *
+     * @return boolean 
+     */
+    public function getValidationAdmin()
+    {
+        return $this->validationAdmin;
     }
 }

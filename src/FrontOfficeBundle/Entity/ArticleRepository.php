@@ -33,4 +33,14 @@ class ArticleRepository extends EntityRepository
 
 		return $query ->getResult();
 	}
+
+	public function validArticle()
+	{
+		$query = $this -> getEntitymanager()->createQuery('
+			SELECT a 
+			FROM FrontOfficeBundle:Article a 
+			WHERE a.validationAdmin = false');
+
+		return $query -> getResult();
+	}
 }

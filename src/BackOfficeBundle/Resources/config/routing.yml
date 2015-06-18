@@ -8,8 +8,8 @@ back_office_article_new:
     defaults: { _controller: BackOfficeBundle:Article:new}
 
 back_office_article_delete:
-	path:     /delete/{id}
-	defaults: { _controller: BackOfficeBundle:Article:delete}
+    path:     /delete/{id}
+    defaults: { _controller: BackOfficeBundle:Article:delete}
 
 #  Routes gerant l'administration des terrains de sport :
 back_office_ground_new:
