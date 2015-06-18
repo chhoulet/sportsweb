@@ -73,10 +73,10 @@ class Invitation
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Player", inversedBy="invitation")
-     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="invitation")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $player;
+    private $user;
 
     /**
      * @var string
@@ -259,29 +259,6 @@ class Invitation
     }
 
     /**
-     * Set player
-     *
-     * @param \FrontOfficeBundle\Entity\Player $player
-     * @return Invitation
-     */
-    public function setPlayer(\FrontOfficeBundle\Entity\Player $player = null)
-    {
-        $this->player = $player;
-
-        return $this;
-    }
-
-    /**
-     * Get player
-     *
-     * @return \FrontOfficeBundle\Entity\Player 
-     */
-    public function getPlayer()
-    {
-        return $this->player;
-    }
-
-    /**
      * Set ground
      *
      * @param \FrontOfficeBundle\Entity\Ground $ground
@@ -302,5 +279,28 @@ class Invitation
     public function getGround()
     {
         return $this->ground;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     * @return Invitation
+     */
+    public function setUser(\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
