@@ -73,8 +73,14 @@
                          
                     <div class="well">
 
-                        <h4>Editer un article</h4>
+                        {% if (is_granted('ROLE_USER')) %}
+                            <h4>Editer un article</h4>
                             {{ form(formArticle) }}
+                        {% else %}
+                            <p>Vous souhaitez publier un article ? Connectez-vous !</p>
+                            <a href="{{path('fos_user_security_login')}}"><button>Connection</button></a>
+                        {% endif %}
+                        
 
                     </div>  
 
