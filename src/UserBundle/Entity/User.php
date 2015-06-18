@@ -23,14 +23,6 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="user", type="string", length=255)
-     */
-    protected $user;
-
-
-    /**
      * Get id
      *
      * @return integer 
@@ -38,28 +30,5 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set user
-     *
-     * @param string $user
-     * @return User
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return string 
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 }
