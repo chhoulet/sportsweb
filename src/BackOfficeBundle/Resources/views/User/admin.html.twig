@@ -1,0 +1,37 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		
+			<div class="container">
+
+	        	<div class="row">
+
+					<h2> Liste des user non-controlés :</h2>
+
+						{% for us in user %}
+
+			                <h2>
+			                    <a href="#">{{ us.username }}</a>
+			                </h2>
+			                <p class="lead">
+			                    by <a href="index.php">{{ us.email }}</a>
+			                </p>
+			                <p><span class="glyphicon glyphicon-time"></span></p>
+			                <hr>
+			                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+			                <hr>
+			                <p>{{ us.sportPracticed }}</p>
+			                <p>{{ us.sportViewed }}</p>
+			                <p>{{ us.age }}</p>
+			                {# <a class="btn btn-primary" href="{{ path('back_office_article_response',{id:us.id}) }}">OK Admin <span class="glyphicon glyphicon-chevron-right"></span></a> #}			          
+
+		                	<hr>
+
+	            		{% endfor %}
+
+	            </div>
+			
+			</div>
+		
+	{% endblock %}

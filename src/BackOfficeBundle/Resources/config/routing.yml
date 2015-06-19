@@ -27,3 +27,8 @@ back_office_article_delete:
 back_office_ground_new:
     path:     /newGround
     defaults: { _controller: BackOfficeBundle:Ground:new}
+
+# Routes gerant les users:
+back_office_admin_user:
+    path:     /users
+    defaults: { _controller: BackOfficeBundle:User:admin}

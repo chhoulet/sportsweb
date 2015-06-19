@@ -46,7 +46,7 @@ class User extends BaseUser
     /**
      * @var boolean
      *
-     * @ORM\Column(name="validationAdmin", type="boolean", length=255)
+     * @ORM\Column(name="validationAdmin", type="boolean", nullable=true)
      */
     protected $validationAdmin;
 
