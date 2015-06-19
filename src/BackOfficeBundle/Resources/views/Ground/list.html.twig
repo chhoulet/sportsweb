@@ -1,0 +1,37 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		
+			<div class="container">
+
+	        	<div class="row">
+
+					<h2> Liste des terrains de sport:</h2>
+
+						{% for art in grounds %}
+
+			                <h2>
+			                    <a href="#">{{ art.name }}</a>
+			                </h2>
+			                <p class="lead">
+			                    Sport pratiqué : <a href="index.php">{{ art.sport }}</a>
+			                </p>
+			                <p><span class="glyphicon glyphicon-time"></span></p>
+			                <hr>
+			                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+			                <hr>
+			                <p>{{ art.address }}</p>
+			                {# <a class="btn btn-primary" href="{{ path('back_office_article_update',{id:art.id}) }}">Mise à jour Terrain <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+			                <a class="btn btn-primary" href="{{ path('back_office_article_delete',{id:art.id}) }}">Suppression Terrain<span class="glyphicon glyphicon-chevron-right"></span></a> #}
+
+		                	<hr>
+
+	            		{% endfor %}
+
+	            </div>
+			
+			</div>
+		
+	{% endblock %}

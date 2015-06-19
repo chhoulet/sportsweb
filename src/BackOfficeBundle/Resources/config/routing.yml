@@ -34,6 +34,9 @@ back_office_article_delete:
     defaults: { _controller: BackOfficeBundle:Article:delete}
 
 #  Routes gerant l'administration des terrains de sport :
+back_office_ground_list:
+    path:     /listGround
+    defaults: { _controller: BackOfficeBundle:Ground:list}
 back_office_ground_new:
     path:     /newGround
     defaults: { _controller: BackOfficeBundle:Ground:new}

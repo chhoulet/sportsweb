@@ -9,6 +9,14 @@ use Symfony\Component\HttpFoundation\Request;
 
 class GroundController extends Controller
 {
+	public function listAction()
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$grounds = $em -> getRepository('FrontOfficeBundle:Ground')->findAll();
+
+		return $this -> render('BackOfficeBundle:Ground:list.html.twig', 
+			array('grounds' => $grounds));
+	}
 	public function newAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getManager();
