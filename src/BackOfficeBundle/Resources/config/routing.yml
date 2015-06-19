@@ -23,6 +23,10 @@ back_office_article_response:
     path:     /response/{id}
     defaults: { _controller: BackOfficeBundle:Article:response}
 
+    # Mise à jour d'un article par l'administrateur:
+back_office_article_update:
+    path:     /update/{id}
+    defaults: { _controller: BackOfficeBundle:Article:update}
 
     #Suppression des articles par l'administrateur:
 back_office_article_delete:

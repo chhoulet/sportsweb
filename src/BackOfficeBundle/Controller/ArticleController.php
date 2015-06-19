@@ -70,4 +70,25 @@ class ArticleController extends Controller
         return $this -> redirect($this -> generateUrl('back_office_article_admin'));
     }
 
+    public function updateAction(Request $request,$id)
+    {
+        $em = $this -> getDoctrine()->getManager();
+        $article = $em -> getRepository('FrontOfficeBundle:Article') -> find($id);
+
+        $form = $this -> createForm(new ArticleType(), $article);
+
+        $form -> handleRequest($request);
+        if ($form -> isValid())
+        {
+            $article -> setDateUpdated(new \DateTime('now'));
+            $em -> persist($article);
+            $em -> flush();
+
+            return $this -> redirect($this -> generateUrl('back_office_article_list'));
+        }
+
+        return $this -> render('BackOfficeBundle:Article:update.html.twig',
+                array('form' => $form -> createView()));
+    }
+
 }
