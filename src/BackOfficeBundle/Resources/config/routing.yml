@@ -3,6 +3,11 @@ back_office_homepage:
     defaults: { _controller: BackOfficeBundle:Homepage:homepage }
 
 # Routes gerant l'administration du blog:
+    # Liste des articles:
+back_office_article_list:
+    path:     /list 
+    defaults: { _controller: BackOfficeBundle:Article:list}
+    
     # Creation d'un article par l'administrateur:
 back_office_article_new:
     path:     /new
@@ -17,6 +22,7 @@ back_office_article_admin:
 back_office_article_response:
     path:     /response/{id}
     defaults: { _controller: BackOfficeBundle:Article:response}
+
 
     #Suppression des articles par l'administrateur:
 back_office_article_delete:

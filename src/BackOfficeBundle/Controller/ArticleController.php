@@ -9,6 +9,15 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ArticleController extends Controller
 {
+    public function listAction()
+    {
+        $em = $this -> getDoctrine()->getManager();
+        $article = $em -> getRepository('FrontOfficeBundle:Article') -> findAll();
+
+        return $this -> render('BackOfficeBundle:Article:list.html.twig',
+            array('article'=>$article));
+    }
+
     public Function newAction(Request $request)
     {
         $em = $this -> getDoctrine()->getManager();
