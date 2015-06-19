@@ -44,6 +44,13 @@ class User extends BaseUser
     protected $age;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="validationAdmin", type="boolean", length=255)
+     */
+    protected $validationAdmin;
+
+    /**
      * @var string
      *
      * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="user")
@@ -169,5 +176,28 @@ class User extends BaseUser
     public function getInvitation()
     {
         return $this->invitation;
+    }
+
+    /**
+     * Set validationAdmin
+     *
+     * @param boolean $validationAdmin
+     * @return User
+     */
+    public function setValidationAdmin($validationAdmin)
+    {
+        $this->validationAdmin = $validationAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Get validationAdmin
+     *
+     * @return boolean 
+     */
+    public function getValidationAdmin()
+    {
+        return $this->validationAdmin;
     }
 }
