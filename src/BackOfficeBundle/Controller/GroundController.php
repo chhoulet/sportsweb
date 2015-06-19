@@ -36,4 +36,14 @@ class GroundController extends Controller
 
 		return $this -> render('BackOfficeBundle:Ground:new.html.twig', array('form' => $form ->createView()));
 	}
+
+	public function deleteAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$ground = $em -> getRepository('FrontOfficeBundle:Ground')->find($id);
+		$em -> remove($ground);
+		$em -> flush();
+
+		return $this -> redirect($this -> generateUrl('back_office_ground_list'));
+	}
 }

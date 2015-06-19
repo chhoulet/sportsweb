@@ -37,9 +37,14 @@ back_office_article_delete:
 back_office_ground_list:
     path:     /listGround
     defaults: { _controller: BackOfficeBundle:Ground:list}
+
 back_office_ground_new:
     path:     /newGround
     defaults: { _controller: BackOfficeBundle:Ground:new}
+
+back_office_ground_delete:
+    path:     /deleteGround/{id}
+    defaults: { _controller: BackOfficeBundle:Ground:delete}
 
 # Routes gerant les users:
 back_office_admin_user:
