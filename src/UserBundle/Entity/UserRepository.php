@@ -14,4 +14,14 @@ class UserRepository extends EntityRepository
 
 		return $query -> getSingleScalarResult();
 	}
+
+	public function getAdminUser()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT u 
+			FROM UserBundle:User u 
+			WHERE u.validationAdmin = false');
+		
+		return $query -> getResult();
+	}
 }
