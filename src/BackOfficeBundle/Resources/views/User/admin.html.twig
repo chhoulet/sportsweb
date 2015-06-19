@@ -24,7 +24,9 @@
 			                <p>{{ us.sportPracticed }}</p>
 			                <p>{{ us.sportViewed }}</p>
 			                <p>{{ us.age }}</p>
-			                <a class="btn btn-primary" href="{{ path('back_office_admin_user_response',{id:us.id}) }}">OK Admin <span class="glyphicon glyphicon-chevron-right"></span></a>			          
+			                <a class="btn btn-primary" href="{{ path('back_office_admin_user_response',{id:us.id}) }}">OK Admin <span class="glyphicon glyphicon-chevron-right"></span></a>	
+
+			                <a class="btn btn-primary" href="{{ path('back_office_admin_user_delete',{id:us.id}) }}">Suppression du compte<span class="glyphicon glyphicon-chevron-right"></span></a>			          
 
 		                	<hr>
 

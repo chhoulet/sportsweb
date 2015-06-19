@@ -36,3 +36,7 @@ back_office_admin_user:
 back_office_admin_user_response:
     path:     /responseUser/{id}
     defaults: { _controller: BackOfficeBundle:User:response}
+
+back_office_admin_user_delete:
+    path:     /delete
+    defaults: { _controller: BackOfficeBundle:User:delete}
