@@ -32,3 +32,7 @@ back_office_ground_new:
 back_office_admin_user:
     path:     /users
     defaults: { _controller: BackOfficeBundle:User:admin}
+
+back_office_admin_user_response:
+    path:     /responseUser/{id}
+    defaults: { _controller: BackOfficeBundle:User:response}

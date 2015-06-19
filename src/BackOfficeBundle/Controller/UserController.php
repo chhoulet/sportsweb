@@ -14,4 +14,15 @@ class UserController extends Controller
 
 		return $this -> render('BackOfficeBundle:User:admin.html.twig', array('user'=> $user));
 	}
+
+	public function responseAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$user = $em -> getRepository('UserBundle:User') -> find ($id);
+		$user -> setValidationAdmin(true);
+		$em -> persist($user);
+		$em -> flush();
+
+		return $this -> redirect($this->generateurl('back_office_admin_user'));
+	}
 }
