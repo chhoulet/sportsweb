@@ -70,6 +70,12 @@ class Ground
      */
     private $dateCreated;
 
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="dateUpdated", type="datetime", nullable=true)
+     */
+    private $dateUpdated;
 
      /**
      * @var string
@@ -333,5 +339,28 @@ class Ground
     public function getDateCreated()
     {
         return $this->dateCreated;
+    }
+
+    /**
+     * Set dateUpdated
+     *
+     * @param \DateTime $dateUpdated
+     * @return Ground
+     */
+    public function setDateUpdated($dateUpdated)
+    {
+        $this->dateUpdated = $dateUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateUpdated
+     *
+     * @return \DateTime 
+     */
+    public function getDateUpdated()
+    {
+        return $this->dateUpdated;
     }
 }

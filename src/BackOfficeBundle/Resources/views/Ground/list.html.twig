@@ -21,8 +21,9 @@
 			                <hr>
 			                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
 			                <hr>
-			                <p>{{ art.address }}</p>
-			                <a class="btn btn-primary" href="{{ path('back_office_article_update',{id:art.id}) }}">Mise à jour Terrain <span class="glyphicon glyphicon-chevron-right"></span></a>
+			                <p>{{ art.address }}</p><br>
+			                <p>{{ art.phoneNumber }}</p>
+			                <a class="btn btn-primary" href="{{ path('back_office_ground_update',{id:art.id}) }}">Mise à jour Terrain <span class="glyphicon glyphicon-chevron-right"></span></a>
 
 			                <a class="btn btn-primary" href="{{ path('back_office_ground_delete',{id:art.id}) }}">Suppression Terrain<span class="glyphicon glyphicon-chevron-right"></span></a>
 

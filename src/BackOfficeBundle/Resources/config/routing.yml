@@ -42,6 +42,10 @@ back_office_ground_new:
     path:     /newGround
     defaults: { _controller: BackOfficeBundle:Ground:new}
 
+back_office_ground_update:
+    path:     /updateGround/{id}
+    defaults: { _controller: BackOfficeBundle:Ground:update}
+
 back_office_ground_delete:
     path:     /deleteGround/{id}
     defaults: { _controller: BackOfficeBundle:Ground:delete}

@@ -17,6 +17,7 @@ class GroundController extends Controller
 		return $this -> render('BackOfficeBundle:Ground:list.html.twig', 
 			array('grounds' => $grounds));
 	}
+
 	public function newAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -35,6 +36,26 @@ class GroundController extends Controller
 		}
 
 		return $this -> render('BackOfficeBundle:Ground:new.html.twig', array('form' => $form ->createView()));
+	}
+
+	public function updateAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$ground = $em -> getRepository('FrontOfficeBundle:Ground')->find($id);
+		$form = $this -> createForm(new GroundType(), $ground);
+
+		$form -> handleRequest($request);
+
+		if($form -> isValid())
+		{
+			$ground -> setDateUpdated(new \datetime('now'));
+			$em -> persist($ground);
+			$em -> flush();
+
+			return $this -> redirect($this -> generateUrl('back_office_ground_list'));
+		}
+		return $this -> render('BackOfficeBundle:Ground:update.html.twig', 
+			array('form'=>$form->createView()));
 	}
 
 	public function deleteAction($id)

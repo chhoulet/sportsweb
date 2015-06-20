@@ -1,0 +1,31 @@
+{% extends 'FrontOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+		
+			<div class="container">
+
+	        	<div class="row">
+
+					<h2> Mon compte :</h2>						
+
+			                {{ form(form) }}
+			                <a class="btn btn-primary" href="{{ path('front_office_update_user') }}">Enregistrer<span class="glyphicon glyphicon-chevron-right"></span></a>				                 
+
+		                	<hr>	
+
+		            <h2> Mes défis:</h2>
+
+		            	<h3>Lancés:</h3>
+
+
+		            	<h3>Relevés</h3>
+
+		            		{% for invit in user.invitation %}
+
+		            		{% endfor %}
+
+	            </div>
+			
+			</div>
+		
+	{% endblock %}
