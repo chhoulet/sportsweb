@@ -1,3 +1,4 @@
+# Route gerant la homepage:
 front_office_homepage:
     path:     /
     defaults: { _controller: FrontOfficeBundle:Homepage:homepage }
@@ -11,7 +12,7 @@ front_office_invitation_response:
     path:     /response/{id}
     defaults: { _controller: FrontOfficeBundle:Invitation:response}
 
-#Routes administrant le blog:
+# Routes administrant le blog:
 front_office_blog_homepage:
     path:     /blogHomepage 
     defaults: { _controller: FrontOfficeBundle:Blog:homepage}
@@ -25,3 +26,8 @@ front_office_blog_list:
 front_office_blog_one:
     path:     /One/{id}
     defaults: { _controller: FrontOfficeBundle:Blog:one}
+
+# Route gerant les users:
+front_office_update_user:
+    path:     /showUser/{id}
+    defaults: { _controller: FrontOfficeBundle:User:update}

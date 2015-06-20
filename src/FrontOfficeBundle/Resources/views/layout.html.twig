@@ -69,7 +69,7 @@
                         <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
                     </li>
                     <li>
-                        <a href="{{ path('fos_user_profile_edit') }}">Mon Profil</a>
+                        <a href="{{ path('front_office_update_user,{id:$this->getUser()}') }}">Mon Profil</a>
                     </li>
                     <li>
                         <a href="{{ path('fos_user_change_password') }}">Changement de mot de passe</a>
