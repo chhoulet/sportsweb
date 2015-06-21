@@ -3,6 +3,7 @@
 namespace FrontOfficeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Matches
@@ -24,6 +25,7 @@ class Matches
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="sport", type="string", length=255)
      */
     private $sport;
@@ -31,6 +33,7 @@ class Matches
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="date", type="date")
      */
     private $date;
@@ -38,6 +41,7 @@ class Matches
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="state", type="string", length=255)
      */
     private $state;
@@ -45,6 +49,7 @@ class Matches
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="result", type="string", length=255)
      */
     private $result;
@@ -52,6 +57,7 @@ class Matches
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="score", type="string", length=255)
      */
     private $score;

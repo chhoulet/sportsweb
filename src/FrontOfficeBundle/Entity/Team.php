@@ -3,6 +3,7 @@
 namespace FrontOfficeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Team
@@ -24,6 +25,13 @@ class Team
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "80",
+     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -31,6 +39,13 @@ class Team
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "50",
+     *      minMessage = "Le nom de votre sport pratiqué doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom de votre sport pratiqué ne peut pas être plus long que {{ limit }} caractères"
+     * )
+     * @Assert\NotBlank()
      * @ORM\Column(name="sportPracticed", type="string", length=255)
      */
     private $sportPracticed;
@@ -38,6 +53,13 @@ class Team
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "50",
+     *      minMessage = "Le type de jeu pratiqué doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le type de jeu pratiqué ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="typeOfGame", type="string", length=255)
      */
     private $typeOfGame;
@@ -45,14 +67,37 @@ class Team
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "250",
+     *      minMessage = "Les habitudes de jeu doivent faire au moins {{ limit }} caractères",
+     *      maxMessage = "Les habitudes de jeu ne peuvent pas être plus longues que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="habitsOfGame", type="text")
      */
     private $habitsOfGame;
 
     /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateCreated", type="datetime")
+     */
+    private $dateCreated;
+
+    /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateUpdated", type="datetime", nullable=true)
+     */
+    private $dateUpdated;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="teamComment", type="text")
+     * @ORM\Column(name="teamComment", type="text", nullable=true)
      */
     private $teamComment;
 
@@ -180,5 +225,51 @@ class Team
     public function getTeamComment()
     {
         return $this->teamComment;
+    }
+
+    /**
+     * Set dateCreated
+     *
+     * @param \DateTime $dateCreated
+     * @return Team
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreated
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
+    }
+
+    /**
+     * Set dateUpdated
+     *
+     * @param \DateTime $dateUpdated
+     * @return Team
+     */
+    public function setDateUpdated($dateUpdated)
+    {
+        $this->dateUpdated = $dateUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateUpdated
+     *
+     * @return \DateTime 
+     */
+    public function getDateUpdated()
+    {
+        return $this->dateUpdated;
     }
 }

@@ -3,6 +3,7 @@
 namespace FrontOfficeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Invitation
@@ -24,6 +25,13 @@ class Invitation
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "250",
+     *      minMessage = "Votre invitation doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre invitation ne peut pas être plus longue que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="content", type="string", length=450)
      */
     private $content;
@@ -31,6 +39,7 @@ class Invitation
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateInvit", type="datetime")
      */
     private $dateInvit;
@@ -45,6 +54,12 @@ class Invitation
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "255",
+     *      minMessage = "Le nom de la région doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom de la région ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="place", type="string", length=255)
      */
     private $place;
@@ -52,6 +67,7 @@ class Invitation
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;
@@ -66,6 +82,7 @@ class Invitation
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateAccepted", type="datetime", nullable=true)
      */
     private $dateAccepted;

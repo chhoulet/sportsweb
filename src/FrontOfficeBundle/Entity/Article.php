@@ -3,6 +3,7 @@
 namespace FrontOfficeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
@@ -25,6 +26,13 @@ class Article
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "255",
+     *      minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $title;
 
@@ -32,6 +40,13 @@ class Article
      * @var string
      *
      * @ORM\Column(name="content", type="text")
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "2500",
+     *      minMessage = "Votre article doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre article ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $content;
 
@@ -39,12 +54,20 @@ class Article
      * @var string
      *
      * @ORM\Column(name="author", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "2500",
+     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $author;
 
      /**
      * @var boolean
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="validationAdmin", type="boolean")
      */
     private $validationAdmin;
@@ -53,6 +76,7 @@ class Article
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="category", type="string", length=255)
      */
     private $category;
@@ -60,6 +84,7 @@ class Article
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;
@@ -67,6 +92,7 @@ class Article
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateUpdated", type="date", nullable = true)
      */
     private $dateUpdated;
@@ -74,6 +100,7 @@ class Article
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateValidated", type="date", nullable = true)
      */
     private $dateValidated;

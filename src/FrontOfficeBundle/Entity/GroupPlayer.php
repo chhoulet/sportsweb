@@ -3,6 +3,7 @@
 namespace FrontOfficeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * GroupPlayer
@@ -24,13 +25,27 @@ class GroupPlayer
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "80",
+     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+     * )
+     * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
 
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "50",
+     *      minMessage = "Le nom de votre sport pratiqué doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom de votre sport pratiqué ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="practicedSport", type="string", length=255)
      */
     private $practicedSport;
@@ -38,6 +53,13 @@ class GroupPlayer
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "50",
+     *      minMessage = "Le type de jeu pratiqué doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le type de jeu pratiqué ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="typeOfGame", type="string", length=255)
      */
     private $typeOfGame;
@@ -45,6 +67,13 @@ class GroupPlayer
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "50",
+     *      minMessage = "Le nom du club doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom du club ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="club", type="string", length=255)
      */
     private $club;
@@ -52,14 +81,43 @@ class GroupPlayer
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "250",
+     *      minMessage = "Les habitudes de jeu doivent faire au moins {{ limit }} caractères",
+     *      maxMessage = "Les habitudes de jeu ne peuvent pas être plus longues que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="habitsOfGame", type="text")
      */
     private $habitsOfGame;
 
     /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateCreated", type="datetime")
+     */
+    private $dateCreated;
+
+     /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateUpdated", type="datetime", nullable=true)
+     */
+    private $dateUpdated;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="groupComment", type="text")
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "250",
+     *      minMessage = "Votre commentaire doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre commentaire ne peut pas être plus long que {{ limit }} caractères"
+     * )
+     * @ORM\Column(name="groupComment", type="text",nullable=true)
      */
     private $groupComment;
 
@@ -210,5 +268,51 @@ class GroupPlayer
     public function getGroupComment()
     {
         return $this->groupComment;
+    }
+
+    /**
+     * Set dateCreated
+     *
+     * @param \DateTime $dateCreated
+     * @return GroupPlayer
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreated
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
+    }
+
+    /**
+     * Set dateUpdated
+     *
+     * @param \DateTime $dateUpdated
+     * @return GroupPlayer
+     */
+    public function setDateUpdated($dateUpdated)
+    {
+        $this->dateUpdated = $dateUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateUpdated
+     *
+     * @return \DateTime 
+     */
+    public function getDateUpdated()
+    {
+        return $this->dateUpdated;
     }
 }

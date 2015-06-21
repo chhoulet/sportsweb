@@ -3,6 +3,7 @@
 namespace FrontOfficeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Comment
@@ -23,14 +24,22 @@ class Comment
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "100",
+     *      minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
+     * )
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=100)
      */
     private $title;
 
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;
@@ -38,6 +47,13 @@ class Comment
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "500",
+     *      minMessage = "Votre commentaire doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre commentaire ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="content", type="text")
      */
     private $content;
@@ -45,6 +61,13 @@ class Comment
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "50",
+     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="author", type="string", length=255)
      */
     private $author;

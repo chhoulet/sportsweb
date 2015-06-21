@@ -4,6 +4,7 @@ namespace UserBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -25,6 +26,7 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="sportPracticed", type="string", length=255)
      */
     protected $sportPracticed;
@@ -32,14 +34,16 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="sportViewed", type="string", length=255)
      */
     protected $sportViewed;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="age", type="string", length=255)
+     * @Assert\Type(type="integer", message="La valeur {{ value }} n'est pas un type {{ type }} valide.Vous devez rentrer deux chiffres seulement.")
+     * @ORM\Column(name="age", type="integer")
      */
     protected $age;
 
@@ -49,6 +53,14 @@ class User extends BaseUser
      * @ORM\Column(name="validationAdmin", type="boolean", nullable=true)
      */
     protected $validationAdmin;
+
+     /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateCreated", type="datetime")
+     */
+    private $dateCreated;
 
     /**
      * @var string
