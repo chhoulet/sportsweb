@@ -121,6 +121,14 @@ class GroupPlayer
      */
     private $groupComment;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Ground", inversedBy="groupPlayer")
+     * @ORM\JoinColumn(name="ground_id", referencedColumnName="id")
+     */
+    private $ground;
+
 
     /**
      * Get id
@@ -314,5 +322,28 @@ class GroupPlayer
     public function getDateUpdated()
     {
         return $this->dateUpdated;
+    }
+
+    /**
+     * Set ground
+     *
+     * @param \FrontOfficeBundle\Entity\Ground $ground
+     * @return GroupPlayer
+     */
+    public function setGround(\FrontOfficeBundle\Entity\Ground $ground = null)
+    {
+        $this->ground = $ground;
+
+        return $this;
+    }
+
+    /**
+     * Get ground
+     *
+     * @return \FrontOfficeBundle\Entity\Ground 
+     */
+    public function getGround()
+    {
+        return $this->ground;
     }
 }

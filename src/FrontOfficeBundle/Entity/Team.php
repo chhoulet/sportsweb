@@ -97,6 +97,12 @@ class Team
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "250",
+     *      minMessage = "Votre commentaire doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre commentaire ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="teamComment", type="text", nullable=true)
      */
     private $teamComment;
@@ -104,7 +110,7 @@ class Team
      /**
      * @var string
      *
-     * @ORM\manyToOne(targetEntity="FrontOfficeBundle\Entity\Ground", inversedBy="team")
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Ground", inversedBy="team")
      * @ORM\JoinColumn(name="ground_id", referencedColumnName="id")
      */
     private $ground;

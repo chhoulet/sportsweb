@@ -99,6 +99,13 @@ class Ground
      */
     private $team;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\GroupPlayer", mappedBy="ground")
+     */
+    private $groupPlayer;
+
 
     /**
      * Get id
@@ -403,5 +410,38 @@ class Ground
     public function getTeam()
     {
         return $this->team;
+    }
+
+    /**
+     * Add groupPlayer
+     *
+     * @param \FrontOfficeBundle\Entity\GroupPlayer $groupPlayer
+     * @return Ground
+     */
+    public function addGroupPlayer(\FrontOfficeBundle\Entity\GroupPlayer $groupPlayer)
+    {
+        $this->groupPlayer[] = $groupPlayer;
+
+        return $this;
+    }
+
+    /**
+     * Remove groupPlayer
+     *
+     * @param \FrontOfficeBundle\Entity\GroupPlayer $groupPlayer
+     */
+    public function removeGroupPlayer(\FrontOfficeBundle\Entity\GroupPlayer $groupPlayer)
+    {
+        $this->groupPlayer->removeElement($groupPlayer);
+    }
+
+    /**
+     * Get groupPlayer
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroupPlayer()
+    {
+        return $this->groupPlayer;
     }
 }
