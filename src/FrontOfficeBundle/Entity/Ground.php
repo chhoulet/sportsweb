@@ -92,6 +92,13 @@ class Ground
      */
     private $invitation;
 
+     /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Team", mappedBy="ground")
+     */
+    private $team;
+
 
     /**
      * Get id
@@ -363,5 +370,38 @@ class Ground
     public function getDateUpdated()
     {
         return $this->dateUpdated;
+    }
+
+    /**
+     * Add team
+     *
+     * @param \FrontOfficeBundle\Entity\Team $team
+     * @return Ground
+     */
+    public function addTeam(\FrontOfficeBundle\Entity\Team $team)
+    {
+        $this->team[] = $team;
+
+        return $this;
+    }
+
+    /**
+     * Remove team
+     *
+     * @param \FrontOfficeBundle\Entity\Team $team
+     */
+    public function removeTeam(\FrontOfficeBundle\Entity\Team $team)
+    {
+        $this->team->removeElement($team);
+    }
+
+    /**
+     * Get team
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeam()
+    {
+        return $this->team;
     }
 }

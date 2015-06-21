@@ -101,6 +101,16 @@ class Team
      */
     private $teamComment;
 
+     /**
+     * @var string
+     *
+     * @ORM\manyToOne(targetEntity="FrontOfficeBundle\Entity\Ground", inversedBy="team")
+     * @ORM\JoinColumn(name="ground_id", referencedColumnName="id")
+     */
+    private $ground;
+
+
+
 
     /**
      * Get id
@@ -271,5 +281,28 @@ class Team
     public function getDateUpdated()
     {
         return $this->dateUpdated;
+    }
+
+    /**
+     * Set ground
+     *
+     * @param \FrontOfficeBundle\Entity\Ground $ground
+     * @return Team
+     */
+    public function setGround(\FrontOfficeBundle\Entity\Ground $ground = null)
+    {
+        $this->ground = $ground;
+
+        return $this;
+    }
+
+    /**
+     * Get ground
+     *
+     * @return \FrontOfficeBundle\Entity\Ground 
+     */
+    public function getGround()
+    {
+        return $this->ground;
     }
 }
