@@ -72,6 +72,22 @@ class Comment
      */
     private $author;
 
+     /**
+     * @var boolean
+     *
+     * @Assert\NotBlank()
+     * @ORM\Column(name="validationAdmin", type="boolean")
+     */
+    private $validationAdmin;
+
+    /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateValidated", type="date", nullable = true)
+     */
+    private $dateValidated;
+
     /**
      * @var string
      *
@@ -204,5 +220,51 @@ class Comment
     public function getArticle()
     {
         return $this->article;
+    }
+
+    /**
+     * Set validationAdmin
+     *
+     * @param boolean $validationAdmin
+     * @return Comment
+     */
+    public function setValidationAdmin($validationAdmin)
+    {
+        $this->validationAdmin = $validationAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Get validationAdmin
+     *
+     * @return boolean 
+     */
+    public function getValidationAdmin()
+    {
+        return $this->validationAdmin;
+    }
+
+    /**
+     * Set dateValidated
+     *
+     * @param \DateTime $dateValidated
+     * @return Comment
+     */
+    public function setDateValidated($dateValidated)
+    {
+        $this->dateValidated = $dateValidated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateValidated
+     *
+     * @return \DateTime 
+     */
+    public function getDateValidated()
+    {
+        return $this->dateValidated;
     }
 }
