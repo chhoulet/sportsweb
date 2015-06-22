@@ -85,11 +85,16 @@ back_office_admin_user_delete:
     path:     /delete
     defaults: { _controller: BackOfficeBundle:User:delete}
 
-# Routes gerant les team:
-     # Liste des team non validees:
+# Routes gerant les teams:
+     # Controle des teams non validees:
 back_office_list_team:
     path:     /listTeam 
     defaults: { _controller: BackOfficeBundle:Team:list} 
+
+    # Validation d'une team par l'administrateur:
+back_office_admin_team_response:
+    path:     /responseTeam/{id}
+    defaults: { _controller: BackOfficeBundle:Team:response}
 
 
 
