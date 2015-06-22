@@ -28,4 +28,14 @@ class TeamController extends Controller
 
 		return $this -> redirect($this -> generateUrl('back_office_list_team'));
 	}
+
+	public function deleteAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$team = $em -> getRepository('FrontOfficeBundle:Team') ->find($id);
+		$em -> remove($team);
+		$em -> flush();
+
+		return $this -> redirect($this -> generateUrl('back_office_list_team'));
+	}
 }
