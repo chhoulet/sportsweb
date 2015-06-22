@@ -54,6 +54,13 @@ class Invitation
     /**
      * @var string
      *
+     * @ORM\Column(name="mode", type="string", length=255)
+     */
+    private $mode;
+
+    /**
+     * @var string
+     *
      * @Assert\Length(
      *      min = "2",
      *      max = "255",
@@ -319,5 +326,28 @@ class Invitation
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set mode
+     *
+     * @param string $mode
+     * @return Invitation
+     */
+    public function setMode($mode)
+    {
+        $this->mode = $mode;
+
+        return $this;
+    }
+
+    /**
+     * Get mode
+     *
+     * @return string 
+     */
+    public function getMode()
+    {
+        return $this->mode;
     }
 }

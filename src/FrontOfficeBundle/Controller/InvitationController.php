@@ -8,7 +8,8 @@ use FrontOfficeBundle\Form\InvitationType;
 use Symfony\Component\HttpFoundation\Request;
 
 class InvitationController extends Controller
-{
+{	
+	/*Creation d'une invitation par un joueur, avec l'attribut accepted a false par défault:*/
 	public function newAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getManager();

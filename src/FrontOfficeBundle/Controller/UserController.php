@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
 {
+	// Function pour faire apparaître Mon Profil, avec lien en homepage
 	public function updateAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
