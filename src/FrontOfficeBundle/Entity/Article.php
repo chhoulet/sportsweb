@@ -56,7 +56,7 @@ class Article
      * @ORM\Column(name="author", type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      min = "10",
+     *      min = "3",
      *      max = "2500",
      *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
