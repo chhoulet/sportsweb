@@ -15,6 +15,7 @@ class UserRepository extends EntityRepository
 		return $query -> getSingleScalarResult();
 	}
 
+	/*Selection des users non valides par admin:*/
 	public function getAdminUser()
 	{
 		$query = $this -> getEntityManager()->createQuery('

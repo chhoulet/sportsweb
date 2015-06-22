@@ -67,6 +67,9 @@
                                     {{ com.content }}
                                 </div>
                             </div>
+                            {% if (is_granted('ROLE_SUPER_ADMIN') %}
+                                <a href="{{ path('back_office_comment_delete,{id:com.is_granted}')}}">Supprimer le commentaire</a>
+                            {% endif %}
                         {% endfor %}
 
                          <hr>

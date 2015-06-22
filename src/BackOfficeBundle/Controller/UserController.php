@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class UserController extends Controller
 {
+	/*Selection des users non valides par admin*/
 	public function adminAction()
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -15,6 +16,7 @@ class UserController extends Controller
 		return $this -> render('BackOfficeBundle:User:admin.html.twig', array('user'=> $user));
 	}
 
+	/*ok admin si profil correct*/
 	public function responseAction($id)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -26,6 +28,7 @@ class UserController extends Controller
 		return $this -> redirect($this->generateurl('back_office_admin_user'));
 	}
 
+	/*Suppression du compte user*/
 	public function deleteAction($id)
 	{
 		$em = $this -> getDoctrine()->getManager();

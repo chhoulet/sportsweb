@@ -33,6 +33,11 @@ back_office_article_delete:
     path:     /delete/{id}
     defaults: { _controller: BackOfficeBundle:Article:delete}
 
+#  Route gerant l'administration des commentaires:
+back_office_comment_delete:
+    path:     /delete/{id}
+    defaults: { _controller: BackOfficeBundle:Comment:delete}
+
 #  Routes gerant l'administration des terrains de sport :
 back_office_ground_list:
     path:     /listGround

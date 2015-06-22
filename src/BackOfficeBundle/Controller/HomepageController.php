@@ -8,6 +8,7 @@ class HomepageController extends Controller
 {
     public function homepageAction()
     {
+        /* Statistiques du BO*/
     	$em = $this -> getDoctrine() ->getManager();
     	$invitations           = $em -> getRepository('FrontOfficeBundle:Invitation') -> nbInvitations();
     	$nbInvitationsAccepted = $em -> getRepository('FrontOfficeBundle:Invitation') -> nbInvitationsAccepted();

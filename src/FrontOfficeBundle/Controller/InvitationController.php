@@ -30,6 +30,7 @@ class InvitationController extends Controller
 			array('form'=>$form->createView()));
 	}
 
+	// Function d'acceptation de l'invitation, avec l'attribut accepted mis à true + date de l'acceptation implémentée automatiquement:
 	public function responseAction($id)
 	{
 		$em = $this -> getDoctrine()->getManager();
