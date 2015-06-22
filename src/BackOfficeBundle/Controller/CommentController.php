@@ -7,6 +7,17 @@ use FrontOfficeBundle\Entity\Comment;
 
 class CommentController extends Controller
 {
+	# Tri des comments, affichage des non-validés:
+	public function adminAction()
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$comments = $em -> getRepository('FrontOfficeBundle:Comment') -> getUnvalidatedComment();
+
+		return $this -> render('BackOfficeBundle:Comment:admin.html.twig', 
+			array('comments'=> $comments));
+	}
+
+	# Suppression des non-validés:
 	public function deleteAction($id)
 	{
 		$em = $this -> getDoctrine()-> getManager();

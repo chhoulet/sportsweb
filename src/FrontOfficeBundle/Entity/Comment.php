@@ -24,7 +24,6 @@ class Comment
 
     /**
      * @var string
-     * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "10",
      *      max = "100",

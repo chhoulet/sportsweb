@@ -34,7 +34,7 @@ back_office_article_delete:
     defaults: { _controller: BackOfficeBundle:Article:delete}
 
 #  Routes gerant l'administration des commentaires:
-    # Contrôle des articles par l'administrateur:
+    # Contrôle des comments par l'administrateur:
 back_office_comment_admin:
     path:     /adminComment
     defaults: { _controller: BackOfficeBundle:Comment:admin}
