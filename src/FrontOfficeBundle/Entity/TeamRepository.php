@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class TeamRepository extends EntityRepository
 {
+	public function getTeamUnvalidated()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT t 
+			FROM FrontOfficeBundle:Team t 
+			WHERE t.validationAdmin = false');
+
+		return $query -> getResult();
+	}
 }

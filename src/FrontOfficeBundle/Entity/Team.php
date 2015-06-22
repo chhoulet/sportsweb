@@ -94,6 +94,22 @@ class Team
      */
     private $dateUpdated;
 
+     /**
+     * @var boolean
+     *
+     * @Assert\NotBlank()
+     * @ORM\Column(name="validationAdmin", type="boolean")
+     */
+    private $validationAdmin;
+
+    /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateValidated", type="date", nullable = true)
+     */
+    private $dateValidated;
+
     /**
      * @var string
      *
@@ -310,5 +326,51 @@ class Team
     public function getGround()
     {
         return $this->ground;
+    }
+
+    /**
+     * Set validationAdmin
+     *
+     * @param boolean $validationAdmin
+     * @return Team
+     */
+    public function setValidationAdmin($validationAdmin)
+    {
+        $this->validationAdmin = $validationAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Get validationAdmin
+     *
+     * @return boolean 
+     */
+    public function getValidationAdmin()
+    {
+        return $this->validationAdmin;
+    }
+
+    /**
+     * Set dateValidated
+     *
+     * @param \DateTime $dateValidated
+     * @return Team
+     */
+    public function setDateValidated($dateValidated)
+    {
+        $this->dateValidated = $dateValidated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateValidated
+     *
+     * @return \DateTime 
+     */
+    public function getDateValidated()
+    {
+        return $this->dateValidated;
     }
 }
