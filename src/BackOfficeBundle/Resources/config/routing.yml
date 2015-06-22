@@ -28,12 +28,18 @@ back_office_article_update:
     path:     /update/{id}
     defaults: { _controller: BackOfficeBundle:Article:update}
 
-    #Suppression des articles par l'administrateur:
+    # Suppression des articles par l'administrateur:
 back_office_article_delete:
     path:     /delete/{id}
     defaults: { _controller: BackOfficeBundle:Article:delete}
 
-#  Route gerant l'administration des commentaires:
+#  Routes gerant l'administration des commentaires:
+    # Contrôle des articles par l'administrateur:
+back_office_comment_admin:
+    path:     /adminComment
+    defaults: { _controller: BackOfficeBundle:Comment:admin}
+
+      # Suppression des comments par l'administrateur:
 back_office_comment_delete:
     path:     /delete/{id}
     defaults: { _controller: BackOfficeBundle:Comment:delete}
