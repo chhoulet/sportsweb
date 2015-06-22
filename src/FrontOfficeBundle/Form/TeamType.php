@@ -18,7 +18,8 @@ class TeamType extends AbstractType
             ->add('name')
             ->add('sportPracticed','choice', array('choices'=> array('Basket'  => "Basket",
                                                                      'Football'=> "Football")))
-            ->add('typeOfGame')
+            ->add('typeOfGame', 'choice',    array('choices'=> array('Loisir'     => "loisir",
+                                                                     'Compétition'=> "compétition"))))
             ->add('habitsOfGame')
             ->add('teamComment')
             ->add('ground')

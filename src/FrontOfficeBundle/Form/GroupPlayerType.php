@@ -18,7 +18,7 @@ class GroupPlayerType extends AbstractType
             ->add('name')
             ->add('practicedSport','choice', array('choices' => array('Basket'   => 'Basket',
                                                                       'Football' => 'Football')))
-            ->add('typeOfGame')
+            //->add('typeOfGame') Toujours en mode loisir
             ->add('club')
             ->add('habitsOfGame')
             ->add('groupComment')
