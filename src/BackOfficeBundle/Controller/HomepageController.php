@@ -15,12 +15,14 @@ class HomepageController extends Controller
     	$nbInvitationsDenied   = $em -> getRepository('FrontOfficeBundle:Invitation') -> nbInvitationsDenied();
         $nbUsers               = $em -> getRepository('UserBundle:User') -> nbUsers();
         $nbComments            = $em -> getRepository('FrontOfficeBundle:Comment') -> nbComments();
+        $nbArticles             = $em -> getRepository('FrontOfficeBundle:Article') -> nbArticles();
  
         return $this -> render('BackOfficeBundle:Homepage:homepage.html.twig', 
         	array('invitations'          => $invitations,
         		  'nbInvitationsAccepted'=> $nbInvitationsAccepted,
         		  'nbInvitationsDenied'  => $nbInvitationsDenied,
                   'nbUsers'              => $nbUsers,
-                  'nbComments'           => $nbComments));
+                  'nbComments'           => $nbComments,
+                  'nbArticles'           => $nbArticles));
     }
 }

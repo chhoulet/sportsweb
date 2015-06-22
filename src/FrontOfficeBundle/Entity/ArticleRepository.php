@@ -45,4 +45,13 @@ class ArticleRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function nbArticles()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT(a.id)
+			FROM FrontOfficeBundle:Article a');
+
+		return $query ->getSingleScalarResult();
+	}
 }
