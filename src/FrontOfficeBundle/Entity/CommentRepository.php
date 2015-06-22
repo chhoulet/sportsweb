@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommentRepository extends EntityRepository
 {
+	# Selection des commentaires non validés par l'admin
+	public function getUnvalidatedComment()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT c 
+			FROM FrontOfficeBundle:Comment c 
+			WHERE c.validationAdmin = false');
+
+		return $query -> getResult();
+	}
 }
