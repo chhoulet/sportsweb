@@ -11,7 +11,8 @@ use Doctrine\ORM\EntityRepository;
  * repository methods below.
  */
 class TeamRepository extends EntityRepository
-{
+{	
+	#Query selectionnant les team non valides par l'admin:
 	public function getTeamUnvalidated()
 	{
 		$query = $this -> getEntityManager()-> createQuery('

@@ -44,7 +44,7 @@ back_office_comment_response:
     path:     /responseComment/{id}
     defaults: { _controller: BackOfficeBundle:Comment:response}
 
-      # Suppression des comments par l'administrateur:
+    # Suppression des comments par l'administrateur:
 back_office_comment_delete:
     path:     /delete/{id}
     defaults: { _controller: BackOfficeBundle:Comment:delete}
@@ -54,27 +54,73 @@ back_office_ground_list:
     path:     /listGround
     defaults: { _controller: BackOfficeBundle:Ground:list}
 
+    # Creation d'un ground par l'administrateur:
 back_office_ground_new:
     path:     /newGround
     defaults: { _controller: BackOfficeBundle:Ground:new}
 
+    # Mise à jour d'un ground par l'administrateur:
 back_office_ground_update:
     path:     /updateGround/{id}
     defaults: { _controller: BackOfficeBundle:Ground:update}
 
+    # Suppression des grounds par l'administrateur:
 back_office_ground_delete:
     path:     /deleteGround/{id}
     defaults: { _controller: BackOfficeBundle:Ground:delete}
 
 # Routes gerant les users:
+    # Controle d'un user par l'administrateur:
 back_office_admin_user:
     path:     /users
     defaults: { _controller: BackOfficeBundle:User:admin}
 
+    # Validation d'un user par l'administrateur:
 back_office_admin_user_response:
     path:     /responseUser/{id}
     defaults: { _controller: BackOfficeBundle:User:response}
 
+    # Suppression d'un user par l'administrateur:
 back_office_admin_user_delete:
     path:     /delete
     defaults: { _controller: BackOfficeBundle:User:delete}
+
+# Routes gerant les team:
+     # Liste des team non validees:
+back_office_list_team:
+    path:     /listTeam 
+    defaults: { _controller: BackOfficeBundle:Team:list} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
