@@ -39,6 +39,11 @@ back_office_comment_admin:
     path:     /adminComment
     defaults: { _controller: BackOfficeBundle:Comment:admin}
 
+    # Validation des comments par l'administrateur:
+back_office_comment_response:
+    path:     /responseComment/{id}
+    defaults: { _controller: BackOfficeBundle:Comment:response}
+
       # Suppression des comments par l'administrateur:
 back_office_comment_delete:
     path:     /delete/{id}

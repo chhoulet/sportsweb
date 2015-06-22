@@ -22,7 +22,7 @@ class Comment
      */
     private $id;
 
-    /**
+     /**
      * @var string
      * @Assert\Length(
      *      min = "10",
@@ -30,9 +30,8 @@ class Comment
      *      minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
      * )
-     *
      * @ORM\Column(name="title", type="string", length=100)
-     */
+     */     
     private $title;
 
     /**
@@ -48,13 +47,14 @@ class Comment
      *
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      min = "10",
-     *      max = "500",
+     *      min = "5",
+     *      max = "50",
      *      minMessage = "Votre commentaire doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre commentaire ne peut pas être plus long que {{ limit }} caractères"
      * )
      * @ORM\Column(name="content", type="text")
-     */
+    */
+     
     private $content;
 
     /**
