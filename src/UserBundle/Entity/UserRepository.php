@@ -26,4 +26,15 @@ class UserRepository extends EntityRepository
 		
 		return $query -> getResult();
 	}
+
+	public function getWarnedUser()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT u 
+			FROM UserBundle:User u 
+			WHERE u.warnedUser = true
+			');
+		
+		return $query -> getResult();
+	}
 }
