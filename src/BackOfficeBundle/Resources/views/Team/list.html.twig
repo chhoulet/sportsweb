@@ -25,8 +25,10 @@
 			                
 			                <a class="btn btn-primary" href="{{ path('back_office_admin_team_response',{id:tea.id}) }}">OK Admin <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-			                <a class="btn btn-primary" href="{{ path('back_office_team_delete',{id:tea.id}) }}">Suppression team<span class="glyphicon glyphicon-chevron-right"></span></a>
-
+			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
+			                	<a class="btn btn-primary" href="{{ path('back_office_team_delete',{id:tea.id}) }}">Suppression team<span class="glyphicon glyphicon-chevron-right"></span></a>
+			                {% endif %}
+			                
 		                	<hr>
 
 	            		{% endfor %}

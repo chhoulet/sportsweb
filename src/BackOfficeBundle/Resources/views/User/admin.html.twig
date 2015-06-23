@@ -2,7 +2,6 @@
 
 	{% block content %}
 
-		
 		<div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -26,7 +25,9 @@
 			                <p>{{ us.age }}</p>
 			                <a class="btn btn-primary" href="{{ path('back_office_admin_user_response',{id:us.id}) }}">OK Admin <span class="glyphicon glyphicon-chevron-right"></span></a>	
 
-			                <a class="btn btn-primary" href="{{ path('back_office_admin_user_delete',{id:us.id}) }}">Suppression du compte<span class="glyphicon glyphicon-chevron-right"></span></a>			          
+			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
+			                	<a class="btn btn-primary" href="{{ path('back_office_admin_user_delete',{id:us.id}) }}">Suppression du compte<span class="glyphicon glyphicon-chevron-right"></span></a>	        
+			                {% endif %}          
 
 		                	<hr>
 

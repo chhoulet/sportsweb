@@ -23,7 +23,9 @@
 			                <p>{{ com.content }}</p>
 			                <a class="btn btn-primary" href="{{ path('back_office_comment_response',{id:com.id}) }}">OK Admin <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-			                <a class="btn btn-primary" href="{{ path('back_office_comment_delete',{id:com.id}) }}">Suppression commentaire<span class="glyphicon glyphicon-chevron-right"></span></a>
+			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
+			                	<a class="btn btn-primary" href="{{ path('back_office_comment_delete',{id:com.id}) }}">	Suppression commentaire<span class="glyphicon glyphicon-chevron-right"></span></a>
+			            	{% endif %}
 
 		                	<hr>
 

@@ -23,9 +23,12 @@
 			                <hr>
 			                <p>{{ art.address }}</p><br>
 			                <p>{{ art.phoneNumber }}</p>
-			                <a class="btn btn-primary" href="{{ path('back_office_ground_update',{id:art.id}) }}">Mise à jour Terrain <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-			                <a class="btn btn-primary" href="{{ path('back_office_ground_delete',{id:art.id}) }}">Suppression Terrain<span class="glyphicon glyphicon-chevron-right"></span></a>
+			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
+			                	<a class="btn btn-primary" href="{{ path('back_office_ground_update',{id:art.id}) }}">Mise à jour Terrain <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+			                	<a class="btn btn-primary" href="{{ path('back_office_ground_delete',{id:art.id}) }}">Suppression Terrain<span class="glyphicon glyphicon-chevron-right"></span></a>
+			            	{% endif %}
 
 		                	<hr>
 

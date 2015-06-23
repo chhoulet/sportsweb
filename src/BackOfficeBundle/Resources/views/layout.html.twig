@@ -298,9 +298,11 @@
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i>Article<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{ path('back_office_article_new') }}">Créer un Article</a>
-                                </li>
+                                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
+                                    <li>
+                                        <a href="{{ path('back_office_article_new') }}">Créer un Article</a>
+                                    </li>
+                                {% endif %}
                                 <li>
                                     <a href="{{ path('back_office_article_list') }}">Liste des Articles</a>
                                 </li>
@@ -322,9 +324,11 @@
                         <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Ground<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{ path('back_office_ground_new') }}">Créer un Terrain</a>
-                                </li>            
+                                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
+                                    <li>
+                                        <a href="{{ path('back_office_ground_new') }}">Créer un Terrain</a>
+                                    </li>  
+                                {% endif %}          
                                 <li>
                                     <a href="{{ path('back_office_ground_list') }}">Lister les Terrains</a>
                                 </li>
