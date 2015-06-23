@@ -85,6 +85,11 @@ back_office_admin_user_warned:
     path:     /warnedUser/{id}
     defaults: { _controller: BackOfficeBundle:User:warned}
 
+    # View des warnedUsers:
+back_office_admin_warnedUsers:
+    path:     /listWarned
+    defaults: { _controller: BackOfficeBundle:User:warnedUsers}
+
     # Suppression d'un user par l'administrateur:
 back_office_admin_user_delete:
     path:     /delete

@@ -40,6 +40,16 @@ class UserController extends Controller
 		return $this -> redirect($this->generateurl('back_office_admin_user'));
 	}
 
+	/*Liste des users mis a l'ecart*/
+	public function warnedUsersAction()
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$warnedUsers = $em -> getRepository('UserBundle:User') -> getWarnedUsers();
+
+		return $this -> render('BackOfficeBundle:User:warnedUsers.html.twig', 
+			array('warnedUsers' => $warnedUsers));
+	}
+
 	/*Suppression du compte user*/
 	public function deleteAction($id)
 	{

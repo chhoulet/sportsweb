@@ -22,17 +22,17 @@ class UserRepository extends EntityRepository
 			SELECT u 
 			FROM UserBundle:User u 
 			WHERE u.validationAdmin = false
-			AND u.warnedUser = false');
+			AND u.userWarned = false');
 		
 		return $query -> getResult();
 	}
 
-	public function getWarnedUser()
+	public function getWarnedUsers()
 	{
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT u 
 			FROM UserBundle:User u 
-			WHERE u.warnedUser = true
+			WHERE u.userWarned = true
 			');
 		
 		return $query -> getResult();
