@@ -28,6 +28,18 @@ class UserController extends Controller
 		return $this -> redirect($this->generateurl('back_office_admin_user'));
 	}
 
+	/*Mise en écart si profil inconvenant*/
+	public function warnedAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$user = $em -> getRepository('UserBundle:User') -> find ($id);
+		$user -> setUserWarned(true);
+		$em -> persist($user);
+		$em -> flush();
+
+		return $this -> redirect($this->generateurl('back_office_admin_user'));
+	}
+
 	/*Suppression du compte user*/
 	public function deleteAction($id)
 	{

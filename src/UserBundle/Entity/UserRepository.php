@@ -21,7 +21,8 @@ class UserRepository extends EntityRepository
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT u 
 			FROM UserBundle:User u 
-			WHERE u.validationAdmin = false');
+			WHERE u.validationAdmin = false
+			AND u.warnedUser = false');
 		
 		return $query -> getResult();
 	}

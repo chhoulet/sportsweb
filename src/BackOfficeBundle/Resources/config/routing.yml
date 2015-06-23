@@ -70,7 +70,7 @@ back_office_ground_delete:
     defaults: { _controller: BackOfficeBundle:Ground:delete}
 
 # Routes gerant les users:
-    # Controle d'un user par l'administrateur:
+    # Controle des users par l'administrateur:
 back_office_admin_user:
     path:     /users
     defaults: { _controller: BackOfficeBundle:User:admin}
@@ -80,13 +80,18 @@ back_office_admin_user_response:
     path:     /responseUser/{id}
     defaults: { _controller: BackOfficeBundle:User:response}
 
+    # Mise en table Warning d'un user:
+back_office_admin_user_warned:
+    path:     /warnedUser/{id}
+    defaults: { _controller: BackOfficeBundle:User:warned}
+
     # Suppression d'un user par l'administrateur:
 back_office_admin_user_delete:
     path:     /delete
     defaults: { _controller: BackOfficeBundle:User:delete}
 
 # Routes gerant les teams:
-     # Controle des teams non validees:
+    # Controle des teams non validees:
 back_office_list_team:
     path:     /listTeam 
     defaults: { _controller: BackOfficeBundle:Team:list} 
@@ -96,7 +101,7 @@ back_office_admin_team_response:
     path:     /responseTeam/{id}
     defaults: { _controller: BackOfficeBundle:Team:response}
 
-     # Suppression d'une team par l'administrateur:
+    # Suppression d'une team par l'administrateur:
 back_office_team_delete:
     path:     /deleteTeam/{id}
     defaults: { _controller: BackOfficeBundle:Team:delete}
