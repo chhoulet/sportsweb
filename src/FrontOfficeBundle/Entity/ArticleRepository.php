@@ -19,9 +19,9 @@ class ArticleRepository extends EntityRepository
 			FROM FrontOfficeBundle:Article a 
 			WHERE a.validationAdmin = true
 			ORDER BY a.dateCreated DESC')
-		->setMaxResults(1);
+		->setMaxResults(6);
 
-		return $query -> getSingleResult();
+		return $query -> getResult();
 	}
 
 	public function triArticle($category)

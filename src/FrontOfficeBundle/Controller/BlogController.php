@@ -46,7 +46,7 @@ class BlogController extends Controller
 
 
 		return $this -> render('FrontOfficeBundle:Blog:homepage.html.twig',
-		    array('article' => $article,
+		    array('articles' => $article,
 		    	  'form'    => $form -> createView(),
 		    	  'formArticle'=> $formArticle -> createView()));
 

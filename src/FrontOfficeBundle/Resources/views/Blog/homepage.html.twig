@@ -12,7 +12,7 @@
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                  
+                    {% for article in articles %}
     	                <h1>{{ article.title }}</h1>
 
     	                <!-- Author -->
@@ -23,7 +23,7 @@
     	                <hr>
 
     	                <!-- Date/Time -->
-    	                <p><span class="glyphicon glyphicon-time"></span>Poste le : {{ article.dateCreated | date('d-m-Y') }} </p>
+    	                <p><span class="glyphicon glyphicon-time"></span>Poste le : {{ article.dateCreated | date('d-m-Y H:i:s') }} </p>
 
     	                <hr>
 
@@ -38,11 +38,12 @@
                         <a href="{{path('front_office_blog_one',{id:article.id}) }}"><button>Détails :</button></a>
 
     	                <hr>
+                    {% endfor %}
             	  
 
                     <!-- Blog Comments -->
 
-                    <!-- Comments Form -->
+                   {#  <!-- Comments Form -->
                     <div class="well">
                         <h4>Leave a Comment:</h4>
                             {{ form(form) }}
@@ -72,7 +73,7 @@
                             {% endif %}
                         {% endfor %}
 
-                         <hr>
+                         <hr> #}
                          
                     <div class="well">
 
