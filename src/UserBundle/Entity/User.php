@@ -54,6 +54,14 @@ class User extends BaseUser
      */
     protected $validationAdmin;
 
+     /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateValidated", type="datetime", nullable=true)
+     */
+    private $dateValidated;
+
     /**
      * @var boolean
      *
@@ -65,9 +73,19 @@ class User extends BaseUser
      * @var \DateTime
      *
      * @Assert\DateTime()
+     * @ORM\Column(name="dateWarned", type="datetime", nullable=true)
+     */
+    private $dateWarned;
+
+     /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;
+
+
 
     /**
      * @var string
@@ -264,5 +282,51 @@ class User extends BaseUser
     public function getDateCreated()
     {
         return $this->dateCreated;
+    }
+
+    /**
+     * Set dateValidated
+     *
+     * @param \DateTime $dateValidated
+     * @return User
+     */
+    public function setDateValidated($dateValidated)
+    {
+        $this->dateValidated = $dateValidated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateValidated
+     *
+     * @return \DateTime 
+     */
+    public function getDateValidated()
+    {
+        return $this->dateValidated;
+    }
+
+    /**
+     * Set dateWarned
+     *
+     * @param \DateTime $dateWarned
+     * @return User
+     */
+    public function setDateWarned($dateWarned)
+    {
+        $this->dateWarned = $dateWarned;
+
+        return $this;
+    }
+
+    /**
+     * Get dateWarned
+     *
+     * @return \DateTime 
+     */
+    public function getDateWarned()
+    {
+        return $this->dateWarned;
     }
 }

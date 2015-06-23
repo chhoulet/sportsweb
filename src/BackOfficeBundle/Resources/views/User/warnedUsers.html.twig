@@ -1,0 +1,41 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+		
+					<h2> Liste des users mis à l'écart :</h2>
+
+						{% for us in warnedUsers %}
+
+			                <h2>
+			                    <a href="#">{{ us.username }}</a>
+			                </h2>
+			                <p class="lead">
+			                    by <a href="index.php">{{ us.email }}</a>
+			                </p>
+			                <p><span class="glyphicon glyphicon-time"></span></p>
+			                <hr>
+			                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+			                <hr>
+			                <p>{{ us.sportPracticed }}</p>
+			                <p>{{ us.sportViewed }}</p>
+			                <p>{{ us.age }}</p><br>
+
+			                <a class="btn btn-primary" href="{{ path('back_office_admin_user_response',{id:us.id}) }}">OK Admin <span class="glyphicon glyphicon-chevron-right"></span></a>				           
+
+			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
+			                	<a class="btn btn-primary" href="{{ path('back_office_admin_user_delete',{id:us.id}) }}">Suppression du compte<span class="glyphicon glyphicon-chevron-right"></span></a>	        
+			                {% endif %}          
+
+		                	<hr>
+
+	            		{% endfor %}
+
+	            </div>
+			</div>
+		</div>
+		
+	{% endblock %}

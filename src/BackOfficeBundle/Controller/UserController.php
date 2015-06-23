@@ -22,6 +22,8 @@ class UserController extends Controller
 		$em = $this -> getDoctrine()->getManager();
 		$user = $em -> getRepository('UserBundle:User') -> find ($id);
 		$user -> setValidationAdmin(true);
+		$user -> setUserWarned(false);
+		$user -> setDateValidated(new \datetime('now'));
 		$em -> persist($user);
 		$em -> flush();
 
@@ -34,6 +36,7 @@ class UserController extends Controller
 		$em = $this -> getDoctrine()->getManager();
 		$user = $em -> getRepository('UserBundle:User') -> find ($id);
 		$user -> setUserWarned(true);
+		$user -> setDateWarned(new \datetime('now'));
 		$em -> persist($user);
 		$em -> flush();
 
