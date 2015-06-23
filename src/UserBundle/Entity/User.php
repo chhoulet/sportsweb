@@ -54,6 +54,13 @@ class User extends BaseUser
      */
     protected $validationAdmin;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="userWarned", type="boolean", nullable=true)
+     */
+    protected $userWarned;
+
      /**
      * @var \DateTime
      *
@@ -211,5 +218,51 @@ class User extends BaseUser
     public function getValidationAdmin()
     {
         return $this->validationAdmin;
+    }
+
+    /**
+     * Set userWarned
+     *
+     * @param boolean $userWarned
+     * @return User
+     */
+    public function setUserWarned($userWarned)
+    {
+        $this->userWarned = $userWarned;
+
+        return $this;
+    }
+
+    /**
+     * Get userWarned
+     *
+     * @return boolean 
+     */
+    public function getUserWarned()
+    {
+        return $this->userWarned;
+    }
+
+    /**
+     * Set dateCreated
+     *
+     * @param \DateTime $dateCreated
+     * @return User
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreated
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
     }
 }
