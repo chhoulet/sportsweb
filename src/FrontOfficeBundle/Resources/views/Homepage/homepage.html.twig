@@ -5,7 +5,7 @@
      	<section>
         	<div class="container">
                 <div class="row">
-     				<h1 style="text-align:center;margin-top:-50px;margin-bottom:-45px;">Bienvenue {{ app.user.username}} Sports Web - Trouve tes partenaires :</h1>
+     				<h1 style="text-align:center;margin-top:-50px;margin-bottom:-45px;">{% if(is_granted('ROLE_USER')) %} Bienvenue {{ app.user.username}} {% endif %} Sports Web - Trouve tes partenaires :</h1>
 
      			</div>
      		</div>
