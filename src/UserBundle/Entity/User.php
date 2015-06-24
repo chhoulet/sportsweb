@@ -85,8 +85,6 @@ class User extends BaseUser
      */
     private $dateCreated;
 
-
-
     /**
      * @var string
      *

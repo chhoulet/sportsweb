@@ -28,6 +28,6 @@ front_office_blog_one:
     defaults: { _controller: FrontOfficeBundle:Blog:one}
 
 # Route gerant les users:
-front_office_update_user:
-    path:     /showUser/{id}
-    defaults: { _controller: FrontOfficeBundle:User:update}
+front_office_showUser:
+    path:     /showUser
+    defaults: { _controller: FrontOfficeBundle:User:showUser}

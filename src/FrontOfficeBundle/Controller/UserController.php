@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller
 {
 	// Function pour faire apparaître Mon Profil, avec lien en homepage
-	public function updateAction(Request $request, $id)
+	/*public function updateAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$user = $em -> getRepository('UserBundle:User')->find($id);
@@ -30,5 +30,10 @@ class UserController extends Controller
 		return $this -> render('FrontOfficeBundle:User:update.html.twig', 
 			array('user'=>$user,
 				  'form'=>$form->createView()));
+	}*/
+
+	public function showUserAction()
+	{
+		return $this -> render('FrontOfficeBundle:User:showUser.html.twig');
 	}
 }
