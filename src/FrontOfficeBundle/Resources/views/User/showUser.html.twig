@@ -1,50 +1,43 @@
 {% extends 'FrontOfficeBundle::layout.html.twig' %}
 
 	{% block content %}
-		{{app.user.username}}<br>
-		{{app.user.age}}<br>
-		{{app.user.sportPracticed}}
 
 		<div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Page Heading
-                    <small>Secondary Text</small>
+                <h1 class="page-header">{{app.user.username}}
+                    <small>SPORT : {{app.user.sportPracticed}}</small>
+                    <small>AGE : {{app.user.age }} ans</small>
                 </h1>
             </div>
         </div>
         <!-- /.row -->
 
-        <!-- Projects Row -->
+        {# <!-- Projects Row -->
         <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
+
+        	{% if (app.user.image == true) %}
+        		{% for image in app.user.image %}
+		            <div class="col-md-4 portfolio-item">
+		                <a href="#">
+		                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+		                </a>
+		                <h3>
+		                    <a href="#">{{ app.user.imageName }}</a>
+		                </h3>
+		                <p>{{ app.user.imageComment }}</p>
+		            </div>
+		        {% endfor %}
+        	{% endif %}
+
+            <div class="col-md-4 portfolio-item">              
                 <h3>
-                    <a href="#">Project Name</a>
+                    <a href="#">Sports d'intérêt :</a>
                 </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                <p>{{ app.user.sportViewed}}</p>
             </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
+            
         </div>
-        <!-- /.row -->
+        <!-- /.row --> #}
 
         <!-- Projects Row -->
         <div class="row">
