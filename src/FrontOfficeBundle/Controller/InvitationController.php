@@ -40,7 +40,7 @@ class InvitationController extends Controller
 		$em -> persist($invitation);
 		$em -> flush();
 
-		$this ->get('session') ->getFlashBag('sucess', 'Vous venez d\'accepter cette invitation. Un e-mail de confirmation vient de vous être envoyé. Bon match !');
+		$this ->get('session') ->getFlashBag('success', 'Vous venez d\'accepter cette invitation. Un e-mail de confirmation vient de vous être envoyé. Bon match !');
 
 		return $this-> redirect($this -> generateUrl('front_office_homepage'));
 	}

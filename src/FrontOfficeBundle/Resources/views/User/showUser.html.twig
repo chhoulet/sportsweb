@@ -41,6 +41,27 @@
 
         <!-- Projects Row -->
         <div class="row">
+
+        	{# Code pour afficher les invitations acceptées #}
+        	{% if (app.user.invitation != NULL) %}
+        		{% for invit in app.user.invitation %}
+
+		            <div class="col-md-4 portfolio-item">
+		                <a href="#">
+		                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+		                </a>
+		                <h3>
+		                    <p>{{ invit.sport }}</p>
+		                </h3>
+		                <p>{{ invit.dateInvit | date('d-m-Y H:i:s') }}</p><br>
+		                <p>{{ invit.mode }}</p><br>
+		                <p>{{ invit.place }}</p><br>
+		            </div>
+
+		        {% endfor %}
+	        {% endif %}
+
+	        {# Code pour afficher les invitations lancées #}
             <div class="col-md-4 portfolio-item">
                 <a href="#">
                     <img class="img-responsive" src="http://placehold.it/700x400" alt="">
@@ -50,24 +71,7 @@
                 </h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
             </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
+            
         </div>
 
 	{% endblock %}
