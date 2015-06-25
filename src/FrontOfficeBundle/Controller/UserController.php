@@ -36,4 +36,13 @@ class UserController extends Controller
 	{
 		return $this -> render('FrontOfficeBundle:User:showUser.html.twig');
 	}
+
+	public function listAction()
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$listUsers = $em -> getRepository('UserBundle:User') -> showNewUsers();
+
+		return $this -> render('FrontOfficeBundle:User:list.html.twig', 
+			array('listUsers'=> $listUsers));
+	}
 }

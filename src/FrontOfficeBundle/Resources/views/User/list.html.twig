@@ -1,0 +1,23 @@
+{% extends 'FrontOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+         <div class="row">
+
+            {% for user in listUsers %}
+
+                <div class="col-md-4 portfolio-item">
+                    <a href="#">
+                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                    </a>
+                    <h3>
+                        <a href="#">{{ user.username }}</a>
+                    </h3>
+                    <p>{{ user.age }}</p>
+                    <p>{{ user.sportPracticed }}</p><br><br>
+                    <p>{{ user.sportViewed }}</p>
+                </div>
+
+            {% endfor %}
+		
+	{% endblock %}
