@@ -78,13 +78,6 @@ class Ground
      */
     private $dateUpdated;
 
-     /**
-     * @var string
-     *
-     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Matches", mappedBy="ground")
-     */
-    private $matches;
-
     /**
      * @var string
      *
@@ -98,14 +91,6 @@ class Ground
      * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Team", mappedBy="ground")
      */
     private $team;
-
-    /**
-     * @var string
-     *
-     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\GroupPlayer", mappedBy="ground")
-     */
-    private $groupPlayer;
-
 
     /**
      * Get id
@@ -245,39 +230,6 @@ class Ground
     }
 
     /**
-     * Add matches
-     *
-     * @param \FrontOfficeBundle\Entity\Matches $matches
-     * @return Ground
-     */
-    public function addMatch(\FrontOfficeBundle\Entity\Matches $matches)
-    {
-        $this->matches[] = $matches;
-
-        return $this;
-    }
-
-    /**
-     * Remove matches
-     *
-     * @param \FrontOfficeBundle\Entity\Matches $matches
-     */
-    public function removeMatch(\FrontOfficeBundle\Entity\Matches $matches)
-    {
-        $this->matches->removeElement($matches);
-    }
-
-    /**
-     * Get matches
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMatches()
-    {
-        return $this->matches;
-    }
-
-    /**
      * Add invitation
      *
      * @param \FrontOfficeBundle\Entity\Invitation $invitation
@@ -410,38 +362,5 @@ class Ground
     public function getTeam()
     {
         return $this->team;
-    }
-
-    /**
-     * Add groupPlayer
-     *
-     * @param \FrontOfficeBundle\Entity\GroupPlayer $groupPlayer
-     * @return Ground
-     */
-    public function addGroupPlayer(\FrontOfficeBundle\Entity\GroupPlayer $groupPlayer)
-    {
-        $this->groupPlayer[] = $groupPlayer;
-
-        return $this;
-    }
-
-    /**
-     * Remove groupPlayer
-     *
-     * @param \FrontOfficeBundle\Entity\GroupPlayer $groupPlayer
-     */
-    public function removeGroupPlayer(\FrontOfficeBundle\Entity\GroupPlayer $groupPlayer)
-    {
-        $this->groupPlayer->removeElement($groupPlayer);
-    }
-
-    /**
-     * Get groupPlayer
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getGroupPlayer()
-    {
-        return $this->groupPlayer;
     }
 }
