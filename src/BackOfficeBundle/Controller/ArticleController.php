@@ -32,7 +32,7 @@ class ArticleController extends Controller
             $em -> persist($article);
             $em -> flush();
 
-            return $this -> redirect($this -> generateurl('back_office_homepage'));
+            return $this -> redirect($this -> generateUrl('back_office_homepage'));
         }
 
         return $this -> render('BackOfficeBundle:Article:new.html.twig',

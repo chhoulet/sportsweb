@@ -37,4 +37,15 @@ class UserRepository extends EntityRepository
 		
 		return $query -> getResult();
 	}
+
+	public function showNewUsers()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT u 
+			FROM UserBundle:User u 
+			ORDER BY  u.dateCreated DESC')
+		->setMaxResults(50);
+
+		return $query -> getResult();
+	}
 }
