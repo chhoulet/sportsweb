@@ -221,13 +221,6 @@ class Ground
     {
         return $this->name;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->matches = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add invitation

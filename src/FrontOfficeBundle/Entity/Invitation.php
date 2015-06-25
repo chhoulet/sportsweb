@@ -349,5 +349,13 @@ class Invitation
     public function getMode()
     {
         return $this->mode;
+    }   
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->invitation = new \Doctrine\Common\Collections\ArrayCollection();
     }
 }
