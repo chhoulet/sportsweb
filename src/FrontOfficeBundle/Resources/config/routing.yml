@@ -21,7 +21,12 @@ front_office_blog_list:
     path:     /list/
     defaults: { _controller: FrontOfficeBundle:Blog:list}
     requirements:
-        # category: (football | basket)
+
+front_office_blog_triByCategories:
+    path:     /triByCategories/{category}
+    defaults: { _controller: FrontOfficeBundle:Blog:triByCategories, category: football}
+    requirements: 
+        category: (football | basket)
 
 front_office_blog_one:
     path:     /One/{id}

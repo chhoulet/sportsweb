@@ -84,4 +84,12 @@ class BlogController extends Controller
 			array('article'=> $article,
 				  'form'   => $form -> createView()));
 	}
+
+	public function triByCategoriesAction($category)
+	{
+		$em = $this ->getDoctrine()->getManager();
+		$articles = $em -> getRepository('FrontOfficeBundle:Article') -> triArticle($category);
+
+		return $this -> render('FrontOfficeBundle:Blog:triByCategories.html.twig', array('articles'=>$articles));
+	}
 }
