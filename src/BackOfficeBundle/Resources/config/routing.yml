@@ -111,6 +111,11 @@ back_office_team_delete:
     path:     /deleteTeam/{id}
     defaults: { _controller: BackOfficeBundle:Team:delete}
 
+# Routes gerant les messages :
+back_office_message_list:
+    path:     /listMessages 
+    defaults: { _controller: BackOfficeBundle:Message:list}
+
 
 
 

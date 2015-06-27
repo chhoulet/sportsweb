@@ -1,0 +1,25 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+		
+                	<h2>Liste des messages reçus :</h2>
+
+						{% for message in messages %}
+
+							{{ message.author }}<br>
+							{{ message.subject }}<br>
+							{{ message.content }}<br>
+							{{ message.dateCreated | date('d-m-Y H:i:s')}}<br>				
+							{{ message.email }}<br>
+							
+						{% endfor %}
+
+				</div>
+			</div>
+		</div>
+
+	{% endblock %}
