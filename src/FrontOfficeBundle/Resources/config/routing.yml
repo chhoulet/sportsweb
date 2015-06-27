@@ -8,6 +8,10 @@ front_office_static_cgu:
     path:     /ConditionsGeneralesUtilisation
     defaults: { _controller: FrontOfficeBundle:Static:conditions}
 
+front_office_static_mentions:
+    path:     /MentionsLegales
+    defaults: { _controller: FrontOfficeBundle:Static:mentions}
+
 # Routes gerant les invitations:
 front_office_invitation_new:
     path:     /newInvitation

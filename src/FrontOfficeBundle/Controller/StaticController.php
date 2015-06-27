@@ -11,4 +11,11 @@ class StaticController extends Controller
 	{
 		return $this -> render('FrontOfficeBundle:Static:conditions.html.twig');
 	}
+
+	public function mentionsAction()
+	{
+		return $this -> render('FrontOfficeBundle:Static:mentions.html.twig');
+	}
+
+
 }
