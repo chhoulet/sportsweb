@@ -15,7 +15,8 @@ class HomepageController extends Controller
     	$nbInvitationsDenied   = $em -> getRepository('FrontOfficeBundle:Invitation') -> nbInvitationsDenied();
         $nbUsers               = $em -> getRepository('UserBundle:User') -> nbUsers();
         $nbComments            = $em -> getRepository('FrontOfficeBundle:Comment') -> nbComments();
-        $nbArticles             = $em -> getRepository('FrontOfficeBundle:Article') -> nbArticles();
+        $nbArticles            = $em -> getRepository('FrontOfficeBundle:Article') -> nbArticles();
+        $nbMessages            = $em -> getRepository('FrontOfficeBundle:Message') -> nbMessages();
  
         return $this -> render('BackOfficeBundle:Homepage:homepage.html.twig', 
         	array('invitations'          => $invitations,
@@ -23,6 +24,7 @@ class HomepageController extends Controller
         		  'nbInvitationsDenied'  => $nbInvitationsDenied,
                   'nbUsers'              => $nbUsers,
                   'nbComments'           => $nbComments,
-                  'nbArticles'           => $nbArticles));
+                  'nbArticles'           => $nbArticles,
+                  'nbMessages'           => $nbMessages));
     }
 }

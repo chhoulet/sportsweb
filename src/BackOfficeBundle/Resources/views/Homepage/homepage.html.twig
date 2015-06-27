@@ -153,8 +153,8 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"></div>
-                                    <div></div>
+                                    <div class="huge">{{ nbMessages }}</div>
+                                    <div>{% if (nbMessages > 1) %}Messages reçus {% else %}Message Reçu{% endif %}</div>
                                 </div>
                             </div>
                         </div>
