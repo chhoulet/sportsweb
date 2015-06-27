@@ -21,4 +21,15 @@ class MessageRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getMessageByAuthor()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT m.author, COUNT(m.id) as nb 
+			FROM FrontOfficeBundle:Message m 
+			ORDER BY m.dateCreated DESC
+			GROUP BY nb ');
+
+		return $query -> getResult();
+	}
 }
