@@ -3,6 +3,11 @@ front_office_homepage:
     path:     /
     defaults: { _controller: FrontOfficeBundle:Homepage:homepage }
 
+# Routes gerant l'onglet static:
+front_office_static_cgu:
+    path:     /ConditionsGeneralesUtilisation
+    defaults: { _controller: FrontOfficeBundle:Static:conditions}
+
 # Routes gerant les invitations:
 front_office_invitation_new:
     path:     /newInvitation
