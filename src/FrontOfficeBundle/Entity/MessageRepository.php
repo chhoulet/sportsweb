@@ -32,4 +32,13 @@ class MessageRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function nbMessages()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT(m.id)
+			FROM FrontOfficeBundle:Message m');
+
+		return $query -> getSingleScalarResult();
+	}
 }
