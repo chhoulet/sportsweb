@@ -61,6 +61,9 @@
                         <li>
                             <a href="{{ path('fos_user_security_logout') }}">Deconnection</a>
                         </li>
+                        <li>
+                        <a href="{{ path('front_office_showUser') }}">Mon Profil</a>
+                        </li>
                     {% else %}
                         <li>
                             <a href="{{ path('fos_user_security_login') }}">Connectez-vous</a>
@@ -72,11 +75,7 @@
 
                     <li>
                         <a href="{{ path('front_office_blog_homepage') }}">Blog</a>
-                    </li>
-                    
-                    <li>
-                        <a href="{{ path('front_office_showUser') }}">Mon Profil</a>
-                    </li>
+                    </li>                
                     <li>
                         <a href="{{ path('front_office_users_list') }}">Voir tous les derniers inscrits</a>
                     </li>
