@@ -45,4 +45,17 @@ class UserController extends Controller
 		return $this -> render('FrontOfficeBundle:User:list.html.twig', 
 			array('listUsers'=> $listUsers));
 	}
+
+	# Marquer un autre user comme ami :
+	public function getFriendAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$friend = $em -> getRepository('UserBundle:User') -> find($id);
+		# Récupérer l'id de l'user connecté et lui attribuer un ami :
+		$this -> getUser() -> addFriend($friend);
+		$em -> persist($friend);
+		$em -> flush();
+
+		return $this -> redirect($this -> generateUrl('front_office_users_list'));
+	}
 }

@@ -15,7 +15,9 @@
                     </h3>
                     <p>{{ user.age }}</p>
                     <p>{{ user.sportPracticed }}</p><br><br>
-                    <p>{{ user.sportViewed }}</p>
+                    <p>{{ user.sportViewed }}</p><br><br>
+
+                    <a href="{{ path('front_office_user_getFriend',{id:user.id}) }}">Ajouter à ma liste d'amis</a>
                 </div>
 
             {% endfor %}

@@ -344,7 +344,7 @@ class User extends BaseUser
      * @param \UserBundle\Entity\UserBundle:User $friend
      * @return User
      */
-    public function addFriend(\UserBundle\Entity\UserBundle\User $friend)
+    public function addFriend(\UserBundle\Entity\User $friend)
     {
         $this->friend[] = $friend;
 
@@ -356,7 +356,7 @@ class User extends BaseUser
      *
      * @param \UserBundle\Entity\UserBundle:User $friend
      */
-    public function removeFriend(\UserBundle\Entity\UserBundle\User $friend)
+    public function removeFriend(\UserBundle\Entity\User $friend)
     {
         $this->friend->removeElement($friend);
     }
