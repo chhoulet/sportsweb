@@ -58,4 +58,9 @@ class UserController extends Controller
 
 		return $this -> redirect($this -> generateUrl('front_office_users_list'));
 	}
+
+	public function showFriendsAction()
+	{
+		return $this -> render('FrontOfficeBundle:User:showFriends.html.twig');
+	}
 }

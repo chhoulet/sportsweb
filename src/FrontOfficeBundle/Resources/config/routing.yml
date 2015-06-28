@@ -57,3 +57,7 @@ front_office_users_list:
 front_office_user_getFriend:
     path:     /getFriend/{id}
     defaults: { _controller: FrontOfficeBundle:User:getFriend}
+
+front_office_suer_showFriends:
+    path:     /showFriends 
+    defaults: { _controller: FrontOfficeBundle:User:showFriends}
