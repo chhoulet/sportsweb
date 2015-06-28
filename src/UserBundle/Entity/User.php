@@ -93,6 +93,16 @@ class User extends BaseUser
     protected $invitation;
 
     /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", inversedBy="friend")
+     * @ORM\JoinColumn(name="friend_id", referencedColumnName="id")
+     */
+    protected $friend;
+
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -326,5 +336,38 @@ class User extends BaseUser
     public function getDateWarned()
     {
         return $this->dateWarned;
+    }
+
+    /**
+     * Add friend
+     *
+     * @param \UserBundle\Entity\UserBundle:User $friend
+     * @return User
+     */
+    public function addFriend(\UserBundle\Entity\UserBundle\User $friend)
+    {
+        $this->friend[] = $friend;
+
+        return $this;
+    }
+
+    /**
+     * Remove friend
+     *
+     * @param \UserBundle\Entity\UserBundle:User $friend
+     */
+    public function removeFriend(\UserBundle\Entity\UserBundle\User $friend)
+    {
+        $this->friend->removeElement($friend);
+    }
+
+    /**
+     * Get friend
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFriend()
+    {
+        return $this->friend;
     }
 }
