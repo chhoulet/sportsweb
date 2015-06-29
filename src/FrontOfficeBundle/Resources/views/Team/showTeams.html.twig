@@ -23,11 +23,13 @@
 			                <p>{{ tea.typeOfGame }}</p><br>
 			                  <p>{{ tea.habitsOfGame }}</p><br>
 			                			            
-			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
-			                	<a class="btn btn-primary" href="{{ path('back_office_team_delete',{id:tea.id}) }}">Suppression team<span class="glyphicon glyphicon-chevron-right"></span></a>
-			                {% endif %}
+				                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
+				                	<a class="btn btn-primary" href="{{ path('back_office_team_delete',{id:tea.id}) }}">Suppression team<span class="glyphicon glyphicon-chevron-right"></span></a>
+				                {% endif %}
 			                
 		                	<hr>
+
+		                	<a class="btn btn-primary" href="{{ path('front_office_team_one',{id:tea.id}) }}">Détails:<span class="glyphicon glyphicon-chevron-right"></span></a>
 
 	            		{% endfor %}
 

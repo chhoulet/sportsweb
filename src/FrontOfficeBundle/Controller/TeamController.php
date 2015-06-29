@@ -17,4 +17,13 @@ class TeamController extends Controller
 		return $this -> render('FrontOfficeBundle:Team:showTeams.html.twig', 
 			array('showTeams'=>$showTeams));
 	}
+
+	public function oneTeamAction($id)
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$oneTeam = $em -> getRepository('FrontOfficeBundle:Team')-> find($id);
+
+		return $this -> render('FrontOfficeBundle:Team:one.html.twig',
+		    array('oneTeam'=>$oneTeam));
+	}
 }

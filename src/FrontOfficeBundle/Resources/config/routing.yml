@@ -67,6 +67,10 @@ front_office_suer_showFriends:
     defaults: { _controller: FrontOfficeBundle:User:showFriends}
 
 # Routes gerant les Teams :
-front_office_Team_show:
+front_office_team_show:
     path:     /showTeams
-    defaults: { _controller:FrontOfficeBundle:Team:showTeams}
+    defaults: { _controller: FrontOfficeBundle:Team:showTeams}
+
+front_office_team_one:
+    path:     /oneTeam/{id}
+    defaults: { _controller: FrontOfficeBundle:Team:oneTeam}
