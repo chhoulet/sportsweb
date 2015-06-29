@@ -100,6 +100,13 @@ class User extends BaseUser
      */
     protected $friend;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="user")
+     */
+    protected $team;
+
 
 
     /**
@@ -369,5 +376,38 @@ class User extends BaseUser
     public function getFriend()
     {
         return $this->friend;
+    }
+
+    /**
+     * Add team
+     *
+     * @param \FrontOfficeBundle\Entity\Team $team
+     * @return User
+     */
+    public function addTeam(\FrontOfficeBundle\Entity\Team $team)
+    {
+        $this->team[] = $team;
+
+        return $this;
+    }
+
+    /**
+     * Remove team
+     *
+     * @param \FrontOfficeBundle\Entity\Team $team
+     */
+    public function removeTeam(\FrontOfficeBundle\Entity\Team $team)
+    {
+        $this->team->removeElement($team);
+    }
+
+    /**
+     * Get team
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeam()
+    {
+        return $this->team;
     }
 }

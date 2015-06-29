@@ -145,6 +145,14 @@ class Team
      */
     private $ground;
 
+     /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="team")
+     * @ORM\JoinTable(name="user_team")
+     */
+    private $user;
+
 
 
 
@@ -409,5 +417,28 @@ class Team
     public function getPlace()
     {
         return $this->place;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     * @return Team
+     */
+    public function setUser(\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
