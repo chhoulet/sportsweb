@@ -28,6 +28,7 @@ class CommentController extends Controller
 		return $this ->redirect($this -> generateUrl('front_office_blog_homepage'));
 	}
 
+	# Validation des comments :
 	public function responseAction($id)
 	{
 		$em = $this -> getDoctrine()-> getManager();

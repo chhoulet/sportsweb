@@ -70,7 +70,7 @@ back_office_ground_delete:
     defaults: { _controller: BackOfficeBundle:Ground:delete}
 
 # Routes gerant les users:
-    # Controle des users par l'administrateur:
+    # Liste des users non valides par l'administrateur:
 back_office_admin_user:
     path:     /users
     defaults: { _controller: BackOfficeBundle:User:admin}

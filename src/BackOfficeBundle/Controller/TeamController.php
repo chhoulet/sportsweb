@@ -8,6 +8,7 @@ use FrontOfficeBundle\Form\TeamType;
 
 class TeamController extends Controller
 {
+	# Liste des teams non-validees:
 	public function listAction()
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -17,6 +18,7 @@ class TeamController extends Controller
 			array('team'=> $team));
 	}
 
+	# Validation admin de la team selectionnee:
 	public function responseAction($id)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -29,6 +31,7 @@ class TeamController extends Controller
 		return $this -> redirect($this -> generateUrl('back_office_list_team'));
 	}
 
+	# Suppression d'une team :
 	public function deleteAction($id)
 	{
 		$em = $this -> getDoctrine()->getManager();

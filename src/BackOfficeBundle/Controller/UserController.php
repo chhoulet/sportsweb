@@ -16,7 +16,7 @@ class UserController extends Controller
 		return $this -> render('BackOfficeBundle:User:admin.html.twig', array('user'=> $user));
 	}
 
-	/*ok admin si profil correct*/
+	/*Validation admin si profil correct*/
 	public function responseAction($id)
 	{
 		$em = $this -> getDoctrine()->getManager();
