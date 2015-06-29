@@ -80,7 +80,6 @@ class Message
      *     message = "'{{ value }}' n'est pas un email valide.",
      *     checkMX = true
      * )
-     *
      */
     private $email;
 

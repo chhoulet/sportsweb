@@ -25,7 +25,7 @@ class Comment
      /**
      * @var string
      * @Assert\Length(
-     *      min = "10",
+     *      min = "0",
      *      max = "100",
      *      minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
@@ -48,7 +48,7 @@ class Comment
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "5",
-     *      max = "50",
+     *      max = "500",
      *      minMessage = "Votre commentaire doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre commentaire ne peut pas être plus long que {{ limit }} caractères"
      * )

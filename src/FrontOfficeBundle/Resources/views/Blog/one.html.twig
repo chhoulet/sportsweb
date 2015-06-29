@@ -39,10 +39,15 @@
                     <!-- Blog Comments -->
 
                     <!-- Comments Form -->
-                    <div class="well">
-                        <h4>Leave a Comment:</h4>
-                            {{ form(form) }}
-                    </div>
+                    {% if (is_granted('ROLE_USER')) %}
+                        <div class="well">
+                            <h4>Publier un post:</h4>
+                                {{ form(form) }}
+                        </div>
+                    {% else %}
+                        <p>Vous souhaitez publier un commentaire ?<a href="{{ path('fos_user_security_login') }}">Connectez-    vous !</a>
+                    {% endif %}
+
                     
                     <hr>
                    

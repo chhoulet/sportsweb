@@ -17,7 +17,7 @@ class MessageType extends AbstractType
         $builder
             ->add('author')
             ->add('content')
-            ->add('dateCreated')
+            ->add('email')
             ->add('subject')
             ->add('Envoyer','submit')
         ;
