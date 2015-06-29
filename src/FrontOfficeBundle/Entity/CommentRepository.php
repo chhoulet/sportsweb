@@ -32,4 +32,16 @@ class CommentRepository extends EntityRepository
 
 		return $query -> getSingleScalarResult();
 	}
+
+	# Affichage du 1er commentaire d'un article:
+	public function getFirstComment()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT c 
+			FROM FrontOfficeBundle:Comment c 
+			ORDER BY c.dateCreated DESC')
+		->setMaxResult(1);
+
+		return $query -> getSingleResult();
+	}
 }
