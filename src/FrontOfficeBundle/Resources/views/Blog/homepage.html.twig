@@ -34,46 +34,28 @@
 
     	                <!-- Post Content -->
     	                <p class="lead">{{ article.content }}</p><br><br>
+                        
+                        <p>Commentaires:</p>
+                        
+                            {% for com in article.comment %}
+                                <p><div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{ com.title }}
+                                            <small>{{ com.dateCreated | date('d-m-Y H:i:s') }}</small>
+                                        </h4>
+                                        {{ com.content }}
+                                    </div>
+                                </div></p>
+                            {% endfor %}
 
                         <a href="{{path('front_office_blog_one',{id:article.id}) }}"><button>Détails :</button></a>
 
     	                <hr>
                     {% endfor %}
-            	  
-
-                    <!-- Blog Comments -->
-
-                   {#  <!-- Comments Form -->
-                    <div class="well">
-                        <h4>Leave a Comment:</h4>
-                            {{ form(form) }}
-                    </div>
-                    
-
-                    <hr>
-
-                    <!-- Posted Comments -->
-
-                    <!-- Comment -->
-                    
-                        {% for com in article.comment %}
-                            <div class="media">
-                                <a class="pull-left" href="#">
-                                    <img class="media-object" src="http://placehold.it/64x64" alt="">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading">{{ com.title }}
-                                        <small>{{ com.dateCreated | date('now') }}</small>
-                                    </h4>
-                                    {{ com.content }}
-                                </div>
-                            </div>
-                            {% if (is_granted('ROLE_SUPER_ADMIN')) %}
-                                <a href="{{ path('back_office_comment_delete,{id:com.is_granted}')}}">Supprimer le commentaire</a>
-                            {% endif %}
-                        {% endfor %}
-
-                         <hr> #}
+            	                      
                          
                     <div class="well">
 

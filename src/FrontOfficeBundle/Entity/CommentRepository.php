@@ -38,7 +38,7 @@ class CommentRepository extends EntityRepository
 	{
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT c 
-			FROM FrontOfficeBundle:Comment c 
+			FROM FrontOfficeBundle:Comment c
 			ORDER BY c.dateCreated DESC')
 		->setMaxResult(1);
 

@@ -11,24 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BlogController extends Controller
 {
-	public function homepageAction(Request $request)
+	public function homepageAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getmanager();
-		$article = $em -> getRepository('FrontOfficeBundle:Article')->getArticle();
-
-		# Code permettant la creation des commentaires des articles du blog :
-		$comment = new Comment();
-		$form = $this -> createForm(new CommentType(), $comment);
-		$form -> handleRequest($request);
-		if ($form -> isValid())
-		{
-			$comment -> setArticle($article);
-			$comment -> setDateCreated(new \DateTime('now'));
-			$em -> persist($comment);
-			$em -> flush();
-
-			return $this -> redirect($this -> generateUrl('front_office_blog_homepage'));
-		}
+		$article = $em -> getRepository('FrontOfficeBundle:Article')-> getArticle();
 
 		#Code permettant la creation des articles du blog :
 		$articleUser = new Article();
@@ -47,9 +33,7 @@ class BlogController extends Controller
 
 		return $this -> render('FrontOfficeBundle:Blog:homepage.html.twig',
 		    array('articles' => $article,
-		    	  'form'    => $form -> createView(),
 		    	  'formArticle'=> $formArticle -> createView()));
-
 	}
 		
 	public function listAction()
