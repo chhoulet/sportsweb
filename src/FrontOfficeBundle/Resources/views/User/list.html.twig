@@ -17,7 +17,12 @@
                     <p>{{ user.sportPracticed }}</p><br><br>
                     <p>{{ user.sportViewed }}</p><br><br>
 
+                    {% if (is_granted('ROLE_USER')) %}
                     <a href="{{ path('front_office_user_getFriend',{id:user.id}) }}">Ajouter à ma liste d'amis</a>
+                    {% else %}
+                    <p>Vous voulez ajouter ce joueur à votre liste d'amis ? <br><br>
+                        <a href="{{ path('fos_user_security_login')}}">Connectez-vous !</a><br>
+                    {% endif %}
                 </div>
 
             {% endfor %}
