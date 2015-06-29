@@ -54,6 +54,10 @@ front_office_users_list:
     path:     /listUsers
     defaults: { _controller: FrontOfficeBundle:User:list}
 
+front_office_user_one:
+    path:     /oneUser/{id}
+    defaults: { _controller: FrontOfficeBundle:User:one}
+
 front_office_user_getFriend:
     path:     /getFriend/{id}
     defaults: { _controller: FrontOfficeBundle:User:getFriend}

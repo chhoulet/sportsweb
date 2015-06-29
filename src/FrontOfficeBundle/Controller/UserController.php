@@ -31,12 +31,13 @@ class UserController extends Controller
 			array('user'=>$user,
 				  'form'=>$form->createView()));
 	}*/
-
+	/*Faire apparaitre Mon profil:*/
 	public function showUserAction()
 	{
 		return $this -> render('FrontOfficeBundle:User:showUser.html.twig');
 	}
 
+	/*Liste des derniers utilisateurs inscrits:*/
 	public function listAction()
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -44,6 +45,15 @@ class UserController extends Controller
 
 		return $this -> render('FrontOfficeBundle:User:list.html.twig', 
 			array('listUsers'=> $listUsers));
+	}
+
+	/*Vue du profil d'un utilisateur:*/
+	public function oneAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$user = $em -> getRepository('UserBundle:User') -> find($id);
+
+		return $this -> render('FrontOfficeBundle:User:one.html.twig', array('user'=>$user));
 	}
 
 	# Marquer un autre user comme ami :
