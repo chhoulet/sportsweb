@@ -22,4 +22,17 @@ class TeamRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getLastCreatedTeams()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT t 
+			FROM FrontOfficeBundle:Team t 
+			WHERE t.place LIKE :place
+			ORDER BY t.dateCreated DESC')
+		->setParameter('place', '%aris%')
+		->setMaxResults(20);
+
+		return $query -> getResult();
+	}
 }

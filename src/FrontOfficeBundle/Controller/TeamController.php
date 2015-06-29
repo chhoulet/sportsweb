@@ -12,7 +12,7 @@ class TeamController extends Controller
 	public function showTeamsAction()
 	{
 		$em = $this -> getDoctrine()-> getManager();
-		$showTeams = $em -> getRepository('FrontOfficeBundle:Team')->findAll();
+		$showTeams = $em -> getRepository('FrontOfficeBundle:Team')->getLastCreatedTeams();
 
 		return $this -> render('FrontOfficeBundle:Team:showTeams.html.twig', 
 			array('showTeams'=>$showTeams));

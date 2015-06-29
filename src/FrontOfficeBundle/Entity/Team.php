@@ -53,6 +53,20 @@ class Team
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "255",
+     *      minMessage = "Le lieu doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le lieu ne peut pas être plus long que {{ limit }} caractères"
+     * )
+     * @Assert\NotBlank()
+     * @ORM\Column(name="place", type="string", length=255)
+     */
+    private $place;
+
+    /**
+     * @var string
+     *
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "4",
@@ -372,5 +386,28 @@ class Team
     public function getDateValidated()
     {
         return $this->dateValidated;
+    }
+
+    /**
+     * Set place
+     *
+     * @param string $place
+     * @return Team
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get place
+     *
+     * @return string 
+     */
+    public function getPlace()
+    {
+        return $this->place;
     }
 }
