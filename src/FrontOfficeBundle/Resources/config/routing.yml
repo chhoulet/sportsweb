@@ -56,7 +56,7 @@ front_office_users_list:
     path:     /listUsers
     defaults: { _controller: FrontOfficeBundle:User:list}
 
-    # Voir la fiche d'un autre user:
+    # Voir la fiche d'un user:
 front_office_user_one:
     path:     /oneUser/{id}
     defaults: { _controller: FrontOfficeBundle:User:one}

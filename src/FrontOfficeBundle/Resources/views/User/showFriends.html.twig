@@ -2,18 +2,30 @@
 
 	{% block content %}
 
-        {% for friend in app.user.friend %}
-    		<div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">{{ friend.username}}
-                        <small>SPORT : {{ friend.sportPracticed}}</small>
-                        <small>AGE : {{ friend.age }} ans</small>
-                    </h1>
-                </div>
-            </div>
+        <div class="container">
+            <div class="well col-lg-10">
 
-            <a href="{{ path('front_office_user_one',{id:friend.id}) }}">Voir son profil</a>
-        {% endfor %}
+                {% for friend in app.user.friend %}
+            		<div class="row">
+                        <div class="col-lg-12">
+
+                            <h1 class="page-header">{{ friend.username}}
+
+                                {% for sport in friend.sportPracticed %}
+                                    <small>SPORT : {{ sport.name }}</small>
+                                {% endfor %}
+
+                                    <small>AGE : {{ friend.age }} ans</small>
+                            </h1>
+                            
+                        </div>
+                    </div>
+
+                    <a href="{{ path('front_office_user_one',{id:friend.id}) }}">Voir son profil</a>
+                {% endfor %}
+
+            </div>
+        </div>
         
         <!-- /.row -->
 
