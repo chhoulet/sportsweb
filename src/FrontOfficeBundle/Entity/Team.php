@@ -25,9 +25,9 @@ class Team
     /**
      * @var string
      *
-     * @Assert\NotBlank()
+     *
      * @Assert\Length(
-     *      min = "10",
+     *      min = "3",
      *      max = "80",
      *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
@@ -45,7 +45,7 @@ class Team
      *      minMessage = "Le nom de votre sport pratiqué doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Le nom de votre sport pratiqué ne peut pas être plus long que {{ limit }} caractères"
      * )
-     * @Assert\NotBlank()
+     *
      * @ORM\Column(name="sportPracticed", type="string", length=255)
      */
     private $sportPracticed;
@@ -59,8 +59,8 @@ class Team
      *      minMessage = "Le lieu doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Le lieu ne peut pas être plus long que {{ limit }} caractères"
      * )
-     * @Assert\NotBlank()
-     * @ORM\Column(name="place", type="string", length=255)
+     *
+     * @ORM\Column(name="place", type="string", length=255, nullable=true)
      */
     private $place;
 
@@ -111,7 +111,6 @@ class Team
      /**
      * @var boolean
      *
-     * @Assert\NotBlank()
      * @ORM\Column(name="validationAdmin", type="boolean")
      */
     private $validationAdmin;

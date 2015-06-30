@@ -56,10 +56,13 @@
 
                     {% if (is_granted('ROLE_USER')) %}
                         <li>
-                            <a href="{{ path('front_office_invitation_new') }}">Lancer une Invitation</a>
+                            <a href="{{ path('front_office_invitation_new') }}">Lance une Invitation</a>
                         </li>
                         <li>
-                            <a href="{{ path('fos_user_security_logout') }}">Deconnection</a>
+                            <a href="{{ path('front_office_team_new') }}">Crée ton équipe</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fos_user_security_logout') }}">Déconnection</a>
                         </li>
                         <li>
                         <a href="{{ path('front_office_showUser') }}">Mon Profil</a>
@@ -82,9 +85,9 @@
                     <li>
                         <a href="{{ path('front_office_team_show') }}">Dernières équipes inscrites</a>
                     </li>
-                    <li>
+                    {# <li>
                         <a href="{{ path('fos_user_change_password') }}">Changement password</a>
-                    </li>
+                    </li> #}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

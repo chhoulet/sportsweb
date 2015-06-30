@@ -84,3 +84,7 @@ front_office_team_show:
 front_office_team_one:
     path:     /oneTeam/{id}
     defaults: { _controller: FrontOfficeBundle:Team:oneTeam}
+
+front_office_team_new:
+    path:     /newTeam
+    defaults: { _controller: FrontOfficeBundle:Team:new}

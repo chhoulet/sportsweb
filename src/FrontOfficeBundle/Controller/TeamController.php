@@ -26,4 +26,26 @@ class TeamController extends Controller
 		return $this -> render('FrontOfficeBundle:Team:one.html.twig',
 		    array('oneTeam'=>$oneTeam));
 	}
+
+	public function newAction(Request $request)
+	{
+		$em = $this -> getDoctrine()->getmanager();
+		$team = new Team();
+		$form = $this -> createForm(new TeamType(), $team);
+
+		$form -> handleRequest($request);
+
+		if ($form -> isValid())
+		{
+			$team -> setDateCreated(new \datetime('now'));
+			$team -> setValidationAdmin(false);
+			$em -> persist($team);
+			$em -> flush();
+
+			return $this -> redirect($this -> generateUrl('front_office_team_show'));
+		}
+
+		return $this -> render('FrontOfficeBundle:Team:new.html.twig', 
+			array('form' => $form->createView()));
+	}
 }
