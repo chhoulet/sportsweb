@@ -53,6 +53,7 @@ class InvitationRepository extends EntityRepository
 		return $query -> getResult();
 	}
 
+	# Somme des Invits postées :
 	public function nbInvitations()
 	{
 		$query = $this -> getEntityManager() -> createQuery('
@@ -62,6 +63,7 @@ class InvitationRepository extends EntityRepository
 		return $query -> getSingleScalarResult();
 	}
 
+	# Nombre d'invitations acceptées :
 	public function nbInvitationsAccepted()
 	{
 		$query = $this -> getEntityManager() -> createQuery('
@@ -72,6 +74,7 @@ class InvitationRepository extends EntityRepository
 		return $query -> getSingleScalarResult();
 	}
 
+	# Nombre d'invitations non-acceptées :
 	public function nbInvitationsDenied()
 	{
 		$query = $this -> getEntityManager() -> createQuery('
@@ -82,6 +85,7 @@ class InvitationRepository extends EntityRepository
 		return $query -> getSingleScalarResult();
 	}
 
+	# Tri des invits par destinataire :
 	public function triInvitationByDestination($userTo)
 	{
 		$query = $this ->getEntityManager()->createQuery('

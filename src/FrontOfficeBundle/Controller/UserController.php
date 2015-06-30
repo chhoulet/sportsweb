@@ -73,4 +73,9 @@ class UserController extends Controller
 	{
 		return $this -> render('FrontOfficeBundle:User:showFriends.html.twig');
 	}
+
+	public function showInvitationsAction()
+	{
+		return $this -> render('FrontOfficeBundle:User:showInvitations.html.twig');
+	}
 }
