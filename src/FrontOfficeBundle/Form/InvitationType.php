@@ -23,7 +23,6 @@ class InvitationType extends AbstractType
                                                              'Compétition'=> "Compétition")))
             ->add('place')
             ->add('ground')
-            ->add('player')
             ->add('Lancer', 'submit')
         ;
     }

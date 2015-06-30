@@ -20,6 +20,7 @@ class InvitationController extends Controller
 		if ($form -> isValid()){
 			$invitation ->setDateCreated(new \DateTime('now'));
 			$invitation ->setAccepted(false);
+			$invitation ->setUser($this->getUser());
 			$em -> persist($invitation);
 			$em -> flush();
 
