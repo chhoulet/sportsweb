@@ -67,7 +67,7 @@ class Article
      /**
      * @var boolean
      *
-     * @Assert\NotBlank()
+     *
      * @ORM\Column(name="validationAdmin", type="boolean")
      */
     private $validationAdmin;

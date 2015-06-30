@@ -107,8 +107,6 @@ class User extends BaseUser
      */
     protected $team;
 
-
-
     /**
      * Get id
      *

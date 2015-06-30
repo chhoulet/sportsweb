@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BlogController extends Controller
 {
-	public function homepageAction(Request $request, $id)
+	public function homepageAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getmanager();
 		$article = $em -> getRepository('FrontOfficeBundle:Article')-> getArticle();
@@ -58,6 +58,7 @@ class BlogController extends Controller
 		{
 			$comment -> setDateCreated(new \DateTime('now'));
 			$comment -> setArticle($article);
+			$comment ->setValidationAdmin(false);
 			$em -> persist($comment);
 			$em -> flush();
 
