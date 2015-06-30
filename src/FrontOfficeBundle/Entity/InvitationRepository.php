@@ -31,8 +31,9 @@ class InvitationRepository extends EntityRepository
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT i 
 			FROM FrontOfficeBundle:Invitation i 
+			JOIN i.sport s
 			WHERE i.accepted = false 
-			AND i.sport LIKE :sport')
+			AND s.name LIKE :sport')
 		->setParameter('sport', $sport);
 
 		return $query ->getResult();
