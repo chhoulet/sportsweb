@@ -120,6 +120,11 @@ back_office_message_delete:
     path:     /deleteMessage/{id}
     defaults: { _controller: BackOfficeBundle:Message:delete}
 
+# Route gerant les Sports :
+back_office_sport_new:
+    path:     /newSport
+    defaults: { _controller: BackOfficeBundle:Sport:new}
+
 
 
 
