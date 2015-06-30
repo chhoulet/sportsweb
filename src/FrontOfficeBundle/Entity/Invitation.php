@@ -62,6 +62,20 @@ class Invitation
     /**
      * @var string
      *
+     * @ORM\Column(name="userFrom", type="string", length=255)
+     */
+    private $userFrom;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="userTo", type="string", length=255)
+     */
+    private $userTo;
+
+    /**
+     * @var string
+     *
      * @Assert\Length(
      *      min = "2",
      *      max = "255",
@@ -358,5 +372,51 @@ class Invitation
     public function __construct()
     {
         $this->invitation = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set userFrom
+     *
+     * @param string $userFrom
+     * @return Invitation
+     */
+    public function setUserFrom($userFrom)
+    {
+        $this->userFrom = $userFrom;
+
+        return $this;
+    }
+
+    /**
+     * Get userFrom
+     *
+     * @return string 
+     */
+    public function getUserFrom()
+    {
+        return $this->userFrom;
+    }
+
+    /**
+     * Set userTo
+     *
+     * @param string $userTo
+     * @return Invitation
+     */
+    public function setUserTo($userTo)
+    {
+        $this->userTo = $userTo;
+
+        return $this;
+    }
+
+    /**
+     * Get userTo
+     *
+     * @return string 
+     */
+    public function getUserTo()
+    {
+        return $this->userTo;
     }
 }

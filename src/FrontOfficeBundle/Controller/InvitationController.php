@@ -21,8 +21,8 @@ class InvitationController extends Controller
 			$userTo = $em -> getRepository('UserBundle:User') -> find($id); // peut-être NULL
 			$invitation ->setDateCreated(new \DateTime('now'));
 			$invitation ->setAccepted(false);
-			/*$invitation ->setUserFrom($this->getUser());
-			$invitation ->setUserTo($userTo);*/
+			$invitation ->setUserFrom($this->getUser());
+			$invitation ->setUserTo($userTo);
 			$em -> persist($invitation);
 			$em -> flush();
 
@@ -46,6 +46,7 @@ class InvitationController extends Controller
 		$invitation = $em -> getRepository('FrontOfficeBundle:Invitation') -> find($id);
 		$invitation -> setAccepted(true);
 		$invitation -> setDateAccepted(new \DateTime('now'));
+		$invitation -> setUserTo($this->getUser());
 		$em -> persist($invitation);
 		$em -> flush();
 

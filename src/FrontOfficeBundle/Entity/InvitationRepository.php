@@ -39,41 +39,16 @@ class InvitationRepository extends EntityRepository
 		return $query ->getResult();
 	}
 
-	# Query affichant les invitations acceptées par un player:
+	# Query affichant les invitations acceptées par un user:
 	public function seeInvitation($user)
 	{
 		$query = $this -> getEntityManager() -> createQuery('
 			SELECT i 
 			FROM FrontOfficeBundle:Invitation i 
-			JOIN i.player j 
+			JOIN i.user u
 			WHERE i.accepted = true 
-			AND j.username LIKE :user')
+			AND u.username LIKE :user')
 		->setParameter('user', $user);
-
-		return $query -> getResult();
-	}
-
-	# invitations par sport :
-	public function invitFoot()
-	{
-		$query = $this -> getEntityManager() -> createQuery('
-			SELECT i 
-			FROM FrontOfficeBundle:Invitation i 
-			WHERE i.sport LIKE :foot
-			AND i.accepted = false')
-		->setParameter('foot','football');
-
-		return $query -> getResult();
-	}
-
-	public function invitBasket()
-	{
-		$query = $this -> getEntityManager() -> createQuery('
-			SELECT i 
-			FROM FrontOfficeBundle:Invitation i 
-			WHERE i.sport LIKE :bask
-			AND i.accepted = false')
-		->setParameter('bask','basket');
 
 		return $query -> getResult();
 	}
@@ -105,5 +80,17 @@ class InvitationRepository extends EntityRepository
 			WHERE i.accepted = false');
 
 		return $query -> getSingleScalarResult();
+	}
+
+	public function triInvitationByDestination($userTo)
+	{
+		$query = $this ->getEntityManager()->createQuery('
+			SELECT i 
+			FROM FrontOfficeBundle:Invitation i
+			WHERE i.userTo LIKE :userTo
+			AND i.accepted = false')
+		->setParameter('userTo', $userTo);
+
+		return $query -> getResult();
 	}
 }
