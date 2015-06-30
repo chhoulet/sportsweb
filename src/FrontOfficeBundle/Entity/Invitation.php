@@ -47,7 +47,8 @@ class Invitation
     /**
      * @var string
      *
-     * @ORM\Column(name="sport", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="invitations")
+     * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
      */
     private $sport;
 

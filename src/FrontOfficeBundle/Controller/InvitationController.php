@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class InvitationController extends Controller
 {	
 	/*Creation d'une invitation par un joueur, avec l'attribut accepted a false par défault:*/
-	public function newAction(Request $request)
+	public function newAction(Request $request, $id = null)
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$invitation = new Invitation();
@@ -18,12 +18,20 @@ class InvitationController extends Controller
 
 		$form -> handleRequest($request);
 		if ($form -> isValid()){
+			$userTo = $em -> getRepository('UserBundle:User') -> find($id); // peut-être NULL
 			$invitation ->setDateCreated(new \DateTime('now'));
 			$invitation ->setAccepted(false);
-			$invitation ->setUser($this->getUser());
+			/*$invitation ->setUserFrom($this->getUser());
+			$invitation ->setUserTo($userTo);*/
 			$em -> persist($invitation);
 			$em -> flush();
 
+			/**
+			 * SELECT *
+			 * FROM invitations
+			 * cas "page profil": WHERE userTo = $this->getUser() 
+			 * cas "homepage":    WHERE userTo is NULL
+			 */
 			return $this->redirect($this->generateUrl('front_office_homepage'));
 		}
 

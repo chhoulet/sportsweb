@@ -42,6 +42,13 @@ class Sport
      * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", mappedBy="sportViewed")
      */
     private $viewedUsers;
+
+     /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="sport")
+     */
+    private $invitations;
    
 
 
@@ -153,5 +160,38 @@ class Sport
     public function __toString()
     {
         return $this -> name;
+    }
+
+    /**
+     * Add invitations
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitations
+     * @return Sport
+     */
+    public function addInvitation(\FrontOfficeBundle\Entity\Invitation $invitations)
+    {
+        $this->invitations[] = $invitations;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitations
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitations
+     */
+    public function removeInvitation(\FrontOfficeBundle\Entity\Invitation $invitations)
+    {
+        $this->invitations->removeElement($invitations);
+    }
+
+    /**
+     * Get invitations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitations()
+    {
+        return $this->invitations;
     }
 }
