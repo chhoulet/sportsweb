@@ -63,7 +63,7 @@ class UserController extends Controller
 		$friend = $em -> getRepository('UserBundle:User') -> find($id);
 		# Récupérer l'id de l'user connecté et lui attribuer un ami :
 		$this -> getUser() -> addFriend($friend);
-		$em -> persist($friend);
+		//$em -> persist($friend);
 		$em -> flush();
 
 		return $this -> redirect($this -> generateUrl('front_office_users_list'));

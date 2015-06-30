@@ -26,16 +26,18 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     * @ORM\Column(name="sportPracticed", type="string", length=255)
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="user")
+     * @ORM\JoinTable(name="user_practiced")
      */
     protected $sportPracticed;
 
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     * @ORM\Column(name="sportViewed", type="string", length=255)
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="user")
+     * @ORM\JoinTable(name="user_viewed")
      */
     protected $sportViewed;
 
@@ -108,6 +110,14 @@ class User extends BaseUser
     protected $team;
 
     /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="user")
+     * @ORM\JoinTable(name="user_sport")
+     */
+    protected $sports;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -124,6 +134,8 @@ class User extends BaseUser
         parent::__construct();
 
         $this->invitation = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->dateCreated = new \DateTime();
     }
 
     /**
@@ -407,5 +419,85 @@ class User extends BaseUser
     public function getTeam()
     {
         return $this->team;
+    }
+
+
+    /**
+     * Add sportPracticed
+     *
+     * @param \FrontOfficeBundle\Entity\Sport $sportPracticed
+     * @return User
+     */
+    public function addSportPracticed(\FrontOfficeBundle\Entity\Sport $sportPracticed)
+    {
+        $this->sportPracticed[] = $sportPracticed;
+
+        return $this;
+    }
+
+    /**
+     * Remove sportPracticed
+     *
+     * @param \FrontOfficeBundle\Entity\Sport $sportPracticed
+     */
+    public function removeSportPracticed(\FrontOfficeBundle\Entity\Sport $sportPracticed)
+    {
+        $this->sportPracticed->removeElement($sportPracticed);
+    }
+
+    /**
+     * Add sportViewed
+     *
+     * @param \FrontOfficeBundle\Entity\Sport $sportViewed
+     * @return User
+     */
+    public function addSportViewed(\FrontOfficeBundle\Entity\Sport $sportViewed)
+    {
+        $this->sportViewed[] = $sportViewed;
+
+        return $this;
+    }
+
+    /**
+     * Remove sportViewed
+     *
+     * @param \FrontOfficeBundle\Entity\Sport $sportViewed
+     */
+    public function removeSportViewed(\FrontOfficeBundle\Entity\Sport $sportViewed)
+    {
+        $this->sportViewed->removeElement($sportViewed);
+    }
+
+    /**
+     * Add sports
+     *
+     * @param \FrontOfficeBundle\Entity\Sport $sports
+     * @return User
+     */
+    public function addSport(\FrontOfficeBundle\Entity\Sport $sports)
+    {
+        $this->sports[] = $sports;
+
+        return $this;
+    }
+
+    /**
+     * Remove sports
+     *
+     * @param \FrontOfficeBundle\Entity\Sport $sports
+     */
+    public function removeSport(\FrontOfficeBundle\Entity\Sport $sports)
+    {
+        $this->sports->removeElement($sports);
+    }
+
+    /**
+     * Get sports
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSports()
+    {
+        return $this->sports;
     }
 }

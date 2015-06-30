@@ -1,0 +1,31 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+		
+					<h2> <a href="#">{{ oneTeam.name }}</a></h2>
+
+			        	<p class="lead">
+			                by <a href="index.php">{{ oneTeam.sportPracticed }}</a>
+			            </p>
+			            <p><span class="glyphicon glyphicon-time"></span> {{ oneTeam.dateCreated | date('d-m-Y H:i:s')}}</p>
+			                <hr>
+			            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+			                <hr>
+			            <p>{{ oneTeam.typeOfGame }}</p><br>
+			            <p>{{ oneTeam.habitsOfGame }}</p><br>
+			                			            
+			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
+			                	<a class="btn btn-primary" href="{{ path('back_office_team_delete',{id:oneTeam.id}) }}">Suppression team<span class="glyphicon glyphicon-chevron-right"></span></a>
+			                {% endif %}			             
+			                
+		                	<hr>	                   			               			         
+			                
+	            </div>			
+			</div>
+		</div>
+		
+	{% endblock %}
