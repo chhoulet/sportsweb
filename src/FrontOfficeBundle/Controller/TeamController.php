@@ -39,6 +39,7 @@ class TeamController extends Controller
 		{
 			$team -> setDateCreated(new \datetime('now'));
 			$team -> setValidationAdmin(false);
+			$team ->setUser($this ->getUser());
 			$em -> persist($team);
 			$em -> flush();
 
