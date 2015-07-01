@@ -9,13 +9,13 @@ use Symfony\Component\HttpFoundation\Request;
 
 class TeamController extends Controller
 {
-	public function showTeamsAction()
+	public function listTeamsAction()
 	{
 		$em = $this -> getDoctrine()-> getManager();
-		$showTeams = $em -> getRepository('FrontOfficeBundle:Team')->getLastCreatedTeams();
+		$listTeams = $em -> getRepository('FrontOfficeBundle:Team')->getLastCreatedTeams();
 
-		return $this -> render('FrontOfficeBundle:Team:showTeams.html.twig', 
-			array('showTeams'=>$showTeams));
+		return $this -> render('FrontOfficeBundle:Team:listTeams.html.twig', 
+			array('listTeams'=>$listTeams));
 	}
 
 	public function oneTeamAction($id)

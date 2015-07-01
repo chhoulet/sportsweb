@@ -82,9 +82,9 @@ front_office_user_invitations:
     defaults: { _controller: FrontOfficeBundle:User:showInvitations}
 
 # Routes gerant les Teams :
-front_office_team_show:
-    path:     /showTeams
-    defaults: { _controller: FrontOfficeBundle:Team:showTeams}
+front_office_team_list:
+    path:     /listTeams
+    defaults: { _controller: FrontOfficeBundle:Team:listTeams}
 
 front_office_team_one:
     path:     /oneTeam/{id}
