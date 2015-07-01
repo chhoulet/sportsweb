@@ -35,4 +35,13 @@ class TeamRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function nbTeams()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT COUNT(t.id) 
+			FROM FrontOfficeBundle:Team t');
+
+		return $query -> getSingleScalarResult();
+	}
 }
