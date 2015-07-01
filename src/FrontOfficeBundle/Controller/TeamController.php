@@ -61,4 +61,15 @@ class TeamController extends Controller
 		return $this ->redirect($this -> generateurl('front_office_team_show'));
 		/*return $this -> redirect($this->getUser()->get('urlFrom'));*/
 	}
+
+	public function userDeleteAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$team = $em -> getRepository('FrontOfficeBundle:Team')->find($id);
+		$userDelete = $team -> getUser($this -> getUser());
+		$em -> remove($userDelete);
+		$em -> flush();
+
+		return $this -> redirect($this -> generateurl('front_office_team_list'));
+	}
 }

@@ -30,17 +30,20 @@ front_office_blog_homepage:
     path:     /blogHomepage 
     defaults: { _controller: FrontOfficeBundle:Blog:homepage}
 
+    # Liste des articles indifférenciés:
 front_office_blog_list:
     path:     /list/
     defaults: { _controller: FrontOfficeBundle:Blog:list}
     requirements:
 
+    # Tri des Articles par category:
 front_office_blog_triByCategories:
     path:     /triByCategories/{category}
     defaults: { _controller: FrontOfficeBundle:Blog:triByCategories, category: football}
     requirements: 
         category: (football | basket)
 
+    # Vue d'un article en détail:
 front_office_blog_one:
     path:     /One/{id}
     defaults: { _controller: FrontOfficeBundle:Blog:one}
@@ -71,7 +74,7 @@ front_office_user_showFriends:
     path:     /showFriends 
     defaults: { _controller: FrontOfficeBundle:User:showFriends}
 
-    # Voir les équipes dont il est membre :
+    # Voir les équipes dont il est membre:
 front_office_user_showTeams:
     path:      /showTeams
     defaults: { _controller: FrontOfficeBundle:User:showTeams}
@@ -81,19 +84,27 @@ front_office_user_invitations:
     path:     /showInvitations
     defaults: { _controller: FrontOfficeBundle:User:showInvitations}
 
-# Routes gerant les Teams :
+# Routes gerant les Teams:
 front_office_team_list:
     path:     /listTeams
     defaults: { _controller: FrontOfficeBundle:Team:listTeams}
 
+    # Voir une team en détail:
 front_office_team_one:
     path:     /oneTeam/{id}
     defaults: { _controller: FrontOfficeBundle:Team:oneTeam}
 
+    # Créer une nouvelle team:
 front_office_team_new:
     path:     /newTeam
     defaults: { _controller: FrontOfficeBundle:Team:new}
 
+    # Ajout d'un user à une team:
 front_office_team_addUser:
     path:     /addUser/{id}
     defaults: { _controller: FrontOfficeBundle:Team:addUser}
+
+    # Suppression d'un user d'une team:
+front_office_team_user_delete:
+    path:     /userDelete/{id}
+    defaults: { _controller: FrontOfficeBundle:Team:userDelete}
