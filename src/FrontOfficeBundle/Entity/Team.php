@@ -440,4 +440,9 @@ class Team
     {
         return $this->user;
     }
+
+    public function __toString()
+    {
+        return $this -> name;
+    }
 }

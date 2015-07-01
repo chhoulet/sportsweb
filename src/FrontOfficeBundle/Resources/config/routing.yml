@@ -71,6 +71,11 @@ front_office_user_showFriends:
     path:     /showFriends 
     defaults: { _controller: FrontOfficeBundle:User:showFriends}
 
+    # Voir les équipes dont il est membre :
+front_office_user_showTeams:
+    path:      /showTeams
+    defaults: { _controller: FrontOfficeBundle:User:showTeams}
+
     # Voir ses invitations envoyées et reçues:
 front_office_user_invitations:
     path:     /showInvitations
