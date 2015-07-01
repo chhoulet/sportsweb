@@ -48,4 +48,16 @@ class TeamController extends Controller
 		return $this -> render('FrontOfficeBundle:Team:new.html.twig', 
 			array('form' => $form->createView()));
 	}
+
+	public function addUserAction($id)
+	{
+		$em = $this -> getDoctrine()->getmanager();
+		$team = $em -> getRepository('FrontOfficeBundle:Team')->find($id);
+		$team -> setUser($this -> getUser());
+		$em -> persist($team);
+		$em -> flush();
+
+		return $this ->redirect($this -> generateurl('front_office_team_show'));
+		/*return $this -> redirect($this->getUser()->get('urlFrom'));*/
+	}
 }
