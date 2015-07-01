@@ -17,11 +17,29 @@
 			            <p>{{ oneTeam.typeOfGame }}</p><br>
 			            <p>{{ oneTeam.habitsOfGame }}</p><br>
 
-			            <a href="{{ path('front_office_team_addUser',{id:oneTeam.id}) }}">Rejoins l'équipe !</a>
+			            <a href="{{ path('front_office_team_addUser',{id:oneTeam.id}) }}">Rejoins l'équipe !</a><br><br>
+
+			        <h3>Les joueurs :</h3>
+			        				    
+			        	<div class="container">
+                			<div class="well col-lg-5">
+
+                    			<h3 class="page-header">{{ oneTeam.user.username}}
+
+			                        {% for sport in oneTeam.user.sportPracticed %}
+			                            <small>SPORT : {{ sport.name }}</small>
+			                        {% endfor %}
+
+                        			<small>AGE : {{ oneTeam.user.age }} ans</small><br>
+
+                    			</h3>
+
+                			</div>
+            			</div>		       
 			                			            
-			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
-			                	<a class="btn btn-primary" href="{{ path('back_office_team_delete',{id:oneTeam.id}) }}">Suppression team<span class="glyphicon glyphicon-chevron-right"></span></a>
-			                {% endif %}			             
+			            {% if(is_granted('ROLE_SUPER_ADMIN')) %}
+			                <a class="btn btn-primary" href="{{ path('back_office_team_delete',{id:oneTeam.id}) }}">Suppression team<span class="glyphicon glyphicon-chevron-right"></span></a>
+			            {% endif %}	    		             
 			                
 		                	<hr>	                   			               			         
 			              	       		
