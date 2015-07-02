@@ -9,19 +9,21 @@ use Symfony\Component\HttpFoundation\Request;
 
 class InvitationController extends Controller
 {	
-	/*Creation d'une invitation par un joueur, avec l'attribut accepted a false par défault:*/
+	/*Creation d'une invitation par un joueur, avec l'attribut accepted a false par défault. 
+	Choix de la destination de l'invitation selon qu'elle est envoyée en homepage ou à un autre user avec if(userTo)*/
 	public function newAction(Request $request, $userTo = null)
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$invitation = new Invitation();
 		$form = $this -> createForm(new InvitationType(), $invitation);
 
+		if ($userTo) {
+			$userTo = $em -> getRepository('UserBundle:User') -> find($userTo); // peut-être NULL
+		}
+		
 		$form -> handleRequest($request);
+
 		if ($form -> isValid()){
-			if ($userTo) {
-				$userTo = $em -> getRepository('UserBundle:User') -> find($userTo); // peut-être NULL
-			}
-			
 			$invitation ->setDateCreated(new \DateTime('now'));
 			$invitation ->setAccepted(false);
 			$invitation ->setUserFrom($this->getUser());
@@ -29,17 +31,12 @@ class InvitationController extends Controller
 			$em -> persist($invitation);
 			$em -> flush();
 
-			/**
-			 * SELECT *
-			 * FROM invitations
-			 * cas "page profil": WHERE userTo = $this->getUser() 
-			 * cas "homepage":    WHERE userTo is NULL
-			 */
 			return $this->redirect($this->generateUrl('front_office_homepage'));
 		}
 
 		return $this ->render('FrontOfficeBundle:Invitation:new.html.twig', 
-			array('form'=>$form->createView()));
+			array('form'  =>$form->createView(),
+				  'userTo'=>$userTo));
 	}
 
 	// Function d'acceptation de l'invitation, avec l'attribut accepted mis à true + date de l'acceptation implémentée automatiquement:

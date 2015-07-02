@@ -5,6 +5,16 @@
 		<div class="container">
 			<div class="well col-lg-6">
 
+				{% if (userTo) %}
+
+					<p>Lancer un défi à {{ userTo.username }}</p>
+
+				{% else %}
+
+					<p>Lancer un défi</p>
+	
+				{% endif %}
+
 				{{ form(form) }}
 
 			</div>
