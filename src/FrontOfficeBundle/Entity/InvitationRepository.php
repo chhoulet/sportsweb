@@ -33,6 +33,7 @@ class InvitationRepository extends EntityRepository
 			FROM FrontOfficeBundle:Invitation i 
 			JOIN i.sport s
 			WHERE i.accepted = false 
+			AND i.userTo is null
 			AND s.name LIKE :sport')
 		->setParameter('sport', $sport);
 

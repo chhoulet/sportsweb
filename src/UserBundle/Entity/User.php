@@ -90,9 +90,16 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="userTo")
      */
-    protected $invitation;
+    protected $invitationsReceived;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="userFrom")
+     */
+    protected $invitationsSent;
 
     /**
      * @var string
@@ -132,8 +139,6 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-
-        $this->invitation = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->dateCreated = new \DateTime();
     }
@@ -207,39 +212,7 @@ class User extends BaseUser
         return $this->age;
     }
 
-    /**
-     * Add invitation
-     *
-     * @param \FrontOfficeBundle\Entity\Invitation $invitation
-     * @return User
-     */
-    public function addInvitation(\FrontOfficeBundle\Entity\Invitation $invitation)
-    {
-        $this->invitation[] = $invitation;
-
-        return $this;
-    }
-
-    /**
-     * Remove invitation
-     *
-     * @param \FrontOfficeBundle\Entity\Invitation $invitation
-     */
-    public function removeInvitation(\FrontOfficeBundle\Entity\Invitation $invitation)
-    {
-        $this->invitation->removeElement($invitation);
-    }
-
-    /**
-     * Get invitation
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getInvitation()
-    {
-        return $this->invitation;
-    }
-
+  
     /**
      * Set validationAdmin
      *
@@ -499,5 +472,71 @@ class User extends BaseUser
     public function getSports()
     {
         return $this->sports;
+    }
+
+    /**
+     * Add invitationsReceived
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitationsReceived
+     * @return User
+     */
+    public function addInvitationsReceived(\FrontOfficeBundle\Entity\Invitation $invitationsReceived)
+    {
+        $this->invitationsReceived[] = $invitationsReceived;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitationsReceived
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitationsReceived
+     */
+    public function removeInvitationsReceived(\FrontOfficeBundle\Entity\Invitation $invitationsReceived)
+    {
+        $this->invitationsReceived->removeElement($invitationsReceived);
+    }
+
+    /**
+     * Get invitationsReceived
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitationsReceived()
+    {
+        return $this->invitationsReceived;
+    }
+
+    /**
+     * Add invitationsSent
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitationsSent
+     * @return User
+     */
+    public function addInvitationsSent(\FrontOfficeBundle\Entity\Invitation $invitationsSent)
+    {
+        $this->invitationsSent[] = $invitationsSent;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitationsSent
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitationsSent
+     */
+    public function removeInvitationsSent(\FrontOfficeBundle\Entity\Invitation $invitationsSent)
+    {
+        $this->invitationsSent->removeElement($invitationsSent);
+    }
+
+    /**
+     * Get invitationsSent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitationsSent()
+    {
+        return $this->invitationsSent;
     }
 }

@@ -62,14 +62,16 @@ class Invitation
     /**
      * @var string
      *
-     * @ORM\Column(name="userFrom", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="invitationsSent")
+     * @ORM\JoinColumn(name="user_from_id", referencedColumnName="id")
      */
     private $userFrom;
 
      /**
      * @var string
      *
-     * @ORM\Column(name="userTo", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="invitationsReceived")
+     * @ORM\JoinColumn(name="user_to_id", referencedColumnName="id", nullable=true)
      */
     private $userTo;
 
@@ -108,14 +110,6 @@ class Invitation
      * @ORM\Column(name="dateAccepted", type="datetime", nullable=true)
      */
     private $dateAccepted;
-
-    /**
-     * @var string
-     *
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="invitation")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    private $user;
 
     /**
      * @var string
@@ -321,29 +315,6 @@ class Invitation
     }
 
     /**
-     * Set user
-     *
-     * @param \UserBundle\Entity\User $user
-     * @return Invitation
-     */
-    public function setUser(\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \UserBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
      * Set mode
      *
      * @param string $mode
@@ -377,10 +348,10 @@ class Invitation
     /**
      * Set userFrom
      *
-     * @param string $userFrom
+     * @param \UserBundle\Entity\User $userFrom
      * @return Invitation
      */
-    public function setUserFrom($userFrom)
+    public function setUserFrom(\UserBundle\Entity\User $userFrom = null)
     {
         $this->userFrom = $userFrom;
 
@@ -390,7 +361,7 @@ class Invitation
     /**
      * Get userFrom
      *
-     * @return string 
+     * @return \UserBundle\Entity\User 
      */
     public function getUserFrom()
     {
@@ -400,10 +371,10 @@ class Invitation
     /**
      * Set userTo
      *
-     * @param string $userTo
+     * @param \UserBundle\Entity\User $userTo
      * @return Invitation
      */
-    public function setUserTo($userTo)
+    public function setUserTo(\UserBundle\Entity\User $userTo = null)
     {
         $this->userTo = $userTo;
 
@@ -413,7 +384,7 @@ class Invitation
     /**
      * Get userTo
      *
-     * @return string 
+     * @return \UserBundle\Entity\User 
      */
     public function getUserTo()
     {
