@@ -17,6 +17,11 @@ class RegistrationFormType extends AbstractType
                                                    'expanded' => true))
             ->add('age')
         ;
+
+        // Si l'utilisateur est déjà inscrit, et donc connecté, alors on rajoute le bouton submit.
+        if ($builder->getData()) {
+            $builder->add('Enregistrer', 'submit');
+        }
     }
 
     public function getParent()

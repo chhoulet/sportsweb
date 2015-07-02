@@ -10,33 +10,33 @@ use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller
 {
 	// Function pour faire apparaître Mon Profil, avec lien en homepage
-	/*public function updateAction(Request $request, $id)
+	public function updateAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getManager();
-		$user = $em -> getRepository('UserBundle:User')->find($id);
+		$user = $this ->getUser();
 		$form = $this -> createForm(new RegistrationFormType(), $user);
 
 		$form -> handleRequest($request);
 
 		if($form -> isValid())
 		{
-			$user ->setValidationAdmin(false);
-			$em -> persist($user);
+			$user -> setValidationAdmin(false);
+			$user -> setDateValidated(new \DateTime());
 			$em -> flush();
 
-			return $this -> redirect($this -> generateUrl('front_office_show_user'));
+			return $this -> redirect($this -> generateUrl('front_office_user_update'));
 		}
 
 		return $this -> render('FrontOfficeBundle:User:update.html.twig', 
 			array('user'=>$user,
 				  'form'=>$form->createView()));
-	}*/
+	}
 	/*Faire apparaitre Mon profil:*/
-	public function showUserAction()
+	/*public function showUserAction()
 	{
 		return $this -> render('FrontOfficeBundle:User:showUser.html.twig');
 	}
-
+*/
 	/*Liste des derniers utilisateurs inscrits:*/
 	public function listAction()
 	{
