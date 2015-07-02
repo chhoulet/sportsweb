@@ -18,8 +18,8 @@ front_office_static_contact:
 
 # Routes gerant les invitations:
 front_office_invitation_new:
-    path:     /newInvitation
-    defaults: { _controller: FrontOfficeBundle:Invitation:new }
+    path:     /newInvitation/{userTo}
+    defaults: { _controller: FrontOfficeBundle:Invitation:new, userTo: null }
 
 front_office_invitation_response:
     path:     /response/{id}

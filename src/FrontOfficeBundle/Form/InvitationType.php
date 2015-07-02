@@ -17,8 +17,7 @@ class InvitationType extends AbstractType
         $builder
             ->add('content')
             ->add('dateInvit', 'date')
-            ->add('sport',null,                       array('expanded' => true,
-                                                            'multiple' => true))
+            ->add('sport', null,                      array('expanded' => true))
             ->add('mode','choice',  array('choices'=> array( 'Loisir'     => "Loisir",
                                                              'Compétition'=> "Compétition")))
             ->add('place')

@@ -4,7 +4,7 @@ user:
 
 back_office:
     resource: "@BackOfficeBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 front_office:
     resource: "@FrontOfficeBundle/Resources/config/routing.yml"
