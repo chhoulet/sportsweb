@@ -31,12 +31,7 @@ class UserController extends Controller
 			array('user'=>$user,
 				  'form'=>$form->createView()));
 	}
-	/*Faire apparaitre Mon profil:*/
-	/*public function showUserAction()
-	{
-		return $this -> render('FrontOfficeBundle:User:showUser.html.twig');
-	}
-*/
+	
 	/*Liste des derniers utilisateurs inscrits:*/
 	public function listAction()
 	{
