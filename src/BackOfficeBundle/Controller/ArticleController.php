@@ -103,4 +103,13 @@ class ArticleController extends Controller
         return $this -> redirect($this->generateUrl('back_office_article_admin'));
     }
 
+    public function listArticlesWarnedAction()
+    {
+        $em = $this -> getDoctrine()->getManager();
+        $listArticlesWarned = $em -> getRepository('FrontOfficeBundle:Article') -> getWarnedArticles();
+
+        return $this -> render('BackOfficeBundle:Article:listArticlesWarned.html.twig',
+         array('listArticlesWarned'=>$listArticlesWarned));
+    }
+
 }

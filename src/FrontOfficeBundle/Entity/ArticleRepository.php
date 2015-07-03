@@ -18,6 +18,7 @@ class ArticleRepository extends EntityRepository
 			SELECT a 
 			FROM FrontOfficeBundle:Article a 
 			WHERE a.validationAdmin = true
+			AND a.warned = false
 			ORDER BY a.dateCreated DESC')
 		->setMaxResults(6);
 
@@ -29,7 +30,9 @@ class ArticleRepository extends EntityRepository
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT a 
 			FROM FrontOfficeBundle:Article a 
-			WHERE a.category LIKE :category')
+			WHERE a.validationAdmin = true
+			AND a.warned = false
+			AND a.category LIKE :category')
 		->setParameter('category',  $category);
 
 		return $query ->getResult();
@@ -58,7 +61,7 @@ class ArticleRepository extends EntityRepository
 
 	public function getWarnedArticles()
 	{
-		$em = $this -> getEntitymanager()->createQuery('
+		$query = $this -> getEntityManager()->createQuery('
 			Select a 
 			FROM FrontOfficeBundle:Article a 
 			WHERE a.warned = true');

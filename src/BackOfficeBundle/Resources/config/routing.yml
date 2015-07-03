@@ -23,7 +23,7 @@ back_office_article_response:
     path:     /response/{id}
     defaults: { _controller: BackOfficeBundle:Article:response}
 
-    # Mise en table Warning d'un article:
+    # Mise en statut Warned d'un article:
 back_office_article_warnedArticle:
     path:     /warnedArticle/{id}
     defaults: { _controller: BackOfficeBundle:Article:warnedArticle}
@@ -32,6 +32,11 @@ back_office_article_warnedArticle:
 back_office_article_update:
     path:     /update/{id}
     defaults: { _controller: BackOfficeBundle:Article:update}
+
+    # Affichage des articles mis en statut warned:
+back_office_article_list_articles_warned:
+    path:     /listArticlesWarned 
+    defaults: { _controller: BackOfficeBundle:Article:listArticlesWarned}
 
     # Suppression des articles par l'administrateur:
 back_office_article_delete:
