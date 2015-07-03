@@ -46,7 +46,7 @@ back_office_comment_response:
 
     # Suppression des comments par l'administrateur:
 back_office_comment_delete:
-    path:     /delete/{id}
+    path:     /deleteComment/{id}
     defaults: { _controller: BackOfficeBundle:Comment:delete}
 
 #  Routes gerant l'administration des terrains de sport :

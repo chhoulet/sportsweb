@@ -25,7 +25,7 @@ class CommentController extends Controller
 		$em -> remove($comment);
 		$em -> flush();
 		
-		return $this ->redirect($this -> generateUrl('front_office_blog_homepage'));
+		return $this ->redirect($this -> generateUrl('back_office_comment_admin'));
 	}
 
 	# Validation des comments :
