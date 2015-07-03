@@ -55,4 +55,14 @@ class ArticleRepository extends EntityRepository
 
 		return $query ->getSingleScalarResult();
 	}
+
+	public function getWarnedArticles()
+	{
+		$em = $this -> getEntitymanager()->createQuery('
+			Select a 
+			FROM FrontOfficeBundle:Article a 
+			WHERE a.warned = true');
+
+		return $query -> getResult();
+	}
 }
