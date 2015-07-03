@@ -29,7 +29,7 @@ class ArticleController extends Controller
         {
             $article -> setDateCreated(new \DateTime('now'));
             $article -> setValidationAdmin(true);
-            $article -> setWarned(false);
+            $article -> setWarned(true);
             $em -> persist($article);
             $em -> flush();
 
@@ -90,6 +90,17 @@ class ArticleController extends Controller
 
         return $this -> render('BackOfficeBundle:Article:update.html.twig',
                 array('form' => $form -> createView()));
+    }
+
+    public function warnedArticleAction($id)
+    {
+        $em = $this -> getDoctrine()->getManager();
+        $warnedArticle = $em -> getRepository('FrontOfficeBundle:Article') -> find($id);
+        $warnedArticle -> setWarned(true);
+        $em -> persist($warnedArticle);
+        $em -> flush();
+
+        return $this -> redirect($this->generateUrl('back_office_article_admin'));
     }
 
 }

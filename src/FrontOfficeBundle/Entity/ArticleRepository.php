@@ -41,6 +41,7 @@ class ArticleRepository extends EntityRepository
 			SELECT a 
 			FROM FrontOfficeBundle:Article a 
 			WHERE a.validationAdmin = false
+			AND a.warned = false
 			ORDER BY a.dateCreated DESC');
 
 		return $query -> getResult();

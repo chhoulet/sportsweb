@@ -23,6 +23,11 @@ back_office_article_response:
     path:     /response/{id}
     defaults: { _controller: BackOfficeBundle:Article:response}
 
+    # Mise en table Warning d'un article:
+back_office_article_warnedArticle:
+    path:     /warnedArticle/{id}
+    defaults: { _controller: BackOfficeBundle:Article:warnedArticle}
+
     # Mise à jour d'un article par l'administrateur:
 back_office_article_update:
     path:     /update/{id}
