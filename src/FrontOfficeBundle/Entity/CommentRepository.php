@@ -18,7 +18,8 @@ class CommentRepository extends EntityRepository
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT c 
 			FROM FrontOfficeBundle:Comment c 
-			WHERE c.validationAdmin = false');
+			WHERE c.validationAdmin = false
+			ORDER BY c.dateCreated DESC');
 
 		return $query -> getResult();
 	}
