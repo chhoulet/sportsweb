@@ -5,7 +5,38 @@
         <div class="container">
             <div class="well col-lg-10">
 
-           
+                <p>Invit acceptées</p>
+                {% for invit in app.user.invitationsReceived if invit.dateAccepted is not null %}
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">{{ invit.content }}
+                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small><br>
+                                <small>SPORT : {{ invit.sport }} </small><br>
+                                <small>LIEU : {{ invit.place }} </small><br>
+                                <small>MODE : {{ invit.mode }} </small><br>
+                            </h1>
+                        </div>
+                    </div>
+               
+                {% endfor %}
+
+                 <p>Invit envoyees:</p>
+                {% for invit in app.user.invitationsSent %}
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">{{ invit.content }}
+                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small><br>
+                                <small>SPORT : {{ invit.sport }}</small><br>
+                                <small>LIEU : {{ invit.place }}</small><br>
+                                <small>MODE : {{ invit.mode }}</small><br>
+                            </h1>
+                        </div>
+                    </div>
+               
+                {% endfor %}              
+
                 <p>Invit reçues et non acceptées :</p>
                 {% for invit in app.user.invitationsReceived if invit.dateAccepted is null %}
 
@@ -23,39 +54,7 @@
                     <a href="{{path('front_office_invitation_response',{id:invit.id})}}">Relever le défi</a>
                
                 {% endfor %}
-
-                <p>Invit envoyees:</p>
-                {% for invit in app.user.invitationsSent %}
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">{{ invit.content }}
-                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small><br>
-                                <small>SPORT : {{ invit.sport }}</small><br>
-                                <small>LIEU : {{ invit.place }}</small><br>
-                                <small>MODE : {{ invit.mode }}</small><br>
-                            </h1>
-                        </div>
-                    </div>
                
-                {% endfor %}
-
-                <p>Invit acceptées</p>
-                {% for invit in app.user.invitationsReceived if invit.dateAccepted is not null %}
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">{{ invit.content }}
-                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small><br>
-                                <small>SPORT : {{ invit.sport }} </small><br>
-                                <small>LIEU : {{ invit.place }} </small><br>
-                                <small>MODE : {{ invit.mode }} </small><br>
-                            </h1>
-                        </div>
-                    </div>
-               
-                {% endfor %}
-
             </div>
         </div>
         

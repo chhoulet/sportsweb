@@ -18,9 +18,8 @@ class InvitationRepository extends EntityRepository
 		$query = $this -> getEntityManager()-> createQuery('
 			SELECT i 
 			FROM FrontOfficeBundle:Invitation i 
-			WHERE i.accepted = false
-			ORDER BY i.dateCreated DESC')
-		->setMaxResults(50);
+			WHERE i.accepted = false')
+		->setMaxResults(500);
 
 		return $query -> getResult();
 	}
