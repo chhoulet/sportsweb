@@ -24,6 +24,7 @@ class BlogController extends Controller
 		{
 			$articleUser -> setDateCreated(new \datetime('now'));
 			$articleUser -> setValidationAdmin(false);
+			$articleUser -> setWarned(false);
 			$em -> persist($articleUser);
 			$em -> flush();
 

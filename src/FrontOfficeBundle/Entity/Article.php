@@ -72,6 +72,13 @@ class Article
      */
     private $validationAdmin;
 
+    /**
+     * @var boolean
+     *
+     *
+     * @ORM\Column(name="warned", type="boolean")
+     */
+    private $warned;
 
     /**
      * @var string
@@ -345,5 +352,28 @@ class Article
     public function getDateValidated()
     {
         return $this->dateValidated;
+    }
+
+    /**
+     * Set warned
+     *
+     * @param boolean $warned
+     * @return Article
+     */
+    public function setWarned($warned)
+    {
+        $this->warned = $warned;
+
+        return $this;
+    }
+
+    /**
+     * Get warned
+     *
+     * @return boolean 
+     */
+    public function getWarned()
+    {
+        return $this->warned;
     }
 }

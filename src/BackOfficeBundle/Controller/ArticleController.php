@@ -29,6 +29,7 @@ class ArticleController extends Controller
         {
             $article -> setDateCreated(new \DateTime('now'));
             $article -> setValidationAdmin(true);
+            $article -> setWarned(false);
             $em -> persist($article);
             $em -> flush();
 
