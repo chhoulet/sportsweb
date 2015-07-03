@@ -112,4 +112,15 @@ class ArticleController extends Controller
          array('listArticlesWarned'=>$listArticlesWarned));
     }
 
+    public function responseWarnedArticleAction($id)
+    {
+         $em = $this -> getDoctrine()->getManager();
+         $articleWarned = $em -> getRepository('FrontOfficeBundle:Article') -> find($id);
+         $articleWarned ->setWarned(false);
+         $articleWarned -> setValidationAdmin(true);
+         $em -> persist($articleWarned);
+         $em -> flush();
+
+         return $this ->redirect($this -> generateUrl('back_office_article_list_articles_warned'));
+    }
 }

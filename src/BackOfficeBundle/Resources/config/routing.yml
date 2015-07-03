@@ -38,6 +38,11 @@ back_office_article_list_articles_warned:
     path:     /listArticlesWarned 
     defaults: { _controller: BackOfficeBundle:Article:listArticlesWarned}
 
+    # Valmidation admin des articles mis en warned:
+back_office_article_warned_response:
+    path:     /responseWarnedArticle/{id}
+    defaults: { _controller: BackOfficeBundle:Article:responseWarnedArticle}
+
     # Suppression des articles par l'administrateur:
 back_office_article_delete:
     path:     /delete/{id}
