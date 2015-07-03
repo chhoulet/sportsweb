@@ -20,8 +20,12 @@
 			                <hr>
 			                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
 			                <hr>
-			                <p>{{ us.sportPracticed }}</p>
-			                <p>{{ us.sportViewed }}</p>
+			               		{% for sport in us.sportPracticed %}
+				                	<p>{{ sport.name }}</p>
+				            	{% endfor %}
+				            	{% for sport in us.sportViewed %}
+				                	<p>{{ sport.name }}</p>
+				            	{% endfor %}			    
 			                <p>{{ us.age }}</p><br>
 
 			                <a class="btn btn-primary" href="{{ path('back_office_admin_user_response',{id:us.id}) }}">OK Admin <span class="glyphicon glyphicon-chevron-right"></span></a>				           
