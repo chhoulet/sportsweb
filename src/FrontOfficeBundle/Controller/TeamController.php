@@ -43,7 +43,7 @@ class TeamController extends Controller
 			$em -> persist($team);
 			$em -> flush();
 
-			return $this -> redirect($this -> generateUrl('front_office_team_show'));
+			return $this -> redirect($this -> generateUrl('front_office_team_list'));
 		}
 
 		return $this -> render('FrontOfficeBundle:Team:new.html.twig', 
@@ -58,7 +58,7 @@ class TeamController extends Controller
 		$em -> persist($team);
 		$em -> flush();
 
-		return $this ->redirect($this -> generateurl('front_office_team_show'));
+		return $this ->redirect($this -> generateurl('front_office_team_list'));
 		/*return $this -> redirect($this->getUser()->get('urlFrom'));*/
 	}
 
