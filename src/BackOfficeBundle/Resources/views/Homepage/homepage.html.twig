@@ -448,9 +448,11 @@
                         <div class="panel-body">
                             <div class="list-group">
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                                    {% for invits in getSportsByInvitsNumber %}
+                                        <i class="fa fa-comment fa-fw"></i> {{ invits.name}}
+                                        <span class="pull-right text-muted small"><em>{{ invits.nb }}</em>
                                     </span>
+                                    {% endfor %}
                                 </a>
                                 <a href="#" class="list-group-item">
                                     <i class="fa fa-twitter fa-fw"></i> 3 New Followers

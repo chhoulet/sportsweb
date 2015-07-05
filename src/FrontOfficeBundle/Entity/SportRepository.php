@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class SportRepository extends EntityRepository
 {
+	public function getSportsByInvitsNumber()
+	{
+		$query = $this -> getEntityManager() -> createQuery('
+			SELECT s.name, COUNT(i.id) as nb
+			FROM FrontOfficeBundle:Sport s
+			JOIN s.invitations i
+			GROUP BY i.id
+			');
+
+		return $query -> getResult();
+	}
+
 }

@@ -18,6 +18,7 @@ class HomepageController extends Controller
         $nbArticles            = $em -> getRepository('FrontOfficeBundle:Article') -> nbArticles();
         $nbMessages            = $em -> getRepository('FrontOfficeBundle:Message') -> nbMessages();
         $nbTeams               = $em -> getRepository('FrontOfficeBundle:Team') -> nbTeams();
+        $getSportsByInvitsNumber=$em -> getRepository('FrontOfficeBundle:Sport') -> getSportsByInvitsNumber();
  
         return $this -> render('BackOfficeBundle:Homepage:homepage.html.twig', 
         	array('invitations'          => $invitations,
@@ -27,6 +28,7 @@ class HomepageController extends Controller
                   'nbComments'           => $nbComments,
                   'nbArticles'           => $nbArticles,
                   'nbMessages'           => $nbMessages,
-                  'nbTeams'              => $nbTeams));
+                  'nbTeams'              => $nbTeams,
+                  'getSportsByInvitsNumber'=> $getSportsByInvitsNumber));
     }
 }

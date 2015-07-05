@@ -34,7 +34,6 @@ class Sport
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;
-    
 
     /**
      * @var string
