@@ -147,12 +147,9 @@ class Team
      /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="team")
-     * @ORM\JoinTable(name="user_team")
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", mappedBy="teams")
      */
-    private $user;
-
-
+    private $users;
 
 
     /**
@@ -419,30 +416,43 @@ class Team
     }
 
     /**
-     * Set user
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add users
      *
-     * @param \UserBundle\Entity\User $user
+     * @param \UserBundle\Entity\User $users
      * @return Team
      */
-    public function setUser(\UserBundle\Entity\User $user = null)
+    public function addUser(\UserBundle\Entity\User $users)
     {
-        $this->user = $user;
+        $this->users[] = $users;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Remove users
      *
-     * @return \UserBundle\Entity\User 
+     * @param \UserBundle\Entity\User $users
      */
-    public function getUser()
+    public function removeUser(\UserBundle\Entity\User $users)
     {
-        return $this->user;
+        $this->users->removeElement($users);
     }
 
-    public function __toString()
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
     {
-        return $this -> name;
+        return $this->users;
     }
 }

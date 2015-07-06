@@ -112,17 +112,18 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="user")
-     */
-    protected $team;
-
-    /**
-     * @var string
-     *
      * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="user")
      * @ORM\JoinTable(name="user_sport")
      */
     protected $sports;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="users")
+     * @ORM\JoinTable(name="user_team")
+     */
+    protected $teams;
 
     /**
      * Get id
@@ -362,40 +363,6 @@ class User extends BaseUser
     }
 
     /**
-     * Add team
-     *
-     * @param \FrontOfficeBundle\Entity\Team $team
-     * @return User
-     */
-    public function addTeam(\FrontOfficeBundle\Entity\Team $team)
-    {
-        $this->team[] = $team;
-
-        return $this;
-    }
-
-    /**
-     * Remove team
-     *
-     * @param \FrontOfficeBundle\Entity\Team $team
-     */
-    public function removeTeam(\FrontOfficeBundle\Entity\Team $team)
-    {
-        $this->team->removeElement($team);
-    }
-
-    /**
-     * Get team
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTeam()
-    {
-        return $this->team;
-    }
-
-
-    /**
      * Add sportPracticed
      *
      * @param \FrontOfficeBundle\Entity\Sport $sportPracticed
@@ -538,5 +505,38 @@ class User extends BaseUser
     public function getInvitationsSent()
     {
         return $this->invitationsSent;
+    }
+
+    /**
+     * Add teams
+     *
+     * @param \FrontOfficeBundle\Entity\Team $teams
+     * @return User
+     */
+    public function addTeam(\FrontOfficeBundle\Entity\Team $teams)
+    {
+        $this->teams[] = $teams;
+
+        return $this;
+    }
+
+    /**
+     * Remove teams
+     *
+     * @param \FrontOfficeBundle\Entity\Team $teams
+     */
+    public function removeTeam(\FrontOfficeBundle\Entity\Team $teams)
+    {
+        $this->teams->removeElement($teams);
+    }
+
+    /**
+     * Get teams
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeams()
+    {
+        return $this->teams;
     }
 }
