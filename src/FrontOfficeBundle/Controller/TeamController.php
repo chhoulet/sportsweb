@@ -50,7 +50,7 @@ class TeamController extends Controller
 			array('form' => $form->createView()));
 	}
 
-	public function addUserAction($id)
+	public function addUserAction(Request $request,$id)
 	{
 		$em = $this -> getDoctrine()->getmanager();
 		$team = $em -> getRepository('FrontOfficeBundle:Team')->find($id);
@@ -58,11 +58,11 @@ class TeamController extends Controller
 		$em -> persist($team);
 		$em -> flush();
 
-		return $this ->redirect($this -> generateurl('front_office_team_list'));
-		/*return $this -> redirect($this->getUser()->get('urlFrom'));*/
+		return $this -> redirect($request->headers->get('referer'));
+		
 	}
 
-	public function userDeleteAction($id)
+	public function userDeleteAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$team = $em -> getRepository('FrontOfficeBundle:Team')->find($id);
@@ -70,6 +70,6 @@ class TeamController extends Controller
 		$em -> remove($userDelete);
 		$em -> flush();
 
-		return $this -> redirect($this -> generateurl('front_office_team_list'));
+		return $this -> redirect($request->headers->get('referer'));
 	}
 }
