@@ -151,6 +151,13 @@ class Team
      */
     private $users;
 
+     /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="teamsAdmin")
+     * @ORM\JoinColumn(name="admin_id", referencedColumnName="id")
+     */
+    private $admin;
 
     /**
      * Get id
@@ -454,5 +461,28 @@ class Team
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Set admin
+     *
+     * @param \UserBundle\Entity\User $admin
+     * @return Team
+     */
+    public function setAdmin(\UserBundle\Entity\User $admin = null)
+    {
+        $this->admin = $admin;
+
+        return $this;
+    }
+
+    /**
+     * Get admin
+     *
+     * @return \UserBundle\Entity\User 
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
     }
 }

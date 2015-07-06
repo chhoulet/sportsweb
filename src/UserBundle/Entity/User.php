@@ -126,6 +126,13 @@ class User extends BaseUser
     protected $teams;
 
     /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Team", mappedBy="admin")
+     */
+    protected $teamsAdmin;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -538,5 +545,38 @@ class User extends BaseUser
     public function getTeams()
     {
         return $this->teams;
+    }
+
+    /**
+     * Add teamsAdmin
+     *
+     * @param \FrontOfficeBundle\Entity\Team $teamsAdmin
+     * @return User
+     */
+    public function addTeamsAdmin(\FrontOfficeBundle\Entity\Team $teamsAdmin)
+    {
+        $this->teamsAdmin[] = $teamsAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Remove teamsAdmin
+     *
+     * @param \FrontOfficeBundle\Entity\Team $teamsAdmin
+     */
+    public function removeTeamsAdmin(\FrontOfficeBundle\Entity\Team $teamsAdmin)
+    {
+        $this->teamsAdmin->removeElement($teamsAdmin);
+    }
+
+    /**
+     * Get teamsAdmin
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeamsAdmin()
+    {
+        return $this->teamsAdmin;
     }
 }
