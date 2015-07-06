@@ -447,13 +447,16 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
-                                <a href="#" class="list-group-item">
+                                {# <a href="#" class="list-group-item"> #}
                                     {% for invits in getSportsByInvitsNumber %}
-                                        <i class="fa fa-comment fa-fw"></i> {{ invits.name}}
-                                        <span class="pull-right text-muted small"><em>{{ invits.nb }}</em>
-                                    </span>
+                                        <div>
+                                            <span class="pull-left">
+                                                <i class="fa fa-comment fa-fw"></i> {{ invits.name}}
+                                            </span>
+                                            <span class="pull-right text-muted small"><em>{{ invits.nb }}</em></span>
+                                        </div>
                                     {% endfor %}
-                                </a>
+                                {# </a> #}
                                 <a href="#" class="list-group-item">
                                     <i class="fa fa-twitter fa-fw"></i> 3 New Followers
                                     <span class="pull-right text-muted small"><em>12 minutes ago</em>
