@@ -76,4 +76,14 @@ class TeamController extends Controller
 
 		return $this -> redirect($request->headers->get('referer'));
 	}
+
+	public function teamDeleteAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$teamDelete = $em -> getRepository('FrontOfficeBundle:Team') ->find($id);
+		$em -> remove($teamDelete);
+		$em -> flush();
+
+		return $this -> redirect($request->headers->get('referer'));
+	}
 }

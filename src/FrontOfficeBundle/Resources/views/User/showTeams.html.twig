@@ -20,7 +20,7 @@
                     </div>
 
                     {% if (app.user) == player.admin %}
-                        admin
+                        <a href="{{ path('front_office_team_delete',{id:player.id}) }}"><button>Supprimer cette équipe</button></a>
                     {% endif %}
                
                 {% endfor %}

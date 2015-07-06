@@ -108,3 +108,7 @@ front_office_team_addUser:
 front_office_team_user_delete:
     path:     /userDelete/{id}
     defaults: { _controller: FrontOfficeBundle:Team:userDelete}
+
+front_office_team_delete:
+    path:     /deleteTeam/{id}
+    defaults: { _controller: FrontOfficeBundle:Team:teamDelete}
