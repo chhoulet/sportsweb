@@ -82,3 +82,4 @@ class UserController extends Controller
 		return $this -> render('FrontOfficeBundle:User:showTeams.html.twig');
 	}
 }
+
