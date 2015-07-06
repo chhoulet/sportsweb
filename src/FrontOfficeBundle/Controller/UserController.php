@@ -52,7 +52,7 @@ class UserController extends Controller
 	}
 
 	# Marquer un autre user comme ami :
-	public function getFriendAction($id)
+	public function getFriendAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$friend = $em -> getRepository('UserBundle:User') -> find($id);
@@ -61,7 +61,7 @@ class UserController extends Controller
 		//$em -> persist($friend);
 		$em -> flush();
 
-		return $this -> redirect($this -> generateUrl('front_office_users_list'));
+		return $this -> redirect($request->headers->get('referer'));
 	}
 
 	public function showFriendsAction()
