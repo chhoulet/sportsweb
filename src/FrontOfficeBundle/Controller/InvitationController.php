@@ -61,10 +61,10 @@ class InvitationController extends Controller
 		$em = $this -> getDoctrine()->getManager();
 		$invitationDenied = $em -> getRepository('FrontOfficeBundle:Invitation')->find($id);
 		$invitationDenied -> setDenied(true);
+		$invitationDenied -> setDateDenied(new \date('now'));
 		$em -> persist($invitationDenied);
 		$em -> flush();
 
 		return $this -> redirect($request->headers->get('referer'));
-
 	}
 }

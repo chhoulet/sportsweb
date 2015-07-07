@@ -114,6 +114,14 @@ class Invitation
      * @var \DateTime
      *
      * @Assert\DateTime()
+     * @ORM\Column(name="dateDenied", type="datetime", nullable=true)
+     */
+    private $dateDenied;
+
+    /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateAccepted", type="datetime", nullable=true)
      */
     private $dateAccepted;
@@ -419,5 +427,28 @@ class Invitation
     public function getDenied()
     {
         return $this->denied;
+    }
+
+    /**
+     * Set dateDenied
+     *
+     * @param \DateTime $dateDenied
+     * @return Invitation
+     */
+    public function setDateDenied($dateDenied)
+    {
+        $this->dateDenied = $dateDenied;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDenied
+     *
+     * @return \DateTime 
+     */
+    public function getDateDenied()
+    {
+        return $this->dateDenied;
     }
 }
