@@ -21,10 +21,12 @@ front_office_invitation_new:
     path:     /newInvitation/{userTo}
     defaults: { _controller: FrontOfficeBundle:Invitation:new, userTo: null }
 
+    # Acceptation d'une invitation:
 front_office_invitation_response:
     path:     /response/{id}
     defaults: { _controller: FrontOfficeBundle:Invitation:response}
 
+    # Refus d'une invitation: 
 front_office_invitation_denied:
     path:     /deniedInvitation/{id}
     defaults: { _controller: FrontOfficeBundle:Invitation:denied}
@@ -113,6 +115,7 @@ front_office_team_user_delete:
     path:     /userDelete/{id}
     defaults: { _controller: FrontOfficeBundle:Team:userDelete}
 
+    # Suppression d'une team complète:
 front_office_team_delete:
     path:     /deleteTeam/{id}
     defaults: { _controller: FrontOfficeBundle:Team:teamDelete}

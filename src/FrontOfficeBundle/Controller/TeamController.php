@@ -62,8 +62,7 @@ class TeamController extends Controller
 		$em -> persist($team);
 		$em -> flush();
 
-		return $this -> redirect($request->headers->get('referer'));
-		
+		return $this -> redirect($request->headers->get('referer'));		
 	}
 
 	public function userDeleteAction(Request $request, $id)
