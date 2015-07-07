@@ -8,7 +8,7 @@
 					<h2> <a href="#">{{ oneTeam.name }}</a></h2>
 
 			        	<p class="lead">
-			                by <a href="index.php">{{ oneTeam.sportPracticed }}</a>
+			                Sport pratiqué : <a href="index.php">{{ oneTeam.sportPracticed }}</a>
 			            </p>
 			            <p><span class="glyphicon glyphicon-time"></span>{{ oneTeam.dateCreated | date('d-m-Y')}}</p>
 			                <hr>
@@ -28,16 +28,20 @@
 
                     				{% for user in oneTeam.users %}
 
-                    					{{ user.username }}
+                    					{{ user.username }}<br>
 
-                    						{# {% for sport in user.sportPracticed %}
-                    							 <small>SPORT : {{ sport.name }}</small>
-                    						{% endfor %}	 #}		                      
+                    					Sports pratiqués : 
+                    					{% for sport in user.sportPracticed %}
+                    							<small>  {{ sport.name }} </small>
+                    					{% endfor %}
+                    									                      
 			                           			                     
                         				<small>AGE : {{ user.age }} ans</small><br>
 
+                        				<a href="{{ path('front_office_team_user_delete',{idUser:user.id, idTeam:oneTeam.id}) }}">Quitter l'équipe</a>
+
                         			{% endfor %}
-                        			{# <a href="{{ path('front_office_team_user_delete',{id:oneTeam.id}) }}">Quitter l'équipe</a> #}
+                        			
 
                     			</h3>
 

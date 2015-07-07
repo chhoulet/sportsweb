@@ -112,7 +112,7 @@ front_office_team_addUser:
 
     # Suppression d'un user d'une team:
 front_office_team_user_delete:
-    path:     /userDelete/{id}
+    path:     /userDelete/{idUser,idTeam}
     defaults: { _controller: FrontOfficeBundle:Team:userDelete}
 
     # Suppression d'une team complète:

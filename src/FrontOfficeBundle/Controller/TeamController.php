@@ -65,12 +65,12 @@ class TeamController extends Controller
 		return $this -> redirect($request->headers->get('referer'));		
 	}
 
-	public function userDeleteAction(Request $request, $id)
+	public function userDeleteAction(Request $request, $idUser, $idTeam)
 	{
 		$em = $this -> getDoctrine()->getManager();
-		$team = $em -> getRepository('FrontOfficeBundle:Team')->find($id);
-		$userDelete = $team -> getUser($this -> getUser());
-		$em -> remove($userDelete);
+		$team = $em -> getRepository('FrontOfficeBundle:Team')->find($idTeam);
+		$idUser = $team -> getUser($this -> getUser());
+		$em -> remove($idUser);
 		$em -> flush();
 
 		return $this -> redirect($request->headers->get('referer'));
