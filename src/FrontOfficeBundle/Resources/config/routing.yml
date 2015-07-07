@@ -25,6 +25,10 @@ front_office_invitation_response:
     path:     /response/{id}
     defaults: { _controller: FrontOfficeBundle:Invitation:response}
 
+front_office_invitation_denied:
+    path:     /deniedInvitation/{id}
+    defaults: { _controller: FrontOfficeBundle:Invitation:denied}
+
 # Routes administrant le blog:
 front_office_blog_homepage:
     path:     /blogHomepage 

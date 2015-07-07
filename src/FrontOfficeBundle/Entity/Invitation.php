@@ -57,7 +57,7 @@ class Invitation
      *
      * @ORM\Column(name="mode", type="string", length=255)
      */
-    private $mode;
+    private $mode;    
 
     /**
      * @var string
@@ -102,6 +102,13 @@ class Invitation
      * @ORM\Column(name="accepted", type="boolean")
      */
     private $accepted;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="denied", type="boolean")
+     */
+    private $denied;
 
     /**
      * @var \DateTime
@@ -389,5 +396,28 @@ class Invitation
     public function getUserTo()
     {
         return $this->userTo;
+    }
+
+    /**
+     * Set denied
+     *
+     * @param boolean $denied
+     * @return Invitation
+     */
+    public function setDenied($denied)
+    {
+        $this->denied = $denied;
+
+        return $this;
+    }
+
+    /**
+     * Get denied
+     *
+     * @return boolean 
+     */
+    public function getDenied()
+    {
+        return $this->denied;
     }
 }

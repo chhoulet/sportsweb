@@ -23,7 +23,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3 class="section-heading" style="padding-top:70px;">Accepter une invitation :</h3>
+                            <h3 class="section-heading" style="padding-top:20px;">Accepter une invitation :</h3>
                                 {% for invit in invitForConnectedUser %}                                 
                                     <p class="section-paragraph">{{ invit.content }}</p>
                                     <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p>

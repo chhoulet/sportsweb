@@ -26,6 +26,7 @@ class InvitationController extends Controller
 		if ($form -> isValid()){
 			$invitation ->setDateCreated(new \DateTime('now'));
 			$invitation ->setAccepted(false);
+			$invitation ->setDenied(false);
 			$invitation ->setUserFrom($this->getUser());
 			$invitation ->setUserTo($userTo);
 			$em -> persist($invitation);
@@ -53,5 +54,17 @@ class InvitationController extends Controller
 		$this ->get('session') ->getFlashBag('success', 'Vous venez d\'accepter cette invitation. Un e-mail de confirmation vient de vous être envoyé. Bon match !');
 
 		return $this-> redirect($this -> generateUrl('front_office_homepage'));
+	}
+
+	public function deniedAction(Request $request,$id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$invitationDenied = $em -> getRepository('FrontOfficeBundle:Invitation')->find($id);
+		$invitationDenied -> setDenied(true);
+		$em -> persist($invitationDenied);
+		$em -> flush();
+
+		return $this -> redirect($request->headers->get('referer'));
+
 	}
 }

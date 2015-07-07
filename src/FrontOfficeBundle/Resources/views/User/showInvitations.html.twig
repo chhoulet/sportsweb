@@ -19,6 +19,9 @@
                         </div>
                     </div>
 
+                <a href="{{ path('front_office_invitation_response', {id:invit.id}) }}">Accepter l'invitation</a><br>
+                <a href="{{ path('front_office_invitation_denied', {id:invit.id}) }}">Refuser l'invitation</a>
+
                 {% endfor %}
 
                 <p>Invit acceptées</p>
@@ -67,7 +70,8 @@
                         </div>
                     </div>
 
-                    <a href="{{path('front_office_invitation_response',{id:invit.id})}}">Accepter l'invitation</a>
+                    <a href="{{path('front_office_invitation_response',{id:invit.id})}}">Accepter l'invitation</a><br>
+                    <a href="{{ path('front_office_invitation_denied', {id:invit.id}) }}">Refuser l'invitation</a>
                
                 {% endfor %}
                

@@ -48,6 +48,7 @@ class InvitationRepository extends EntityRepository
 			JOIN i.sport s 
 			WHERE i.accepted = false 
 			AND i.userTo is null 
+			AND i.denied = false
 			AND s.id IN (SELECT up.id FROM UserBundle:User u JOIN u.sportPracticed up WHERE u.id = :user)
 			ORDER BY i.dateCreated DESC')						
 		->setParameter('user', $user);
