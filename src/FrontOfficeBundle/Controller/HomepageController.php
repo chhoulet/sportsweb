@@ -10,11 +10,12 @@ class HomepageController extends Controller
     {
     	$em          = $this -> getDoctrine()->getManager();
     	# Appel des functions triant les invitations par sport :
-    	$invitFoot   = $em -> getRepository('FrontOfficeBundle:Invitation') -> sportInvitation('football');
-    	$invitBasket = $em -> getRepository('FrontOfficeBundle:Invitation') -> sportInvitation('basket');
+        $invitForConnectedUser = $em -> getRepository('FrontOfficeBundle:Invitation') -> seeInvitationsForOneUser($this -> getUser());
+    	$allInvit = $em -> getRepository('FrontOfficeBundle:Invitation') -> findAll();
+    	
 
         return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
-        	array('invitFoot'   => $invitFoot,
-        		  'invitBasket' => $invitBasket));
+        	array('invitForConnectedUser' => $invitForConnectedUser,
+        		  'allInvit'              => $allInvit));
     }
 }
