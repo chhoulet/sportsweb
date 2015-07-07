@@ -5,14 +5,12 @@
         <div class="container">
             <div class="well col-lg-10">
 
-               {#  {{ app.user.team.name }} #}
-
                 {% for player in app.user.teams %}
 
             		<div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">{{ player.name }}
-                                <small>DATE : {{ player.dateCreated | date('d-m-Y H:i') }}</small><br>                            <small>SPORT : {{ player.sportPracticed }} </small><br>                               
+                                <small>DATE : {{ player.dateCreated | date('d-m-Y H:i') }}</small><br>                       <small>SPORT : {{ player.sportPracticed }} </small><br>                               
                                 <small>LIEU : {{ player.place }} </small><br>
                                 <small>MODE : {{ player.typeOfGame }} </small><br>
                             </h1>
@@ -22,6 +20,19 @@
                     {% if (app.user) == player.admin %}
                         <a href="{{ path('front_office_team_delete',{id:player.id}) }}"><button>Supprimer cette équipe</button></a>
                     {% endif %}
+
+
+                  {#   {% for members in app.user.teams.users %}
+                        {{ members.username }} <br>
+
+                        {% for sport in members.sportPracticed %}    
+                            {{ sport.name }}
+                        {% endfor %} 
+
+                        {% for sport in members.sportViewed %}
+                            {{ sport.name }}
+                        {% endfor %}                  
+                    {% endfor %} #}
                
                 {% endfor %}
         

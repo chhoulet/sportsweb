@@ -24,14 +24,19 @@
 			        	<div class="container">
                 			<div class="well col-lg-5">
 
-                    			<h3 class="page-header">{{ oneTeam.user.username}}
+                    			<h3 class="page-header">
 
-			                        {% for sport in oneTeam.user.sportPracticed %}
-			                            <small>SPORT : {{ sport.name }}</small>
-			                        {% endfor %}
+                    				{% for user in oneTeam.users %}
 
-                        			<small>AGE : {{ oneTeam.user.age }} ans</small><br>
+                    					{{ user.username }}
 
+                    						{% for sport in user.sportPracticed %}
+                    							 <small>SPORT : {{ sport.name }}</small>
+                    						{% endfor %}			                      
+			                           			                     
+                        				<small>AGE : {{ user.age }} ans</small><br>
+
+                        			{% endfor %}
                         			{# <a href="{{ path('front_office_team_user_delete',{id:oneTeam.id}) }}">Quitter l'équipe</a> #}
 
                     			</h3>

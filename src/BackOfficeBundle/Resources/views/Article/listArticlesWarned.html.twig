@@ -1,0 +1,42 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+		
+
+					<h2> Liste des articles mis en avertissement :</h2>
+
+						{% for art in listArticlesWarned %}
+
+			                <h2>
+			                    <a href="#">{{ art.title }}</a>
+			                </h2>
+			                <p class="lead">
+			                    by <a href="index.php">{{ art.author }}</a>
+			                </p>
+			                <p><span class="glyphicon glyphicon-time"></span> {{ art.dateCreated | date('d-m-Y H:i:s')}}</p>
+			                <hr>
+			                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+			                <hr>
+			                <p>{{ art.content }}</p>
+
+			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
+				                <a class="btn btn-primary" href="{{ path('back_office_article_update',{id:art.id}) }}">Mise à jour Article <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+				                <a class="btn btn-primary" href="{{ path('back_office_article_delete',{id:art.id}) }}">Suppression Article<span class="glyphicon glyphicon-chevron-right"></span></a>
+
+				                <a class="btn btn-primary" href="{{ path('back_office_article_warned_response',{id:art.id}) }}">Validation Article<span class="glyphicon glyphicon-chevron-right"></span></a>
+				            {% endif %}
+
+		                	<hr>
+
+	            		{% endfor %}
+
+	            </div>			
+			</div>
+		</div>
+		
+	{% endblock %}
