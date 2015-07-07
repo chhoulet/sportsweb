@@ -17,14 +17,12 @@
                         </div>
                     </div>
 
-
-
                     {% if (app.user) == player.admin %}
                         <a href="{{ path('front_office_team_delete',{id:player.id}) }}"><button>Supprimer cette équipe</button></a>
                     {% endif %}
 
 
-                  {#   {% for members in app.user.teams.users %}
+                    {% for members in player.users %}
                         {{ members.username }} <br>
 
                         {% for sport in members.sportPracticed %}    
@@ -34,7 +32,7 @@
                         {% for sport in members.sportViewed %}
                             {{ sport.name }}
                         {% endfor %}                  
-                    {% endfor %} #}
+                    {% endfor %}
                
                 {% endfor %}
         
