@@ -12,13 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class InvitationRepository extends EntityRepository
 {
-	# Query sélectionnant les 50 dernières invitations:
+	# Query sélectionnant les 500 dernières invitations:
 	public function getInvitation()
 	{
 		$query = $this -> getEntityManager()-> createQuery('
 			SELECT i 
 			FROM FrontOfficeBundle:Invitation i 
-			WHERE i.accepted = false')
+			WHERE i.accepted = false
+			AND i.denied = false
+			ORDER BY i.dateInvit ASC')
 		->setMaxResults(500);
 
 		return $query -> getResult();
@@ -33,7 +35,8 @@ class InvitationRepository extends EntityRepository
 			JOIN i.sport s
 			WHERE i.accepted = false 
 			AND i.userTo is null
-			AND s.name LIKE :sport')
+			AND s.name LIKE :sport
+			ORDER BY i.dateInvit ASC')
 		->setParameter('sport', $sport);
 
 		return $query ->getResult();
@@ -50,7 +53,7 @@ class InvitationRepository extends EntityRepository
 			AND i.userTo is null 
 			AND i.denied = false
 			AND s.id IN (SELECT up.id FROM UserBundle:User u JOIN u.sportPracticed up WHERE u.id = :user)
-			ORDER BY i.dateCreated DESC')						
+			ORDER BY i.dateInvit ASC')						
 		->setParameter('user', $user);
 
 		return $query -> getResult();

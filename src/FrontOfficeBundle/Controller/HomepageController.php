@@ -11,7 +11,7 @@ class HomepageController extends Controller
     	$em          = $this -> getDoctrine()->getManager();
     	# Appel des functions triant les invitations par sport :
         $invitForConnectedUser = $em -> getRepository('FrontOfficeBundle:Invitation') -> seeInvitationsForOneUser($this -> getUser());
-    	$allInvit = $em -> getRepository('FrontOfficeBundle:Invitation') -> findAll();
+    	$allInvit = $em -> getRepository('FrontOfficeBundle:Invitation') -> getInvitation();
     	
 
         return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
