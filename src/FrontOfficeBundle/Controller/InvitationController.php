@@ -17,9 +17,11 @@ class InvitationController extends Controller
 		$invitation = new Invitation();
 		$form = $this -> createForm(new InvitationType(), $invitation);
 
-		if ($userTo) {
+		if ($userTo || $teamTo || $teamFrom) {
 			$userTo = $em -> getRepository('UserBundle:User') -> find($userTo); // peut-être NULL
-		}
+			$teamTo = $em -> getRepository('FrontOfficeBundle:Team') -> find($teamTo);
+			$teamFrom = $em -> getRepository('FrontOfficeBundle:Team') -> find($teamTo);
+		}	
 		
 		$form -> handleRequest($request);
 
@@ -34,7 +36,7 @@ class InvitationController extends Controller
 			$em -> persist($invitation);
 			$em -> flush();
 
-			return $this->redirect($request -> headers -> get('referer'));
+			return $this->redirect($this -> generateUrl('front_office_homepage'));
 		}
 
 		return $this ->render('FrontOfficeBundle:Invitation:new.html.twig', 
