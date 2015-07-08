@@ -160,6 +160,21 @@ class Team
     private $admin;
 
     /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="teamFrom")
+     */
+    private $invitationsSentFromTeam;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="teamTo")
+     */
+    private $invitationsReceivedToTeam;
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -484,5 +499,71 @@ class Team
     public function getAdmin()
     {
         return $this->admin;
+    }
+
+    /**
+     * Add invitationsSentFromTeam
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitationsSentFromTeam
+     * @return Team
+     */
+    public function addInvitationsSentFromTeam(\FrontOfficeBundle\Entity\Invitation $invitationsSentFromTeam)
+    {
+        $this->invitationsSentFromTeam[] = $invitationsSentFromTeam;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitationsSentFromTeam
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitationsSentFromTeam
+     */
+    public function removeInvitationsSentFromTeam(\FrontOfficeBundle\Entity\Invitation $invitationsSentFromTeam)
+    {
+        $this->invitationsSentFromTeam->removeElement($invitationsSentFromTeam);
+    }
+
+    /**
+     * Get invitationsSentFromTeam
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitationsSentFromTeam()
+    {
+        return $this->invitationsSentFromTeam;
+    }
+
+    /**
+     * Add invitationsReceivedToTeam
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitationsReceivedToTeam
+     * @return Team
+     */
+    public function addInvitationsReceivedToTeam(\FrontOfficeBundle\Entity\Invitation $invitationsReceivedToTeam)
+    {
+        $this->invitationsReceivedToTeam[] = $invitationsReceivedToTeam;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitationsReceivedToTeam
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitationsReceivedToTeam
+     */
+    public function removeInvitationsReceivedToTeam(\FrontOfficeBundle\Entity\Invitation $invitationsReceivedToTeam)
+    {
+        $this->invitationsReceivedToTeam->removeElement($invitationsReceivedToTeam);
+    }
+
+    /**
+     * Get invitationsReceivedToTeam
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitationsReceivedToTeam()
+    {
+        return $this->invitationsReceivedToTeam;
     }
 }
