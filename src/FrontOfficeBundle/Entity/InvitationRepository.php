@@ -86,7 +86,7 @@ class InvitationRepository extends EntityRepository
 		$query = $this -> getEntityManager() -> createQuery('
 			SELECT COUNT(i.id) 
 			FROM FrontOfficeBundle:Invitation i
-			WHERE i.accepted = false');
+			WHERE i.denied = true');
 
 		return $query -> getSingleScalarResult();
 	}
