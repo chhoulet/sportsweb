@@ -54,7 +54,30 @@
                     			</h3>
 
                 			</div>
-            			</div>		       
+            			</div>		
+
+            		<h3>Invitations reçues :</h3>
+
+            			{% for invit in oneTeam.invitationsReceivedToTeam %}
+            				{{ invit.content }} {{ invit.dateInvit | date('d-m-Y H:i') }} {{ invit.mode }} {{ invit.teamFrom }}{{ invit.place }}
+
+            				{% if (app.user.id == oneTeam.admin.id) %}
+            					<a href="{{ path('front_office_invitation_response',{id:invit.id}) }}">Accepter l'invitation !</a> <a href="{{ path('front_office_invitation_denied',{id:invit.id}) }}">Décliner l'invitation</a>
+            				{% endif %}
+
+            			{% endfor %}
+
+            		<h3>Invitations envoyées :</h3>
+
+            			{% for invit in oneTeam.invitationsSentFromTeam %}
+            				{{ invit.content }} {{ invit.dateInvit | date('d-m-Y H:i') }} {{ invit.mode }} {{ invit.teamFrom }} {{ invit.place }}
+            			{% endfor %}            
+
+            		<h3>Invitations acceptées :</h3>
+
+            			{% for invit in oneTeam.invitationsReceivedToTeam if invit.dateAccepted is not null %}
+            				{{ invit.content }} {{ invit.dateInvit | date('d-m-Y H:i') }} {{ invit.mode }} {{ invit.teamFrom }} {{ invit.place }}
+            			{% endfor %}
 			                			            
 			            {% if(is_granted('ROLE_SUPER_ADMIN')) %}
 			                <a class="btn btn-primary" href="{{ path('back_office_team_delete',{id:oneTeam.id}) }}">Suppression team<span class="glyphicon glyphicon-chevron-right"></span></a>
