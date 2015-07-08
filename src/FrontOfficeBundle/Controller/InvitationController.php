@@ -11,7 +11,7 @@ class InvitationController extends Controller
 {	
 	/*Creation d'une invitation par un joueur, avec l'attribut accepted a false par défault. 
 	Choix de la destination de l'invitation selon qu'elle est envoyée en homepage ou à un autre user avec if(userTo)*/
-	public function newAction(Request $request, $userTo = null)
+	public function newAction(Request $request, $userTo = null, $teamTo= null, $teamFrom = null)
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$invitation = new Invitation();
@@ -28,16 +28,19 @@ class InvitationController extends Controller
 			$invitation ->setAccepted(false);
 			$invitation ->setDenied(false);
 			$invitation ->setUserFrom($this->getUser());
+			$invitation ->setTeamFrom($teamFrom);
+			$invitation ->setTeamTo($teamTo);
 			$invitation ->setUserTo($userTo);
 			$em -> persist($invitation);
 			$em -> flush();
 
-			return $this->redirect($this->generateUrl('front_office_homepage'));
+			return $this->redirect($request -> headers -> get('referer'));
 		}
 
 		return $this ->render('FrontOfficeBundle:Invitation:new.html.twig', 
 			array('form'  =>$form->createView(),
-				  'userTo'=>$userTo));
+				  'userTo'=>$userTo,
+				  'teamTo'=>$teamTo));
 	}
 
 	// Function d'acceptation de l'invitation, avec l'attribut accepted mis à true + date de l'acceptation implémentée automatiquement:
