@@ -5,10 +5,10 @@
 		<div class="container">
             <div class="well col-lg-10">
               		
-					<h2> <a href="#">{{ oneTeam.name }}</a></h2>
+					<h2> {{ oneTeam.name }} </h2>
 
 			        	<p class="lead">
-			                Sport pratiqué : <a href="index.php">{{ oneTeam.sportPracticed }}</a>
+			                Sport pratiqué : {{ oneTeam.sportPracticed }}  Equipe créée par : {{ oneTeam.admin }}
 			            </p>
 			            <p><span class="glyphicon glyphicon-time"></span>{{ oneTeam.dateCreated | date('d-m-Y')}}</p>
 			                <hr>

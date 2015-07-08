@@ -13,7 +13,7 @@
 			                    <a href="{{ path('front_office_team_one',{id:tea.id}) }}">{{ tea.name }}</a>
 			                </h2>
 			                <p class="lead">
-			                   Sport pratiqué :<a href="index.php">{{ tea.sportPracticed }}</a>
+			                   Sport pratiqué : {{ tea.sportPracticed }}
 			                </p>
 			                <p><span class="glyphicon glyphicon-time"></span> {{ tea.dateCreated | date('d-m-Y') }}</p>
 			                <hr>
