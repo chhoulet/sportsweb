@@ -17,7 +17,15 @@
 			            <p>{{ oneTeam.typeOfGame }}</p><br>
 			            <p>{{ oneTeam.habitsOfGame }}</p><br>
 
-			            <a href="{{ path('front_office_team_addUser',{id:oneTeam.id}) }}">Rejoins l'équipe !</a><br><br>
+			            {% if (is_granted('ROLE_USER')) %}
+			            	<a href="{{ path('front_office_team_addUser',{id:oneTeam.id}) }}">Rejoins l'équipe !</a><br><br>
+			            {% else %}
+			            	<a href="{{ path('fos_user_security_login') }}">Connectez-vous !</a> ou bien <a href="{{ path('fos_user_registration_register')}}">Créér votre compte :</a>
+			            {% endif %}
+
+			            {# {% if(is_granted('ROLE_USER')) and app.user.teamsAdmin is not null %}	
+			                  		<a href="{{ path('front_office_invitation_new',{teamTo:tea.id,teamFrom:app.user.teamsAdmin})}}">
+			                  	{% endif %} #}
 
 			        <h3>Les joueurs :</h3>
 			        				    
