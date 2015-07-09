@@ -40,12 +40,6 @@ front_office_blog_homepage:
     path:     /blogHomepage 
     defaults: { _controller: FrontOfficeBundle:Blog:homepage}
 
-    # Liste des articles indifférenciés:
-front_office_blog_list:
-    path:     /list/
-    defaults: { _controller: FrontOfficeBundle:Blog:list}
-    requirements:
-
     # Tri des Articles par category:
 front_office_blog_triBySport:
     path:     /triByCategories/{sport}

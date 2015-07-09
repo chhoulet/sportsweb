@@ -36,15 +36,6 @@ class BlogController extends Controller
 		    array('articles' => $article,		    	 
 		    	  'formArticle'=> $formArticle -> createView()));
 	}
-		
-	public function listAction()
-	{
-		$em = $this ->getDoctrine()->getManager();
-		$article = $em -> getRepository('FrontOfficeBundle:Article') ->findAll();
-
-		return $this -> render('FrontOfficeBundle:Blog:list.html.twig', 
-			array('article' => $article));
-	}
 
 	public function oneAction(Request $request, $id)
 	{
