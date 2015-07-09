@@ -95,43 +95,46 @@
         <!-- /.container -->
     </nav>
 
-   {% block content %}
+    {% block content %}
 
-   {% endblock %}
+        {% block sidebar %}
 
-   {% block sidebar %}
+        {% endblock %}
+      
 
-   {% endblock %}
+    {% endblock %}
+
+   
      <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p style="text-align:center">Copyright &copy; Your Website 2014</p>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p style="text-align:center">Copyright &copy; Your Website 2014</p>
+                    </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-2">
+                        <a href="{{ path('front_office_static_cgu') }}">Conditions Générales d'Utilisation</a>
+                    </div>
+                    <div class="col-lg-4 col-md-2">
+                        <a href="{{ path('front_office_static_mentions') }}">Mentions Légales</a>
+                    </div>
+                     <div class="col-lg-4 col-md-2">
+                        <a href="{{ path('front_office_static_contact') }}">Contact</a>
+                    </div>
+                </div>
+                <!-- /.row -->
             </div>
+            <!-- /.container -->
+        </footer>
 
-            <div class="row">
-                <div class="col-lg-4 col-md-2">
-                    <a href="{{ path('front_office_static_cgu') }}">Conditions Générales d'Utilisation</a>
-                </div>
-                <div class="col-lg-4 col-md-2">
-                    <a href="{{ path('front_office_static_mentions') }}">Mentions Légales</a>
-                </div>
-                 <div class="col-lg-4 col-md-2">
-                    <a href="{{ path('front_office_static_contact') }}">Contact</a>
-                </div>
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </footer>
+        <!-- jQuery -->
+        <script src="{{ asset('js/jquery.js') }}"></script>
 
-    <!-- jQuery -->
-    <script src="{{ asset('js/jquery.js') }}"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 </body>
 

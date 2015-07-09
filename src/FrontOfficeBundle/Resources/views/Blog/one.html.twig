@@ -9,6 +9,11 @@
                 <!-- Blog Post Content Column -->
                 <div class="col-lg-8">
 
+                    <h1 class="page-header">
+                        Sports Web
+                        <small><a href="{{ path('front_office_blog_homepage') }}">Blog :</small>
+                    </h1>
+
                     <!-- Blog Post -->
 
                     <!-- Title -->
@@ -45,6 +50,7 @@
                                 {{ form(form) }}
                         </div>
                     {% else %}
+                    
                         <p>Vous souhaitez publier un commentaire ?<a href="{{ path('fos_user_security_login') }}">Connectez-    vous !</a>
                     {% endif %}
 
@@ -70,10 +76,14 @@
                     
                 </div>
 
-    {% endblock %}
+                {% block sidebar %}
 
-    {% block sidebar %}
+                    {{ include('FrontOfficeBundle:Blog:sidebar.html.twig') }}
 
-        {{ include('FrontOfficeBundle:Blog:sidebar.html.twig') }}
+                {% endblock %}
+
+            </div>
+
+        </div>
 
     {% endblock %}
