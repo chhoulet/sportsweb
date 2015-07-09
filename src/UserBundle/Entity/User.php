@@ -97,6 +97,13 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Article", mappedBy="sport")
+     */
+    protected $sportMaster;
+
+    /**
+     * @var string
+     *
      * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="userFrom")
      */
     protected $invitationsSent;
@@ -578,5 +585,38 @@ class User extends BaseUser
     public function getTeamsAdmin()
     {
         return $this->teamsAdmin;
+    }
+
+    /**
+     * Add sportMaster
+     *
+     * @param \FrontOfficeBundle\Entity\Article $sportMaster
+     * @return User
+     */
+    public function addSportMaster(\FrontOfficeBundle\Entity\Article $sportMaster)
+    {
+        $this->sportMaster[] = $sportMaster;
+
+        return $this;
+    }
+
+    /**
+     * Remove sportMaster
+     *
+     * @param \FrontOfficeBundle\Entity\Article $sportMaster
+     */
+    public function removeSportMaster(\FrontOfficeBundle\Entity\Article $sportMaster)
+    {
+        $this->sportMaster->removeElement($sportMaster);
+    }
+
+    /**
+     * Get sportMaster
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSportMaster()
+    {
+        return $this->sportMaster;
     }
 }

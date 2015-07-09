@@ -119,6 +119,13 @@ class Article
      */
     private $comment;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", inversedBy="sportMaster")
+     * @ORM\JoinTable(name="articles_user")
+     */
+    private $sport;
 
     /**
      * Get id
@@ -375,5 +382,38 @@ class Article
     public function getWarned()
     {
         return $this->warned;
+    }
+
+    /**
+     * Add sport
+     *
+     * @param \UserBundle\Entity\User $sport
+     * @return Article
+     */
+    public function addSport(\UserBundle\Entity\User $sport)
+    {
+        $this->sport[] = $sport;
+
+        return $this;
+    }
+
+    /**
+     * Remove sport
+     *
+     * @param \UserBundle\Entity\User $sport
+     */
+    public function removeSport(\UserBundle\Entity\User $sport)
+    {
+        $this->sport->removeElement($sport);
+    }
+
+    /**
+     * Get sport
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSport()
+    {
+        return $this->sport;
     }
 }
