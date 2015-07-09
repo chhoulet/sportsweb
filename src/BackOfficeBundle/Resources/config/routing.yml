@@ -22,16 +22,22 @@ back_office_article_admin:
 back_office_article_response:
     path:     /response/{id}
     defaults: { _controller: BackOfficeBundle:Article:response}
+    requirements: 
+        id: "[0-9]+"
 
     # Mise en statut Warned d'un article:
 back_office_article_warnedArticle:
     path:     /warnedArticle/{id}
     defaults: { _controller: BackOfficeBundle:Article:warnedArticle}
+    requirements: 
+        id: "[0-9]+"
 
     # Mise à jour d'un article par l'administrateur:
 back_office_article_update:
     path:     /update/{id}
     defaults: { _controller: BackOfficeBundle:Article:update}
+    requirements: 
+        id: "[0-9]+"
 
     # Affichage des articles mis en statut warned:
 back_office_article_list_articles_warned:
@@ -42,11 +48,15 @@ back_office_article_list_articles_warned:
 back_office_article_warned_response:
     path:     /responseWarnedArticle/{id}
     defaults: { _controller: BackOfficeBundle:Article:responseWarnedArticle}
+    requirements: 
+        id: "[0-9]+"
 
     # Suppression des articles par l'administrateur:
 back_office_article_delete:
     path:     /delete/{id}
     defaults: { _controller: BackOfficeBundle:Article:delete}
+    requirements: 
+        id: "[0-9]+"
 
 #  Routes gerant l'administration des commentaires:
     # Contrôle des comments par l'administrateur:
@@ -58,11 +68,15 @@ back_office_comment_admin:
 back_office_comment_response:
     path:     /responseComment/{id}
     defaults: { _controller: BackOfficeBundle:Comment:response}
+    requirements: 
+        id: "[0-9]+"
 
     # Suppression des comments par l'administrateur:
 back_office_comment_delete:
     path:     /deleteComment/{id}
     defaults: { _controller: BackOfficeBundle:Comment:delete}
+    requirements: 
+        id: "[0-9]+"
 
 #  Routes gerant l'administration des terrains de sport :
 back_office_ground_list:
@@ -78,11 +92,15 @@ back_office_ground_new:
 back_office_ground_update:
     path:     /updateGround/{id}
     defaults: { _controller: BackOfficeBundle:Ground:update}
+    requirements: 
+        id: "[0-9]+"
 
     # Suppression des grounds par l'administrateur:
 back_office_ground_delete:
     path:     /deleteGround/{id}
     defaults: { _controller: BackOfficeBundle:Ground:delete}
+    requirements: 
+        id: "[0-9]+"
 
 # Routes gerant les users:
     # Liste des users non valides par l'administrateur:
@@ -94,11 +112,15 @@ back_office_admin_user:
 back_office_admin_user_response:
     path:     /responseUser/{id}
     defaults: { _controller: BackOfficeBundle:User:response}
+    requirements: 
+        id: "[0-9]+"
 
     # Mise en table Warning d'un user:
 back_office_admin_user_warned:
     path:     /warnedUser/{id}
     defaults: { _controller: BackOfficeBundle:User:warned}
+    requirements: 
+        id: "[0-9]+"
 
     # View des warnedUsers:
 back_office_admin_warnedUsers:
@@ -120,11 +142,15 @@ back_office_list_team:
 back_office_admin_team_response:
     path:     /responseTeam/{id}
     defaults: { _controller: BackOfficeBundle:Team:response}
+    requirements: 
+        id: "[0-9]+"
 
     # Suppression d'une team par l'administrateur:
 back_office_team_delete:
     path:     /deleteTeam/{id}
     defaults: { _controller: BackOfficeBundle:Team:delete}
+    requirements: 
+        id: "[0-9]+"
 
 # Routes gerant les messages :
 back_office_message_list:
@@ -134,6 +160,8 @@ back_office_message_list:
 back_office_message_delete:
     path:     /deleteMessage/{id}
     defaults: { _controller: BackOfficeBundle:Message:delete}
+    requirements: 
+        id: "[0-9]+"
 
 # Route gerant les Sports :
 back_office_sport_new:
