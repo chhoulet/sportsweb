@@ -25,11 +25,15 @@ front_office_invitation_new:
 front_office_invitation_response:
     path:     /response/{id}
     defaults: { _controller: FrontOfficeBundle:Invitation:response}
+    requirements: 
+        id: "[0-9]+"
 
     # Refus d'une invitation: 
 front_office_invitation_denied:
     path:     /deniedInvitation/{id}
     defaults: { _controller: FrontOfficeBundle:Invitation:denied}
+    requirements: 
+        id: "[0-9]+"
 
 # Routes administrant le blog:
 front_office_blog_homepage:
@@ -53,6 +57,8 @@ front_office_blog_triByCategories:
 front_office_blog_one:
     path:     /One/{id}
     defaults: { _controller: FrontOfficeBundle:Blog:one}
+    requirements: 
+        id: "[0-9]+"
 
 # Routes gerant les users:
     # Route Mon Profil:
@@ -69,11 +75,15 @@ front_office_users_list:
 front_office_user_one:
     path:     /oneUser/{id}
     defaults: { _controller: FrontOfficeBundle:User:one}
+    requirements: 
+        id: "[0-9]+"
 
     # Ajouter un user à sa liste d'amis:
 front_office_user_getFriend:
     path:     /getFriend/{id}
     defaults: { _controller: FrontOfficeBundle:User:getFriend}
+    requirements: 
+        id: "[0-9]+"
 
     # Voir sa liste d'amis:
 front_office_user_showFriends:
@@ -99,6 +109,8 @@ front_office_team_list:
 front_office_team_one:
     path:     /oneTeam/{id}
     defaults: { _controller: FrontOfficeBundle:Team:oneTeam}
+    requirements: 
+        id: "[0-9]+"
 
     # Créer une nouvelle team:
 front_office_team_new:
@@ -109,6 +121,8 @@ front_office_team_new:
 front_office_team_addUser:
     path:     /addUser/{id}
     defaults: { _controller: FrontOfficeBundle:Team:addUser}
+    requirements: 
+        id: "[0-9]+"
 
     # Suppression d'un user d'une team:
 front_office_team_user_delete:
@@ -119,3 +133,5 @@ front_office_team_user_delete:
 front_office_team_delete:
     path:     /deleteTeam/{id}
     defaults: { _controller: FrontOfficeBundle:Team:teamDelete}
+    requirements: 
+        id: "[0-9]+"
