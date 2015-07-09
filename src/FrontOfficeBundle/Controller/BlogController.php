@@ -30,8 +30,7 @@ class BlogController extends Controller
 
 			return $this -> redirect($this -> generateUrl('front_office_blog_homepage'));
 		}
-
-
+		
 		return $this -> render('FrontOfficeBundle:Blog:homepage.html.twig',
 		    array('articles' => $article,		    	 
 		    	  'formArticle'=> $formArticle -> createView()));
