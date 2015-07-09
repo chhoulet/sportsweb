@@ -25,6 +25,16 @@ class ArticleRepository extends EntityRepository
 		return $query -> getResult();
 	}
 
+	public function getArticleBySportsPracticed($sport)
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT a 
+			FROM FrontOfficeBundle:Article a 
+			JOIN a.user u 
+			WHERE u.sportMaster LIKE :sport')
+		->setParameter('sport', $sport);
+	}
+
 	public function triArticle($category)
 	{
 		$query = $this -> getEntityManager()->createQuery('
