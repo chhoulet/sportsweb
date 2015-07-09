@@ -28,12 +28,12 @@ class BlogController extends Controller
 			$em -> persist($articleUser);
 			$em -> flush();
 
-			return $this -> redirect($this -> generateurl('front_office_blog_homepage'));
+			return $this -> redirect($this -> generateUrl('front_office_blog_homepage'));
 		}
 
 
 		return $this -> render('FrontOfficeBundle:Blog:homepage.html.twig',
-		    array('articles' => $article,
+		    array('articles' => $article,		    	 
 		    	  'formArticle'=> $formArticle -> createView()));
 	}
 		
@@ -71,11 +71,11 @@ class BlogController extends Controller
 				  'form'   => $form -> createView()));
 	}
 
-	public function triByCategoriesAction($category)
+	public function triBySportAction($sport)
 	{
 		$em = $this ->getDoctrine()->getManager();
-		$articles = $em -> getRepository('FrontOfficeBundle:Article') -> triArticle($category);
+		$triArticles = $em -> getRepository('FrontOfficeBundle:Article') -> triArticle($sport);		
 
-		return $this -> render('FrontOfficeBundle:Blog:triByCategories.html.twig', array('articles'=>$articles));
+		return $this -> render('FrontOfficeBundle:Blog:tribysport.html.twig', array('articles'=>$triArticles));
 	}
 }
