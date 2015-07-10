@@ -17,6 +17,7 @@
 							{{ message.email }}<br>
 
 							<a href="{{ path('back_office_message_delete',{id:message.id}) }}">Supprimer ce message</a>
+							<a href="{{ path('back_office_message_readMessage',{id:message.id}) }}">Marquer ce message comme lu</a>
 							
 						{% endfor %}
 

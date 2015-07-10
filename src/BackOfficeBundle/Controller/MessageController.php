@@ -3,6 +3,7 @@
 namespace BackOfficeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class MessageController extends Controller
 {
@@ -22,5 +23,16 @@ class MessageController extends Controller
 		$em -> flush();
 
 		return $this -> redirect($this -> generateUrl('back_office_message_list'));
+	}
+
+	public function readMessageAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$readMessage = $em -> getRepository('FrontOfficeBundle:Message')->find($id);
+		$readMessage -> setReadMessage(true);
+		$em -> persist($readMessage);
+		$em -> flush();
+
+		return $this -> redirect($request -> headers -> get('referer'));
 	}
 }

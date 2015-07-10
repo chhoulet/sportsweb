@@ -31,6 +31,7 @@ class StaticController extends Controller
 		if($form -> isValid())
 		{
 			$message ->setDateCreated(new \datetime('now'));
+			$message ->setReadMessage(false);
 			$em -> persist($message);
 			$em -> flush();
 
