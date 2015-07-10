@@ -35,4 +35,13 @@ class MessageController extends Controller
 
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
+
+	public function listReadMessageAction()
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$listReadMessage = $em -> getRepository('FrontOfficeBundle:Message')-> getReadMessage();
+
+		return $this -> render('BackOfficeBundle:Message:listReadMessage.html.twig', 
+			array('listReadMessage'=>$listReadMessage));
+	}
 }

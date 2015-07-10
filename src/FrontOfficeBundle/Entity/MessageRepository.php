@@ -43,4 +43,15 @@ class MessageRepository extends EntityRepository
 		return $query -> getSingleScalarResult();
 	}
 
+	public function getReadMessage()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT m 
+			FROM FrontOfficeBundle:Message m 
+			WHERE m.readMessage = true
+			ORDER BY m.dateCreated DESC');
+
+		return $query -> getResult();
+	}
+
 }

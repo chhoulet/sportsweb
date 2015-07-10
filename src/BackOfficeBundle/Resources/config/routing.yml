@@ -162,6 +162,11 @@ back_office_message_readMessage:
     path:     /readMessage/{id}
     defaults: { _controller: BackOfficeBundle:Message:readMessage}
 
+    #Lister les messages archives:
+back_office_message_readMessage_list:
+    path:     /listReadMessage
+    defaults: { _controller: BackOfficeBundle:Message:listReadMessage}
+
     # Supprimer un message:
 back_office_message_delete:
     path:     /deleteMessage/{id}
