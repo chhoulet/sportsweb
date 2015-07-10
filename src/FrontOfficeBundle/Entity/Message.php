@@ -59,6 +59,14 @@ class Message
     private $dateCreated;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="readMessage", type="boolean")
+     *
+     */
+    private $readMessage;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="subject", type="string", length=255)
@@ -207,5 +215,28 @@ class Message
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set readMessage
+     *
+     * @param boolean $readMessage
+     * @return Message
+     */
+    public function setReadMessage($readMessage)
+    {
+        $this->readMessage = $readMessage;
+
+        return $this;
+    }
+
+    /**
+     * Get readMessage
+     *
+     * @return boolean 
+     */
+    public function getReadMessage()
+    {
+        return $this->readMessage;
     }
 }

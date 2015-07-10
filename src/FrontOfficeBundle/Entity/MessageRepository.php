@@ -17,6 +17,7 @@ class MessageRepository extends EntityRepository
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT m 
 			FROM FrontOfficeBundle:Message m 
+			WHERE m.readMessage = false
 			ORDER BY m.dateCreated DESC');
 
 		return $query -> getResult();
@@ -41,4 +42,5 @@ class MessageRepository extends EntityRepository
 
 		return $query -> getSingleScalarResult();
 	}
+
 }
