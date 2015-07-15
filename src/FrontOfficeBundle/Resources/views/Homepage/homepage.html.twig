@@ -30,6 +30,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
+                            {% for message in app.session.flashbag.get('succes') %}
+                                <p>{{ message }}</p>
+                            {% endfor %}
                             <h3 class="section-heading" style="padding-top:20px;">Accepter une invitation :</h3>
                                 {% for invit in invitForConnectedUser %}                                 
                                     <p class="section-paragraph">{{ invit.content }}</p>

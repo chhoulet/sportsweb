@@ -14,6 +14,7 @@ class InvitationController extends Controller
 	public function newAction(Request $request, $userTo = null, $teamTo= null, $teamFrom = null)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$invitation = new Invitation();
 		$form = $this -> createForm(new InvitationType(), $invitation);
 
@@ -35,6 +36,8 @@ class InvitationController extends Controller
 			$invitation ->setUserTo($userTo);
 			$em -> persist($invitation);
 			$em -> flush();
+
+			$session ->getFlashBag()->add('succes','Votre invitation a bien été lancée !');
 
 			return $this->redirect($this -> generateUrl('front_office_homepage'));
 		}
