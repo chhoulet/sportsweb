@@ -59,6 +59,10 @@
                    
                     <!-- Posted Comments -->
 
+                    {% for message in app.session.flashbag.get('succes') %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+
                     <!-- Comment -->
                     {% for com in article.comment %}
                         <div class="media">

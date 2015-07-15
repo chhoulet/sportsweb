@@ -41,6 +41,7 @@ class BlogController extends Controller
 	public function oneAction(Request $request, $id)
 	{
 		$em = $this ->getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$article = $em -> getRepository('FrontOfficeBundle:Article') ->find($id);
 		$comment = new Comment();
 		$form = $this -> createForm(new CommentType(), $comment);
@@ -55,6 +56,7 @@ class BlogController extends Controller
 			$em -> persist($comment);
 			$em -> flush();
 
+			$session -> getFlashbag()->add('succes','Merci pour votre commentaire !');
 			return $this -> redirect($this ->generateurl('front_office_blog_one', array('id'=>$id)));
 		}
 
