@@ -5,17 +5,17 @@
         <div class="container">
             <div class="well col-lg-10">
 
-                <p>Invit de ton sport préféré :</p>
+                <h1>Invit de ton sport préféré :</h1>
                 {% for invit in invitation %}
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">{{ invit.content }}
-                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small><br>
-                                <small>SPORT : {{ invit.sport }} </small><br>
-                                <small>LIEU : {{ invit.place }} </small><br>
+                            <h3 >{{ invit.userFrom}} vous invite à jouer au {{ invit.sport }}<br>
+                                <small>{{ invit.content }}</small><br>
+                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small>                         
+                                <small>LIEU : {{ invit.place }} </small>  
                                 <small>MODE : {{ invit.mode }} </small><br>
-                            </h1>
+                            </h3>
                         </div>
                     </div>
 
@@ -24,68 +24,69 @@
 
                 {% endfor %}
 
-                <p>Invit acceptées</p>
+                <h1>Invit acceptées</h1>
                 {% for invit in app.user.invitationsReceived if invit.dateAccepted is not null %}
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">{{ invit.content }}
-                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small><br>
-                                <small>SPORT : {{ invit.sport }} </small><br>
-                                <small>LIEU : {{ invit.place }} </small><br>
+                            <h3 >{{ invit.userFrom}} vous invite à jouer au {{ invit.sport }}<br>
+                                <small>{{ invit.content }}</small><br>
+                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small>                         
+                                <small>LIEU : {{ invit.place }} </small>  
                                 <small>MODE : {{ invit.mode }} </small><br>
-                            </h1>
+                            </h3>
                         </div>
                     </div>
                
                 {% endfor %}
 
-                 <p>Invit envoyees:</p>
+                 <h1>Invit envoyees:</h1>
                 {% for invit in app.user.invitationsSent %}
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">{{ invit.content }}
-                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small><br>
-                                <small>SPORT : {{ invit.sport }}</small><br>
-                                <small>LIEU : {{ invit.place }}</small><br>
-                                <small>MODE : {{ invit.mode }}</small><br>
-                            </h1>
+                            <h3 >{{ invit.userFrom}} vous invite à jouer au {{ invit.sport }}<br>
+                                <small>{{ invit.content }}</small><br>
+                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small>                         
+                                <small>LIEU : {{ invit.place }} </small>  
+                                <small>MODE : {{ invit.mode }} </small><br>
+                            </h3>
                         </div>
                     </div>
                
                 {% endfor %}              
 
-                <p>Invit reçues et non acceptées :</p>
+                <h1>Invit reçues et non acceptées :</h1>
                 {% for invit in app.user.invitationsReceived if invit.dateAccepted is null and invit.dateDenied is null %}
 
             		<div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">{{ invit.content }}
-                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small><br>
-                                <small>SPORT : {{ invit.sport }} </small><br>
-                                <small>LIEU : {{ invit.place }} </small><br>
+                            <h3 >{{ invit.userFrom}} vous invite à jouer au {{ invit.sport }}<br>
+                                <small>{{ invit.content }}</small><br>
+                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small>                         
+                                <small>LIEU : {{ invit.place }} </small>  
                                 <small>MODE : {{ invit.mode }} </small><br>
-                            </h1>
+                            </h3>
                         </div>
                     </div>
 
-                    <a href="{{path('front_office_invitation_response',{id:invit.id})}}">Accepter l'invitation</a><br>
+                    <a href="{{ path('front_office_invitation_response', {id:invit.id}) }}">Accepter l'invitation</a><br>
                     <a href="{{ path('front_office_invitation_denied', {id:invit.id}) }}">Refuser l'invitation</a>
+
                
                 {% endfor %}
 
-                <p>Invit refusées</p>
+                <h1>Invit refusées</h3>
                 {% for invit in app.user.invitationsReceived if invit.dateDenied is not null %}
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">{{ invit.content }}
-                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small><br>
-                                <small>SPORT : {{ invit.sport }} </small><br>
-                                <small>LIEU : {{ invit.place }} </small><br>
+                            <h3 >{{ invit.userFrom}} vous invite à jouer au {{ invit.sport }}<br>
+                                <small>{{ invit.content }}</small><br>
+                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small>                         
+                                <small>LIEU : {{ invit.place }} </small>  
                                 <small>MODE : {{ invit.mode }} </small><br>
-                            </h1>
+                            </h3>
                         </div>
                     </div>
                
