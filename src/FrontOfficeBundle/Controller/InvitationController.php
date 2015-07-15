@@ -66,7 +66,8 @@ class InvitationController extends Controller
 		$em = $this -> getDoctrine()->getManager();
 		$invitationDenied = $em -> getRepository('FrontOfficeBundle:Invitation')->find($id);
 		$invitationDenied -> setDenied(true);
-		$invitationDenied -> setDateDenied(new \date('now'));
+		$invitationDenied -> setDateDenied(new \datetime('now'));
+		$invitationDenied -> setUserTo($this->getUser());
 		$em -> persist($invitationDenied);
 		$em -> flush();
 

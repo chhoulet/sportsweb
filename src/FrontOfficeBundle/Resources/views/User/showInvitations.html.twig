@@ -74,6 +74,22 @@
                     <a href="{{ path('front_office_invitation_denied', {id:invit.id}) }}">Refuser l'invitation</a>
                
                 {% endfor %}
+
+                <p>Invit refusées</p>
+                {% for invit in app.user.invitationsReceived if invit.dateDenied is not null %}
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">{{ invit.content }}
+                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small><br>
+                                <small>SPORT : {{ invit.sport }} </small><br>
+                                <small>LIEU : {{ invit.place }} </small><br>
+                                <small>MODE : {{ invit.mode }} </small><br>
+                            </h1>
+                        </div>
+                    </div>
+               
+                {% endfor %}
                
             </div>
         </div>
