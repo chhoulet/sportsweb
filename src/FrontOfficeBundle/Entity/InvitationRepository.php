@@ -110,11 +110,12 @@ class InvitationRepository extends EntityRepository
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT i 
 			FROM FrontOfficeBundle:Invitation i 
-			WHERE i.sport LIKE :sport 
+			JOIN i.sport s
+			WHERE s.name LIKE :sport 
 			AND i.place LIKE :place 
 			ORDER BY i.dateInvit ASC')
-		->setParameter('sport',$sport)
-		->setParameter('place',$place);
+		->setParameter('sport', $sport)
+		->setParameter('place', $place);
 
 		return $query ->getResult();
 	}
