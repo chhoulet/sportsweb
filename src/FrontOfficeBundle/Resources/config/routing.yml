@@ -35,10 +35,10 @@ front_office_invitation_denied:
     requirements: 
         id: "[0-9]+"
 
-#     # Suppression d'une invitation de son profil personnel:
-# front_office_invitation_deletefrom_monprofil:
-#     path:     /deleteInvitationFromMonProfil/{id}
-#     defaults: { _controller: FrontOfficeBundle:Invitation:deleteFromMonProfil}
+    # Suppression d'une invitation de son profil personnel:
+front_office_invitation_deletefrom_monprofil:
+    path:     /deleteInvitationFromMonProfil/{id}
+    defaults: { _controller: FrontOfficeBundle:Invitation:deleteFromMonProfil}
 
 # Routes administrant le blog:
 front_office_blog_homepage:

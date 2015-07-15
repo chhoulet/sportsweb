@@ -74,7 +74,7 @@ class InvitationController extends Controller
 		return $this -> redirect($request->headers->get('referer'));
 	}
 
-	/*public function deleteFromMonProfil(Request $request, $id)
+	public function deleteFromMonProfilAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$deleteFromMonProfil = $em -> getRepository('FrontOfficeBundle:Invitation')-> find($id);
@@ -83,5 +83,5 @@ class InvitationController extends Controller
 		$em -> flush();
 
 		return $this -> redirect($request -> headers -> get('referer'));
-	}/*<a href="{{ path('front_office_invitation_deletefrom_monprofil', {id:invit.id}) }}">Supprimer l'invitation</a>*/
+	}
 }

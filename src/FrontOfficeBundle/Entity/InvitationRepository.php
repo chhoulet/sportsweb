@@ -103,4 +103,6 @@ class InvitationRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	
 }

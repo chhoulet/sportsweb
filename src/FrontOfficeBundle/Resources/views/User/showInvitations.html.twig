@@ -3,9 +3,16 @@
 	{% block content %}
 
         <div class="container">
-            <div class="well col-lg-10">
+            <div class="well col-lg-12">
 
-                <h1>Invit de ton sport préféré :</h1>
+                {# {% for sports in app.user.sportPracticed %}
+                    {% if sports.id > 1 %}                        
+                        <h1>Invitations de tes sports préférés :{% for favorite in sports.name %}{{ favorite.name }}{% endfor %}</h1>
+                    {% else %}                
+                        <h1>Invitations de ton sport préféré :{% for favorite in sports.name %}{{ favorite.name }}{% endfor %}</h1>
+                    {% endif %}
+                {% endfor %}
+ #}
                 {% for invit in invitation %}
 
                     <div class="row">
@@ -21,6 +28,7 @@
 
                 <a href="{{ path('front_office_invitation_response', {id:invit.id}) }}">Accepter l'invitation</a><br>
                 <a href="{{ path('front_office_invitation_denied', {id:invit.id}) }}">Refuser l'invitation</a>
+                <a href="{{ path('front_office_invitation_deletefrom_monprofil', {id:invit.id}) }}">Supprimer l'invitation</a>
 
                 {% endfor %}
 
@@ -37,6 +45,8 @@
                             </h3>
                         </div>
                     </div>
+
+                    <a href="{{ path('front_office_invitation_deletefrom_monprofil', {id:invit.id}) }}">Supprimer l'invitation</a>
                
                 {% endfor %}
 
