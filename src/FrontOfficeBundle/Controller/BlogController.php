@@ -14,6 +14,7 @@ class BlogController extends Controller
 	public function homepageAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getmanager();
+		$session = $request -> getSession();
 		$article = $em -> getRepository('FrontOfficeBundle:Article')-> getArticle();
 
 		#Code permettant la creation des articles du blog :
@@ -28,6 +29,7 @@ class BlogController extends Controller
 			$em -> persist($articleUser);
 			$em -> flush();
 
+			$session -> getFlashbag() -> add('succes','Votre article a bien été enregistré ! Il est en cours de validation et sera prochainement posté. Merci');
 			return $this -> redirect($this -> generateUrl('front_office_blog_homepage'));
 		}
 		
