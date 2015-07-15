@@ -24,6 +24,7 @@ class StaticController extends Controller
 	{
 		$em = $this -> getDoctrine()-> getManager();
 		$message = new Message();
+		$session = $request -> getSession();
 		$form = $this -> createForm(new MessageType(), $message);
 
 		$form -> handleRequest($request);
@@ -35,11 +36,11 @@ class StaticController extends Controller
 			$em -> persist($message);
 			$em -> flush();
 
+			$session -> getFlashbag()-> add('info', 'Votre message a bien été envoyé à l\'administrateur');
 			return $this -> redirect($this -> generateUrl('front_office_homepage'));
 		}
 
 		return $this -> render('FrontOfficeBundle:Static:contact.html.twig', array('form' => $form -> createView()));
 	}
-
 
 }

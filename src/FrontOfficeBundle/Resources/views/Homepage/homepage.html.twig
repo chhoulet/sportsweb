@@ -20,8 +20,15 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
+                            {# Message flashbag lors de l'envoi d'un message à l'admin #}
+                            {% for message in app.session.flashbag.get('info') %}
+                                <p>{{ message }}</p>
+                            {% endfor %}
                             <h3 class="section-heading" style="padding-top:20px;">Sélectionner les invitations :</h3>
                                 {{ form(form) }}
+                        </div>
+                    </div>
+                </div>
 
         {% if (is_granted('ROLE_USER')) %}
 
@@ -30,9 +37,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
+
+                            {#  Message flashbag lors de la creation d'une invit #}
                             {% for message in app.session.flashbag.get('succes') %}
                                 <p>{{ message }}</p>
-                            {% endfor %}
+                            {% endfor %}    
+
                             <h3 class="section-heading" style="padding-top:20px;">Accepter une invitation :</h3>
                                 {% for invit in invitForConnectedUser %}                                 
                                     <p class="section-paragraph">{{ invit.content }}</p>
