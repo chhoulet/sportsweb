@@ -18,20 +18,26 @@
                     </div>
 
                     {% if (app.user) == player.admin %}
-                        <a href="{{ path('front_office_team_delete',{id:player.id}) }}"><button>Supprimer cette équipe</button></a>
+                        <a href="{{ path('front_office_team_delete',{id:player.id}) }}"><button>Supprimer cette équipe</button></a><br><br>
                     {% endif %}
 
-
+                    <h3>Joueurs :</h3>
                     {% for members in player.users %}
+
                         {{ members.username }} <br>
 
                         {% for sport in members.sportPracticed %}    
-                            {{ sport.name }}
+                            {{ sport.name }}<br>
                         {% endfor %} 
 
                         {% for sport in members.sportViewed %}
-                            {{ sport.name }}
-                        {% endfor %}                  
+                            {{ sport.name }}<br>
+                        {% endfor %}<br><br>    
+
+                        {% if app.user == player.admin %}
+                            <a href="{{ path('front_office_team_user_delete',{idUser:members.id, idTeam:player.id}) }}">Supprimer ce joueur de l'équipe</a>              
+                        {% endif %}
+                        
                     {% endfor %}
                
                 {% endfor %}

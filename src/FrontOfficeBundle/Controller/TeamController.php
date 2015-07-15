@@ -69,8 +69,8 @@ class TeamController extends Controller
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$team = $em -> getRepository('FrontOfficeBundle:Team')->find($idTeam);
-		$idUser = $team -> getUser($this -> getUser());
-		$em -> remove($idUser);
+		$idUser = $team -> getUser($id);
+		$em -> removeUser($idUser);
 		$em -> flush();
 
 		return $this -> redirect($request->headers->get('referer'));
