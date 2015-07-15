@@ -49,9 +49,10 @@ class InvitationController extends Controller
 	}
 
 	// Function d'acceptation de l'invitation, avec l'attribut accepted mis à true + date de l'acceptation implémentée automatiquement:
-	public function responseAction($id)
+	public function responseAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$invitation = $em -> getRepository('FrontOfficeBundle:Invitation') -> find($id);
 		$invitation -> setAccepted(true);
 		$invitation -> setDateAccepted(new \DateTime('now'));
@@ -59,7 +60,7 @@ class InvitationController extends Controller
 		$em -> persist($invitation);
 		$em -> flush();
 
-		$this ->get('session') ->getFlashBag('success', 'Vous venez d\'accepter cette invitation. Un e-mail de confirmation vient de vous être envoyé. Bon match !');
+		$session ->getFlashBag() ->add('repon', 'Vous venez d\'accepter cette invitation. Un e-mail de confirmation vient d\'être envoyé à l\'expéditeur. Bon match !');
 
 		return $this-> redirect($this -> generateUrl('front_office_homepage'));
 	}
