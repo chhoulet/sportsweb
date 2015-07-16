@@ -15,11 +15,22 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('content')
-            ->add('author')
-            ->add('category', 'choice', array('choices' => array('football' => 'football',
-                                                                 'basket' => 'basket')))
+            ->add('title','text',       array('label'   =>'Titre de l\'article:',
+                                              'attr'    => array('placeholder'=>'Entrez le titre:')))
+            ->add('content','text',     array('label'   =>'Contenu de l\'article',
+                                              'attr'    => array('placeholder'=>'Votre texte:')))
+            ->add('author','text',      array('label'   =>'Saisissez votre username:',
+                                              'attr'    => array('placeholder'=>'username')))
+            ->add('category', 'choice', array('label'   =>'Choisissez une catégorie:',
+                                              'choices' => array('football' => 'Football',
+                                                                 'basket'   => 'Basket',
+                                                                 'hand'     => 'Handball',
+                                                                 'rugby'    => 'Rugby',
+                                                                 'tennis'   => 'Tennis',
+                                                                 'cyclisme' => 'Cyclisme',
+                                                                 'natation' => 'Natation',
+                                                                 'escrime'  => 'Escrime',
+                                                                 'autre'    => 'Autre/Indifférenciée')))
             ->add('Editer', 'submit')
         ;
     }
