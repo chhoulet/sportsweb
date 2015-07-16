@@ -49,12 +49,19 @@ class Sport
      */
     private $viewedUsers;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="sport")
      */
     private $invitations;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Ground", mappedBy="sport")
+     */
+    private $ground;
    
 
 
@@ -224,5 +231,38 @@ class Sport
     public function getDateCreated()
     {
         return $this->dateCreated;
+    }
+
+    /**
+     * Add ground
+     *
+     * @param \FrontOfficeBundle\Entity\Ground $ground
+     * @return Sport
+     */
+    public function addGround(\FrontOfficeBundle\Entity\Ground $ground)
+    {
+        $this->ground[] = $ground;
+
+        return $this;
+    }
+
+    /**
+     * Remove ground
+     *
+     * @param \FrontOfficeBundle\Entity\Ground $ground
+     */
+    public function removeGround(\FrontOfficeBundle\Entity\Ground $ground)
+    {
+        $this->ground->removeElement($ground);
+    }
+
+    /**
+     * Get ground
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGround()
+    {
+        return $this->ground;
     }
 }

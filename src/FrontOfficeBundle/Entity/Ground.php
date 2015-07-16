@@ -25,41 +25,85 @@ class Ground
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "50",
+     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+     * )
+     * @ORM\Column(name="name", type="string", length=150)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255)
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "150",
+     *      minMessage = "Votre addresse doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre addresse ne peut pas être plus long que {{ limit }} caractères"
+     * )
+     * @ORM\Column(name="address", type="string", length=150)
      */
     private $address;
 
     /**
+     * @var integer
+     *
+     * @Assert\Range(
+     *      min = 00000,
+     *      max = 99999,
+     *      minMessage = "Votre code postal doit comporter au moins 5 chiffres",
+     *      maxMessage = "Votre code postal doit comporter au plus 5 chiffres"
+     * )
+     * @ORM\Column(name="postCode", type="integer")
+     */
+    private $postCode;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="sport", type="string", length=255)
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="ground")
+     * @0RM\JoinTable(name="ground_sport", referencedColumnName="id")
      */
     private $sport;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="place", type="string", length=255)
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "150",
+     *      minMessage = "Le nom de la ville doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom de la ville  ne peut pas être plus long que {{ limit }} caractères"
+     * )
+     * @ORM\Column(name="place", type="string", length=150)
      */
     private $place;
 
-    /**
-     * @var string
+     /**
+     * @var integer
      *
-     * @ORM\Column(name="phoneNumber", type="string", length=255)
+     * @Assert\Range(
+     *      min = 00000000000,
+     *      max = 99999999999,
+     *      minMessage = "Votre N° de téléphone doit comporter au moins 11 chiffres",
+     *      maxMessage = "Votre N° de téléphone doit comporter au plus 11 chiffres"
+     * )
+     * @ORM\Column(name="phoneNumber", type="integer")
      */
     private $phoneNumber;
 
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "150",
+     *      minMessage = "Les heures d'ouverture doivent faire au moins {{ limit }} caractères",
+     *      maxMessage = "Les heures d'ouverture  ne peuvent pas être plus longues que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="openingHours", type="string", length=255)
      */
     private $openingHours;
@@ -67,6 +111,7 @@ class Ground
     /**
      * @var date
      *
+     * @Assert\Date()
      * @ORM\Column(name="dateCreated", type="date")
      */
     private $dateCreated;
@@ -74,6 +119,7 @@ class Ground
     /**
      * @var datetime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateUpdated", type="datetime", nullable=true)
      */
     private $dateUpdated;
@@ -355,5 +401,60 @@ class Ground
     public function getTeam()
     {
         return $this->team;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->sport = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->invitation = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->team = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set postCode
+     *
+     * @param integer $postCode
+     * @return Ground
+     */
+    public function setPostCode($postCode)
+    {
+        $this->postCode = $postCode;
+
+        return $this;
+    }
+
+    /**
+     * Get postCode
+     *
+     * @return integer 
+     */
+    public function getPostCode()
+    {
+        return $this->postCode;
+    }
+
+    /**
+     * Add sport
+     *
+     * @param \FrontOfficeBundle\Entity\Sport $sport
+     * @return Ground
+     */
+    public function addSport(\FrontOfficeBundle\Entity\Sport $sport)
+    {
+        $this->sport[] = $sport;
+
+        return $this;
+    }
+
+    /**
+     * Remove sport
+     *
+     * @param \FrontOfficeBundle\Entity\Sport $sport
+     */
+    public function removeSport(\FrontOfficeBundle\Entity\Sport $sport)
+    {
+        $this->sport->removeElement($sport);
     }
 }
