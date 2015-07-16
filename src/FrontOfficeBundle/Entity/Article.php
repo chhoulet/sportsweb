@@ -78,14 +78,6 @@ class Article
     private $warned;
 
     /**
-     * @var string
-     *
-     * @Assert\NotBlank()
-     * @ORM\Column(name="category", type="string", length=255)
-     */
-    private $category;
-
-    /**
      * @var \DateTime
      *
      * @Assert\DateTime()
@@ -123,6 +115,14 @@ class Article
      * @ORM\JoinTable(name="articles_user")
      */
     private $sport;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="articles")
+     * @ORM\JoinTable(name="articles_sports")
+     */
+    private $sports;
 
     /**
      * Get id
@@ -249,28 +249,6 @@ class Article
         return $this->dateUpdated;
     }
 
-    /**
-     * Set category
-     *
-     * @param string $category
-     * @return Article
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return string 
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
     /**
      * Constructor
      */
@@ -412,5 +390,15 @@ class Article
     public function getSport()
     {
         return $this->sport;
+    }
+
+    /**
+     * Get sports
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSports()
+    {
+        return $this->sports;
     }
 }

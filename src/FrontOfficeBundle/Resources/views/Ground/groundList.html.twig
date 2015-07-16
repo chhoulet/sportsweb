@@ -1,0 +1,37 @@
+{% extends 'FrontOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div class="container">
+            <div class="well col-lg-10">   
+
+				<h2>Liste des terrains enregistrés:</h2>
+
+						{% for art in groundList %}
+
+					                <h2>
+					                    <a href="#">{{ art.name }}</a>
+					                </h2>
+					                <p class="lead">
+					                    Sport pratiqué : <a href="index.php">{% for play in art.sport %}{{ play.name }}{% endfor %}</a>
+					                </p>
+					                <p><span class="glyphicon glyphicon-time"></span></p>
+					                <hr>
+					                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+					                <hr>
+					                <p>{{ art.address }}</p><br>
+					                 <p>{{ art.dateCreated | date('d-m-Y H:i:s') }}</p><br>
+					                <p>{{ art.phoneNumber }}</p><br>
+					                <p>{{ art.openingHours}}<p><br>
+					                <p>{{ art.mode }}<p><br>
+					                <p>{{ art.comment }}<p><br>
+
+					               
+				                	<hr>
+
+			       		{% endfor %}
+
+			</div>
+		</div>
+
+	{% endblock %}

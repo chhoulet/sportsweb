@@ -17,18 +17,9 @@ class ArticleType extends AbstractType
         $builder
             ->add('title','text',       array('label'   =>'Titre de l\'article:',
                                               'attr'    => array('placeholder'=>'Entrez le titre:')))
-            ->add('content','text',     array('label'   =>'Contenu de l\'article',
+            ->add('content','text',     array('label'   =>'Contenu de l\'article:',
                                               'attr'    => array('placeholder'=>'Votre texte:')))
-            ->add('category', 'choice', array('label'   =>'Choisissez une catégorie:',
-                                              'choices' => array('football' => 'Football',
-                                                                 'basket'   => 'Basket',
-                                                                 'hand'     => 'Handball',
-                                                                 'rugby'    => 'Rugby',
-                                                                 'tennis'   => 'Tennis',
-                                                                 'cyclisme' => 'Cyclisme',
-                                                                 'natation' => 'Natation',
-                                                                 'escrime'  => 'Escrime',
-                                                                 'autre'    => 'Autre/Indifférenciée')))
+            ->add('sports', null,        array('label'   =>'Sport concerné:'))                                              
             ->add('Editer', 'submit')
         ;
     }

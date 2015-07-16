@@ -1,0 +1,46 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+		
+					<h2> Liste des grounds non-controlés :</h2>
+
+						{% for art in validAdminGround %}
+
+			                <h2>
+			                    <a href="#">{{ art.name }}</a>
+			                </h2>
+			                <p class="lead">
+			                    Sport pratiqué : <a href="index.php">{% for play in art.sport %}{{ play.name }}{% endfor %}</a>
+			                </p>
+			                <p><span class="glyphicon glyphicon-time"></span></p>
+			                <hr>
+			                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+			                <hr>
+			                <p>{{ art.address }}</p><br>
+			                <p>{{ art.dateCreated | date('d-m-Y H:i:s') }}</p><br>
+			                <p>{{ art.phoneNumber }}</p><br>
+			                <p>{{ art.openingHours}}<p><br>
+			                <p>{{ art.mode }}<p><br>
+			                <p>{{ art.comment }}<p><br>
+
+			                <a class="btn btn-primary" href="{{ path('back_office_ground_validationGround',{id:art.id}) }}">Valider ce terrain<span class="glyphicon glyphicon-chevron-right"></span></a>
+
+			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
+			                	<a class="btn btn-primary" href="{{ path('back_office_ground_update',{id:art.id}) }}">Mise à jour Terrain <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+			                	<a class="btn btn-primary" href="{{ path('back_office_ground_delete',{id:art.id}) }}">Suppression Terrain<span class="glyphicon glyphicon-chevron-right"></span></a>
+			            	{% endif %}
+
+		                	<hr>
+
+	            		{% endfor %}
+
+	            </div>
+	        </div>
+	    </div>
+
+	{% endblock %}

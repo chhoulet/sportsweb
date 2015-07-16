@@ -62,8 +62,14 @@ class Sport
      * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Ground", mappedBy="sport")
      */
     private $ground;
-   
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Article", mappedBy="sports")
+     */
+    private $articles;
+   
 
     /**
      * Get id
@@ -264,5 +270,38 @@ class Sport
     public function getGround()
     {
         return $this->ground;
+    }
+
+    /**
+     * Add articles
+     *
+     * @param \FrontOfficeBundle\Entity\Article $articles
+     * @return Sport
+     */
+    public function addArticle(\FrontOfficeBundle\Entity\Article $articles)
+    {
+        $this->articles[] = $articles;
+
+        return $this;
+    }
+
+    /**
+     * Remove articles
+     *
+     * @param \FrontOfficeBundle\Entity\Article $articles
+     */
+    public function removeArticle(\FrontOfficeBundle\Entity\Article $articles)
+    {
+        $this->articles->removeElement($articles);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArticles()
+    {
+        return $this->articles;
     }
 }
