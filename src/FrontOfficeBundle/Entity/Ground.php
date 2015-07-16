@@ -44,7 +44,7 @@ class Ground
      *      minMessage = "Votre addresse doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre addresse ne peut pas être plus long que {{ limit }} caractères"
      * )
-     * @ORM\Column(name="address", type="string", length=150)
+     * @ORM\Column(name="address", type="string", length=150, nullable = true)
      */
     private $address;
 
@@ -57,7 +57,7 @@ class Ground
      *      minMessage = "Votre code postal doit comporter au moins 5 chiffres",
      *      maxMessage = "Votre code postal doit comporter au plus 5 chiffres"
      * )
-     * @ORM\Column(name="postCode", type="integer")
+     * @ORM\Column(name="postCode", type="integer", nullable = true)
      */
     private $postCode;
 
@@ -91,14 +91,14 @@ class Ground
      *      minMessage = "Votre N° de téléphone doit comporter au moins 10 chiffres",
      *      maxMessage = "Votre N° de téléphone doit comporter au plus 10 chiffres"
      * )
-     * @ORM\Column(name="phoneNumber", type="integer")
+     * @ORM\Column(name="phoneNumber", type="integer", nullable = true)
      */
     private $phoneNumber;
 
     /**
      * @var string
      *     
-     * @ORM\Column(name="openingHours", type="string", length=450, nullable=true)
+     * @ORM\Column(name="openingHours", type="string", length=450, nullable = true)
      */
     private $openingHours;
 
@@ -110,15 +110,20 @@ class Ground
     private $mode;
 
     /**
+     * @var boolean
+     *     
+     * @ORM\Column(name="fees", type="boolean")
+     */
+    private $fees;
+
+    /**
      * @var string
      *   
      * @Assert\Length(
-     *      min = "0",
      *      max = "550",
-     *      minMessage = "Le commentaire doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Le commentaire ne peut pas être plus long que {{ limit }} caractères"
      * )  
-     * @ORM\Column(name="comment", type="string", length=550)
+     * @ORM\Column(name="comment", type="string", length=550, nullable = true)
      */
     private $comment;
 
@@ -131,10 +136,18 @@ class Ground
     private $dateCreated;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="validAdmin", type="boolean")
+     */
+    private $validAdmin;
+
+
+    /**
      * @var datetime
      *
      * @Assert\DateTime()
-     * @ORM\Column(name="dateUpdated", type="datetime", nullable=true)
+     * @ORM\Column(name="dateUpdated", type="datetime", nullable = true)
      */
     private $dateUpdated;
 
@@ -516,5 +529,51 @@ class Ground
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * Set validAdmin
+     *
+     * @param boolean $validAdmin
+     * @return Ground
+     */
+    public function setValidAdmin($validAdmin)
+    {
+        $this->validAdmin = $validAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Get validAdmin
+     *
+     * @return boolean 
+     */
+    public function getValidAdmin()
+    {
+        return $this->validAdmin;
+    }
+
+    /**
+     * Set fees
+     *
+     * @param boolean $fees
+     * @return Ground
+     */
+    public function setFees($fees)
+    {
+        $this->fees = $fees;
+
+        return $this;
+    }
+
+    /**
+     * Get fees
+     *
+     * @return boolean 
+     */
+    public function getFees()
+    {
+        return $this->fees;
     }
 }

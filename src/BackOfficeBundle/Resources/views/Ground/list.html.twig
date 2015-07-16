@@ -23,7 +23,10 @@
 			                <hr>
 			                <p>{{ art.address }}</p><br>
 			                 <p>{{ art.dateCreated | date('d-m-Y H:i:s') }}</p><br>
-			                <p>{{ art.phoneNumber }}</p>
+			                <p>{{ art.phoneNumber }}</p><br>
+			                <p>{{ art.openingHours}}<p><br>
+			                <p>{{ art.mode }}<p><br>
+			                <p>{{ art.comment }}<p><br>
 
 			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
 			                	<a class="btn btn-primary" href="{{ path('back_office_ground_update',{id:art.id}) }}">Mise à jour Terrain <span class="glyphicon glyphicon-chevron-right"></span></a>

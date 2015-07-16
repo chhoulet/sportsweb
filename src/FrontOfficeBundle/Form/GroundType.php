@@ -16,18 +16,28 @@ class GroundType extends AbstractType
     {
         $builder
             ->add('name','text',            array('label'=>'Nom du terrain',
-                                                  'attr' => array('placeholder'=>'Nom en toutes lettres')))
-            ->add('address','text',         array('label'=>'Entrez l\'adresse',
-                                                  'attr' => array('placeholder'=>'N° et Nom de la rue')))
-            ->add('postCode','integer',     array('label'=>'Saisissez le code postal',
-                                                  'attr' => array('placeholder'=>'00000')))
-            ->add('place','text',           array('label'=>'Entrez le nom de la ville',
-                                                  'attr' => array('placeholder'=>'Nom de la ville')))
-            ->add('sport', null,            array('expanded'=>true))
-            ->add('phoneNumber','integer',  array('label'=>'Saisissez votre N° de tél',
-                                                  'attr' => array('placeholder'=>'0000000000')))
-            ->add('openingHours','text',    array('label'=>'Heures d\'ouverture du terrain',
-                                                  'attr' => array('placeholder'=>'Heures d\'ouvertures/facultatif')  ))
+                                                  'attr' => array('placeholder'=>'Nom usuel, appellation, surnom')))
+            ->add('address','text',         array('label'=>'Adresse',
+                                                  'attr' => array('placeholder'=>'N° et nom de la rue')))
+            ->add('postCode','integer',     array('label'=>'Code postal',
+                                                  'attr' => array('placeholder'=>'75001')))
+            ->add('place','text',           array('label'=>'Ville',
+                                                  'attr' => array('placeholder'=>'Paris')))
+            ->add('sport', null,            array('label'=>'Sports',
+                                                  'expanded'=>true))
+            
+            ->add('openingHours','text',    array('label'=>'Jours et heures d\'ouverture',
+                                                  'attr' => array('placeholder'=>'lundi-vendredi 8h-20h ; samedi 10h-22h30 ; dimanche 9h-17h15')))
+            ->add('mode','choice',          array('label'=>'Terrain public / accès privé',
+                                                  'choices'=> array('public' =>'Public',
+                                                                    'private'=>'Privé'),
+                                                  'expanded'=> true))
+            ->add('fees','checkbox',        array('label'     => 'accès payant',
+                                                  'required'  => false))
+            ->add('phoneNumber','integer',  array('label'=>'Téléphone',
+                                                  'attr' => array('placeholder'=>'01 00 00 00 00')))
+            ->add('comment','text',         array('label'=>'Commentaire (Niveau de jeu, ambiance, jour le plus fréquenté, type de revêtement, point d\'eau...)',
+                                                  'attr' => array('placeholder'=>'Niveau de jeu...')))
             ->add('Valider','submit')
         ;
     }
