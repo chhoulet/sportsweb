@@ -15,14 +15,19 @@ class GroundType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('address')
-            ->add('sport','choice', array('choices'=> array('football'    => 'Football',
-                                                            'basket'      => 'Basket',
-                                                            'foot_basket' => 'Foot/Basket' )))
-            ->add('place')
-            ->add('phoneNumber')
-            ->add('openingHours')
+            ->add('name','text',            array('label'=>'Nom du terrain',
+                                                  'attr' => array('placeholder'=>'Nom en toutes lettres')))
+            ->add('address','text',         array('label'=>'Entrez l\'adresse',
+                                                  'attr' => array('placeholder'=>'N° et Nom de la rue')))
+            ->add('postCode','integer',     array('label'=>'Saisissez le code postal',
+                                                  'attr' => array('placeholder'=>'00000')))
+            ->add('place','text',           array('label'=>'Entrez le nom de la ville',
+                                                  'attr' => array('placeholder'=>'Nom de la ville')))
+            ->add('sport', null,            array('expanded'=>true))
+            ->add('phoneNumber','integer',  array('label'=>'Saisissez votre N° de tél',
+                                                  'attr' => array('placeholder'=>'0000000000')))
+            ->add('openingHours','text',    array('label'=>'Heures d\'ouverture du terrain',
+                                                  'attr' => array('placeholder'=>'Heures d\'ouvertures/facultatif')  ))
             ->add('Valider','submit')
         ;
     }

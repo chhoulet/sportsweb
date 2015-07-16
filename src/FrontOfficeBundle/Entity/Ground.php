@@ -86,10 +86,10 @@ class Ground
      * @var integer
      *
      * @Assert\Range(
-     *      min = 00000000000,
-     *      max = 99999999999,
-     *      minMessage = "Votre N° de téléphone doit comporter au moins 11 chiffres",
-     *      maxMessage = "Votre N° de téléphone doit comporter au plus 11 chiffres"
+     *      min = 0000000000,
+     *      max = 9999999999,
+     *      minMessage = "Votre N° de téléphone doit comporter au moins 10 chiffres",
+     *      maxMessage = "Votre N° de téléphone doit comporter au plus 10 chiffres"
      * )
      * @ORM\Column(name="phoneNumber", type="integer")
      */
@@ -97,16 +97,30 @@ class Ground
 
     /**
      * @var string
-     *
-     * @Assert\Length(
-     *      min = "2",
-     *      max = "150",
-     *      minMessage = "Les heures d'ouverture doivent faire au moins {{ limit }} caractères",
-     *      maxMessage = "Les heures d'ouverture  ne peuvent pas être plus longues que {{ limit }} caractères"
-     * )
-     * @ORM\Column(name="openingHours", type="string", length=255)
+     *     
+     * @ORM\Column(name="openingHours", type="string", length=450, nullable=true)
      */
     private $openingHours;
+
+    /**
+     * @var string
+     *     
+     * @ORM\Column(name="mode", type="string")
+     */
+    private $mode;
+
+    /**
+     * @var string
+     *   
+     * @Assert\Length(
+     *      min = "0",
+     *      max = "550",
+     *      minMessage = "Le commentaire doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le commentaire ne peut pas être plus long que {{ limit }} caractères"
+     * )  
+     * @ORM\Column(name="comment", type="string", length=550)
+     */
+    private $comment;
 
     /**
      * @var date
@@ -456,5 +470,51 @@ class Ground
     public function removeSport(\FrontOfficeBundle\Entity\Sport $sport)
     {
         $this->sport->removeElement($sport);
+    }
+
+    /**
+     * Set mode
+     *
+     * @param string $mode
+     * @return Ground
+     */
+    public function setMode($mode)
+    {
+        $this->mode = $mode;
+
+        return $this;
+    }
+
+    /**
+     * Get mode
+     *
+     * @return string 
+     */
+    public function getMode()
+    {
+        return $this->mode;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     * @return Ground
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string 
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }

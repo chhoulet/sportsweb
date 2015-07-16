@@ -1,0 +1,27 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+		
+                	<h2>Liste des messages archivés :</h2>
+
+						{% for message in listReadMessage %}
+
+							AUTHOR : <strong>{{ message.author }}</strong><br>
+							SUBJECT : {{ message.subject }}<br>
+							MESSAGE : {{ message.content }}<br>
+							DATE D'ENVOI : {{ message.dateCreated | date('d-m-Y H:i:s')}}<br>				
+							MAIL : {{ message.email }}<br><br>
+
+							<a href="{{ path('back_office_message_delete',{id:message.id}) }}">Supprimer ce message</a><br><br>							
+							
+						{% endfor %}
+
+				</div>
+			</div>
+		</div>
+
+	{% endblock %}

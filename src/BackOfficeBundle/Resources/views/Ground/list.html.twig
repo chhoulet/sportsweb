@@ -15,7 +15,7 @@
 			                    <a href="#">{{ art.name }}</a>
 			                </h2>
 			                <p class="lead">
-			                    Sport pratiqué : <a href="index.php">{{ art.sport }}</a>
+			                    Sport pratiqué : <a href="index.php">{% for play in art.sport %}{{ play.name }}{% endfor %}</a>
 			                </p>
 			                <p><span class="glyphicon glyphicon-time"></span></p>
 			                <hr>
