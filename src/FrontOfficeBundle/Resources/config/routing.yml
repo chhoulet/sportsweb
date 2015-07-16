@@ -40,6 +40,10 @@ front_office_invitation_deletefrom_monprofil:
     path:     /deleteInvitationFromMonProfil/{id}
     defaults: { _controller: FrontOfficeBundle:Invitation:deleteFromMonProfil}
 
+front_office_invitation_delete:
+    path:     /deleteInvitation/{id}
+    defaults: { _controller: FrontOfficeBundle:Invitation:delete}
+
 # Routes administrant le blog:
 front_office_blog_homepage:
     path:     /blogHomepage 

@@ -54,6 +54,9 @@
                                     <p class="section-paragraph">{{ invit.content }}</p>
                                     <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p>
                                     <a href="{{ path('front_office_invitation_response',{id:invit.id}) }}"><button>Accepter l'invitation</button></a>
+                                    {% if (is_granted('ROLE_SUPER_ADMIN')) %}
+                                        <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}">Supprimer cette invitation</a>
+                                    {% endif %}
                                 {% endfor %}
                                    
                         </div>
@@ -73,6 +76,9 @@
         		                    <p class="section-paragraph">{{ invit.content }}</p>
         		                    <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p>
                                     <a href="{{ path('front_office_invitation_response',{id:invit.id}) }}"><button>Accepter l'invitation</button></a>
+                                    {% if (is_granted('ROLE_SUPER_ADMIN')) %}
+                                        <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}">Supprimer cette invitation</a>
+                                    {% endif %}
         		                {% endfor %}
         		                   
                         </div>

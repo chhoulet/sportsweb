@@ -88,4 +88,14 @@ class InvitationController extends Controller
 
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
+
+	public function deleteAction(Request $request,$id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$deleteInvitation = $em -> getRepository('FrontOfficeBundle:Invitation')->find($id);
+		$em -> remove($deleteInvitation);
+		$em -> flush();
+
+		return $this -> redirect($request -> headers -> get('referer'));
+	}
 }
