@@ -68,4 +68,12 @@ class GroundController extends Controller
 
 		return $this -> redirect($this -> generateUrl('back_office_ground_list'));
 	}
+
+	public function validAdminGroundAction()
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$validAdminGround = $em -> getRepository('FrontOfficeBundle:Ground')->validAdmin();
+
+		return $this -> render('BackOfficeBundle:Ground:admin.html.twig', array('validAdminGround'=>$validAdminGround));
+	}
 }

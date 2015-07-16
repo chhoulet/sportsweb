@@ -102,6 +102,11 @@ back_office_ground_delete:
     requirements: 
         id: "[0-9]+"
 
+    # Sélection des terrains non validés par l'admin:
+back_office_ground_validAdmin:
+    path:     /validAdminGround
+    defaults: { _controller: BackOfficeBundle:Ground:validAdminGround}
+
 # Routes gerant les users:
     # Liste des users non valides par l'administrateur:
 back_office_admin_user:
