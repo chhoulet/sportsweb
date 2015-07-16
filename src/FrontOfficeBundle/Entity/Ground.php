@@ -142,6 +142,14 @@ class Ground
      */
     private $validAdmin;
 
+    /**
+     * @var date
+     *
+     * @Assert\Date()
+     * @ORM\Column(name="dateValidated", type="date", nullable = true)
+     */
+    private $dateValidated;
+
 
     /**
      * @var datetime
@@ -575,5 +583,28 @@ class Ground
     public function getFees()
     {
         return $this->fees;
+    }
+
+    /**
+     * Set dateValidated
+     *
+     * @param \DateTime $dateValidated
+     * @return Ground
+     */
+    public function setDateValidated($dateValidated)
+    {
+        $this->dateValidated = $dateValidated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateValidated
+     *
+     * @return \DateTime 
+     */
+    public function getDateValidated()
+    {
+        return $this->dateValidated;
     }
 }

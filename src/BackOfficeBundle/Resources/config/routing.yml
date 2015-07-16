@@ -107,6 +107,11 @@ back_office_ground_validAdmin:
     path:     /validAdminGround
     defaults: { _controller: BackOfficeBundle:Ground:validAdminGround}
 
+    # Validation des terrains par admin:
+back_office_ground_validationGround:
+    path:      /validGround/{id}
+    defaults: { _controller: BackOfficeBundle:Ground:validGround}
+
 # Routes gerant les users:
     # Liste des users non valides par l'administrateur:
 back_office_admin_user:
