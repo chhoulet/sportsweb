@@ -137,3 +137,7 @@ front_office_team_delete:
     requirements: 
         id: "[0-9]+"
 
+# Routes gérant les terrains:
+front_office_ground_list:
+    path:     /groundList 
+    defaults: { _controller: FrontOfficeBundle:Ground:groundList}

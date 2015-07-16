@@ -28,8 +28,8 @@ class GroundRepository extends EntityRepository
 			SELECT g 
 			FROM FrontOfficeBundle:Ground g 
 			ORDER BY g.dateCreated DESC')
-		->setMaxResult(20);
+		->setMaxResults(20);
 
-		return $this -> getResult();
+		return $query -> getResult();
 	}
 }
