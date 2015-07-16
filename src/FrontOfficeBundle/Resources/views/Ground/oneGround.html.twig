@@ -7,7 +7,7 @@
 
 				<h2>{{ oneGround.name }}</h2>
 											             
-					<p class="lead">
+						<p class="lead">
 					    Sport pratiqué : <a href="index.php">{% for play in oneGround.sport %}{{ play.name }}{% endfor %}</a>
 					                </p>
 					    <p><span class="glyphicon glyphicon-time"></span></p>
@@ -23,31 +23,35 @@
 
 				                	<hr>
 
-			       	<div class="well">
+				        {% for message in app.session.flashbag.get('succes') %}
+			       			{{ message }}
+			       		{% endfor %}
 
-                        {% if (is_granted('ROLE_USER')) %}
-                            <h4>Poster un commentaire</h4>
-                            {{ form(form) }}
-                        {% else %}
-                            <p>Vous souhaitez poster un commentaire ? Connectez-vous !</p>
-                            <a href="{{path('fos_user_security_login')}}"><button>Connection</button></a>
-                        {% endif %}
-                        
-                    </div> 
+				       	<div class="well">			       		
 
-                    {% for comment in oneGround.com %}
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">{{ comment.title }} par {{ comment.author }}
-                                    <small>{{ comment.dateCreated | date('d-m-Y H:i:s') }}</small>
-                                </h4>
-                                {{ comment.content }}
-                            </div>
-                        </div>
-                    {% endfor %}  
+	                        {% if (is_granted('ROLE_USER')) %}
+	                            <h4>Poster un commentaire</h4>
+	                            {{ form(form) }}
+	                        {% else %}
+	                            <p>Vous souhaitez poster un commentaire ? Connectez-vous !</p>
+	                            <a href="{{path('fos_user_security_login')}}"><button>Connection</button></a>
+	                        {% endif %}
+	                        
+	                    </div> 
+
+	                    {% for comment in oneGround.com %}
+	                        <div class="media">
+	                            <a class="pull-left" href="#">
+	                                <img class="media-object" src="http://placehold.it/64x64" alt="">
+	                            </a>
+	                            <div class="media-body">
+	                                <h4 class="media-heading">{{ comment.title }} par {{ comment.author }}
+	                                    <small>{{ comment.dateCreated | date('d-m-Y H:i:s') }}</small>
+	                                </h4>
+	                                {{ comment.content }}
+	                            </div>
+	                        </div>
+	                    {% endfor %}  
 
 			</div>
 		</div>
