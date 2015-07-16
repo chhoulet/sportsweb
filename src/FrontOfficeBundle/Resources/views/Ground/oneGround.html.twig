@@ -10,16 +10,15 @@
 						<p class="lead">
 					    Sport pratiqué : <a href="index.php">{% for play in oneGround.sport %}{{ play.name }}{% endfor %}</a>
 					                </p>
-					    <p><span class="glyphicon glyphicon-time"></span></p>
+					    <p><span class="glyphicon glyphicon-time"> Créé le : {{ oneGround.dateCreated | date('d-m-Y') }}</span></p>
 					    <hr>
 					    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
 					    <hr>
-					    <p>{{ oneGround.address }}</p><br>
-					    <p>{{ oneGround.dateCreated | date('d-m-Y H:i:s') }}</p><br>
-					    <p>{{ oneGround.phoneNumber }}</p><br>
-					    <p>{{ oneGround.openingHours}}<p><br>
-					    <p>{{ oneGround.mode }}<p><br>
-					    <p>{{ oneGround.comment }}<p><br>
+					    <p>Adresse :{{ oneGround.address }} {{ oneGround.place }}</p><br>					    
+					    <p>Téléphone :{{ oneGround.phoneNumber }}</p><br>
+					    <p>Heures d'ouverture: {{ oneGround.openingHours}}<p><br>
+					    <p>Terrain d'accès : {{ oneGround.mode }}<p><br>
+					    <p>Commentaire :{{ oneGround.comment }}<p><br>
 
 				                	<hr>
 
