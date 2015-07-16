@@ -53,7 +53,8 @@ class BlogController extends Controller
 		{
 			$comment -> setDateCreated(new \DateTime('now'));
 			$comment -> setArticle($article);
-			$comment ->setValidationAdmin(false);
+			$comment -> setValidationAdmin(false);
+			$comment -> setAuthor($this -> getUser());
 			$em -> persist($comment);
 			$em -> flush();
 

@@ -45,7 +45,6 @@ class Comment
     /**
      * @var string
      *
-     * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "5",
      *      max = "500",
@@ -60,7 +59,6 @@ class Comment
     /**
      * @var string
      *
-     * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "5",
      *      max = "50",

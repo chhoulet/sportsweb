@@ -15,12 +15,10 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title','text',   array('label'   =>'Titre de l\'article:',
+            ->add('title','text',   array('label'   =>'Titre du commentaire:',
                                           'attr'    => array('placeholder'=>'Entrez le titre:')))
-            ->add('content','text', array('label'   =>'Contenu de l\'article',
+            ->add('content','text', array('label'   =>'Votre commentaire',
                                           'attr'    => array('placeholder'=>'Votre texte:')))
-            ->add('author','text',  array('label'   =>'Saisissez votre username:',
-                                          'attr'    => array('placeholder'=>'username')))
             ->add('Valider', 'submit')
         ;
     }
