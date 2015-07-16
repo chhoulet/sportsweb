@@ -29,6 +29,7 @@ class GroundController extends Controller
 		if($form -> isValid())
 		{
 			$ground -> setDateCreated(new \datetime('now'));
+			$ground -> setValidAdmin(false);
 			$em ->persist($ground);
 			$em -> flush();
 

@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class GroundRepository extends EntityRepository
 {
+	public function validAdmin()
+	{
+		$query = $this ->getEntityManager()-> createQuery('
+			SELECT g 
+			FROM FrontOfficeBundle:Ground g 
+			WHERE g.validAdmin = false');
+
+		return $query -> getResult();
+	}
 }
