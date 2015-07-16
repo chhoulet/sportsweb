@@ -21,4 +21,15 @@ class GroundRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getGround()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT g 
+			FROM FrontOfficeBundle:Ground g 
+			ORDER BY g.dateCreated DESC')
+		->setMaxResult(20);
+
+		return $this -> getResult();
+	}
 }

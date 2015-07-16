@@ -136,3 +136,4 @@ front_office_team_delete:
     defaults: { _controller: FrontOfficeBundle:Team:teamDelete}
     requirements: 
         id: "[0-9]+"
+
