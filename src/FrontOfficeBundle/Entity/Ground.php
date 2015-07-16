@@ -173,6 +173,13 @@ class Ground
      */
     private $team;
 
+     /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Comment", mappedBy="ground")
+     */
+    private $com;
+
     /**
      * Get id
      *
@@ -606,5 +613,38 @@ class Ground
     public function getDateValidated()
     {
         return $this->dateValidated;
+    }
+
+    /**
+     * Add com
+     *
+     * @param \FrontOfficeBundle\Entity\Comment $com
+     * @return Ground
+     */
+    public function addCom(\FrontOfficeBundle\Entity\Comment $com)
+    {
+        $this->com[] = $com;
+
+        return $this;
+    }
+
+    /**
+     * Remove com
+     *
+     * @param \FrontOfficeBundle\Entity\Comment $com
+     */
+    public function removeCom(\FrontOfficeBundle\Entity\Comment $com)
+    {
+        $this->com->removeElement($com);
+    }
+
+    /**
+     * Get com
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCom()
+    {
+        return $this->com;
     }
 }

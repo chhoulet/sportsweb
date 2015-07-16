@@ -93,6 +93,14 @@ class Comment
      */
     private $article;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Ground", inversedBy="com")
+     * @ORM\JoinColumn(name="ground_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $ground;
+
 
     /**
      * Get id
@@ -263,5 +271,28 @@ class Comment
     public function getDateValidated()
     {
         return $this->dateValidated;
+    }
+
+    /**
+     * Set ground
+     *
+     * @param \FrontOfficeBundle\Entity\Ground $ground
+     * @return Comment
+     */
+    public function setGround(\FrontOfficeBundle\Entity\Ground $ground = null)
+    {
+        $this->ground = $ground;
+
+        return $this;
+    }
+
+    /**
+     * Get ground
+     *
+     * @return \FrontOfficeBundle\Entity\Ground 
+     */
+    public function getGround()
+    {
+        return $this->ground;
     }
 }

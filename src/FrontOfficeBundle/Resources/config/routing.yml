@@ -141,3 +141,8 @@ front_office_team_delete:
 front_office_ground_list:
     path:     /groundList 
     defaults: { _controller: FrontOfficeBundle:Ground:groundList}
+
+    # Vue d'un terrain :
+front_office_ground_one:
+    path:    /oneGround/{id}
+    defaults: { _controller: FrontOfficeBundle:Ground:oneGround}
