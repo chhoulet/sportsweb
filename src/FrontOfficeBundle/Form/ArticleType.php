@@ -19,8 +19,6 @@ class ArticleType extends AbstractType
                                               'attr'    => array('placeholder'=>'Entrez le titre:')))
             ->add('content','text',     array('label'   =>'Contenu de l\'article',
                                               'attr'    => array('placeholder'=>'Votre texte:')))
-            ->add('author','text',      array('label'   =>'Saisissez votre username:',
-                                              'attr'    => array('placeholder'=>'username')))
             ->add('category', 'choice', array('label'   =>'Choisissez une catégorie:',
                                               'choices' => array('football' => 'Football',
                                                                  'basket'   => 'Basket',

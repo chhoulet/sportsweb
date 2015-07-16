@@ -26,7 +26,6 @@ class Article
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
-     * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "10",
      *      max = "255",
@@ -40,7 +39,6 @@ class Article
      * @var string
      *
      * @ORM\Column(name="content", type="text")
-     * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "10",
      *      max = "2500",
@@ -54,7 +52,6 @@ class Article
      * @var string
      *
      * @ORM\Column(name="author", type="string", length=255)
-     * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "3",
      *      max = "2500",
