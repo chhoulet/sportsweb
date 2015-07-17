@@ -25,13 +25,16 @@ class ArticleRepository extends EntityRepository
 		return $query -> getResult();
 	}
 
-	public function getArticleBySportsPracticed($sport)
+
+	public function getArticleBySportViewed($sport)
 	{
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT a 
 			FROM FrontOfficeBundle:Article a 
 			JOIN a.user u 
-			WHERE u.sportMaster LIKE :sport')
+			WHERE u.sportViewed LIKE :sport
+			AND a.validationAdmin = true
+			AND a.warned = false')
 		->setParameter('sport', $sport);
 	}
 

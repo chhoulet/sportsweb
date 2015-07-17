@@ -357,26 +357,27 @@ class Article
         return $this->author;
     }
 
+
     /**
-     * Set category
+     * Set sport
      *
-     * @param string $category
+     * @param \FrontOfficeBundle\Entity\Sport $sport
      * @return Article
      */
-    public function setCategory($category)
+    public function setSport(\FrontOfficeBundle\Entity\Sport $sport = null)
     {
-        $this->category = $category;
+        $this->sport = $sport;
 
         return $this;
     }
 
     /**
-     * Get category
+     * Get sport
      *
-     * @return string 
+     * @return \FrontOfficeBundle\Entity\Sport 
      */
-    public function getCategory()
+    public function getSport()
     {
-        return $this->category;
+        return $this->sport;
     }
 }
