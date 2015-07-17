@@ -1,0 +1,27 @@
+{% extends 'FrontOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div class="container">
+            <div class="well col-lg-12">
+				<div class="row">
+                    <div class="col-lg-12">
+                        <h3 >Invitations séléctionnées :<br><br>
+                        	
+                            <p>SPORT : {{ invit.sport }}<p>
+	                        <p>INVITATION : {{ invit.content }}</p>
+	                        <p>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</p>                         
+	                        <p>LIEU : {{ invit.place }} </p>  
+	                        <p>MODE : {{ invit.mode }} </p><br>
+
+                            {% if (is_granted('ROLE_USER')) %}
+    	                        <a href="{{ path('front_office_invitation_response', {id:invit.id}) }}">Accepter l'invitation</a><br>
+                            {% endif %}
+                            
+                        </h3>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+               
+	{% endblock %}

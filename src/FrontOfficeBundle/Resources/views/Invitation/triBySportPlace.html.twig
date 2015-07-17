@@ -6,19 +6,23 @@
             <div class="well col-lg-12">
 				<div class="row">
                     <div class="col-lg-12">
+
                         <h3 >Invitations séléctionnées :<br>
                         	{% for invit in invits %}
 
                         		{% if invit.id >= 1 %}
+                                    <small>{{ invit.sport }}<small>
 	                                <small>{{ invit.content }}</small><br>
 	                                <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small>                         
 	                                <small>LIEU : {{ invit.place }} </small>  
 	                                <small>MODE : {{ invit.mode }} </small><br>
+                                    <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}">Détail </a>
 	                                <a href="{{ path('front_office_invitation_response', {id:invit.id}) }}">Accepter l'invitation</a><br>
 	                            {% endif %}
                                
                             {% endfor %}
-                        </h3>                        
+                        </h3>   
+                                             
                     </div>
                 </div>
             </div>

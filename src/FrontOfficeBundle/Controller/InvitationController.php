@@ -48,6 +48,15 @@ class InvitationController extends Controller
 				  'teamTo'=>$teamTo));
 	}
 
+	public function oneInvitationAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$oneInvitation = $em -> getRepository('FrontOfficeBundle:Invitation')->find($id);
+
+		return $this -> render('FrontOfficeBundle:Invitation:oneInvitation.html.twig', 
+			array('invit'=> $oneInvitation));
+	}
+
 	// Function d'acceptation de l'invitation, avec l'attribut accepted mis à true + date de l'acceptation implémentée automatiquement:
 	public function responseAction(Request $request, $id)
 	{

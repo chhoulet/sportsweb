@@ -21,6 +21,11 @@ front_office_invitation_new:
     path:     /newInvitation/{userTo, teamTo, TeamFrom}
     defaults: { _controller: FrontOfficeBundle:Invitation:new, userTo: null, teamTo: null, teamFrom: null}
 
+    # Détail d'une invitation:
+front_office_invitation_one:
+    path:     /oneInvitation/{id}
+    defaults: { _controller: FrontOfficeBundle:Invitation:oneInvitation}
+
     # Acceptation d'une invitation:
 front_office_invitation_response:
     path:     /response/{id}
@@ -40,6 +45,7 @@ front_office_invitation_deletefrom_monprofil:
     path:     /deleteInvitationFromMonProfil/{id}
     defaults: { _controller: FrontOfficeBundle:Invitation:deleteFromMonProfil}
 
+    # Suppression d'une invitation de la liste:
 front_office_invitation_delete:
     path:     /deleteInvitation/{id}
     defaults: { _controller: FrontOfficeBundle:Invitation:delete}
