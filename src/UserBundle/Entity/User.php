@@ -97,9 +97,9 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Article", mappedBy="sport")
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Article", mappedBy="user")
      */
-    protected $sportMaster;
+    protected $article;
 
     /**
      * @var string
@@ -587,36 +587,37 @@ class User extends BaseUser
         return $this->teamsAdmin;
     }
 
+
     /**
-     * Add sportMaster
+     * Add article
      *
-     * @param \FrontOfficeBundle\Entity\Article $sportMaster
+     * @param \FrontOfficeBundle\Entity\Article $article
      * @return User
      */
-    public function addSportMaster(\FrontOfficeBundle\Entity\Article $sportMaster)
+    public function addArticle(\FrontOfficeBundle\Entity\Article $article)
     {
-        $this->sportMaster[] = $sportMaster;
+        $this->article[] = $article;
 
         return $this;
     }
 
     /**
-     * Remove sportMaster
+     * Remove article
      *
-     * @param \FrontOfficeBundle\Entity\Article $sportMaster
+     * @param \FrontOfficeBundle\Entity\Article $article
      */
-    public function removeSportMaster(\FrontOfficeBundle\Entity\Article $sportMaster)
+    public function removeArticle(\FrontOfficeBundle\Entity\Article $article)
     {
-        $this->sportMaster->removeElement($sportMaster);
+        $this->article->removeElement($article);
     }
 
     /**
-     * Get sportMaster
+     * Get article
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getSportMaster()
+    public function getArticle()
     {
-        return $this->sportMaster;
+        return $this->article;
     }
 }

@@ -48,19 +48,6 @@ class Article
      */
     private $content;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="author", type="string", length=255)
-     * @Assert\Length(
-     *      min = "3",
-     *      max = "2500",
-     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
-     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
-     * )
-     */
-    private $author;
-
      /**
      * @var boolean
      *
@@ -111,10 +98,10 @@ class Article
     /**
      * @var string
      *
-     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", inversedBy="sportMaster")
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", inversedBy="article")
      * @ORM\JoinTable(name="articles_user")
      */
-    private $sport;
+    private $user;
 
     /**
      * @var string
@@ -178,29 +165,6 @@ class Article
     public function getContent()
     {
         return $this->content;
-    }
-
-    /**
-     * Set author
-     *
-     * @param string $author
-     * @return Article
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string 
-     */
-    public function getAuthor()
-    {
-        return $this->author;
     }
 
     /**
@@ -400,5 +364,38 @@ class Article
     public function getSports()
     {
         return $this->sports;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \UserBundle\Entity\User $user
+     * @return Article
+     */
+    public function addUser(\UserBundle\Entity\User $user)
+    {
+        $this->user[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \UserBundle\Entity\User $user
+     */
+    public function removeUser(\UserBundle\Entity\User $user)
+    {
+        $this->user->removeElement($user);
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
