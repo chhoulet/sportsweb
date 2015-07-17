@@ -19,7 +19,11 @@ class ArticleType extends AbstractType
                                               'attr'    => array('placeholder'=>'Entrez le titre:')))
             ->add('content','text',     array('label'   =>'Contenu de l\'article:',
                                               'attr'    => array('placeholder'=>'Votre texte:')))
-            ->add('sports', null,        array('label'   =>'Sport concerné:'))                                              
+            ->add('category', 'choice', array('label'   =>'Sport concerné:',
+                                              'choices' => array('Football'=> 'football',
+                                                                 'Basket'  => 'basket',
+                                                                 'Rugby'   => 'rugby',
+                                                                 'Tennis'  => 'tennis')))                                               
             ->add('Editer', 'submit')
         ;
     }

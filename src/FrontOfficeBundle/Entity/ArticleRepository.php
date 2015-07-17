@@ -39,7 +39,7 @@ class ArticleRepository extends EntityRepository
 	{
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT a 
-			FROM FrontOfficeBundle:Article a 
+			FROM FrontOfficeBundle:Article a 			
 			WHERE a.validationAdmin = true
 			AND a.warned = false
 			AND a.category LIKE :category')

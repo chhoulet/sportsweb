@@ -65,6 +65,14 @@ class Article
     private $warned;
 
     /**
+     * @var string
+     *
+     *
+     * @ORM\Column(name="category", type="string", length=255)
+     */
+    private $category;
+
+    /**
      * @var \DateTime
      *
      * @Assert\DateTime()
@@ -102,14 +110,6 @@ class Article
      * @ORM\JoinTable(name="articles_user")
      */
     private $author;
-
-    /**
-     * @var string
-     *
-     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="articles")
-     * @ORM\JoinTable(name="articles_sports")
-     */
-    private $sports;
 
     /**
      * Get id
@@ -324,50 +324,6 @@ class Article
     }
 
     /**
-     * Add sport
-     *
-     * @param \UserBundle\Entity\User $sport
-     * @return Article
-     */
-    public function addSport(\UserBundle\Entity\User $sport)
-    {
-        $this->sport[] = $sport;
-
-        return $this;
-    }
-
-    /**
-     * Remove sport
-     *
-     * @param \UserBundle\Entity\User $sport
-     */
-    public function removeSport(\UserBundle\Entity\User $sport)
-    {
-        $this->sport->removeElement($sport);
-    }
-
-    /**
-     * Get sport
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSport()
-    {
-        return $this->sport;
-    }
-
-    /**
-     * Get sports
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSports()
-    {
-        return $this->sports;
-    }
-
-
-    /**
      * Add author
      *
      * @param \UserBundle\Entity\User $author
@@ -398,5 +354,28 @@ class Article
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     * @return Article
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }
