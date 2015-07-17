@@ -102,6 +102,11 @@ front_office_user_showTeams:
     path:      /showTeams
     defaults: { _controller: FrontOfficeBundle:User:showTeams}
 
+    # Voir ses articles postés:
+front_office_user_showArticles:
+    path:     /showArticles 
+    defaults: { _controller: FrontOfficeBundle:User:showArticles}
+
     # Voir ses invitations envoyées et reçues:
 front_office_user_invitations:
     path:     /showInvitations
