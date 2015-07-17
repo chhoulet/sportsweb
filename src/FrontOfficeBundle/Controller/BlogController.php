@@ -26,7 +26,7 @@ class BlogController extends Controller
 			$articleUser -> setDateCreated(new \datetime('now'));
 			$articleUser -> setValidationAdmin(false);
 			$articleUser -> setWarned(false);
-			$articleUser -> setAuthor($this -> getUser());
+			$articleUser -> addAuthor($this -> getUser());
 			$em -> persist($articleUser);
 			$em -> flush();
 
@@ -54,7 +54,7 @@ class BlogController extends Controller
 			$comment -> setDateCreated(new \DateTime('now'));
 			$comment -> setArticle($article);
 			$comment -> setValidationAdmin(false);
-			$comment -> setAuthor($this -> getUser());
+			$comment -> addAuthor($this -> getUser());
 			$em -> persist($comment);
 			$em -> flush();
 

@@ -23,7 +23,7 @@
 
     	                <!-- Author -->
     	                <p class="lead">
-    	                    by {{ article.author }}</a>
+    	                    by {% for art in article.author %}{{ art.username }}{% endfor %}</a>
     	                </p>
 
     	                <hr>

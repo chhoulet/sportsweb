@@ -21,7 +21,7 @@
 
                     <!-- Author -->
                     <p class="lead">
-                        by <a href="#">{{ article.author }}</a>
+                        by <a href="#">{% for art in article.author %}{{ art.username }}{% endfor %}</a>
                     </p>
 
                     <hr>

@@ -101,7 +101,7 @@ class Article
      * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", inversedBy="article")
      * @ORM\JoinTable(name="articles_user")
      */
-    private $user;
+    private $author;
 
     /**
      * @var string
@@ -366,36 +366,37 @@ class Article
         return $this->sports;
     }
 
+
     /**
-     * Add user
+     * Add author
      *
-     * @param \UserBundle\Entity\User $user
+     * @param \UserBundle\Entity\User $author
      * @return Article
      */
-    public function addUser(\UserBundle\Entity\User $user)
+    public function addAuthor(\UserBundle\Entity\User $author)
     {
-        $this->user[] = $user;
+        $this->author[] = $author;
 
         return $this;
     }
 
     /**
-     * Remove user
+     * Remove author
      *
-     * @param \UserBundle\Entity\User $user
+     * @param \UserBundle\Entity\User $author
      */
-    public function removeUser(\UserBundle\Entity\User $user)
+    public function removeAuthor(\UserBundle\Entity\User $author)
     {
-        $this->user->removeElement($user);
+        $this->author->removeElement($author);
     }
 
     /**
-     * Get user
+     * Get author
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getUser()
+    public function getAuthor()
     {
-        return $this->user;
+        return $this->author;
     }
 }

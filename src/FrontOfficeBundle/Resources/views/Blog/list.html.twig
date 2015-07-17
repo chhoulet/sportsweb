@@ -20,7 +20,7 @@
 		                    <a href="#">{{ art.title }}</a>
 		                </h2>
 		                <p class="lead">
-		                    by <a href="index.php">{{ art.author }}</a>
+		                    by <a href="index.php">{% for at in art.author %}{{ at.username }}{% endfor %}</a>
 		                </p>
 		                <p><span class="glyphicon glyphicon-time"></span> {{ art.dateCreated | date('d-m-Y H:i:s')}}</p>
 		                <hr>

@@ -97,7 +97,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Article", mappedBy="user")
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Article", mappedBy="author")
      */
     protected $article;
 
