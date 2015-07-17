@@ -67,10 +67,10 @@ class BlogController extends Controller
 				  'form'   => $form -> createView()));
 	}
 
-	public function triBySportAction($category)
+	public function triBySportAction($sport)
 	{
 		$em = $this ->getDoctrine()->getManager();
-		$triArticles = $em -> getRepository('FrontOfficeBundle:Article') -> triArticle($category);		
+		$triArticles = $em -> getRepository('FrontOfficeBundle:Article') -> triArticle($sport);		
 
 		return $this -> render('FrontOfficeBundle:Blog:tribysport.html.twig', array('articles'=>$triArticles));
 	}

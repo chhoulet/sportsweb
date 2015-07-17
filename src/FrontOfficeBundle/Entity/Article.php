@@ -68,9 +68,10 @@ class Article
      * @var string
      *
      *
-     * @ORM\Column(name="category", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="articles")
+     * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
      */
-    private $category;
+    private $sport;
 
     /**
      * @var \DateTime

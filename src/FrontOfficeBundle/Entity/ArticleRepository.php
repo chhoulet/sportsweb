@@ -35,15 +35,16 @@ class ArticleRepository extends EntityRepository
 		->setParameter('sport', $sport);
 	}
 
-	public function triArticle($category)
+	public function triArticle($sport)
 	{
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT a 
-			FROM FrontOfficeBundle:Article a 			
+			FROM FrontOfficeBundle:Article a 	
+			JOIN a.sport s 		
 			WHERE a.validationAdmin = true
 			AND a.warned = false
-			AND a.category LIKE :category')
-		->setParameter('category',  $category);
+			AND s.name LIKE :sport')
+		->setParameter('sport',  $sport);
 
 		return $query ->getResult();
 	}

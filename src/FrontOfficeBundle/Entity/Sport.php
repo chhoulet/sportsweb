@@ -62,8 +62,14 @@ class Sport
      * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Ground", mappedBy="sport")
      */
     private $ground;
-   
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Article", mappedBy="sport")
+     */
+    private $articles;
+   
     /**
      * Get id
      *
