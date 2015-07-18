@@ -18,38 +18,53 @@
                     <div class="well">
                         <h4>Blog Categories</h4>
                         <div class="row">
-                            <div class="col-lg-6">
-                                <ul class="list-unstyled">                                    
-                                    <li><a href="{{ path('front_office_blog_triBySport',{sport: 'football'}) }}">Football</a>
-                                    </li>
-                                    <li><a href="{{ path('front_office_blog_triBySport',{sport: 'basket'}) }}">Basket</a>
-                                    </li>
-                                    <li><a href="{{ path('front_office_blog_triBySport',{sport: 'rugby'}) }}">Rugby</a>
-                                    </li>
-                                    <li><a href="{{ path('front_office_blog_triBySport',{sport: 'tennis'}) }}">Tennis</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul class="list-unstyled">
-                                    <li><a href="{{ path('front_office_blog_triBySport',{sport: 'handball'}) }}">Handball</a>
-                                    </li>
-                                    <li><a href="{{ path('front_office_blog_triBySport',{sport: 'natation'}) }}">Natation</a>
-                                    </li>
-                                    <li><a href="{{ path('front_office_blog_triBySport',{sport: 'escrime'}) }}">Escrime</a>
-                                    </li>
-                                    <li><a href="{{ path('front_office_blog_triBySport',{sport: 'cyclisme'}) }}">Cyclisme</a>
-                                    </li>
-                                </ul>
-                            </div>
+
+                            {% if (is_granted('ROLE_USER')) %}
+
+                                {% for sport in app.user.sportViewed%}
+                                    <div class="col-lg-6">                                
+                                        <ul class="list-unstyled">
+                                            <li><a href="{{ path('front_office_blog_triBySport',{sport: '{{ sport.name }}'}) }}">{{ sport.name }}</a>
+                                            </li>
+                                           {#  <li><a href="{{ path('front_office_blog_triBySport',{sport: 'natation'}) }}">Natation</a>
+                                            </li>
+                                            <li><a href="{{ path('front_office_blog_triBySport',{sport: 'escrime'}) }}">Escrime</a>
+                                            </li>
+                                            <li><a href="{{ path('front_office_blog_triBySport',{sport: 'cyclisme'}) }}">Cyclisme</a>
+                                            </li> #}
+                                        </ul>                            
+                                    </div>
+                                {% endfor %}
+
+                            {% else %}
+
+                                <div class="col-lg-6">
+
+                                    {# {% for sport in list %}
+                                    <ul class="list-unstyled">                                    
+                                        <li><a href="{{ path('front_office_blog_triBySport',{sport: '{{ sport.name }}'}) }}">{{ sport.name }}</a>
+                                        </li>                               
+                                        <li><a href="{{ path('front_office_blog_triBySport',{sport: 'basket'}) }}">Basket</a>
+                                        </li>
+                                        <li><a href="{{ path('front_office_blog_triBySport',{sport: 'rugby'}) }}">Rugby</a>
+                                        </li>
+                                        <li><a href="{{ path('front_office_blog_triBySport',{sport: 'tennis'}) }}">Tennis</a>
+                                        </li>
+                                    </ul> #}
+                                    {# {% endfor %}
+ #}
+                                </div>
+
+                            {% endif %}
+                            
                         </div>
                         <!-- /.row -->
                     </div>
 
                     <!-- Side Widget Well -->
-                    <div class="well">
+                    {# <div class="well">
                         <h4>Side Widget Well</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-                    </div>
+                    </div> #}
 
                 </div>
