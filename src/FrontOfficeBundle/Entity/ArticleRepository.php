@@ -20,7 +20,7 @@ class ArticleRepository extends EntityRepository
 			WHERE a.validationAdmin = true
 			AND a.warned = false
 			ORDER BY a.dateCreated DESC')
-		->setMaxResults(16);
+		->setMaxResults(6);
 
 		return $query -> getResult();
 	}

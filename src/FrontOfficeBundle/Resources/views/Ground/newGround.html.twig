@@ -6,6 +6,10 @@
             <div class="well col-lg-10">
 
             	<h3>Créé ton terrain :</h3>
+
+            	{% for message in app.session.flashbag.get('notice') %}
+            		{{ message }}
+            	{% endfor %}
               	
               		{{ form(form) }}	
 					
