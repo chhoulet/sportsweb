@@ -110,6 +110,13 @@ class Ground
     private $mode;
 
     /**
+     * @var string
+     *     
+     * @ORM\Column(name="author", type="string")
+     */
+    private $author;
+
+    /**
      * @var boolean
      *     
      * @ORM\Column(name="fees", type="boolean")
@@ -646,5 +653,28 @@ class Ground
     public function getCom()
     {
         return $this->com;
+    }
+
+    /**
+     * Set author
+     *
+     * @param string $author
+     * @return Ground
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return string 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }

@@ -47,4 +47,28 @@ class GroundController extends Controller
 			array('oneGround'=>$oneGround,
 				  'form'=>$form->createView()));
 	}
+
+	public function newGroundAction(Request $request)
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$session = $request -> getSession();
+		$ground = new Ground();
+		$form = $this -> createForm(new GroundType(), $ground);
+
+		$form -> handleRequest($request);
+
+		if($form -> isValid())
+		{
+			$ground -> setDateCreated(new \datetime('now'));
+			$ground -> setAuthor($this -> getUser());
+			$ground -> setValidAdmin(false);
+			$em -> persist($ground);
+			$em -> flush();
+
+			$session -> getFlashbag()->add('notice','Votre terrain vient d\'etre ajouté à la base de données ! Merci');
+			return $this -> redirect($request -> headers -> get('referer'));
+		}
+
+		return $this ->render('FrontOfficeBundle:Ground:newGround.html.twig', array('form'=> $form->createView()));
+	}
 }

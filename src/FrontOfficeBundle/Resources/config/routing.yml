@@ -162,3 +162,7 @@ front_office_ground_list:
 front_office_ground_one:
     path:    /oneGround/{id}
     defaults: { _controller: FrontOfficeBundle:Ground:oneGround}
+
+front_office_ground_new:
+    path:    /newGround 
+    defaults: { _controller:FrontOfficeBundle:Ground:newGround}
