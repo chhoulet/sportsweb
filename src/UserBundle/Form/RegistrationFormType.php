@@ -11,10 +11,11 @@ class RegistrationFormType extends AbstractType
     {
         // add your custom field
         $builder
+            ->add('favouriteSport', null, array('label'    =>'Sport favori:'))
             ->add('sportPracticed', null, array('expanded' => true,
-                                                   'multiple' => true))
-            ->add('sportViewed', null,   array('multiple' => true,
-                                                   'expanded' => true))
+                                                'multiple' => true))
+            ->add('sportViewed', null,    array('multiple' => true,
+                                                'expanded' => true))
             ->add('age')
         ;
 

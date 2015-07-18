@@ -69,6 +69,13 @@ class Sport
      * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Article", mappedBy="sport")
      */
     private $articles;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\User", mappedBy="favouriteSport")
+     */
+    private $userSport;
    
     /**
      * Get id
@@ -269,5 +276,71 @@ class Sport
     public function getGround()
     {
         return $this->ground;
+    }
+
+    /**
+     * Add articles
+     *
+     * @param \FrontOfficeBundle\Entity\Article $articles
+     * @return Sport
+     */
+    public function addArticle(\FrontOfficeBundle\Entity\Article $articles)
+    {
+        $this->articles[] = $articles;
+
+        return $this;
+    }
+
+    /**
+     * Remove articles
+     *
+     * @param \FrontOfficeBundle\Entity\Article $articles
+     */
+    public function removeArticle(\FrontOfficeBundle\Entity\Article $articles)
+    {
+        $this->articles->removeElement($articles);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    /**
+     * Add userSport
+     *
+     * @param \UserBundle\Entity\User $userSport
+     * @return Sport
+     */
+    public function addUserSport(\UserBundle\Entity\User $userSport)
+    {
+        $this->userSport[] = $userSport;
+
+        return $this;
+    }
+
+    /**
+     * Remove userSport
+     *
+     * @param \UserBundle\Entity\User $userSport
+     */
+    public function removeUserSport(\UserBundle\Entity\User $userSport)
+    {
+        $this->userSport->removeElement($userSport);
+    }
+
+    /**
+     * Get userSport
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserSport()
+    {
+        return $this->userSport;
     }
 }

@@ -26,6 +26,13 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="userSport")
+     */
+    protected $favouriteSport;
+
+    /**
+     * @var string
+     *
      *
      * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="user")
      * @ORM\JoinTable(name="user_practiced")
@@ -619,5 +626,28 @@ class User extends BaseUser
     public function getArticle()
     {
         return $this->article;
+    }
+
+    /**
+     * Set favouriteSport
+     *
+     * @param \FrontOfficeBundle\Entity\Sport $favouriteSport
+     * @return User
+     */
+    public function setFavouriteSport(\FrontOfficeBundle\Entity\Sport $favouriteSport = null)
+    {
+        $this->favouriteSport = $favouriteSport;
+
+        return $this;
+    }
+
+    /**
+     * Get favouriteSport
+     *
+     * @return \FrontOfficeBundle\Entity\Sport 
+     */
+    public function getFavouriteSport()
+    {
+        return $this->favouriteSport;
     }
 }
