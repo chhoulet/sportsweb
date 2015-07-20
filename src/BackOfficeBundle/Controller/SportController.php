@@ -33,7 +33,11 @@ class SportController extends Controller
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$listSports = $em -> getRepository('FrontOfficeBundle:Sport')->findAll();
+		$getSportsByUsers = $em -> getRepository('FrontOfficeBundle:Sport')->getSportsByUsers();
 
-		return $this -> render('BackOfficeBundle:Sport:listSports.html.twig', array('listSports'=>$listSports));
+		return $this -> render('BackOfficeBundle:Sport:listSports.html.twig', 
+			array('getSportsByUsers'=> $getSportsByUsers,
+				  'listSports'      => $listSports));
 	}
+
 }
