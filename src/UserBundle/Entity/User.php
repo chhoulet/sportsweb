@@ -27,15 +27,28 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="userSport")
-     * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="sport_id", referencedColumnName="id", nullable =true)
      */
     protected $favouriteSport;
+
+     /**
+     * @var string
+     *
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "50",
+     *      minMessage = "Le nom de la ville doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom de la ville ne peut pas être plus long que {{ limit }} caractères"
+     * )
+     * @ORM\Column(name="place", type="string", length=255))
+     */
+    protected $place;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Ground", inversedBy="userGround")
-     * @ORM\JoinColumn(name="ground_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="ground_id", referencedColumnName="id", nullable =true)
      */
     protected $ground;
 
@@ -681,5 +694,28 @@ class User extends BaseUser
     public function getGround()
     {
         return $this->ground;
+    }
+
+    /**
+     * Set place
+     *
+     * @param string $place
+     * @return User
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get place
+     *
+     * @return string 
+     */
+    public function getPlace()
+    {
+        return $this->place;
     }
 }

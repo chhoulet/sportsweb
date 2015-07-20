@@ -11,7 +11,10 @@ class RegistrationFormType extends AbstractType
     {
         // add your custom field
         $builder
-            ->add('ground',         null, array('label'    =>'Terrain de sport favori:'))
+            ->add('ground',         null, array('label'    =>'Terrain de sport favori:',
+                                                'attr'     => array('placeholder'=>'Halle Carpentier, gymnase Serge Blanco ...')))
+            ->add('place','text',         array('label'    =>'Ville:',
+                                                'attr'     => array('placeholder'=>'Paris, Marseille,Le Mirail ...')))
             ->add('favouriteSport', null, array('label'    =>'Sport favori:',
                                                 'expanded' => true,
                                                 'multiple' => true))
