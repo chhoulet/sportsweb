@@ -25,13 +25,7 @@
                                     <div class="col-lg-6">                                
                                         <ul class="list-unstyled">
                                             <li><a href="{{ path('front_office_blog_triBySport',{sport: '{{ sport.name }}'}) }}">{{ sport.name }}</a>
-                                            </li>
-                                           {#  <li><a href="{{ path('front_office_blog_triBySport',{sport: 'natation'}) }}">Natation</a>
-                                            </li>
-                                            <li><a href="{{ path('front_office_blog_triBySport',{sport: 'escrime'}) }}">Escrime</a>
-                                            </li>
-                                            <li><a href="{{ path('front_office_blog_triBySport',{sport: 'cyclisme'}) }}">Cyclisme</a>
-                                            </li> #}
+                                            </li>                                           
                                         </ul>                            
                                     </div>
                                 {% endfor %}
@@ -39,10 +33,9 @@
                             {% else %}
 
                                 <div class="col-lg-6">
-
-                                    {# {% for sport in list %}
+                                   
                                     <ul class="list-unstyled">                                    
-                                        <li><a href="{{ path('front_office_blog_triBySport',{sport: '{{ sport.name }}'}) }}">{{ sport.name }}</a>
+                                        <li><a href="{{ path('front_office_blog_triBySport',{sport: 'football'}) }}">Football</a>
                                         </li>                               
                                         <li><a href="{{ path('front_office_blog_triBySport',{sport: 'basket'}) }}">Basket</a>
                                         </li>
@@ -50,9 +43,8 @@
                                         </li>
                                         <li><a href="{{ path('front_office_blog_triBySport',{sport: 'tennis'}) }}">Tennis</a>
                                         </li>
-                                    </ul> #}
-                                    {# {% endfor %}
- #}
+                                    </ul>
+ 
                                 </div>
 
                             {% endif %}

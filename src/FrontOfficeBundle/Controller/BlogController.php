@@ -39,14 +39,13 @@ class BlogController extends Controller
 		    	  'formArticle'=> $formArticle -> createView()));
 	}
 
-	public function listAction()
+	/*public function listAction()
 	{
 		$em = $this -> getDoctrine() -> getManager();
 		$list = $em -> getRepository('FrontOfficeBundle:Sport')->findAll();
-		var_dump($list);
 		return $this -> render('FrontOfficeBundle:Blog:sidebar.html.twig', 
 			array('list' => $list));
-	}
+	}*/
 
 	public function oneAction(Request $request, $id)
 	{
