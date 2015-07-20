@@ -16,7 +16,7 @@ class SportController extends Controller
 		$form = $this -> createForm(new SportType(),$sport);
 
 		$form -> handleRequest($request);
-		 if($form ->isValid())
+		 if($form -> isValid())
 		 {
 		 	$sport -> setDateCreated(new \datetime('now'));
 		 	$em -> persist($sport);
@@ -27,5 +27,13 @@ class SportController extends Controller
 
 		return $this -> render('BackOfficeBundle:Sport:new.html.twig', 
 			array('form'=> $form-> createView()));
+	}
+
+	public function listSportsAction()
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$listSports = $em -> getRepository('FrontOfficeBundle:Sport')->findAll();
+
+		return $this -> render('BackOfficeBundle:Sport:listSports.html.twig', array('listSports'=>$listSports));
 	}
 }

@@ -189,7 +189,9 @@ back_office_sport_new:
     path:     /newSport
     defaults: { _controller: BackOfficeBundle:Sport:new}
 
-
+back_office_sport_list:
+    path:     /listSports
+    defaults: { _controller: BackOfficeBundle:Sport:listSports}
 
 
 
