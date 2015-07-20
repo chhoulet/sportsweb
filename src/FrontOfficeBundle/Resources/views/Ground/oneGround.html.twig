@@ -22,6 +22,17 @@
 
 				                	<hr>
 
+				       	<div class="well">			       		
+
+							<h3>Joueurs rattachés:</h3>
+								{% for player in oneGround.userGround %}
+									<ul>
+										<li><a href="{{ path('front_office_user_one',{id:player.id}) }}">{{ player.username }}</a> pratique le {{ player.favouriteSport }}</li>
+									</ul>
+								{% endfor %}
+
+						</div>
+
 				        {% for message in app.session.flashbag.get('succes') %}
 			       			{{ message }}
 			       		{% endfor %}
