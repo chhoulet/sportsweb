@@ -180,6 +180,14 @@ class Ground
      */
     private $team;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\User", mappedBy="ground")
+     */
+    private $userGround;
+
+
      /**
      * @var string
      *
@@ -676,5 +684,38 @@ class Ground
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Add userGround
+     *
+     * @param \UserBundle\Entity\User $userGround
+     * @return Ground
+     */
+    public function addUserGround(\UserBundle\Entity\User $userGround)
+    {
+        $this->userGround[] = $userGround;
+
+        return $this;
+    }
+
+    /**
+     * Remove userGround
+     *
+     * @param \UserBundle\Entity\User $userGround
+     */
+    public function removeUserGround(\UserBundle\Entity\User $userGround)
+    {
+        $this->userGround->removeElement($userGround);
+    }
+
+    /**
+     * Get userGround
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserGround()
+    {
+        return $this->userGround;
     }
 }

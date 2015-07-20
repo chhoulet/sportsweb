@@ -27,8 +27,17 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="userSport")
+     * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
      */
     protected $favouriteSport;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Ground", inversedBy="userGround")
+     * @ORM\JoinColumn(name="ground_id", referencedColumnName="id")
+     */
+    protected $ground;
 
     /**
      * @var string
@@ -649,5 +658,28 @@ class User extends BaseUser
     public function getFavouriteSport()
     {
         return $this->favouriteSport;
+    }
+
+    /**
+     * Set ground
+     *
+     * @param \FrontOfficeBundle\Entity\Ground $ground
+     * @return User
+     */
+    public function setGround(\FrontOfficeBundle\Entity\Ground $ground = null)
+    {
+        $this->ground = $ground;
+
+        return $this;
+    }
+
+    /**
+     * Get ground
+     *
+     * @return \FrontOfficeBundle\Entity\Ground 
+     */
+    public function getGround()
+    {
+        return $this->ground;
     }
 }
