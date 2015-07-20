@@ -13,7 +13,7 @@ front_office_static_mentions:
     defaults: { _controller: FrontOfficeBundle:Static:mentions}
 
 front_office_static_contact:
-    path:     /contact 
+    path:     /contact
     defaults: { _controller: FrontOfficeBundle:Static:contact}
 
 # Routes gerant les invitations:
