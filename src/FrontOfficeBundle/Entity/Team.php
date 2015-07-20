@@ -46,7 +46,8 @@ class Team
      *      maxMessage = "Le nom de votre sport pratiqué ne peut pas être plus long que {{ limit }} caractères"
      * )
      *
-     * @ORM\Column(name="sportPracticed", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="team")
+     * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
      */
     private $sportPracticed;
 

@@ -76,6 +76,13 @@ class Sport
      * @ORM\OneToMany(targetEntity="UserBundle\Entity\User", mappedBy="favouriteSport")
      */
     private $userSport;
+
+     /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Team", mappedBy="sportPracticed")
+     */
+    private $team;
    
     /**
      * Get id
@@ -342,5 +349,38 @@ class Sport
     public function getUserSport()
     {
         return $this->userSport;
+    }
+
+    /**
+     * Add team
+     *
+     * @param \FrontOfficeBundle\Entity\Team $team
+     * @return Sport
+     */
+    public function addTeam(\FrontOfficeBundle\Entity\Team $team)
+    {
+        $this->team[] = $team;
+
+        return $this;
+    }
+
+    /**
+     * Remove team
+     *
+     * @param \FrontOfficeBundle\Entity\Team $team
+     */
+    public function removeTeam(\FrontOfficeBundle\Entity\Team $team)
+    {
+        $this->team->removeElement($team);
+    }
+
+    /**
+     * Get team
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeam()
+    {
+        return $this->team;
     }
 }
