@@ -1,0 +1,68 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div id="page-wrapper">
+            <div class="row">
+
+            	<h2 style="text-align:center;">Stats Sports</h2>
+
+                <div class="col-lg-4">
+		
+                	<h4>Liste des sports proposés sur le site :</h4>
+
+						<div class="container">
+
+							<ul>
+								{% for sports in listSports %}<li>{{ sports.name}}</li><br>{% endfor %}<br>
+							</ul>
+
+						</div>
+
+				</div>
+
+				<div class="col-lg-4">
+
+					<h4>Sports favoris triés par nombre d'users :</h4>
+
+						<div class="container">
+
+							<ul>
+								{% for sports in getSportsByUsers %}<li>{{ sports.name}} compte {{ sports.nb }}{% if (sports.nb) > 1 %} joueurs inscrits.{% else %} joueur inscrit.{% endif %}</li><br>{% endfor %}<br>
+							</ul>
+
+						</div>
+
+				</div>
+
+				<div class="col-lg-4">
+
+					<h4>Sports triés par nombre de terrains enregistrés :</h4>
+
+						<div class="container">
+
+							<ul>
+								{% for sports in getSportsByGround %}<li>{{ sports.name}} compte {{ sports.nb }} {% if (sports.nb)  > 1 %} terrains référencés.{% else %} terrain référencé.{% endif %}</li><br>{% endfor %}<br>
+							</ul>
+
+						</div>
+
+				</div>		
+
+				<div class="col-lg-4">
+
+					<h4>Sports triés par nombre d'équipes enregistrées :</h4>
+
+						<div class="container">
+
+							<ul>
+								{% for sports in triSportsByTeam %}<li>{{ sports.name}} compte {{ sports.nb }} {% if (sports.nb)  > 1 %} équipes référencées.{% else %} équipe référencée.{% endif %}</li><br>{% endfor %}<br>
+							</ul>
+
+						</div>
+				</div>							
+
+			</div>
+		</div>
+
+	{% endblock %}
