@@ -7,6 +7,11 @@ back_office_homepage:
 back_office_article_list:
     path:     /list 
     defaults: { _controller: BackOfficeBundle:Article:list}
+
+    # Statistiques multiples des articles:
+back_office_article_articlesBySport:
+    path:     /articlesBySport
+    defaults: { _controller: BackOfficeBundle:Article:articlesBySport}
     
     # Creation d'un article par l'administrateur:
 back_office_article_new:

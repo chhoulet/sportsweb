@@ -89,7 +89,7 @@ class ArticleController extends Controller
         }
 
         return $this -> render('BackOfficeBundle:Article:update.html.twig',
-                array('form' => $form -> createView()));
+            array('form' => $form -> createView()));
     }
 
     public function warnedArticleAction($id)
@@ -109,7 +109,7 @@ class ArticleController extends Controller
         $listArticlesWarned = $em -> getRepository('FrontOfficeBundle:Article') -> getWarnedArticles();
 
         return $this -> render('BackOfficeBundle:Article:listArticlesWarned.html.twig',
-         array('listArticlesWarned'=>$listArticlesWarned));
+            array('listArticlesWarned'=>$listArticlesWarned));
     }
 
     public function responseWarnedArticleAction($id)
@@ -122,5 +122,14 @@ class ArticleController extends Controller
          $em -> flush();
 
          return $this ->redirect($this -> generateUrl('back_office_article_list_articles_warned'));
+    }
+
+    public function articlesBySportAction()
+    {
+        $em = $this -> getDoctrine()-> getManager();
+        $articlesBySport = $em -> getRepository('FrontOfficeBundle:Article') ->getArticlesBySport();
+
+        return $this -> render('BackOfficeBundle:Article:statsArticles.html.twig', 
+            array('articlesBySport'=> $articlesBySport));
     }
 }

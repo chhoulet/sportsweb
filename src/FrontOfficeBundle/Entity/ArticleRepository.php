@@ -86,7 +86,7 @@ class ArticleRepository extends EntityRepository
 	public function getArticlesBySport()
 	{
 		$query = $this -> getEntityManager() -> createQuery('
-			SELECT s, COUNT(a.id) as nb
+			SELECT s.name, COUNT(a.id) as nb
 			FROM FrontOfficeBundle:Sport s 
 			JOIN s.articles a 
 			GROUP BY s.id');

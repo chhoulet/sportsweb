@@ -1,0 +1,27 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div id="page-wrapper">
+            <div class="row">
+
+            	<h2 style="text-align:center;">Statistiques Articles :</h2>
+
+                <div class="col-lg-4">
+		
+                	<h4>Nombre d'articles par Sport :</h4>
+
+						<div class="container">
+
+							<ul>
+								{% for sport in articlesBySport %}<li>{{ sport.name }} est l'objet de {{ sport.nb }} {% if sport.nb >1 %} articles {% else %} article {% endif %}</li>{% endfor %}
+							</ul>
+
+						</div>
+
+				</div							
+
+			</div>
+		</div>
+
+	{% endblock %}
