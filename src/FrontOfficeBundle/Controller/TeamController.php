@@ -32,6 +32,7 @@ class TeamController extends Controller
 
 		if ($form -> isValid())
 		{
+			/*Attribution de valeur automatique d'attributs de l'objet Comment*/
 			$comment -> setDateCreated(new \datetime());
 			$comment -> setAuthor($this -> getUser());
 			$comment -> setValidationAdmin(false);
@@ -39,8 +40,10 @@ class TeamController extends Controller
 			$em -> persist($comment);
 			$em -> flush();
 
+			/*Mise en place du message flash*/
 			$session -> getFlashbag() -> add('notice','Merci de votre commentaire !');
 
+			/*Redirection sur la même page*/
 			return $this -> redirect($request -> headers -> get('referer'));
 		}
 
