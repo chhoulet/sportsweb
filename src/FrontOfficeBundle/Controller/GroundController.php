@@ -74,7 +74,14 @@ class GroundController extends Controller
 			{
 				$ground -> setRegion('Ile-de-France');
 			}
-			
+
+			if($postCode == 16 || $postCode == 17 || $postCode == 87 || $postCode == 23 || $postCode == 63 || $postCode == 15
+				|| $postCode == 12 || $postCode == 81 || $postCode == 31 || $postCode == 32 || $postCode == 65 || $postCode == 64
+				|| $postCode == 40 || $postCode == 47 || $postCode == 33 || $postCode == 24 || $postCode == 19 || $postCode == 46 || $postCode == 82)
+			{
+				$ground -> setRegion('Sud-Ouest');
+			}
+
 			$em -> persist($ground);
 			$em -> flush();
 
