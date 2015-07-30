@@ -19,7 +19,21 @@
 
 						</div>
 
-				</div							
+				</div>				
+
+                <div class="col-lg-4">
+		
+                	<h4>Liste des Users ayant posté le plus grand nombre d'articles :</h4>
+
+						<div class="container">
+
+							<ul>
+								{% for user in articlesByUsers %}<li>{{ user.username }} a écrit {{ user.nb }} {% if user.nb >1 %} articles {% else %} article {% endif %}</li>{% endfor %}
+							</ul>
+
+						</div>
+
+				</div>									
 
 			</div>
 		</div>

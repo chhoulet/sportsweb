@@ -48,4 +48,16 @@ class UserRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getNbArticlesByUsers()
+	{
+		$query = $this -> getEntityManager() -> createQuery('
+			SELECT u.username, COUNT(a.id) as nb
+			FROM UserBundle:User u
+			JOIN u.article a 
+			ORDER BY u.id DESC')
+		->setMaxResults(5);
+
+		return $query -> getResult();
+	}
 }

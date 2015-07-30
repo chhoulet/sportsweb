@@ -93,4 +93,6 @@ class ArticleRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	
 }
