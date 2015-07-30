@@ -23,7 +23,8 @@ class TeamController extends Controller
 	public function oneTeamAction(Request $request,$id)
 	{
 		$em = $this -> getDoctrine()-> getManager();
-		$oneTeam = $em -> getRepository('FrontOfficeBundle:Team')-> find($id);		
+		$oneTeam = $em -> getRepository('FrontOfficeBundle:Team')-> find($id);
+		$session = $request -> getSession();
 		$comment = new Comment();
 		$form = $this -> createForm(new CommentType(), $comment);
 
@@ -36,7 +37,9 @@ class TeamController extends Controller
 			$comment -> setValidationAdmin(false);
 			$comment -> setTeam($oneTeam);
 			$em -> persist($comment);
-			$em -> flush();		
+			$em -> flush();
+
+			$session -> getFlashbag() -> add('notice','Merci de votre commentaire !');
 
 			return $this -> redirect($request -> headers -> get('referer'));
 		}

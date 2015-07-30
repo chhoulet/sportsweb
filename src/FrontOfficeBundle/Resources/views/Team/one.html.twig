@@ -85,6 +85,10 @@
 			                
 		                	<hr>	
 
+		            {% for message in app.session.flashbag.get('notice') %}
+		            	{{ message }}
+		            {% endfor %}
+
 		            <h3> Laissez un commentaire :</h3>                   			               			
 		            	{{ form(form) }}
 
@@ -97,7 +101,7 @@
 		            		Username : {{ com.author }}<br>
 		            		Titre : {{ com.title }}<br>
 		            		Date : {{ com.dateCreated | date('d-m-Y H:i') }}<br>
-		            		Commentaire : {{ com.content }}<br>
+		            		Commentaire : {{ com.content }}<br><br>
 		            	{% endfor %}<br><br>
 
 		        </div>
