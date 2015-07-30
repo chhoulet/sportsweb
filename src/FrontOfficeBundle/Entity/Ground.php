@@ -52,10 +52,10 @@ class Ground
      * @var integer
      *
      * @Assert\Range(
-     *      min = 00000,
-     *      max = 99999,
-     *      minMessage = "Votre code postal doit comporter au moins 5 chiffres",
-     *      maxMessage = "Votre code postal doit comporter au plus 5 chiffres"
+     *      min = 00,
+     *      max = 99,
+     *      minMessage = "Votre code postal doit comporter au moins 2 chiffres",
+     *      maxMessage = "Votre code postal doit comporter au plus 2 chiffres"
      * )
      * @ORM\Column(name="postCode", type="integer", nullable = true)
      */

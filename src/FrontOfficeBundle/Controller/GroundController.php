@@ -8,6 +8,7 @@ use FrontOfficeBundle\Form\GroundType;
 use FrontOfficeBundle\Entity\Comment;
 use FrontOfficeBundle\Form\CommentType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Form;
 
 class GroundController extends Controller
 {
@@ -55,16 +56,25 @@ class GroundController extends Controller
 		$em = $this -> getDoctrine()-> getManager();
 		$session = $request -> getSession();
 		$ground = new Ground();
-		$form = $this -> createForm(new GroundType(), $ground);
+		$form = $this -> createForm(new GroundType(), $ground);		
 
 		$form -> handleRequest($request);
 
 		if($form -> isValid())
 		{
 			/*Attribution de valeurs automatique aux attributs de l'objet Ground - auteur : recupération de l'user*/
+			/*Récuperation de la valeur de postCode*/
+			$postCode = $ground ->getPostCode();
 			$ground -> setDateCreated(new \datetime('now'));
 			$ground -> setAuthor($this -> getUser());
 			$ground -> setValidAdmin(false);
+
+			/*Attribution automatique de valeur à l'attribut Region selon la valeur de postCode*/
+			if($postCode == 75 || $postCode == 77 || $postCode == 78 || $postCode == 91 || $postCode == 92 || $postCode == 93)
+			{
+				$ground -> setRegion('Ile-de-France');
+			}
+			
 			$em -> persist($ground);
 			$em -> flush();
 

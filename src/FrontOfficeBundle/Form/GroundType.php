@@ -20,7 +20,7 @@ class GroundType extends AbstractType
             ->add('address','text',         array('label'=>'Adresse',
                                                   'attr' => array('placeholder'=>'N° et nom de la rue')))
             ->add('postCode','integer',     array('label'=>'Code postal',
-                                                  'attr' => array('placeholder'=>'75001')))
+                                                  'attr' => array('placeholder'=>'75')))
             ->add('place','text',           array('label'=>'Ville',
                                                   'attr' => array('placeholder'=>'Paris')))
             ->add('sport', null,            array('label'=>'Sports',
@@ -35,7 +35,7 @@ class GroundType extends AbstractType
             ->add('fees','checkbox',        array('label'     => 'accès payant',
                                                   'required'  => false))
             ->add('phoneNumber','integer',  array('label'=>'Téléphone',
-                                                  'attr' => array('placeholder'=>'01 00 00 00 00')))
+                                                  'attr' => array('placeholder'=>'0100000000')))
             ->add('comment','text',         array('label'=>'Commentaire (Niveau de jeu, ambiance, jour le plus fréquenté, type de revêtement, point d\'eau...)',
                                                   'attr' => array('placeholder'=>'Niveau de jeu...')))
             ->add('Valider','submit')
