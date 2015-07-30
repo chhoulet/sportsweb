@@ -112,6 +112,13 @@ class Ground
     /**
      * @var string
      *     
+     * @ORM\Column(name="region", type="string")
+     */
+    private $region;
+
+    /**
+     * @var string
+     *     
      * @ORM\Column(name="author", type="string")
      */
     private $author;
@@ -717,5 +724,28 @@ class Ground
     public function getUserGround()
     {
         return $this->userGround;
+    }
+
+    /**
+     * Set region
+     *
+     * @param string $region
+     * @return Ground
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return string 
+     */
+    public function getRegion()
+    {
+        return $this->region;
     }
 }
