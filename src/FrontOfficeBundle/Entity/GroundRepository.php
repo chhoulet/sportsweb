@@ -32,4 +32,15 @@ class GroundRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getGroundByRegion()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT g
+			FROM FrontOfficeBundle:Ground g 
+			WHERE g.validAdmin = true 
+			GROUP BY g.region');
+		
+		return $this -> getResult();
+	}
 }
