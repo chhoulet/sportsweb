@@ -78,7 +78,8 @@ class ArticleRepository extends EntityRepository
 		$query = $this -> getEntityManager()->createQuery('
 			Select a 
 			FROM FrontOfficeBundle:Article a 
-			WHERE a.warned = true');
+			WHERE a.warned = true
+			AND a.validationAdmin = false');
 
 		return $query -> getResult();
 	}
@@ -94,5 +95,14 @@ class ArticleRepository extends EntityRepository
 		return $query -> getResult();
 	}
 
-	
+	public function nbArticlesWarned()
+	{
+		$query = $this -> getEntityManager() -> createQuery('
+			SELECT COUNT(a.id) 
+			FROM FrontOfficeBundle:Article a 
+			WHERE a.warned = true 
+			AND a.validationAdmin = false');
+
+		return $query -> getSingleScalarResult();
+	}
 }

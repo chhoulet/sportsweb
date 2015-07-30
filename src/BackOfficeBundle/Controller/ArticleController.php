@@ -107,9 +107,11 @@ class ArticleController extends Controller
     {
         $em = $this -> getDoctrine()->getManager();
         $listArticlesWarned = $em -> getRepository('FrontOfficeBundle:Article') -> getWarnedArticles();
+        $nbArticlesWarned = $em -> getRepository('FrontOfficeBundle:Article') -> nbArticlesWarned();
 
         return $this -> render('BackOfficeBundle:Article:listArticlesWarned.html.twig',
-            array('listArticlesWarned'=>$listArticlesWarned));
+            array('listArticlesWarned'=> $listArticlesWarned,
+                  'nbArticlesWarned'  => $nbArticlesWarned));
     }
 
     public function responseWarnedArticleAction($id)
