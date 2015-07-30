@@ -83,7 +83,24 @@
 			                <a class="btn btn-primary" href="{{ path('back_office_team_delete',{id:oneTeam.id}) }}">Suppression team<span class="glyphicon glyphicon-chevron-right"></span></a>
 			            {% endif %}	    		             
 			                
-		                	<hr>	                   			               			         
+		                	<hr>	
+
+		            <h3> Laissez un commentaire :</h3>                   			               			
+		            	{{ form(form) }}
+
+
+		        <div class="container">
+
+		        	<h3>Liste des commentaires:</h3>
+
+		            	{% for com in oneTeam.comment %}         
+		            		Username : {{ com.author }}<br>
+		            		Titre : {{ com.title }}<br>
+		            		Date : {{ com.dateCreated | date('d-m-Y H:i') }}<br>
+		            		Commentaire : {{ com.content }}<br>
+		            	{% endfor %}<br><br>
+
+		        </div>
 			              	       		
 			</div>
 		</div>

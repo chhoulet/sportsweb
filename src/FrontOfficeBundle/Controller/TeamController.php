@@ -4,7 +4,9 @@ namespace FrontOfficeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FrontOfficeBundle\Entity\Team;
+use FrontOfficeBundle\Entity\Comment;
 use FrontOfficeBundle\Form\TeamType;
+use FrontOfficeBundle\Form\CommentType;
 use Symfony\Component\HttpFoundation\Request;
 
 class TeamController extends Controller
@@ -21,10 +23,27 @@ class TeamController extends Controller
 	public function oneTeamAction(Request $request,$id)
 	{
 		$em = $this -> getDoctrine()-> getManager();
-		$oneTeam = $em -> getRepository('FrontOfficeBundle:Team')-> find($id);
+		$oneTeam = $em -> getRepository('FrontOfficeBundle:Team')-> find($id);		
+		$comment = new Comment();
+		$form = $this -> createForm(new CommentType(), $comment);
+
+		$form -> handleRequest($request);
+
+		if ($form -> isValid())
+		{
+			$comment -> setDateCreated(new \datetime());
+			$comment -> setAuthor($this -> getUser());
+			$comment -> setValidationAdmin(false);
+			$comment -> setTeam($oneTeam);
+			$em -> persist($comment);
+			$em -> flush();		
+
+			return $this -> redirect($request -> headers -> get('referer'));
+		}
 
 		return $this -> render('FrontOfficeBundle:Team:one.html.twig',
-		    array('oneTeam'=>$oneTeam));
+		    array('oneTeam'=> $oneTeam,
+		    	  'form'   => $form -> createView()));
 	}
 
 	public function newAction(Request $request)
