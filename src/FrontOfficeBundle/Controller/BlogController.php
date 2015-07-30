@@ -47,6 +47,7 @@ class BlogController extends Controller
 			array('list' => $list));
 	}*/
 
+	/*Selection d'un article avec formulaire de creation de commentaires + message flash*/
 	public function oneAction(Request $request, $id)
 	{
 		$em = $this ->getDoctrine()->getManager();
@@ -59,6 +60,7 @@ class BlogController extends Controller
 
 		if ($form -> isValid())
 		{
+			/*Attribution de valeurs automatique aux attributs de l'objet Comment*/
 			$comment -> setDateCreated(new \DateTime('now'));
 			$comment -> setArticle($article);
 			$comment -> setValidationAdmin(false);

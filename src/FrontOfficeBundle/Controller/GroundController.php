@@ -20,6 +20,7 @@ class GroundController extends Controller
 			array('groundList'=>$groundList));
 	}
 
+	/*Selection d'un Ground avec formulaire de creation de commentaires + message flash*/
 	public function oneGroundAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -32,6 +33,7 @@ class GroundController extends Controller
 
 		if($form -> isValid())
 		{
+			/*Attribution de valeurs automatique aux attributs de l'objet Comment*/
 			$comment -> setValidationAdmin(false);
 			$comment -> setDateCreated(new \datetime());
 			$comment -> setAuthor($this->getUser());
@@ -59,6 +61,7 @@ class GroundController extends Controller
 
 		if($form -> isValid())
 		{
+			/*Attribution de valeurs automatique aux attributs de l'objet Ground - auteur : recupération de l'user*/
 			$ground -> setDateCreated(new \datetime('now'));
 			$ground -> setAuthor($this -> getUser());
 			$ground -> setValidAdmin(false);

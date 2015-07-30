@@ -26,6 +26,7 @@ class InvitationController extends Controller
 		
 		$form -> handleRequest($request);
 
+		/*Attribution de valeurs automatique aux invitations créées, permet le tri selon leur statut*/
 		if ($form -> isValid()){
 			$invitation ->setDateCreated(new \DateTime('now'));
 			$invitation ->setAccepted(false);
@@ -37,6 +38,7 @@ class InvitationController extends Controller
 			$em -> persist($invitation);
 			$em -> flush();
 
+			/*Parametrage du message flash*/
 			$session ->getFlashBag()->add('succes','Votre invitation a bien été lancée !');
 
 			return $this->redirect($this -> generateUrl('front_office_homepage'));
@@ -76,6 +78,7 @@ class InvitationController extends Controller
 
 	public function deniedAction(Request $request,$id)
 	{
+		/*Attribution automatique de valeur aux attributs de l'objet Invitation*/
 		$em = $this -> getDoctrine()->getManager();
 		$invitationDenied = $em -> getRepository('FrontOfficeBundle:Invitation')->find($id);
 		$invitationDenied -> setDenied(true);
@@ -84,6 +87,7 @@ class InvitationController extends Controller
 		$em -> persist($invitationDenied);
 		$em -> flush();
 
+		/*Redirection sur la page d'où vient l'user*/
 		return $this -> redirect($request->headers->get('referer'));
 	}
 
@@ -105,6 +109,7 @@ class InvitationController extends Controller
 		$em -> remove($deleteInvitation);
 		$em -> flush();
 
+		/*Redirection sur la page d'où vient l'user*/
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
 }

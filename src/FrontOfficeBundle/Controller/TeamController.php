@@ -79,6 +79,7 @@ class TeamController extends Controller
 			array('form' => $form->createView()));
 	}
 
+	/*Ajout d'un user dans une team*/
 	public function addUserAction(Request $request,$id)
 	{
 		$em = $this -> getDoctrine()->getmanager();
