@@ -174,6 +174,13 @@ class Team
      */
     private $invitationsReceivedToTeam;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Comment", mappedBy="team")
+     */
+    private $comment;
+
 
     /**
      * Get id
@@ -566,5 +573,38 @@ class Team
     public function getInvitationsReceivedToTeam()
     {
         return $this->invitationsReceivedToTeam;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \FrontOfficeBundle\Entity\Comment $comment
+     * @return Team
+     */
+    public function addComment(\FrontOfficeBundle\Entity\Comment $comment)
+    {
+        $this->comment[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \FrontOfficeBundle\Entity\Comment $comment
+     */
+    public function removeComment(\FrontOfficeBundle\Entity\Comment $comment)
+    {
+        $this->comment->removeElement($comment);
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }

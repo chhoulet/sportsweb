@@ -18,7 +18,7 @@ class TeamController extends Controller
 			array('listTeams'=>$listTeams));
 	}
 
-	public function oneTeamAction($id)
+	public function oneTeamAction(Request $request,$id)
 	{
 		$em = $this -> getDoctrine()-> getManager();
 		$oneTeam = $em -> getRepository('FrontOfficeBundle:Team')-> find($id);

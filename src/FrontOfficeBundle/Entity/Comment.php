@@ -101,6 +101,14 @@ class Comment
      */
     private $ground;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="comment")
+     * @ORM\JoinColumn(name="team_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $team;
+
 
     /**
      * Get id
@@ -294,5 +302,28 @@ class Comment
     public function getGround()
     {
         return $this->ground;
+    }
+
+    /**
+     * Set team
+     *
+     * @param \FrontOfficeBundle\Entity\Team $team
+     * @return Comment
+     */
+    public function setTeam(\FrontOfficeBundle\Entity\Team $team = null)
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * Get team
+     *
+     * @return \FrontOfficeBundle\Entity\Team 
+     */
+    public function getTeam()
+    {
+        return $this->team;
     }
 }
