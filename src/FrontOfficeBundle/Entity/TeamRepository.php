@@ -45,4 +45,51 @@ class TeamRepository extends EntityRepository
 
 		return $query -> getSingleScalarResult();
 	}
+
+	public function getTeamsBySport($sport)
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT t
+			FROM FrontOfficeBundle:Team t
+			JOIN t.sport s 
+			WHERE s.name LIKE :sport')
+		->setParameter('sport', $sport)
+		->setMaxResults(30);
+
+		return $query -> getResult();
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
