@@ -92,7 +92,7 @@ class GroundController extends Controller
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$getGroundByNbInvitations = $em -> getRepository('FrontOfficeBundle:Ground') -> getGroundByNbInvitations();
-
+		
 		return $this -> render('BackOfficeBundle:Ground:stats.html.twig', 
 			array('getGroundByNbInvitations' => $getGroundByNbInvitations));
 	}

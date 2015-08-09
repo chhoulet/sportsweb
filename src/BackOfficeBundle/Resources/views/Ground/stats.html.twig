@@ -1,0 +1,29 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div id="page-wrapper">
+            <div class="row">
+
+            	<h2 style="text-align:center;">Statistiques Ground :</h2>
+
+                <div class="col-lg-4">
+		
+                	<h4>Grounds classés par le nombre d'invitations :</h4>
+
+						<div class="container">
+
+							<ul>
+								{% for invits in getGroundByNbInvitations %}
+									<li>{{ invits.name }} a fait l'objet de {{ invits.nb}} {% if invits.nb > 1 %} invitations. {% else %} invitation. {% endif %}</li>
+								{% endfor %}
+							</ul>
+							
+						</div>
+
+				</div>				
+
+            </div>
+        </div>
+
+    {% endblock %}

@@ -58,4 +58,14 @@ class GroundRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function nbGrounds()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT(g.id)
+			FROM FrontOfficeBundle:Ground g
+			WHERE g.validAdmin = true');
+
+		return $query -> getSingleScalarResult();
+	}
 }
