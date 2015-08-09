@@ -130,10 +130,12 @@ class ArticleController extends Controller
     {
         $em = $this -> getDoctrine()-> getManager();
         $articlesBySport = $em -> getRepository('FrontOfficeBundle:Article') ->getArticlesBySport();
+        $articlesByComment = $em -> getRepository('FrontOfficeBundle:Article') ->getArticlesByNbComment();
         $articlesByUsers = $em -> getRepository('UserBundle:User') -> getNbArticlesByUsers();
 
         return $this -> render('BackOfficeBundle:Article:statsArticles.html.twig', 
-            array('articlesBySport'=> $articlesBySport,
-                  'articlesByUsers'=> $articlesByUsers));
+            array('articlesBySport'   => $articlesBySport,
+                  'articlesByComment' => $articlesByComment,
+                  'articlesByUsers'   => $articlesByUsers));
     }
 }

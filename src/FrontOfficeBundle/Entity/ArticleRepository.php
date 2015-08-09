@@ -105,4 +105,20 @@ class ArticleRepository extends EntityRepository
 
 		return $query -> getSingleScalarResult();
 	}
+
+	public function getArticlesByNbComment()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT a.title, COUNT(c.id) AS nb 
+			FROM FrontOfficeBundle:Article a
+			JOIN a.comment c
+			WHERE a.validationAdmin = true 
+			AND c.validationAdmin = true
+			GROUP BY a.title
+			ORDER BY c.id DESC			
+			')
+		->setMaxResults(15);
+
+		return $query ->getResult();
+	}
 }

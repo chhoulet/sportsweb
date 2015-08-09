@@ -14,7 +14,9 @@
 						<div class="container">
 
 							<ul>
-								{% for sport in articlesBySport %}<li>{{ sport.name }} est l'objet de {{ sport.nb }} {% if sport.nb >1 %} articles {% else %} article {% endif %}</li>{% endfor %}
+								{% for sport in articlesBySport %}<li>
+									{{ sport.name }} est l'objet de {{ sport.nb }} {% if sport.nb >1 %} articles {% else %} article {% endif %}</li>
+								{% endfor %}
 							</ul>
 
 						</div>
@@ -28,12 +30,30 @@
 						<div class="container">
 
 							<ul>
-								{% for user in articlesByUsers %}<li>{{ user.username }} a écrit {{ user.nb }} {% if user.nb >1 %} articles {% else %} article {% endif %}</li>{% endfor %}
+								{% for user in articlesByUsers %}<li>
+									{{ user.username }} a écrit {{ user.nb }} {% if user.nb >1 %} articles {% else %} article {% endif %}</li>
+								{% endfor %}
 							</ul>
 
 						</div>
 
-				</div>									
+				</div>
+
+				<div class="col-lg-4">
+		
+                	<h4>Liste des Articles les plus commentés :</h4>
+
+						<div class="container">
+
+							<ul>
+								{% for arti in articlesByComment %}<li>
+									{{ arti.title }} a reçu {{ arti.nb }} {% if arti.nb >1 %} commentaires {% else %} commentaire {% endif %}</li>
+								{% endfor %}
+							</ul>
+
+						</div>
+
+				</div>																	
 
 			</div>
 		</div>
