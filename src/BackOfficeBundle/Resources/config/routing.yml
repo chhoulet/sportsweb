@@ -116,12 +116,14 @@ back_office_ground_validAdmin:
 back_office_ground_validationGround:
     path:      /validGround/{id}
     defaults: { _controller: BackOfficeBundle:Ground:validGround}
+    requirements: 
+        id: "[0-9]+"
 
     # Stats des terrains :
 back_office_ground_stats:
     path:      /statsGrounds
     defaults:  { _controller: BackOfficeBundle:Ground:stats}
-    
+
 # Routes gerant les users:
     # Liste des users non valides par l'administrateur:
 back_office_admin_user:
@@ -181,6 +183,8 @@ back_office_message_list:
 back_office_message_readMessage:
     path:     /readMessage/{id}
     defaults: { _controller: BackOfficeBundle:Message:readMessage}
+    requirements: 
+        id: "[0-9]+"
 
     #Lister les messages archives:
 back_office_message_readMessage_list:
