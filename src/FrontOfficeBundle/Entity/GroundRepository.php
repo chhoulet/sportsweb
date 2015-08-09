@@ -43,4 +43,19 @@ class GroundRepository extends EntityRepository
 		
 		return $this -> getResult();
 	}
+
+	public function getGroundByNbInvitations()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT g.name, COUNT(i.id) AS nb 
+			FROM FrontOfficeBundle:Ground g 
+			JOIN g.invitation i 
+			WHERE i.accepted = true 
+			AND i.denied = false
+			GROUP BY g.name
+			ORDER BY i.id DESC')
+		->setMaxResults(20);
+
+		return $query -> getResult();
+	}
 }

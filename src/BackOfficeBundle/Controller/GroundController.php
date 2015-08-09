@@ -87,4 +87,13 @@ class GroundController extends Controller
 
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
+
+	public function statsAction()
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$getGroundByNbInvitations = $em -> getRepository('FrontOfficeBundle:Ground') -> getGroundByNbInvitations();
+
+		return $this -> render('BackOfficeBundle:Ground:stats.html.twig', 
+			array('getGroundByNbInvitations' => $getGroundByNbInvitations));
+	}
 }
