@@ -153,6 +153,11 @@ front_office_team_delete:
     requirements: 
         id: "[0-9]+"
 
+    # Tri des teams par sport:
+front_office_team_triBySport:
+    path:     /triBySport/{sportPracticed}
+    defaults: { _controller: FrontOfficeBundle:Team:triBySport} 
+
 # Routes gérant les terrains:
 front_office_ground_list:
     path:     /groundList 

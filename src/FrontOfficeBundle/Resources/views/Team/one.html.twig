@@ -8,7 +8,12 @@
 					<h2> {{ oneTeam.name }} </h2>
 
 			        	<p class="lead">
-			                Sport pratiqué : {{ oneTeam.sportPracticed }}  Equipe créée par : {{ oneTeam.admin }}
+			                Sport pratiqué :<a href="{{ path('front_office_team_triBySport',{sportPracticed:oneTeam.sportPracticed}) }}"> 
+			                 {{ oneTeam.sportPracticed }}
+			                	</a><br>
+			              
+
+			                Equipe créée par : {{ oneTeam.admin }}<br>
 			            </p>
 			            <p><span class="glyphicon glyphicon-time"></span>{{ oneTeam.dateCreated | date('d-m-Y')}}</p>
 			                <hr>

@@ -111,4 +111,13 @@ class TeamController extends Controller
 
 		return $this -> redirect($request->headers->get('referer'));
 	}
+
+	public function triBySportAction($sportPracticed)
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$triBySport = $em -> getRepository('FrontOfficeBundle:Team') -> getTeamsBySport($sportPracticed);
+
+		return $this -> render('FrontOfficeBundle:Team:triBySport.html.twig', 
+			array('triBySport'=> $triBySport));
+	}
 }
