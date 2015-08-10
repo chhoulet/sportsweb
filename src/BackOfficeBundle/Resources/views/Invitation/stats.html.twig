@@ -24,11 +24,23 @@
 
 						<ul>
 							{% for invits in getNbInvitsReceivedByUser %}
-								<li>{{ invits.username }} a reçu {{ invits.nb }} {% if invits.nb > 1 %} invitations. {% else %} invitation. {% endif %}
+								<li>{{ invits.username }} a reçu {{ invits.nb }} {% if invits.nb > 1 %} invitations. {% else %} invitation. {% endif %}</li>
 							{% endfor %}
 						</ul>
 
-				</div>				
+				</div>
+
+				<div class="col-lg-4">
+
+					<h4>Nombre d'invitations triées par sport</h4>
+
+						<ul>
+							{% for invits in getNbInvitsBySport %}
+								<li>{{ invits.name }} a fait l'objet de {{ invits.nb }} {% if invits.nb > 1 %} invitations. {% else %} invitation. {% endif %}</li>
+							{% endfor %}
+						</ul>
+						
+				</div>
 
 
 	{% endblock %}

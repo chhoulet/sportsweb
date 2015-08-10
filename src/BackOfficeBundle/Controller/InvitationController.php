@@ -13,10 +13,12 @@ class InvitationController extends Controller
 	{
 		$em = $this -> getDoctrine()-> getManager();
 		$getNbInvitsByUser = $em -> getRepository('UserBundle:User') ->getNbInvitsByUser();
-		$getNbInvitsReceivedByUser = $em -> getRepository('UserBundle:User') ->getNbInvitsReceivedByUser();	
+		$getNbInvitsReceivedByUser = $em -> getRepository('UserBundle:User') ->getNbInvitsReceivedByUser();
+		$getNbInvitsBySport = $em -> getRepository('FrontOfficeBundle:Sport') ->getNbInvitsBySport();
 
 		return $this -> render('BackOfficeBundle:Invitation:stats.html.twig', 
-			array('getNbInvitsByUser'        => $getNbInvitsByUser,
-				  'getNbInvitsReceivedByUser'=>$getNbInvitsReceivedByUser));
+			array('getNbInvitsByUser'=> $getNbInvitsByUser,
+				  'getNbInvitsReceivedByUser'=>$getNbInvitsReceivedByUser,
+				  'getNbInvitsBySport'       =>$getNbInvitsBySport));
 	}
 }
