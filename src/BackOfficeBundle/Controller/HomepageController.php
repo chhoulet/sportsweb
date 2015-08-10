@@ -12,7 +12,7 @@ class HomepageController extends Controller
     	$em = $this -> getDoctrine() ->getManager();
     	$invitations             = $em -> getRepository('FrontOfficeBundle:Invitation') -> nbInvitations();
     	$nbInvitationsAccepted   = $em -> getRepository('FrontOfficeBundle:Invitation') -> nbInvitationsAccepted();
-    	$nbInvitationsDenied     = $em -> getRepository('FrontOfficeBundle:Invitation') -> nbInvitationsDenied();
+    	$nbGrounds               = $em -> getRepository('FrontOfficeBundle:Ground')     -> nbGrounds();
       $nbUsers                 = $em -> getRepository('UserBundle:User')              -> nbUsers();
       $nbComments              = $em -> getRepository('FrontOfficeBundle:Comment')    -> nbComments();
       $nbArticles              = $em -> getRepository('FrontOfficeBundle:Article')    -> nbArticles();
@@ -23,7 +23,7 @@ class HomepageController extends Controller
         return $this -> render('BackOfficeBundle:Homepage:homepage.html.twig', 
         	array('invitations'             => $invitations,
         		    'nbInvitationsAccepted'   => $nbInvitationsAccepted,
-        		    'nbInvitationsDenied'     => $nbInvitationsDenied,
+        		    'nbGrounds'               => $nbGrounds,
                 'nbUsers'                 => $nbUsers,
                 'nbComments'              => $nbComments,
                 'nbArticles'              => $nbArticles,
