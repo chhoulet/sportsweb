@@ -13,6 +13,10 @@
 							{{ message }}				
 						{% endfor %}
 
+						{% for mess in app.session.flashbag.get('supp') %}
+								{{ mess }}
+						{% endfor %}
+
 						{% for art in article %}
 
 			                <h2>

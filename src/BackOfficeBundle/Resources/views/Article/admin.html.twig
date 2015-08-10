@@ -10,6 +10,10 @@
 
 						{% for art in article %}
 
+							{% for message in app.session.flashbag.get('supp') %}
+								{{ message }}
+							{% endfor %}
+
 			                <h2>
 			                    <a href="#">{{ art.title }}</a>
 			                </h2>

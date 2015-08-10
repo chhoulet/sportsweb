@@ -9,6 +9,10 @@
 
 					<h2> Liste des articles mis en avertissement : {{ nbArticlesWarned }} {% if nbArticlesWarned >1 %} éléments {% else %} élément {% endif %}</h2>
 
+						{% for message in app.session.flashbag.get('supp') %}
+								{{ message }}
+						{% endfor %}
+
 						{% for art in listArticlesWarned %}
 
 			                <h2>
