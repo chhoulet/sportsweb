@@ -22,6 +22,7 @@ class ArticleController extends Controller
     {
         $em = $this -> getDoctrine()->getManager();
         $article = new Article();
+        $session = $request -> getSession();
         $form = $this -> createForm(new ArticleType(), $article);
 
         $form -> handleRequest($request);
@@ -30,10 +31,12 @@ class ArticleController extends Controller
             $article -> setDateCreated(new \DateTime('now'));
             $article -> setValidationAdmin(true);
             $article -> setWarned(true);
+            $article -> addAuthor($this -> getUser());
             $em -> persist($article);
             $em -> flush();
 
-            return $this -> redirect($this -> generateUrl('back_office_homepage'));
+            $session -> getFlashbag() -> add('creation','Votre article est ajouté dans la Base');
+            return $this -> redirect($this -> generateUrl('back_office_article_list'));
         }
 
         return $this -> render('BackOfficeBundle:Article:new.html.twig',
