@@ -1,0 +1,21 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-4">
+
+					<h2>Statistiques Users</h2>
+
+					<h4>Liste des Users par Nombre de commentaires:</h4>
+
+						{% for user in getNbCommentsByUsers %}
+							{{ user.username }} a posté {{ user.nb }} commentaires.
+						{% endfor %}
+
+				</div>
+			</div>
+		</div>
+
+	{% endblock %}
