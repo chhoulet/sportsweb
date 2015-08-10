@@ -64,7 +64,7 @@ class UserRepository extends EntityRepository
 
 	public function getNbInvitsByUser()
 	{
-		$em = $this -> getEntityManager()-> createQuery('
+		$query = $this -> getEntityManager()-> createQuery('
 			SELECT u.username, COUNT(i.id) AS nb
 			FROM UserBundle:User u 
 			JOIN u.invitationsSent i
@@ -77,7 +77,7 @@ class UserRepository extends EntityRepository
 
 	public function getNbInvitsReceivedByUser()
 	{
-		$em = $this -> getEntityManager()-> createQuery('
+		$query = $this -> getEntityManager()-> createQuery('
 			SELECT u.username, COUNT(i.id) AS nb
 			FROM UserBundle:User u 
 			JOIN u.invitationsReceived i

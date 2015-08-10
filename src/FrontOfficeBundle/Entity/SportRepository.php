@@ -55,5 +55,5 @@ class SportRepository extends EntityRepository
 			GROUP BY t.id');
 
 		return $query -> getResult();
-	}
+	}	
 }

@@ -203,7 +203,7 @@ back_office_message_delete:
     requirements: 
         id: "[0-9]+"
 
-# Route gerant les Sports :
+# Routes gerant les Sports :
 back_office_sport_new:
     path:     /newSport
     defaults: { _controller: BackOfficeBundle:Sport:new}
@@ -211,6 +211,11 @@ back_office_sport_new:
 back_office_sport_list:
     path:     /listSports
     defaults: { _controller: BackOfficeBundle:Sport:listSports}
+
+# Routes gerant les invitations:
+back_office_admin_invitations_stats:
+    path:     /statsInvits
+    defaults: { _controller: BackOfficeBundle:Invitation:stats}
 
 
 
