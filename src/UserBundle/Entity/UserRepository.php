@@ -61,4 +61,17 @@ class UserRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getNbInvitsByUser()
+	{
+		$em = $this -> getEntityManager()-> createQuery('
+			SELECT u.username, COUNT(i.id) AS nb
+			FROM UserBundle:User u 
+			JOIN u.invitationsSent i
+			GROUP By u.username
+			ORDER BY i.id DESC ')
+		->setMaxResults(25);
+
+		return $query -> getResult();
+	}
 }
