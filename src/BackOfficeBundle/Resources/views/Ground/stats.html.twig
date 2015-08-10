@@ -35,8 +35,25 @@
 								{% endfor %}
 							<ul>
 
+						</div>
 
 				</div>		
+
+				<div class="col-lg-4">
+
+					<h4>Grounds classés par le nombre de Teams:</h4>	
+
+						<div class="container">
+
+							<ul>
+								{% for ground in getGroundsByNbTeams %}
+									<li>{{ ground.name }} compte {{ ground.nb }} {% if ground.nb > 1 %} équipes rattachées. {% else %} équipe rattachée.</li> {% endif %}
+								{% endfor %}
+							<ul>
+
+						</div>
+						
+				</div>
 
             </div>
         </div>

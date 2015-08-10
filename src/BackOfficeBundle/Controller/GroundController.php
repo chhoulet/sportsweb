@@ -93,9 +93,11 @@ class GroundController extends Controller
 		$em = $this -> getDoctrine()->getManager();
 		$getGroundByNbInvitations = $em -> getRepository('FrontOfficeBundle:Ground') -> getGroundByNbInvitations();
 		$getGroundsByNbUsers = $em -> getRepository('FrontOfficeBundle:Ground') -> getGroundsByNbUsers();
+		$getGroundsByNbTeams = $em -> getRepository('FrontOfficeBundle:Ground') -> getGroundsByNbTeams();
 		
 		return $this -> render('BackOfficeBundle:Ground:stats.html.twig', 
 			array('getGroundByNbInvitations' => $getGroundByNbInvitations,
-				  'getGroundsByNbUsers'      => $getGroundsByNbUsers));
+				  'getGroundsByNbUsers'      => $getGroundsByNbUsers,
+				  'getGroundsByNbTeams'      => $getGroundsByNbTeams));
 	}
 }

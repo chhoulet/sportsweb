@@ -76,7 +76,23 @@ class GroundRepository extends EntityRepository
 			FROM FrontOfficeBundle:Ground g
 			JOIN g.userGround u 
 			WHERE u.validationAdmin = true 
-			GROUP BY g.name')
+			GROUP BY g.name
+			ORDER BY u.id DESC')
+		->setMaxResults(25);
+
+		return $query -> getResult();
+	}
+
+	public function getGroundsByNbTeams()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT g.name, COUNT(t.id) AS nb
+			FROM FrontOfficeBundle:Ground g  
+			JOIN g.team t
+			WHERE t.validationAdmin = true
+			GROUP BY g.name 
+			ORDER BY t.id DESC
+			')
 		->setMaxResults(25);
 
 		return $query -> getResult();
