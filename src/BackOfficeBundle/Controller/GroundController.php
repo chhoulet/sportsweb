@@ -22,6 +22,7 @@ class GroundController extends Controller
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$ground = new Ground();
+		$session = $request -> getSession();
 		$form = $this -> createForm(new GroundType(),$ground);
 
 		$form -> handleRequest($request);
@@ -29,11 +30,26 @@ class GroundController extends Controller
 		if($form -> isValid())
 		{
 			$ground -> setDateCreated(new \datetime('now'));
-			$ground -> setValidAdmin(false);
+			$ground -> setValidAdmin(true);
+			$ground -> setAuthor($this -> getUser());
+			$postCode = $ground -> getPostCode();
+
+			if($postCode == 75 || $postCode == 77 || $postCode == 78 || $postCode == 91 || $postCode == 92 || $postCode == 93)
+			{
+				$ground -> setRegion('Ile-de-France');
+			}
+
+			if($postCode == 16 || $postCode == 17 || $postCode == 87 || $postCode == 23 || $postCode == 63 || $postCode == 15
+				|| $postCode == 12 || $postCode == 81 || $postCode == 31 || $postCode == 32 || $postCode == 65 || $postCode == 64
+				|| $postCode == 40 || $postCode == 47 || $postCode == 33 || $postCode == 24 || $postCode == 19 || $postCode == 46 || $postCode == 82)
+			{
+				$ground -> setRegion('Sud-Ouest');
+			}
 			$em ->persist($ground);
 			$em -> flush();
 
-			return $this -> redirect($this -> generateUrl('back_office_homepage'));
+			$session -> getFlashbag()-> add('succes','Un nouveau terrain vient d\'être ajouté dans la base !');
+			return $this -> redirect($this -> generateUrl('back_office_ground_list'));
 		}
 
 		return $this -> render('BackOfficeBundle:Ground:new.html.twig', array('form' => $form ->createView()));

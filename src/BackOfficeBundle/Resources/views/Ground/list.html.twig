@@ -9,6 +9,10 @@
 
 					<h2> Liste des terrains de sport:</h2>
 
+						{% for message in app.session.flashbag.get('succes') %}
+							{{ message }}
+						{% endfor %}
+
 						{% for art in grounds %}
 
 			                <h2>
