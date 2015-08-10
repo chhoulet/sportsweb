@@ -14,7 +14,11 @@
 						{% endfor %}
 
 						{% for mess in app.session.flashbag.get('supp') %}
-								{{ mess }}
+							{{ mess }}
+						{% endfor %}
+
+						{% for messa in app.session.flashbag.get('updat') %}
+							{{ messa }}
 						{% endfor %}
 
 						{% for art in article %}

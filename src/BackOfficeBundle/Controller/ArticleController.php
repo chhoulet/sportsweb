@@ -81,6 +81,7 @@ class ArticleController extends Controller
     public function updateAction(Request $request,$id)
     {
         $em = $this -> getDoctrine()->getManager();
+        $session = $request -> getSession();
         $article = $em -> getRepository('FrontOfficeBundle:Article') -> find($id);
 
         $form = $this -> createForm(new ArticleType(), $article);
@@ -92,6 +93,7 @@ class ArticleController extends Controller
             $em -> persist($article);
             $em -> flush();
 
+            $session -> getFlashbag() -> add('updat','L\'article est bien mis à jour dans la Base de données !');
             return $this -> redirect($this -> generateUrl('back_office_article_list'));
         }
 
