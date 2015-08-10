@@ -5,11 +5,11 @@
 		<div id="page-wrapper">
             <div class="row">
 
-            	<h2 style="text-align:center;">Statistiques Ground :</h2>
+            	<h2 style="text-align:center;">Statistiques Ground:</h2>
 
                 <div class="col-lg-4">
 		
-                	<h4>Grounds classés par le nombre d'invitations :</h4>
+                	<h4>Grounds classés par le nombre d'invitations:</h4>
 
 						<div class="container">
 
@@ -21,7 +21,21 @@
 							
 						</div>
 
-				</div>				
+				</div>	
+
+				<div class="col-lg-4">
+
+					<h4>Grounds classés par le nombre d'Users:</h4>	
+
+						<div class="container">
+
+							<ul>
+								{% for ground in getGroundsByNbUsers %}
+									{{ ground.name}} a {{ ground.nb }} {% if ground.nb > 1 %} inscrits {% else %} inscrit {% endif %} comme terrain de rattachement.
+								{% endfor %}
+
+
+				</div>		
 
             </div>
         </div>

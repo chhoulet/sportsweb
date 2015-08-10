@@ -68,4 +68,17 @@ class GroundRepository extends EntityRepository
 
 		return $query -> getSingleScalarResult();
 	}
+
+	public function getGroundsByNbUsers()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT g.name, COUNT(u.id) AS nb
+			FROM FrontOfficeBundle:Ground g
+			JOIN g.userGround u 
+			WHERE u.validationAdmin = true 
+			GROUP BY g.name')
+		->setMaxResults(25);
+
+		return $query -> getResult();
+	}
 }
