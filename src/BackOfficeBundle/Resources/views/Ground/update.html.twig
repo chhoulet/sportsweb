@@ -8,6 +8,10 @@
 		
 					<h2> Mise à jour d'un terrain de sport :</h2>
 
+						<div><strong>{% for message in app.session.flashbag.get('notice') %}
+							{{ message }}
+						{% endfor %}</strong><br><br>
+
 						{{ form(form) }}
 
 				</div>

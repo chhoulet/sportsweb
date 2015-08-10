@@ -42,6 +42,7 @@ class GroundController extends Controller
 	public function updateAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$ground = $em -> getRepository('FrontOfficeBundle:Ground')->find($id);
 		$form = $this -> createForm(new GroundType(), $ground);
 
@@ -53,8 +54,10 @@ class GroundController extends Controller
 			$em -> persist($ground);
 			$em -> flush();
 
-			return $this -> redirect($this -> generateUrl('back_office_ground_list'));
+			$session -> getFlashbag() -> add('notice','Le terrain a bien été mis à jour !');
+			return $this -> redirect($request -> headers -> get('referer'));
 		}
+
 		return $this -> render('BackOfficeBundle:Ground:update.html.twig', 
 			array('form'=>$form->createView()));
 	}
