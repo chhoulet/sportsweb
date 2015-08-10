@@ -12,7 +12,7 @@ class ArticleController extends Controller
     public function listAction()
     {
         $em = $this -> getDoctrine()->getManager();
-        $article = $em -> getRepository('FrontOfficeBundle:Article') -> findAll();
+        $article = $em -> getRepository('FrontOfficeBundle:Article') -> getAllArticlesValidated();
 
         return $this -> render('BackOfficeBundle:Article:list.html.twig',
             array('article'=>$article));
@@ -30,7 +30,9 @@ class ArticleController extends Controller
         {
             $article -> setDateCreated(new \DateTime('now'));
             $article -> setValidationAdmin(true);
-            $article -> setWarned(true);
+            $article -> setDateCreated(new \DateTime('now'));
+            $article -> setWarned(false);
+            $article -> setWarned(false);
             $article -> addAuthor($this -> getUser());
             $em -> persist($article);
             $em -> flush();

@@ -25,6 +25,18 @@ class ArticleRepository extends EntityRepository
 		return $query -> getResult();
 	}
 
+	public function getAllArticlesValidated()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT a 
+			FROM FrontOfficeBundle:Article a 
+			WHERE a.validationAdmin = true
+			AND a.warned = false
+			ORDER BY a.dateCreated DESC');
+
+		return $query -> getResult();
+	}
+
 
 	public function getArticleBySportViewed($sport)
 	{
