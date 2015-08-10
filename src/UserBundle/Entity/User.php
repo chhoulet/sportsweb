@@ -169,6 +169,14 @@ class User extends BaseUser
     protected $teamsAdmin;
 
     /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Comment", mappedBy="author")
+     */
+    protected $comment;
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -717,5 +725,38 @@ class User extends BaseUser
     public function getPlace()
     {
         return $this->place;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \FrontOfficeBundle\Entity\Comment $comment
+     * @return User
+     */
+    public function addComment(\FrontOfficeBundle\Entity\Comment $comment)
+    {
+        $this->comment[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \FrontOfficeBundle\Entity\Comment $comment
+     */
+    public function removeComment(\FrontOfficeBundle\Entity\Comment $comment)
+    {
+        $this->comment->removeElement($comment);
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }

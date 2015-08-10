@@ -63,4 +63,13 @@ class UserController extends Controller
 
 		return $this -> redirect($this -> generateUrl('back_office_admin_user'));
 	}
+
+	public function statsAction()
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$getNbCommentsByUsers = $em -> getRepository('UserBundle:User') -> getNbCommentsByUsers();
+
+		return $this -> render('BackOfficeBundle:User:stats.html.twig', 
+			array('getNbCommentsByUsers'=>$getNbCommentsByUsers));
+	}
 }

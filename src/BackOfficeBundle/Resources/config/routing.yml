@@ -154,6 +154,11 @@ back_office_admin_user_delete:
     path:     /delete
     defaults: { _controller: BackOfficeBundle:User:delete}
 
+    # Vue des stats Users:
+back_office_admin_user_stats:
+    path:     /statsUser
+    defaults: { _controller: BackOfficeBundle:User:stats}
+
 # Routes gerant les teams:
     # Controle des teams non validees:
 back_office_list_team:

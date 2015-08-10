@@ -65,7 +65,8 @@ class Comment
      *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
      * )
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="comment")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $author;
 
