@@ -45,9 +45,10 @@
                         
                             {% for com in article.comment %}
                                 <p><div class="media">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                                    </a>
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object" src="http://placehold.it/64x64" alt="">
+                                        </a>
+                                    </div>
                                     <div class="media-body">
                                         <h4 class="media-heading">{{ com.title }}
                                             <small>{{ com.dateCreated | date('d-m-Y H:i:s') }}</small>
