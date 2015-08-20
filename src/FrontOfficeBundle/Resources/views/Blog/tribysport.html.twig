@@ -20,7 +20,7 @@
 		                    <a href="{{ path('front_office_blog_one',{id:art.id}) }}">{{ art.title }}</a>
 		                </h2>
 		                <p class="lead">
-		                    by <a href="index.php">{% for at in art.author %}{{ at.username }}{% endfor %}</a>
+		                    by {% for at in art.author %}<a href="{{ path('front_office_user_one',{id:at.id}) }}">{{ at.username }}{% endfor %}</a>
 		                </p>
 		                <p><span class="glyphicon glyphicon-time"></span> {{ art.dateCreated | date('d-m-Y H:i:s')}}</p>
 		                <hr>
