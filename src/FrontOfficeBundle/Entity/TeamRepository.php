@@ -58,6 +58,23 @@ class TeamRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getTeamsByGroundAndSport($ground, $sportPracticed)
+	{
+		$query = $this -> getEntitymanager()->createQuery('
+			SELECT t 
+			FROM FrontOfficeBundle:Team t 
+			JOIN t.sportPracticed s 
+			JOIN t.groung g 
+			WHERE s.name LIKE :sportPracticed
+			AND g.name LIKE :ground
+			AND g.validAdmin = true
+			ORDER BY t.dateCreated DESC')
+		-> setParameter('sportPracticed', $sportPracticed)
+		-> setParameter('ground', $ground);
+
+		return $query->getResult();
+	}
 }
 
 
