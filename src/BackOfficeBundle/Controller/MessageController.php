@@ -30,6 +30,7 @@ class MessageController extends Controller
 		$em = $this -> getDoctrine()->getManager();
 		$readMessage = $em -> getRepository('FrontOfficeBundle:Message')->find($id);
 		$readMessage -> setReadMessage(true);
+		$readMessage -> setReader($this -> getUser());
 		$em -> persist($readMessage);
 		$em -> flush();
 

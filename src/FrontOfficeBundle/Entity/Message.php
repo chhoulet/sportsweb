@@ -39,6 +39,14 @@ class Message
     /**
      * @var string
      *
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="message")
+     * @ORM\JoinColumn(name="reader_id", referencedColumnName="id", nullable=true)
+     */
+    private $reader;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="content", type="text")
      * @Assert\NotBlank()
      * @Assert\Length(
@@ -238,5 +246,28 @@ class Message
     public function getReadMessage()
     {
         return $this->readMessage;
+    }
+
+    /**
+     * Set reader
+     *
+     * @param \UserBundle\Entity\User $reader
+     * @return Message
+     */
+    public function setReader(\UserBundle\Entity\User $reader = null)
+    {
+        $this->reader = $reader;
+
+        return $this;
+    }
+
+    /**
+     * Get reader
+     *
+     * @return \UserBundle\Entity\User 
+     */
+    public function getReader()
+    {
+        return $this->reader;
     }
 }

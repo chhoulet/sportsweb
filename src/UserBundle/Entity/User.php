@@ -175,6 +175,13 @@ class User extends BaseUser
      */
     protected $comment;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Message", mappedBy="reader")
+     */
+    protected $message;
+
 
     /**
      * Get id
@@ -758,5 +765,38 @@ class User extends BaseUser
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * Add message
+     *
+     * @param \FrontOfficeBundle\Entity\Message $message
+     * @return User
+     */
+    public function addMessage(\FrontOfficeBundle\Entity\Message $message)
+    {
+        $this->message[] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Remove message
+     *
+     * @param \FrontOfficeBundle\Entity\Message $message
+     */
+    public function removeMessage(\FrontOfficeBundle\Entity\Message $message)
+    {
+        $this->message->removeElement($message);
+    }
+
+    /**
+     * Get message
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessage()
+    {
+        return $this->message;
     }
 }

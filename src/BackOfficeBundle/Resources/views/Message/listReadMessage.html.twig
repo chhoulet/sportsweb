@@ -13,6 +13,7 @@
 							AUTHOR : <strong>{{ message.author }}</strong><br>
 							SUBJECT : {{ message.subject }}<br>
 							MESSAGE : {{ message.content }}<br>
+							VALIDE PAR : {{ message.reader.username }}<br>
 							DATE D'ENVOI : {{ message.dateCreated | date('d-m-Y H:i:s')}}<br>				
 							MAIL : {{ message.email }}<br><br>
 
