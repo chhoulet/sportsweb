@@ -85,7 +85,11 @@ class UserController extends Controller
 
 	public function showArticlesAction()
 	{
-		return $this -> render('FrontOfficeBundle:User:showArticles.html.twig');
+		$em = $this -> getDoctrine()->getManager();
+		$myArticles = $em -> getRepository('FrontOfficeBundle:Article')->getMyArticles($this -> getUser());
+
+		return $this -> render('FrontOfficeBundle:User:showArticles.html.twig', 
+			array('myArticles'=>$myArticles));
 	}
 }
 
