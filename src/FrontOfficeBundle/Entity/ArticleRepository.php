@@ -133,4 +133,18 @@ class ArticleRepository extends EntityRepository
 
 		return $query ->getResult();
 	}
+
+	public function getMyArticles($user)
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT a 
+			FROM FrontOfficeBundle:Article a 
+			JOIN a.author au
+			WHERE a.validationAdmin = true 
+			AND au.id LIKE :user
+			ORDER BY a.dateCreated DESC')
+		-> setParameter('user', $user);
+
+		return $query-> getResult();
+	}
 }
