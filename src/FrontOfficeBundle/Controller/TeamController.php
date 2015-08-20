@@ -120,4 +120,14 @@ class TeamController extends Controller
 		return $this -> render('FrontOfficeBundle:Team:listTeams.html.twig', 
 			array('listTeams'=> $triBySport));
 	}
+
+	public function getTeamsByGroundAndSportAction($ground, $sportPracticed)
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$TeamsByGroundAndSport = $em ->getRepository('FrontOfficeBundle:Team')->getTeamsByGroundAndSport($ground, $sportPracticed);
+	
+		return $this -> render('FrontOfficeBundle:Team:listTeams.html.twig', 
+			array('listTeams'=>$TeamsByGroundAndSport));
+	}
+
 }

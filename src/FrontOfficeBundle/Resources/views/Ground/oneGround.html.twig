@@ -8,7 +8,7 @@
 				<h2>{{ oneGround.name }}</h2>
 											             
 						<p class="lead">
-					    Sport pratiqué : <a href="index.php">{% for play in oneGround.sport %}{{ play.name }}{% endfor %}</a>
+					    Sport pratiqué : {% for play in oneGround.sport %} <a href="{{ path('front_office_team_getTeamsByGroundAndSport',{ground:oneGround.name, sportPracticed: play.name}) }}">{{ play.name }}{% endfor %}</a>
 					                </p>
 					    <p><span class="glyphicon glyphicon-time"> Créé le : {{ oneGround.dateCreated | date('d-m-Y') }}</span></p>
 					    <hr>
