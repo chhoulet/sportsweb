@@ -31,7 +31,7 @@
 
 							<ul>
 								{% for ground in getGroundsByNbUsers %}
-									<li>{{ ground.name}} a {{ ground.nb }} {% if ground.nb > 1 %} inscrits {% else %} inscrit {% endif %} comme terrain de rattachement.</li>
+									<li>{{ ground.name}} a {{ ground.nb }} {% if ground.nb > 1 %} inscrits qui ont choisi{% else %}<br> inscrit qui a choisi {% endif %} {{ ground.name}}<br> comme terrain de rattachement.</li>
 								{% endfor %}
 							<ul>
 

@@ -55,6 +55,7 @@ class UserRepository extends EntityRepository
 			SELECT u.username, COUNT(c.id) as nb
 			FROM UserBundle:User u
 			JOIN u.comment c 
+			WHERE c.validationAdmin = true 
 			GROUP BY u.username
 			ORDER BY c.id DESC')
 		->setMaxResults(15);
@@ -84,6 +85,20 @@ class UserRepository extends EntityRepository
 			GROUP By u.username
 			ORDER BY i.id DESC ')
 		->setMaxResults(25);
+
+		return $query -> getResult();
+	}
+
+	public function getNbArticlesByUsers()
+	{
+		$query = $this -> getEntityManager() -> createQuery('
+			SELECT u.username, COUNT(a.id) as nb
+			FROM UserBundle:User u
+			JOIN u.article a  
+			WHERE a.validationAdmin = true
+			GROUP BY u.username
+			ORDER BY nb DESC')
+		->setMaxResults(15);
 
 		return $query -> getResult();
 	}
