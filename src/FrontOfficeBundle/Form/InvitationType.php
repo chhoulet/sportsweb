@@ -25,7 +25,7 @@ class InvitationType extends AbstractType
                                                                 'Compétition'=> "Compétition")))
             ->add('place', 'text',      array('label'  =>'Ville de la rencontre:',
                                               'attr'   => array('placeholder'=>'Bobigny, Versailles, Tours, Paris 15, ...')))
-            ->add('ground','text',      array('label'  =>'Terrain de la rencontre:',
+            ->add('ground',null,        array('label'  =>'Terrain de la rencontre:',
                                               'attr'   => array('placeholder'=>'Hall Carpentier, stade Jean Mouchotte, bois de Vincennes,...')))
             ->add('Lancer', 'submit')
         ;
