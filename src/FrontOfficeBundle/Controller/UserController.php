@@ -64,6 +64,16 @@ class UserController extends Controller
 		return $this -> redirect($request->headers->get('referer'));
 	}
 
+	public function getOutFriendAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$friend = $em -> getRepository('UserBundle:User') -> find($id);
+		$this -> getUser() -> removeFriend($friend);
+		$em ->flush();
+
+		return $this ->redirect($request -> headers -> get('referer'));
+	}
+
 	public function showFriendsAction()
 	{
 		return $this -> render('FrontOfficeBundle:User:showFriends.html.twig');

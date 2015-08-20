@@ -97,6 +97,10 @@ front_office_user_getFriend:
     requirements: 
         id: "[0-9]+"
 
+front_office_user_getOutFriend:
+    path:     /getOutFriend/{id}
+    defaults: { _controller: FrontOfficeBundle:User:getOutFriend}
+
     # Voir sa liste d'amis:
 front_office_user_showFriends:
     path:     /showFriends 
