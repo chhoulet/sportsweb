@@ -11,11 +11,11 @@
 
                 <!-- Blog Post -->
 
-                {% for message in app.session.flashbag.get('succes') %}
-                    <div class="container">
-                        <div class="row">
-                            <h4>{{ message }}</h4>
-                {% endfor %}
+                    {% for message in app.session.flashbag.get('succes') %}
+                        <div class="container">
+                            <div class="row">
+                                <h4>{{ message }}</h4>
+                    {% endfor %}
 
                 <!-- Title -->
                     {% for article in articles %}
@@ -41,23 +41,6 @@
     	                <!-- Post Content -->
     	                <p class="lead">{{ article.content }}</p><br><br>
                         
-                        
-                        
-                            {% for com in article.comment %}
-                                <p><div class="media">
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object" src="http://placehold.it/64x64" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">{{ com.title }}
-                                            <small>{{ com.dateCreated | date('d-m-Y H:i:s') }}</small>
-                                        </h4>
-                                        {{ com.content }}
-                                    </div>
-                                </div></p>
-                            {% endfor %}                    
-
     	                <hr>
                     {% endfor %}
             	                      
@@ -74,16 +57,15 @@
                         
                     </div> 
                      
-                </div>           
+                </div>  
 
+                {% block sidebar %}
 
-                {% block sidebar %}       
-
-                    {{ include ('FrontOfficeBundle:Blog:sidebar.html.twig') }}
+                    {{ include('FrontOfficeBundle:Blog:sidebar.html.twig') }}
 
                 {% endblock %}
 
-
+                              
             </div>
 
         </div>
