@@ -69,11 +69,13 @@ class UserController extends Controller
 	public function getOutFriendAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$friend = $em -> getRepository('UserBundle:User') -> find($id);
 		$this -> getUser() -> removeFriend($friend);
 		$em ->flush();
 
-		return $this ->redirect($request -> headers -> get('referer'));
+		$session -> getFlashbag() ->add('notice','Ce joueur est retiré de votre liste d\'amis !');
+		return $this ->redirect($this -> generateUrl('front_office_user_showFriends'));
 	}
 
 	public function showFriendsAction()

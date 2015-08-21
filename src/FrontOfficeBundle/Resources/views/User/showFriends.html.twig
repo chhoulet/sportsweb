@@ -11,6 +11,10 @@
                     {{ message }}
                 {% endfor %}
 
+                {% for messag in app.session.flashbag.get('notice') %}
+                    {{ messag }}
+                {% endfor %}
+
                 {% for friend in app.user.friend %}
             		<div class="row">
                         <div class="col-lg-12">
