@@ -11,10 +11,14 @@ class CommentController extends Controller
 	public function adminAction()
 	{
 		$em = $this -> getDoctrine()->getManager();
-		$comments = $em -> getRepository('FrontOfficeBundle:Comment') -> getUnvalidatedComment();
+		$commentsTeam = $em -> getRepository('FrontOfficeBundle:Comment') -> getUnvalidatedCommentTeam();
+		$commentsArticle = $em -> getRepository('FrontOfficeBundle:Comment') -> getUnvalidatedCommentArticle();
+		$commentsGround = $em -> getRepository('FrontOfficeBundle:Comment') -> getUnvalidatedCommentGround();
 
 		return $this -> render('BackOfficeBundle:Comment:admin.html.twig', 
-			array('comments'=> $comments));
+			array('commentsTeam'   => $commentsTeam,
+				  'commentsArticle'=> $commentsArticle,
+				  'commentsGround' => $commentsGround));
 	}
 
 	# Suppression des non-validés:
