@@ -65,6 +65,9 @@ class BlogController extends Controller
 			$comment -> setArticle($article);
 			$comment -> setValidationAdmin(false);
 			$comment -> setAuthor($this -> getUser());
+			$comment -> setTeamComment(false);
+			$comment -> setGroundComment(false);
+			$comment -> setArticleComment(true);
 			$em -> persist($comment);
 			$em -> flush();
 

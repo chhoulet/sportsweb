@@ -37,6 +37,9 @@ class TeamController extends Controller
 			$comment -> setAuthor($this -> getUser());
 			$comment -> setValidationAdmin(false);
 			$comment -> setTeam($oneTeam);
+			$comment -> setTeamComment(true);
+			$comment -> setGroundComment(false);
+			$comment -> setArticleComment(false);
 			$em -> persist($comment);
 			$em -> flush();
 

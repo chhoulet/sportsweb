@@ -39,6 +39,9 @@ class GroundController extends Controller
 			$comment -> setDateCreated(new \datetime());
 			$comment -> setAuthor($this->getUser());
 			$comment -> setGround($oneGround);
+			$comment -> setTeamComment(false);
+			$comment -> setGroundComment(true);
+			$comment -> setArticleComment(false);
 			$em -> persist($comment);
 			$em -> flush();
 

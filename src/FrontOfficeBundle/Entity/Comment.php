@@ -87,6 +87,30 @@ class Comment
     private $dateValidated;
 
     /**
+     * @var boolean
+     *
+     *
+     * @ORM\Column(name="teamComment", type="boolean")
+     */
+    private $teamComment;
+
+    /**
+     * @var boolean
+     *
+     *
+     * @ORM\Column(name="articleComment", type="boolean")
+     */
+    private $articleComment;
+
+    /**
+     * @var boolean
+     *
+     *
+     * @ORM\Column(name="groundComment", type="boolean")
+     */
+    private $groundComment;
+
+    /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Article", inversedBy="comment")
@@ -326,5 +350,74 @@ class Comment
     public function getTeam()
     {
         return $this->team;
+    }
+
+    /**
+     * Set teamComment
+     *
+     * @param boolean $teamComment
+     * @return Comment
+     */
+    public function setTeamComment($teamComment)
+    {
+        $this->teamComment = $teamComment;
+
+        return $this;
+    }
+
+    /**
+     * Get teamComment
+     *
+     * @return boolean 
+     */
+    public function getTeamComment()
+    {
+        return $this->teamComment;
+    }
+
+    /**
+     * Set articleComment
+     *
+     * @param boolean $articleComment
+     * @return Comment
+     */
+    public function setArticleComment($articleComment)
+    {
+        $this->articleComment = $articleComment;
+
+        return $this;
+    }
+
+    /**
+     * Get articleComment
+     *
+     * @return boolean 
+     */
+    public function getArticleComment()
+    {
+        return $this->articleComment;
+    }
+
+    /**
+     * Set groundComment
+     *
+     * @param boolean $groundComment
+     * @return Comment
+     */
+    public function setGroundComment($groundComment)
+    {
+        $this->groundComment = $groundComment;
+
+        return $this;
+    }
+
+    /**
+     * Get groundComment
+     *
+     * @return boolean 
+     */
+    public function getGroundComment()
+    {
+        return $this->groundComment;
     }
 }
