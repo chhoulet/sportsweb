@@ -8,6 +8,10 @@
 		
                 	<h2>Liste des messages reçus :</h2>
 
+                		{% for message in app.session.flashbag.get('succes') %}
+                			{{ message }}
+                		{% endfor %}<br><br>
+
 						{% for message in messages %}
 
 							AUTHOR : <strong>{{ message.author }}</strong><br>

@@ -28,12 +28,14 @@ class MessageController extends Controller
 	public function readMessageAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request ->getSession();
 		$readMessage = $em -> getRepository('FrontOfficeBundle:Message')->find($id);
 		$readMessage -> setReadMessage(true);
 		$readMessage -> setReader($this -> getUser());
 		$em -> persist($readMessage);
 		$em -> flush();
 
+		$session -> getFlashbag()->add('succes','Message archivé !');
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
 
