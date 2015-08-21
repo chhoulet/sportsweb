@@ -12,6 +12,10 @@
                 			{{ message }}
                 		{% endfor %}<br><br>
 
+                		{% for messag in app.session.flashbag.get('notice') %}
+                			{{ messag }}
+                		{% endfor %}<br><br>
+
 						{% for message in messages %}
 
 							AUTHOR : <strong>{{ message.author }}</strong><br>

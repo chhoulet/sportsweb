@@ -15,13 +15,15 @@ class MessageController extends Controller
 		return $this ->render('BackOfficeBundle:Message:list.html.twig', array('messages'=>$messages));
 	}
 
-	public function deleteAction($id)
+	public function deleteAction(REquest $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$message = $em -> getRepository('FrontOfficeBundle:Message')->find($id);
 		$em -> remove($message);
 		$em -> flush();
 
+		$session ->getFlashbag()->add('notice','Message supprimé !');
 		return $this -> redirect($this -> generateUrl('back_office_message_list'));
 	}
 
