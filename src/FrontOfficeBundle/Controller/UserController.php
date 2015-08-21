@@ -55,13 +55,15 @@ class UserController extends Controller
 	public function getFriendAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request ->getSession();
 		$friend = $em -> getRepository('UserBundle:User') -> find($id);
 		# Récupérer l'id de l'user connecté et lui attribuer un ami :
 		$this -> getUser() -> addFriend($friend);
-		//$em -> persist($friend);
+		
+		$session -> getFlashbag()->add('succes','Ce joueur est votre ami !');
 		$em -> flush();
 
-		return $this -> redirect($request->headers->get('referer'));
+		return $this -> redirect($this -> generateUrl('front_office_user_showFriends'));
 	}
 
 	public function getOutFriendAction(Request $request, $id)
