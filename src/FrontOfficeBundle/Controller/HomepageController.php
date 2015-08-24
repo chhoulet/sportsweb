@@ -12,9 +12,11 @@ class HomepageController extends Controller
     public function homepageAction(Request $request)
     {
     	$em = $this -> getDoctrine()->getManager();
+        # Recuperation du sport favori de l'user connecte.
+        $sport = $this -> getUser() -> getFavouriteSport();
         
-    	# Appel des functions triant les invitations par sport et par user:
-        $invitForConnectedUser = $em -> getRepository('FrontOfficeBundle:Invitation') -> seeInvitationsForOneUser($this -> getUser());        
+    	# Appel des functions triant les invitations par sport et par:
+        $triInvitsBySport = $em -> getRepository('FrontOfficeBundle:Invitation') -> triInvitsBySport($this -> getUser(), $sport);   
     	$allInvit = $em -> getRepository('FrontOfficeBundle:Invitation') -> getInvitation();
         $form = $this -> createForm(new TriInvitationType);
 
