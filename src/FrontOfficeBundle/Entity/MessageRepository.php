@@ -29,7 +29,7 @@ class MessageRepository extends EntityRepository
 			SELECT m.author, COUNT(m.id) as nb 
 			FROM FrontOfficeBundle:Message m 
 			ORDER BY m.dateCreated DESC
-			GROUP BY nb ');
+			GROUP BY nb DESC');
 
 		return $query -> getResult();
 	}
