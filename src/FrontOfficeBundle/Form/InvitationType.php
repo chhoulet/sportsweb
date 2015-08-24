@@ -18,8 +18,8 @@ class InvitationType extends AbstractType
             ->add('content','text',     array('label'  =>'Texte libre:',
                                               'attr'   => array('placeholder'=>'contexte, joueurs invités ...')))
             ->add('dateInvit', 'date',  array('label'  =>'Date de la recontre:'))
-            ->add('sport', null,        array('label'  =>'Sport pratiqué:',
-                                              'attr'   => array('expanded'   => true)))
+            /*->add('sport', null,        array('label'  =>'Sport pratiqué:',
+                                              'attr'   => array('expanded'   => true)))*/
             ->add('mode','choice',      array('label'  =>'Mode de jeu:',
                                               'choices'=> array('Loisir'     => "Loisir",
                                                                 'Compétition'=> "Compétition")))

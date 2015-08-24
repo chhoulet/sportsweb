@@ -16,6 +16,7 @@ class InvitationController extends Controller
 		$em = $this -> getDoctrine()->getManager();
 		$session = $request -> getSession();
 		$invitation = new Invitation();
+		$userSport = $this -> getUser() -> getFavouriteSport();
 		$form = $this -> createForm(new InvitationType(), $invitation);
 
 		if ($userTo || $teamTo || $teamFrom) {
@@ -35,6 +36,7 @@ class InvitationController extends Controller
 			$invitation ->setTeamFrom($teamFrom);
 			$invitation ->setTeamTo($teamTo);
 			$invitation ->setUserTo($userTo);
+			$invitation ->setSport($userSport);
 			$em -> persist($invitation);
 			$em -> flush();
 
