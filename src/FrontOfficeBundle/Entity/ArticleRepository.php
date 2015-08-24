@@ -58,7 +58,8 @@ class ArticleRepository extends EntityRepository
 			JOIN a.sport s 		
 			WHERE a.validationAdmin = true
 			AND a.warned = false
-			AND s.name LIKE :sport')
+			AND s.name LIKE :sport
+			ORDER BY a.dateCreated DESC')
 		->setParameter('sport',  $sport);
 
 		return $query ->getResult();
@@ -91,7 +92,8 @@ class ArticleRepository extends EntityRepository
 			Select a 
 			FROM FrontOfficeBundle:Article a 
 			WHERE a.warned = true
-			AND a.validationAdmin = false');
+			AND a.validationAdmin = false
+			ORDER BY a.dateCreated DESC');
 
 		return $query -> getResult();
 	}
@@ -102,7 +104,8 @@ class ArticleRepository extends EntityRepository
 			SELECT s.name, COUNT(a.id) as nb
 			FROM FrontOfficeBundle:Sport s 
 			JOIN s.articles a 
-			GROUP BY s.id');
+			GROUP BY s.id
+			ORDER BY nb DESC');
 
 		return $query -> getResult();
 	}
@@ -113,7 +116,8 @@ class ArticleRepository extends EntityRepository
 			SELECT COUNT(a.id) 
 			FROM FrontOfficeBundle:Article a 
 			WHERE a.warned = true 
-			AND a.validationAdmin = false');
+			AND a.validationAdmin = false
+			ORDER BY a.dateCreated DESC');
 
 		return $query -> getSingleScalarResult();
 	}
@@ -127,7 +131,7 @@ class ArticleRepository extends EntityRepository
 			WHERE a.validationAdmin = true 
 			AND c.validationAdmin = true
 			GROUP BY a.title
-			ORDER BY c.id DESC			
+			ORDER BY nb DESC			
 			')
 		->setMaxResults(15);
 
