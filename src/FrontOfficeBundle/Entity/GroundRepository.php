@@ -37,12 +37,13 @@ class GroundRepository extends EntityRepository
 	public function getGroundByRegion()
 	{
 		$query = $this -> getEntityManager()-> createQuery('
-			SELECT g
+			SELECT g, COUNT(g.id) AS nb
 			FROM FrontOfficeBundle:Ground g 
 			WHERE g.validAdmin = true 
-			GROUP BY g.region');
+			GROUP BY g.region
+			ORDER BY nb DESC');
 		
-		return $this -> getResult();
+		return $query -> getResult();
 	}
 
 	public function getGroundByNbInvitations()
