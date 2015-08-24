@@ -112,6 +112,7 @@ class InvitationRepository extends EntityRepository
 			FROM FrontOfficeBundle:Invitation i 
 			JOIN i.sport s
 			WHERE s.name LIKE :sport 
+			AND i.accepted = false
 			AND i.place LIKE :place 
 			ORDER BY i.dateInvit ASC')
 		->setParameter('sport', $sport)
@@ -129,7 +130,8 @@ class InvitationRepository extends EntityRepository
 			JOIN i.user u 
 			WHERE i.accepted = false 
 			AND u.id LIKE :id_user 
-			AND s.id LIKE :id_sport')
+			AND s.id LIKE :id_sport
+			ORDER BY i.dateInvit ASC')
 		->setParameter('id_user', $user)
 		->setParameter('id_sport', $sport);
 

@@ -12,6 +12,7 @@ class HomepageController extends Controller
     public function homepageAction(Request $request)
     {
     	$em = $this -> getDoctrine()->getManager();
+        
         # Recuperation du sport favori de l'user connecte.
         $sport = $this -> getUser() -> getFavouriteSport();
         
