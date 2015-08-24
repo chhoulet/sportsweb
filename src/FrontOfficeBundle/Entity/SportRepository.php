@@ -63,7 +63,8 @@ class SportRepository extends EntityRepository
 			SELECT s.name, COUNT(i.id) AS nb
 			FROM FrontOfficeBundle:Sport s 
 			JOIN s.invitations i
-			GROUP BY s.name');
+			GROUP BY s.name
+			ORDER BY nb DESC');
 
 		return $query -> getResult();
 	}
