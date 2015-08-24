@@ -47,6 +47,15 @@ class Invitation
     /**
      * @var string
      *
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="invitation")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *
+     */
+    private $user;
+
+    /**
+     * @var string
+     *
      * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="invitations")
      * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
      */
@@ -512,5 +521,28 @@ class Invitation
     public function getTeamTo()
     {
         return $this->teamTo;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     * @return Invitation
+     */
+    public function setUser(\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

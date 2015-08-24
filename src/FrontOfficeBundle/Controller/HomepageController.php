@@ -12,9 +12,9 @@ class HomepageController extends Controller
     public function homepageAction(Request $request)
     {
     	$em = $this -> getDoctrine()->getManager();
-
-    	# Appel des functions triant les invitations par sport :
-        $invitForConnectedUser = $em -> getRepository('FrontOfficeBundle:Invitation') -> seeInvitationsForOneUser($this -> getUser());
+        
+    	# Appel des functions triant les invitations par sport et par user:
+        $invitForConnectedUser = $em -> getRepository('FrontOfficeBundle:Invitation') -> seeInvitationsForOneUser($this -> getUser());        
     	$allInvit = $em -> getRepository('FrontOfficeBundle:Invitation') -> getInvitation();
         $form = $this -> createForm(new TriInvitationType);
 
@@ -30,7 +30,7 @@ class HomepageController extends Controller
     	
 
         return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
-        	array('invitForConnectedUser' => $invitForConnectedUser,
+        	array('invitForConnectedUser' => $triInvitsBySport,
         		  'allInvit'              => $allInvit,
                   'form'                  => $form ->createView() ));
     }

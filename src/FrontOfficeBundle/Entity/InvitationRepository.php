@@ -120,4 +120,19 @@ class InvitationRepository extends EntityRepository
 		return $query ->getResult();
 	}
 
+	public function triInvitsBySport($user, $sport)
+	{
+		$query = $this -> getEntitymanager() -> createQuery('
+			SELECT i
+			FROM FrontOfficeBundle:Invitation i
+			JOIN i.sport s
+			JOIN i.user u 
+			WHERE i.accepted = false 
+			AND u.id LIKE :id_user 
+			AND s.id LIKE :id_sport')
+		->setParameter('id_user', $user)
+		->setParameter('id_sport', $sport);
+
+		return $query -> getResult();
+	}
 }

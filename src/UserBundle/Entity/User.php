@@ -126,6 +126,14 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\User", mappedBy="user")
+     *
+     */
+    protected $invitation;
+
+    /**
+     * @var string
+     *
      * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Article", mappedBy="author")
      */
     protected $article;
@@ -798,5 +806,38 @@ class User extends BaseUser
     public function getMessage()
     {
         return $this->message;
+    }
+
+    /**
+     * Add invitation
+     *
+     * @param \UserBundle\Entity\User $invitation
+     * @return User
+     */
+    public function addInvitation(\UserBundle\Entity\User $invitation)
+    {
+        $this->invitation[] = $invitation;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitation
+     *
+     * @param \UserBundle\Entity\User $invitation
+     */
+    public function removeInvitation(\UserBundle\Entity\User $invitation)
+    {
+        $this->invitation->removeElement($invitation);
+    }
+
+    /**
+     * Get invitation
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitation()
+    {
+        return $this->invitation;
     }
 }

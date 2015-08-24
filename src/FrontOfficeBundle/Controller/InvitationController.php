@@ -33,6 +33,7 @@ class InvitationController extends Controller
 			$invitation ->setAccepted(false);
 			$invitation ->setDenied(false);
 			$invitation ->setUserFrom($this->getUser());
+			$invitation ->setUser($this->getUser());
 			$invitation ->setTeamFrom($teamFrom);
 			$invitation ->setTeamTo($teamTo);
 			$invitation ->setUserTo($userTo);
