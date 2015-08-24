@@ -57,7 +57,7 @@ class UserRepository extends EntityRepository
 			JOIN u.comment c 
 			WHERE c.validationAdmin = true 
 			GROUP BY u.username
-			ORDER BY c.id DESC')
+			ORDER BY nb DESC')
 		->setMaxResults(15);
 
 		return $query -> getResult();
@@ -70,7 +70,7 @@ class UserRepository extends EntityRepository
 			FROM UserBundle:User u 
 			JOIN u.invitationsSent i
 			GROUP By u.username
-			ORDER BY i.id DESC ')
+			ORDER BY nb DESC ')
 		->setMaxResults(25);
 
 		return $query -> getResult();
@@ -83,7 +83,7 @@ class UserRepository extends EntityRepository
 			FROM UserBundle:User u 
 			JOIN u.invitationsReceived i
 			GROUP By u.username
-			ORDER BY i.id DESC ')
+			ORDER BY nb DESC ')
 		->setMaxResults(25);
 
 		return $query -> getResult();
