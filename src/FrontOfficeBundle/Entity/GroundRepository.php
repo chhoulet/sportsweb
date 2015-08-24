@@ -17,7 +17,8 @@ class GroundRepository extends EntityRepository
 		$query = $this ->getEntityManager()-> createQuery('
 			SELECT g 
 			FROM FrontOfficeBundle:Ground g 
-			WHERE g.validAdmin = false');
+			WHERE g.validAdmin = false
+			ORDER BY g.dateCreated DESC');
 
 		return $query -> getResult();
 	}
@@ -53,7 +54,7 @@ class GroundRepository extends EntityRepository
 			WHERE i.accepted = true 
 			AND i.denied = false
 			GROUP BY g.name
-			ORDER BY i.id DESC')
+			ORDER BY nb DESC')
 		->setMaxResults(20);
 
 		return $query -> getResult();
@@ -77,7 +78,7 @@ class GroundRepository extends EntityRepository
 			JOIN g.userGround u 
 			WHERE u.validationAdmin = true 
 			GROUP BY g.name
-			ORDER BY u.id DESC')
+			ORDER BY nb DESC')
 		->setMaxResults(25);
 
 		return $query -> getResult();
@@ -91,7 +92,7 @@ class GroundRepository extends EntityRepository
 			JOIN g.team t
 			WHERE t.validationAdmin = true
 			GROUP BY g.name 
-			ORDER BY t.id DESC
+			ORDER BY nb DESC
 			')
 		->setMaxResults(25);
 
