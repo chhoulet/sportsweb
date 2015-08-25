@@ -1,0 +1,31 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div id="page-wrapper">
+			
+            <div class="row">
+
+            	<h2 style="text-align:center;">Statistiques Teams:</h2>
+
+                <div class="col-lg-4">
+		
+                	<h4>Teams classés par le nombre d'invitations envoyées:</h4>
+
+						<div class="container">
+
+							<ul>
+								{% for team in teamsByInvitationsSent %}
+									<li>{{ team.name }} a envoyé {{ team.nb }} invitations.</li><br>
+								{% endfor %}<br>
+							</ul>
+							
+						</div>
+
+				</div>	
+
+			</div>				  
+
+        </div>
+
+    {% endblock %}

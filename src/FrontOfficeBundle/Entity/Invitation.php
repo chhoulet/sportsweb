@@ -95,7 +95,7 @@ class Invitation
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Invitation", inversedBy="invitationsReceivedToTeam")
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="invitationsReceivedToTeam")
      * @ORM\JoinColumn(name="team_to_id", referencedColumnName="id", nullable=true)
      */
     private $teamTo;
@@ -501,29 +501,6 @@ class Invitation
     }
 
     /**
-     * Set teamTo
-     *
-     * @param \FrontOfficeBundle\Entity\Invitation $teamTo
-     * @return Invitation
-     */
-    public function setTeamTo(\FrontOfficeBundle\Entity\Invitation $teamTo = null)
-    {
-        $this->teamTo = $teamTo;
-
-        return $this;
-    }
-
-    /**
-     * Get teamTo
-     *
-     * @return \FrontOfficeBundle\Entity\Invitation 
-     */
-    public function getTeamTo()
-    {
-        return $this->teamTo;
-    }
-
-    /**
      * Set user
      *
      * @param \UserBundle\Entity\User $user
@@ -544,5 +521,28 @@ class Invitation
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set teamTo
+     *
+     * @param \FrontOfficeBundle\Entity\Team $teamTo
+     * @return Invitation
+     */
+    public function setTeamTo(\FrontOfficeBundle\Entity\Team $teamTo = null)
+    {
+        $this->teamTo = $teamTo;
+
+        return $this;
+    }
+
+    /**
+     * Get teamTo
+     *
+     * @return \FrontOfficeBundle\Entity\Team 
+     */
+    public function getTeamTo()
+    {
+        return $this->teamTo;
     }
 }
