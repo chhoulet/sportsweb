@@ -16,7 +16,23 @@
 
 							<ul>
 								{% for team in teamsByInvitationsSent %}
-									<li>{{ team.name }} a envoyé {{ team.nb }} invitations.</li><br>
+									<li>L'équipe des {{ team.name }} a envoyé {{ team.nb }} {% if team.nb >1 %} invitations.{% else %} invitation. {% endif %}</li><br>
+								{% endfor %}<br>
+							</ul>
+							
+						</div>
+
+				</div>	
+
+				<div class="col-lg-4">
+		
+                	<h4>Teams classés par le nombre d'invitations envoyées:</h4>
+
+						<div class="container">
+
+							<ul>
+								{% for team in teamsByInvitationsReceived %}
+									<li> L'équipe des {{ team.name }}  a reçu {{ team.nb }} {% if team.nb >1 %} invitations.{% else %} invitation.{% endif %}</li><br>
 								{% endfor %}<br>
 							</ul>
 							

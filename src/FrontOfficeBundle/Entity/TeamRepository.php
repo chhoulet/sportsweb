@@ -89,6 +89,20 @@ class TeamRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getTeamsByInvitationsReceived()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT t.name ,COUNT(i.id) AS nb
+			FROM FrontOfficeBundle:Team t
+			JOIN t.invitationsReceivedToTeam i
+			WHERE i.accepted = true
+			GROUP BY t.name
+			ORDER BY nb DESC
+			');
+
+		return $query -> getResult();
+	}
 }
 
 
