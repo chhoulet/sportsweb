@@ -136,5 +136,5 @@ class InvitationRepository extends EntityRepository
 		->setParameter('id_sport', $sport);
 
 		return $query -> getResult();
-	}
+	}	
 }

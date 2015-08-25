@@ -55,6 +55,8 @@
                                     <p class="section-paragraph">{{ invit.content }}</p>
                                     <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p>
 
+                                    <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}">Voir cette invitation</a>
+
                                     <a href="{{ path('front_office_invitation_response',{id:invit.id}) }}"><button>Accepter l'invitation</button></a><br>
                                     
                                     {% if (is_granted('ROLE_SUPER_ADMIN')) %}
