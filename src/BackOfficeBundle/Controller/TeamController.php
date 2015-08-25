@@ -41,4 +41,13 @@ class TeamController extends Controller
 
 		return $this -> redirect($this -> generateUrl('back_office_list_team'));
 	}
+
+	public function getTeamsByInvitationsSentAction()
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$teamsByInvitationsSent = $em -> getRepository('FrontOfficeBundle:Team')->getTeamsByInvitationsSent();
+
+		return $this -> render('BackOfficeBundle:Team:statistiquesTeams.html.twig', 
+			array('teamsByInvitationsSent'=> $teamsByInvitationsSent));
+	}
 }

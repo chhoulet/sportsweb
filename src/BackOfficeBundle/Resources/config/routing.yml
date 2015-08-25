@@ -179,6 +179,11 @@ back_office_team_delete:
     requirements: 
         id: "[0-9]+"
 
+    # Statistiques Teams:
+back_office_team_getTeamsByInvitationsSent:
+    path:     /getTeamsByInvitationsSent
+    defaults: { _controller: BackOfficeBundle:Team:getTeamsByInvitationsSent}
+
 # Routes gerant les messages :
 back_office_message_list:
     path:     /listMessages 
