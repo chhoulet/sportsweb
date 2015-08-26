@@ -102,4 +102,17 @@ class UserRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getNbCensoredCommentsByUser()
+	{
+		$query = $this -> getEntitymanager()-> createQuery('
+			SELECT u.username, u.email, COUNT(c.id) AS nb
+			FROM UserBundle:User u 
+			JOIN u.comment c
+			WHERE c.censored = true
+			GROUP BY u.username
+			ORDER BY nb DESC');
+
+		return $query -> getResult();
+	}
 }

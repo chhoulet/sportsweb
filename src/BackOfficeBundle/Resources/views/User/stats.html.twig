@@ -4,17 +4,28 @@
 
 		<div id="page-wrapper">
 			<div class="row">
-				<div class="col-lg-4">
 
-					<h2>Statistiques Users</h2>
+				<h2 style="text-align:center;">Statistiques Users</h2>
 
-					<h4>Liste des Users par Nombre de commentaires:</h4>
+					<div class="col-lg-4">					
 
-						{% for user in getNbCommentsByUsers %}
-							{{ user.username }} a posté {{ user.nb }} commentaires.
-						{% endfor %}
+							<h4>Liste des Users par Nombre de commentaires:</h4>
 
-				</div>
+								{% for user in getNbCommentsByUsers %}
+									{{ user.username }} a posté {{ user.nb }}{% if user.nb >1 %} commentaires.{% else %} commentaire.{% endif %}
+								{% endfor %}
+					</div>
+
+					<div class="col-lg-4">
+
+							<h4>Liste des Users par nombre de commentaires censurés</h4>
+
+								{% for comcensored in getNbCensoredCommentsByUser %}
+									{{ comcensored.username }} {{ comcensored.email }} a posté {{ comcensored.nb }}{% if comcensored.nb > 1 %} commentaires indésirables.{% else %} commentaire.{% endif %}
+								{% endfor %}
+
+					</div>
+				
 			</div>
 		</div>
 

@@ -67,9 +67,11 @@ class UserController extends Controller
 	public function statsAction()
 	{
 		$em = $this -> getDoctrine()-> getManager();
-		$getNbCommentsByUsers = $em -> getRepository('UserBundle:User') -> getNbCommentsByUsers();
+		$NbCommentsByUsers = $em -> getRepository('UserBundle:User') -> getNbCommentsByUsers();
+		$NbCensoredCommentsByUser = $em -> getRepository('UserBundle:User') -> getNbCensoredCommentsByUser();
 
 		return $this -> render('BackOfficeBundle:User:stats.html.twig', 
-			array('getNbCommentsByUsers'=>$getNbCommentsByUsers));
+			array('getNbCommentsByUsers'=> $NbCommentsByUsers,
+				  'getNbCensoredCommentsByUser'=> $NbCensoredCommentsByUser));
 	}
 }
