@@ -88,6 +88,10 @@ back_office_comment_censoreComment:
     path:     /censoreComment/{id}
     defaults: { _controller: BackOfficeBundle:Comment:censoreComment}
 
+back_office_comment_listCensoredComments:
+    path:     /listCensoredComments 
+    defaults: { _controller: BackOfficeBundle:Comment:listCensoredComments}
+
 #  Routes gerant l'administration des terrains de sport :
 back_office_ground_list:
     path:     /listGround
