@@ -16,9 +16,13 @@ class TriInvitationType extends AbstractType
     {
         $builder
             ->add('sport', null,     array('label'   =>'Sport:'))            
-            ->add('place', 'choice', array('label'   =>'Ville:',
-                                           'choices' => array('paris'=>'Paris',
-                                                              'lyon' => 'Lyon')))            
+            ->add('region', 'choice', array('label'   =>'Region:',
+                                           'choices' => array('Ile-de-France' =>'Ile-de-France',
+                                                              'Sud-Ouest'     =>'Sud-Ouest',
+                                                              'Ouest'         =>'Ouest',
+                                                              'Sud-Est'       =>'Sud-Est',
+                                                              'Est'           =>'Est',
+                                                              'Nord'          =>'Nord')))            
             ->add('Afficher la selection', 'submit')
         ;
     }

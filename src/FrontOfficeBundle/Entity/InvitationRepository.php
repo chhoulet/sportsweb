@@ -105,7 +105,7 @@ class InvitationRepository extends EntityRepository
 	}
 
 	# Tri des invits par sport et place:
-	public function triBySportPlace($sport, $place)
+	public function triBySportPlace($sport, $region)
 	{
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT i 
@@ -113,10 +113,10 @@ class InvitationRepository extends EntityRepository
 			JOIN i.sport s
 			WHERE s.name LIKE :sport 
 			AND i.accepted = false
-			AND i.place LIKE :place 
+			AND i.region LIKE :region 
 			ORDER BY i.dateInvit ASC')
 		->setParameter('sport', $sport)
-		->setParameter('place', $place);
+		->setParameter('region', $region);
 
 		return $query ->getResult();
 	}
