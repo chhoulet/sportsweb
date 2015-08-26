@@ -24,8 +24,7 @@ class GroundType extends AbstractType
             ->add('place','text',           array('label'=>'Ville',
                                                   'attr' => array('placeholder'=>'Paris')))
             ->add('sport', null,            array('label'=>'Sports',
-                                                  'expanded'=>true))
-            
+                                                  'expanded'=>true))            
             ->add('openingHours','text',    array('label'=>'Jours et heures d\'ouverture',
                                                   'attr' => array('placeholder'=>'lundi-vendredi 8h-20h ; samedi 10h-22h30 ; dimanche 9h-17h15')))
             ->add('mode','choice',          array('label'=>'Terrain public / accès privé',

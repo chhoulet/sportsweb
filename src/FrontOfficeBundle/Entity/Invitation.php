@@ -66,7 +66,21 @@ class Invitation
      *
      * @ORM\Column(name="mode", type="string", length=255)
      */
-    private $mode;    
+    private $mode; 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="region", type="string", length=255)
+     */
+    private $region; 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="postCode", type="string", length=255)
+     */
+    private $postCode;    
 
     /**
      * @var string
@@ -544,5 +558,51 @@ class Invitation
     public function getTeamTo()
     {
         return $this->teamTo;
+    }
+
+    /**
+     * Set region
+     *
+     * @param string $region
+     * @return Invitation
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return string 
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Set postCode
+     *
+     * @param string $postCode
+     * @return Invitation
+     */
+    public function setPostCode($postCode)
+    {
+        $this->postCode = $postCode;
+
+        return $this;
+    }
+
+    /**
+     * Get postCode
+     *
+     * @return string 
+     */
+    public function getPostCode()
+    {
+        return $this->postCode;
     }
 }

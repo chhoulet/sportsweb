@@ -15,7 +15,7 @@ class InvitationController extends Controller
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$session = $request -> getSession();
-		$invitation = new Invitation();
+		$invitation = new Invitation();		
 		$userSport = $this -> getUser() -> getFavouriteSport();
 		$form = $this -> createForm(new InvitationType(), $invitation);
 
@@ -29,6 +29,9 @@ class InvitationController extends Controller
 
 		/*Attribution de valeurs automatique aux invitations créées, permet le tri selon leur statut*/
 		if ($form -> isValid()){
+
+			#Recupération de la valeur de $postCode:
+			$postCode = $invitation -> getPostCode();
 			$invitation ->setDateCreated(new \DateTime('now'));
 			$invitation ->setAccepted(false);
 			$invitation ->setDenied(false);
@@ -38,6 +41,19 @@ class InvitationController extends Controller
 			$invitation ->setTeamTo($teamTo);
 			$invitation ->setUserTo($userTo);
 			$invitation ->setSport($userSport);
+
+			if ($postCode == 75 || $postCode == 78 || $postCode == 91 || $postCode == 92 || $postCode == 93 || $postCode == 95)
+			{
+				$invitation -> setRegion('Ile-de-France');
+			}
+
+			if($postCode == 16 || $postCode == 17 || $postCode == 87 || $postCode == 23 || $postCode == 63 || $postCode == 15
+				|| $postCode == 12 || $postCode == 81 || $postCode == 31 || $postCode == 32 || $postCode == 65 || $postCode == 64
+				|| $postCode == 40 || $postCode == 47 || $postCode == 33 || $postCode == 24 || $postCode == 19 || $postCode == 46 || $postCode == 82)
+			{
+				$invitation -> setRegion('Sud-Ouest');
+			}
+
 			$em -> persist($invitation);
 			$em -> flush();
 
