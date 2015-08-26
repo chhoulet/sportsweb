@@ -4,6 +4,7 @@ namespace BackOfficeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FrontOfficeBundle\Entity\Comment;
+use Symfony\Component\HttpFoundation\Request;
 
 class CommentController extends Controller
 {
@@ -43,5 +44,21 @@ class CommentController extends Controller
 		$em -> flush();
 
 		return $this -> redirect($this -> generateUrl('back_office_comment_admin'));
+	}
+
+	# Censure d'un commentaire :
+	public function censoreCommentAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$session = $request->getSession();		
+		$comment = $em -> getRepository('FrontOfficeBundle:Comment')->find($id);
+		$comment -> setContent('Ce message est supprimé ! Il ne correspond pas aux règles d\'utilisation de ce forum!');
+		$comment -> setCensored(true);
+		$comment -> setDateCensored(new \datetime('now'));		
+
+		$em -> flush();
+
+		$session -> getFlashbag()->add('notice','Ce commentaire est censuré !');
+		return $this ->redirect($request -> headers -> get('referer'));
 	}
 }

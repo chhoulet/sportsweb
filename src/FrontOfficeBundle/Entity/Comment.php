@@ -98,6 +98,22 @@ class Comment
      * @var boolean
      *
      *
+     * @ORM\Column(name="censored", type="boolean")
+     */
+    private $censored;
+
+    /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateCensored", type="date", nullable = true)
+     */
+    private $dateCensored;
+
+    /**
+     * @var boolean
+     *
+     *
      * @ORM\Column(name="articleComment", type="boolean")
      */
     private $articleComment;
@@ -419,5 +435,51 @@ class Comment
     public function getGroundComment()
     {
         return $this->groundComment;
+    }
+
+    /**
+     * Set censored
+     *
+     * @param boolean $censored
+     * @return Comment
+     */
+    public function setCensored($censored)
+    {
+        $this->censored = $censored;
+
+        return $this;
+    }
+
+    /**
+     * Get censored
+     *
+     * @return boolean 
+     */
+    public function getCensored()
+    {
+        return $this->censored;
+    }
+
+    /**
+     * Set dateCensored
+     *
+     * @param \DateTime $dateCensored
+     * @return Comment
+     */
+    public function setDateCensored($dateCensored)
+    {
+        $this->dateCensored = $dateCensored;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCensored
+     *
+     * @return \DateTime 
+     */
+    public function getDateCensored()
+    {
+        return $this->dateCensored;
     }
 }

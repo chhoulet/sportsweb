@@ -16,20 +16,20 @@ class InvitationType extends AbstractType
     {
         $builder
             
-            ->add('dateInvit', 'date',  array('label'  =>'Date de la recontre:'))
-            /*->add('sport', null,        array('label'  =>'Sport pratiqué:',
-                                              'attr'   => array('expanded'   => true)))*/
-            ->add('mode','choice',      array('label'  =>'Mode de jeu:',
-                                              'choices'=> array('Loisir'     => "Loisir",
-                                                                'Compétition'=> "Compétition")))
-            ->add('place', 'text',      array('label'  =>'Ville de la rencontre:',
-                                              'attr'   => array('placeholder'=>'Bobigny, Versailles, Tours, Paris 15, ...')))
-            ->add('postCode', 'text',   array('label'  =>'Département de la rencontre:',
-                                              'attr'   => array('placeholder'=>'75,13,59,93,78,33') ))
-            ->add('ground',null,        array('label'  =>'Terrain de la rencontre:',
-                                              'attr'   => array('placeholder'=>'Hall Carpentier, stade Jean Mouchotte, bois de Vincennes,...')))
-            ->add('content','text',     array('label'  =>'Texte libre:',
-                                              'attr'   => array('placeholder'=>'contexte, joueurs invités ...')))
+            ->add('dateInvit', 'date',  array('label'   =>'Date de la recontre:'))            
+            ->add('mode','choice',      array('label'   =>'Mode de jeu:',
+                                              'choices' => array('Loisir'     => "Loisir",
+                                                                 'Compétition'=> "Compétition",
+                                              'expanded'=> true,
+                                              'multiple'=> false)))
+            ->add('place', 'text',      array('label'   =>'Ville de la rencontre:',
+                                              'attr'    => array('placeholder'=>'Bobigny, Versailles, Tours, Paris 15, ...')))
+            ->add('postCode', 'text',   array('label'   =>'Département de la rencontre:',
+                                              'attr'    => array('placeholder'=>'75,13,59,93,78,33')))
+            ->add('ground',null,        array('label'   =>'Terrain de la rencontre:',
+                                              'attr'    => array('placeholder'=>'Hall Carpentier, stade Jean Mouchotte, bois de Vincennes,...')))
+            ->add('content','text',     array('label'   =>'Texte libre:',
+                                              'attr'    => array('placeholder'=>'contexte, joueurs invités ...')))
             ->add('Lancer', 'submit')
         ;
     }

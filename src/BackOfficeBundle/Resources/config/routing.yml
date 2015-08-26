@@ -83,6 +83,11 @@ back_office_comment_delete:
     requirements: 
         id: "[0-9]+"
 
+    # Censure d'un comment par l'administrateur:
+back_office_comment_censoreComment:
+    path:     /censoreComment/{id}
+    defaults: { _controller: BackOfficeBundle:Comment:censoreComment}
+
 #  Routes gerant l'administration des terrains de sport :
 back_office_ground_list:
     path:     /listGround
@@ -100,7 +105,7 @@ back_office_ground_update:
     requirements: 
         id: "[0-9]+"
 
-    # Suppression des grounds par l'administrateur:
+    # Suppression des terrains par l'administrateur:
 back_office_ground_delete:
     path:     /deleteGround/{id}
     defaults: { _controller: BackOfficeBundle:Ground:delete}

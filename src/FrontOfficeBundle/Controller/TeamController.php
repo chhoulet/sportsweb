@@ -40,6 +40,7 @@ class TeamController extends Controller
 			$comment -> setTeamComment(true);
 			$comment -> setGroundComment(false);
 			$comment -> setArticleComment(false);
+			$comment -> setCensored(false);
 			$em -> persist($comment);
 			$em -> flush();
 

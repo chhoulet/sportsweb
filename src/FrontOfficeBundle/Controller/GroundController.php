@@ -42,6 +42,7 @@ class GroundController extends Controller
 			$comment -> setTeamComment(false);
 			$comment -> setGroundComment(true);
 			$comment -> setArticleComment(false);
+			$comment -> setCensored(false);
 			$em -> persist($comment);
 			$em -> flush();
 
