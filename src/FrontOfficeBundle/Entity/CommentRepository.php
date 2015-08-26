@@ -88,4 +88,49 @@ class CommentRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getCommentsGroundsCensored()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT c 
+			FROM FrontOfficeBundle:Comment c 
+			WHERE c.setValidationAdmin = false 
+			AND c.censored = true 
+			AND c.teamComment = false
+			AND c.articleComment = false
+			AND c.groundComment = true
+			ORDER BY c.dateCreated DESC');
+
+		return $query -> getResult();
+	}
+
+	public function getCommentsTeamsCensored()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT c 
+			FROM FrontOfficeBundle:Comment c 
+			WHERE c.setValidationAdmin = false 
+			AND c.censored = true 
+			AND c.teamComment = true
+			AND c.articleComment = false
+			AND c.groundComment = false
+			ORDER BY c.dateCreated DESC');
+
+		return $query -> getResult();
+	}
+
+	public function getCommentsArticlesCensored()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT c 
+			FROM FrontOfficeBundle:Comment c 
+			WHERE c.setValidationAdmin = false 
+			AND c.censored = true 
+			AND c.teamComment = false
+			AND c.articleComment = true
+			AND c.groundComment = false
+			ORDER BY c.dateCreated DESC');
+
+		return $query -> getResult();
+	}
 }
