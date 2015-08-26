@@ -76,4 +76,16 @@ class CommentRepository extends EntityRepository
 
 		return $query -> getSingleResult();
 	}
+
+	public function getCommentsCensored()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT c 
+			FROM FrontOfficeBundle:Comment c 
+			WHERE c.setValidationAdmin = false 
+			AND c.censored = true 
+			ORDER BY c.dateCreated DESC');
+
+		return $query -> getResult();
+	}
 }
