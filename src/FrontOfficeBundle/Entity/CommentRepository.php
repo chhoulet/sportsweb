@@ -22,6 +22,7 @@ class CommentRepository extends EntityRepository
 			AND c.teamComment = true 
 			AND c.articleComment = false
 			AND c.groundComment = false
+			AND c.censored = false
 			ORDER BY c.dateCreated DESC');
 
 		return $query -> getResult();
@@ -36,6 +37,7 @@ class CommentRepository extends EntityRepository
 			AND c.teamComment = false 
 			AND c.articleComment = true
 			AND c.groundComment = false
+			AND c.censored = false
 			ORDER BY c.dateCreated DESC');
 
 		return $query -> getResult();
@@ -50,6 +52,7 @@ class CommentRepository extends EntityRepository
 			AND c.teamComment = false
 			AND c.articleComment = false
 			AND c.groundComment = true
+			AND c.censored = false
 			ORDER BY c.dateCreated DESC');
 
 		return $query -> getResult();
@@ -94,7 +97,7 @@ class CommentRepository extends EntityRepository
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT c 
 			FROM FrontOfficeBundle:Comment c 
-			WHERE c.setValidationAdmin = false 
+			WHERE c.validationAdmin = false 
 			AND c.censored = true 
 			AND c.teamComment = false
 			AND c.articleComment = false
@@ -109,7 +112,7 @@ class CommentRepository extends EntityRepository
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT c 
 			FROM FrontOfficeBundle:Comment c 
-			WHERE c.setValidationAdmin = false 
+			WHERE c.validationAdmin = false 
 			AND c.censored = true 
 			AND c.teamComment = true
 			AND c.articleComment = false
@@ -124,7 +127,7 @@ class CommentRepository extends EntityRepository
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT c 
 			FROM FrontOfficeBundle:Comment c 
-			WHERE c.setValidationAdmin = false 
+			WHERE c.validationAdmin = false 
 			AND c.censored = true 
 			AND c.teamComment = false
 			AND c.articleComment = true

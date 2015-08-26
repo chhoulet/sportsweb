@@ -15,12 +15,12 @@
 
 						{% for com in commentsTeam %}
 
-			                <h2>
-			                    <a href="#">{{ com.title }}</a>
-			                </h2>
-			                <p class="lead">
+			                <h5>
+			                    {{ com.title }}
+			                </h5>
+			                
 			                    by <a href="index.php">{{ com.author }}</a>
-			                </p>
+			                
 			                <p><span class="glyphicon glyphicon-time"></span> {{ com.dateCreated | date('d-m-Y H:i:s')}}</p><br>			                
 			                <p>{{ com.content }}</p>
 			                <a class="btn btn-primary" href="{{ path('back_office_comment_response',{id:com.id}) }}">OK Admin <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -38,12 +38,12 @@
 
 						{% for com in commentsArticle %}
 
-			                <h2>
-			                    <a href="#">{{ com.title }}</a>
-			                </h2>
-			                <p class="lead">
+			                <h5>
+			                    {{ com.title }}
+			                </h5>
+			                
 			                    by <a href="index.php">{{ com.author }}</a>
-			                </p>
+			                
 			                <p><span class="glyphicon glyphicon-time"></span> {{ com.dateCreated | date('d-m-Y H:i:s')}}</p><br>			                
 			                <p>{{ com.content }}</p>
 			                <a class="btn btn-primary" href="{{ path('back_office_comment_response',{id:com.id}) }}">OK Admin <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -61,12 +61,12 @@
 
 						{% for com in commentsGround %}
 
-			                <h2>
-			                    <a href="#">{{ com.title }}</a>
-			                </h2>
-			                <p class="lead">
+			                <h5>
+			                    {{ com.title }}
+			                </h5>
+			                
 			                    by <a href="index.php">{{ com.author }}</a>
-			                </p>
+			                
 			                <p><span class="glyphicon glyphicon-time"></span> {{ com.dateCreated | date('d-m-Y H:i:s')}}</p><br>			                			              	     
 			                <p>{{ com.content }}</p>
 			                <a class="btn btn-primary" href="{{ path('back_office_comment_response',{id:com.id}) }}">OK Admin <span class="glyphicon glyphicon-chevron-right"></span></a>

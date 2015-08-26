@@ -39,6 +39,7 @@ class CommentController extends Controller
 		$em = $this -> getDoctrine()-> getManager();
 		$comment = $em -> getRepository('FrontOfficeBundle:Comment')->find($id);
 		$comment -> setValidationAdmin(true);
+		$comment -> setCensored(false);
 		$comment -> setDateValidated(new \datetime('now'));
 		$em -> persist($comment);
 		$em -> flush();
@@ -60,5 +61,18 @@ class CommentController extends Controller
 
 		$session -> getFlashbag()->add('notice','Ce commentaire est censuré !');
 		return $this ->redirect($request -> headers -> get('referer'));
+	}
+
+	public function listCensoredCommentsAction()
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$CommentsGroundsCensored = $em -> getRepository('FrontOfficeBundle:Comment')->getCommentsGroundsCensored();
+		$CommentsTeamsCensored = $em -> getRepository('FrontOfficeBundle:Comment')->getCommentsTeamsCensored();
+		$CommentsArticlesCensored = $em -> getRepository('FrontOfficeBundle:Comment')->getCommentsArticlesCensored();
+
+		return $this -> render('BackOfficeBundle:Comment:censoredComments.html.twig', 
+			array('CommentsGroundsCensored' => $CommentsGroundsCensored,
+				  'CommentsTeamsCensored'   => $CommentsTeamsCensored,
+				  'CommentsArticlesCensored'=> $CommentsArticlesCensored));
 	}
 }
