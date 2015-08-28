@@ -2,7 +2,7 @@
 
 	{% block content %}
 
-        <div class="container">
+        <div style="margin-top:45px;" class="container">
             <div class="well col-lg-10">
 
                 <h2>Mes amis</h2>
@@ -27,13 +27,14 @@
 
                                     <small>AGE : {{ friend.age }} ans</small>
                             </h1>
-
-                            <a href="{{ path('front_office_user_getOutFriend',{id:friend.id}) }}">Retirer ce joueur de la liste d'amis</a>
+                            <a href="{{ path('front_office_invitation_new',{userTo:friend.id}) }}"><button>Invite ton ami !</button></a>
+                            <a href="{{ path('front_office_user_one',{id:friend.id}) }}"><button>Voir son profil</button></a>
+                            <a href="{{ path('front_office_user_getOutFriend',{id:friend.id}) }}"><button>Retirer ce joueur de la liste d'amis</button></a>
                             
                         </div>
                     </div>
 
-                    <a href="{{ path('front_office_user_one',{id:friend.id}) }}">Voir son profil</a>
+                   
                 {% endfor %}
 
             </div>
