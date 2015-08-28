@@ -5,41 +5,56 @@
 		<div id="page-wrapper">
 			<div class="row">
 
-				<h2>Statistiques invitations</h2>
+				<h2 style ="text-align:center">Statistiques invitations</h2>
 
 				<div class="col-lg-4">
 
-					<h4>Nombre d'invitations envoyées triées par user</h4>
+					<h4>Nombre d'invitations envoyées triées par User</h4>
 						<ul>
 							{% for invits in getNbInvitsByUser %}
 								<li>{{ invits.username }} a envoyé {{ invits.nb }} {% if invits.nb > 1 %} invitations. {% else %} invitation. {% endif %}</li>
 							{% endfor %}
 						</ul>
-
-				</div>
+						<hr>
+				</div>		
 
 				<div class="col-lg-4">
 
-					<h4>Nombre d'invitations reçues triées par user</h4>
+					<h4>Nombre d'invitations reçues triées par User</h4>
 
 						<ul>
 							{% for invits in getNbInvitsReceivedByUser %}
 								<li>{{ invits.username }} a reçu {{ invits.nb }} {% if invits.nb > 1 %} invitations. {% else %} invitation. {% endif %}</li>
 							{% endfor %}
 						</ul>
+						<hr>
 
-				</div>
+				</div>			
 
 				<div class="col-lg-4">
 
-					<h4>Nombre d'invitations triées par sport</h4>
+					<h4>Nombre d'invitations triées par Sport</h4>
 
 						<ul>
 							{% for invits in getNbInvitsBySport %}
 								<li>{{ invits.name }} a fait l'objet de {{ invits.nb }} {% if invits.nb > 1 %} invitations. {% else %} invitation. {% endif %}</li>
 							{% endfor %}
 						</ul>
+						<hr>
 						
+				</div>
+
+				<div class="col-lg-4">
+
+					<h4>Nombre d'invitations triées par Regions</h4>
+
+						<ul>
+							{% for invits in getNbInvitsByRegions %}							
+								<li>{{ invits.region }} a fait l'objet de {{ invits.nb }}{% if invits.nb > 1 %} invitations.{% else %} invitation.{% endif %}</li>							
+							{% endfor %}
+						</ul>
+						<hr>
+
 				</div>
 
 

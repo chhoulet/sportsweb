@@ -137,4 +137,15 @@ class InvitationRepository extends EntityRepository
 
 		return $query -> getResult();
 	}	
+
+	public function getNbInvitsByRegions()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT i.region, COUNT(i.region) AS nb 
+			FROM FrontOfficeBundle:Invitation i 
+			GROUP BY i.region 
+			ORDER BY nb DESC') ;
+
+		return $query -> getResult();
+	}
 }
