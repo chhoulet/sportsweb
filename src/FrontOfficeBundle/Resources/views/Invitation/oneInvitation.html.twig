@@ -15,7 +15,11 @@
 	                        <p>MODE : {{ invit.mode }} </p><br>
 
                             {% if (is_granted('ROLE_USER')) %}
-    	                        <a href="{{ path('front_office_invitation_response', {id:invit.id}) }}">Accepter l'invitation</a><br>
+                                {% if app.user.id == invit.user.id %}
+                                        <p>Vous êtes l'auteur de cette invitation !</p> 
+                                    {% else %}
+    	                                <a href="{{ path('front_office_invitation_response', {id:invit.id}) }}">Accepter l'invitation</a><br>
+                                {% endif %}
                             {% endif %}
                             
                         </h3>                        

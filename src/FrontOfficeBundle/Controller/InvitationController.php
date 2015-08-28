@@ -52,7 +52,7 @@ class InvitationController extends Controller
 				|| $postCode == 40 || $postCode == 47 || $postCode == 33 || $postCode == 24 || $postCode == 19 || $postCode == 46 
 				|| $postCode == 82 || $postCode == 29)
 			{
-				$ground -> setRegion('Sud-Ouest');
+				$invitation -> setRegion('Sud-Ouest');
 			}
 
 			if($postCode == 09 || $postCode == 66 || $postCode == 11 || $postCode == 34 || $postCode == 48 || $postCode == 30
@@ -60,14 +60,14 @@ class InvitationController extends Controller
 				|| $postCode == 73 || $postCode == 38 || $postCode == 26 || $postCode == 05 || $postCode == 13 || $postCode == 63
 				|| $postCode == 84 || $postCode == 04 || $postCode == 83 || $postCode == 06 || $postCode == 20)
 			{
-				$ground -> setRegion('Sud-Est');
+				$invitation -> setRegion('Sud-Est');
 			}
 
 			if($postCode == 03 || $postCode == 71 || $postCode == 39 || $postCode == 25 || $postCode == 70 || $postCode == 58
 				|| $postCode == 21 || $postCode == 68 || $postCode == 89 || $postCode == 10 || $postCode == 52 || $postCode == 88
 				|| $postCode == 10 || $postCode == 52 || $postCode == 54 || $postCode == 67 || $postCode == 55 || $postCode == 57)
 			{
-				$ground -> setRegion('Est');
+				$invitation -> setRegion('Est');
 			}
 
 			if($postCode == 59 || $postCode == 51 || $postCode == 08 || $postCode == 02 || $postCode == 60 || $postCode == 80
