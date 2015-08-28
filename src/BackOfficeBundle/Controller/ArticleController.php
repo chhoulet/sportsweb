@@ -18,6 +18,14 @@ class ArticleController extends Controller
             array('article'=>$article));
     }
 
+    public function listArchivedAction()
+    {
+        $em = $this -> getDoctrine()-> getManager();
+        $listArchived = $em -> getRepository('FrontOfficeBundle:Article') -> getArchivedArticles();
+
+        return $this -> render('BackOfficeBundle:Article:list.html.twig', array('article'=> $listArchived));
+    }
+
     public Function newAction(Request $request)
     {
         $em = $this -> getDoctrine()->getManager();

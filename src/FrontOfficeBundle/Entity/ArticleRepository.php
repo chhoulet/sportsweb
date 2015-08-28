@@ -161,4 +161,16 @@ class ArticleRepository extends EntityRepository
 
 		return $query-> getResult();
 	}
+
+	public function getArchivedArticles()
+	{
+		$query = $this -> getEntitymanager()->createQuery('
+			SELECT a 
+			FROM FrontOfficeBundle:Article a 
+			WHERE a.validationAdmin = true 
+			AND a.warned = false 
+			AND a.archived = true');
+
+		return $query -> getResult();
+	}
 }

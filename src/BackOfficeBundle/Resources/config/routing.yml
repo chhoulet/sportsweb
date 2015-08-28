@@ -8,6 +8,11 @@ back_office_article_list:
     path:     /list 
     defaults: { _controller: BackOfficeBundle:Article:list}
 
+    # Liste des articles archivés:
+back_office_article_listArchived:
+    path:     /listArchived 
+    defaults: { _controller: BackOfficeBundle:Article:listArchived}
+
     # Statistiques multiples des articles:
 back_office_article_articlesBySport:
     path:     /articlesBySport
