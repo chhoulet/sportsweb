@@ -33,6 +33,7 @@ class ArticleController extends Controller
             $article -> setDateCreated(new \DateTime('now'));
             $article -> setWarned(false);
             $article -> setWarned(false);
+            $article -> setArchived(false);
             $article -> addAuthor($this -> getUser());
             $em -> persist($article);
             $em -> flush();

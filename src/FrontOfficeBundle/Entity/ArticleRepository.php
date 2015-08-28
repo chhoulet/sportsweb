@@ -19,6 +19,7 @@ class ArticleRepository extends EntityRepository
 			FROM FrontOfficeBundle:Article a 
 			WHERE a.validationAdmin = true
 			AND a.warned = false
+			AND a.archived = false
 			ORDER BY a.dateCreated DESC')
 		->setMaxResults(6);
 
@@ -32,6 +33,7 @@ class ArticleRepository extends EntityRepository
 			FROM FrontOfficeBundle:Article a 
 			WHERE a.validationAdmin = true
 			AND a.warned = false
+			AND a.archived = false
 			ORDER BY a.dateCreated DESC');
 
 		return $query -> getResult();
@@ -46,7 +48,8 @@ class ArticleRepository extends EntityRepository
 			JOIN a.user u 
 			WHERE u.sportViewed LIKE :sport
 			AND a.validationAdmin = true
-			AND a.warned = false')
+			AND a.warned = false
+			AND a.archived = false')
 		->setParameter('sport', $sport);
 	}
 
@@ -58,6 +61,7 @@ class ArticleRepository extends EntityRepository
 			JOIN a.sport s 		
 			WHERE a.validationAdmin = true
 			AND a.warned = false
+			AND a.archived = false
 			AND s.name LIKE :sport
 			ORDER BY a.dateCreated DESC')
 		->setParameter('sport',  $sport);
@@ -72,6 +76,7 @@ class ArticleRepository extends EntityRepository
 			FROM FrontOfficeBundle:Article a 
 			WHERE a.validationAdmin = false
 			AND a.warned = false
+			AND a.archived = false
 			ORDER BY a.dateCreated DESC');
 
 		return $query -> getResult();
@@ -92,6 +97,7 @@ class ArticleRepository extends EntityRepository
 			Select a 
 			FROM FrontOfficeBundle:Article a 
 			WHERE a.warned = true
+			AND a.archived = false
 			AND a.validationAdmin = false
 			ORDER BY a.dateCreated DESC');
 
@@ -104,6 +110,9 @@ class ArticleRepository extends EntityRepository
 			SELECT s.name, COUNT(a.id) as nb
 			FROM FrontOfficeBundle:Sport s 
 			JOIN s.articles a 
+			WHERE a.warned = false
+			AND a.validationAdmin = true
+			AND a.archived = false
 			GROUP BY s.id
 			ORDER BY nb DESC');
 
@@ -117,7 +126,7 @@ class ArticleRepository extends EntityRepository
 			FROM FrontOfficeBundle:Article a 
 			WHERE a.warned = true 
 			AND a.validationAdmin = false
-			ORDER BY a.dateCreated DESC');
+			AND a.archived = false');
 
 		return $query -> getSingleScalarResult();
 	}
@@ -129,6 +138,7 @@ class ArticleRepository extends EntityRepository
 			FROM FrontOfficeBundle:Article a
 			JOIN a.comment c
 			WHERE a.validationAdmin = true 
+			AND a.archived = false
 			AND c.validationAdmin = true
 			GROUP BY a.title
 			ORDER BY nb DESC			

@@ -65,6 +65,14 @@ class Article
     private $warned;
 
     /**
+     * @var boolean
+     *
+     *
+     * @ORM\Column(name="archived", type="boolean")
+     */
+    private $archived;
+
+    /**
      * @var string
      *
      *
@@ -379,5 +387,28 @@ class Article
     public function getSport()
     {
         return $this->sport;
+    }
+
+    /**
+     * Set archived
+     *
+     * @param boolean $archived
+     * @return Article
+     */
+    public function setArchived($archived)
+    {
+        $this->archived = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Get archived
+     *
+     * @return boolean 
+     */
+    public function getArchived()
+    {
+        return $this->archived;
     }
 }
