@@ -8,12 +8,14 @@
 				<h2>{{ oneGround.name }}</h2>
 											             
 						<p class="lead">
-					    Sport pratiqué : {% for play in oneGround.sport %} <a href="{{ path('front_office_team_getTeamsByGroundAndSport',{ground:oneGround.name, sportPracticed: play.name}) }}">{{ play.name }}{% endfor %}</a>
+					    Sport pratiqué : {% for play in oneGround.sport %} <a href="{{ path('front_office_team_getTeamsByGroundAndSport',{ground:oneGround.name, sportPracticed: play.name}) }}">{{ play.name }}{% endfor %}</a><br>
+					    Région : {{ oneGround.region }}<br>
+					    Ville : {{ oneGround.place }}<br>
 					                </p>
-					    <p><span class="glyphicon glyphicon-time"> Créé le : {{ oneGround.dateCreated | date('d-m-Y') }}</span></p>
-					    <hr>
-					    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-					    <hr>
+					    <p>Créé le : {{ oneGround.dateCreated | date('d-m-Y') }}</span></p>
+					    
+					    {# <img class="img-responsive" src="http://placehold.it/900x300" alt=""> #}
+					   
 					    <p>Adresse : {{ oneGround.address }} {{ oneGround.place }}</p><br>					    
 					    <p>Téléphone : {{ oneGround.phoneNumber }}</p><br>
 					    <p>Heures d'ouverture: {{ oneGround.openingHours}}<p><br>
