@@ -51,8 +51,12 @@
 			                           			                     
                         				<small>AGE : {{ user.age }} ans</small><br>
 
-                    
+                        				
+                    						{% if (app.user and app.user.id == oneTeam.admin.id) %}
+                    						
+                    					
                         					<a href="{{ path('front_office_team_user_delete',{idUser:user.id, idTeam:oneTeam.id}) }}">Quitter l'équipe</a>
+                        				{% endif %}
                         				
 
                         			{% endfor %}
