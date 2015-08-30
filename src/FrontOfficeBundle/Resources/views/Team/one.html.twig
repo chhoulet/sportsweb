@@ -13,7 +13,7 @@
 			                	</a><br>
 			              
 
-			                Equipe créée par : {{ oneTeam.admin }}<br>
+			                Equipe créée par : <a href="{{ path('front_office_user_one',{id:oneTeam.admin.id})}}">{{ oneTeam.admin }}<br>
 			            </p>
 			            <p><span class="glyphicon glyphicon-time"></span>{{ oneTeam.dateCreated | date('d-m-Y')}}</p>
 			                <hr>
@@ -51,7 +51,9 @@
 			                           			                     
                         				<small>AGE : {{ user.age }} ans</small><br>
 
-                        				<a href="{{ path('front_office_team_user_delete',{idUser:user.id, idTeam:oneTeam.id}) }}">Quitter l'équipe</a>
+                    
+                        					<a href="{{ path('front_office_team_user_delete',{idUser:user.id, idTeam:oneTeam.id}) }}">Quitter l'équipe</a>
+                        				
 
                         			{% endfor %}
                         			
@@ -63,16 +65,16 @@
 
             		<h3>Invitations reçues :</h3>
 
-            			{% for invit in oneTeam.invitationsReceivedToTeam %}
+            			{# {% for invit in oneTeam.invitationsReceivedToTeam %}
             				{{ invit.content }} {{ invit.dateInvit | date('d-m-Y H:i') }} {{ invit.mode }} {{ invit.teamFrom }}{{ invit.place }}
 
             				{% if (app.user.id == oneTeam.admin.id) %}
             					<a href="{{ path('front_office_invitation_response',{id:invit.id}) }}">Accepter l'invitation !</a> <a href="{{ path('front_office_invitation_denied',{id:invit.id}) }}">Décliner l'invitation</a>
             				{% endif %}
 
-            			{% endfor %}
+            			{% endfor %} #}
 
-            		<h3>Invitations envoyées :</h3>
+            		{# <h3>Invitations envoyées :</h3>
 
             			{% for invit in oneTeam.invitationsSentFromTeam %}
             				{{ invit.content }} {{ invit.dateInvit | date('d-m-Y H:i') }} {{ invit.mode }} {{ invit.teamFrom }} {{ invit.place }}
@@ -82,7 +84,7 @@
 
             			{% for invit in oneTeam.invitationsReceivedToTeam if invit.dateAccepted is not null %}
             				{{ invit.content }} {{ invit.dateInvit | date('d-m-Y H:i') }} {{ invit.mode }} {{ invit.teamFrom }} {{ invit.place }}
-            			{% endfor %}
+            			{% endfor %} #}
 			                			            
 			            {% if(is_granted('ROLE_SUPER_ADMIN')) %}
 			                <a class="btn btn-primary" href="{{ path('back_office_team_delete',{id:oneTeam.id}) }}">Suppression team<span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -104,7 +106,7 @@
 		            {% else %}
 
 		            	<a href="{{ path('fos_user_security_login')}}">Connectez-vous !</a><br>
-		            	<p>Vous n'avez pas encore de compte ? <a href="{{ path('fos_user_registration_register')}}">Créez votre compte !</a><br><br>
+		            	<p>Vous souhaitez laisser un commentaire ? <a href="{{ path('fos_user_registration_register')}}">Créez votre compte !</a><br><br>
 
 		            {% endif %}
 
