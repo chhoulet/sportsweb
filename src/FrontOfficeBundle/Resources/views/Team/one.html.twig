@@ -41,7 +41,7 @@
 
                     				{% for user in oneTeam.users %}
 
-                    					{{ user.username }}<br>
+                    					<a href="{{ path('front_office_user_one',{id:user.id}) }}">{{ user.username }}</a><br>
 
                     					Sports pratiqués : 
                     					{% for sport in user.sportPracticed %}
