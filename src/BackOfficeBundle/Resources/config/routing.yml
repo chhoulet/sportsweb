@@ -176,7 +176,7 @@ back_office_admin_user_stats:
 # Routes gerant les teams:
     # Controle des teams non validees:
 back_office_list_team:
-    path:     /listTeam 
+    path:     /listTeamBackOffice 
     defaults: { _controller: BackOfficeBundle:Team:list} 
 
     # Validation d'une team par l'administrateur:

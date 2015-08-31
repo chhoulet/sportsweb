@@ -12,6 +12,11 @@
 							{{ message }}
 						{% endfor %}
 
+						{# Message lors de la suppression d'une team #}
+						{% for messa in app.session.flashbag.get('supp') %}
+							{{ messa }}
+						{% endfor %}
+
 						{% for tea in listTeams %}
 
 			                <h2>

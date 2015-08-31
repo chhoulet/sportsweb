@@ -126,11 +126,13 @@ class TeamController extends Controller
 	public function teamDeleteAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$teamDelete = $em -> getRepository('FrontOfficeBundle:Team') ->find($id);
 		$em -> remove($teamDelete);
 		$em -> flush();
 
-		return $this -> redirect($request->headers->get('referer'));
+		$session -> getFlashbag()->add('suppr', 'Cette equipe est supprimée !');
+		return $this -> redirect($this -> generateUrl('front_office_team_list'));
 	}
 
 	/*Tri des teams par sport pratiqué*/
