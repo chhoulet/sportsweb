@@ -78,6 +78,11 @@
 
             			{% for user in oneTeam.askingUsers %}		
             				<a href="{{ path('front_office_user_one',{id:user.id}) }}">{{ user.username }}</a>
+
+            				{% if (app.user.id == oneTeam.admin.id) %}
+            					{# <a href="{{ path('front_office_team_addUser',{idUser:user.id, idTeam:oneTeam.id}) }}"> #}Accepter ce joueur dans l'équipe</a><br>
+            				{% endif %}
+
             			{% endfor %}
 
             		<h3>Invitations reçues :</h3>

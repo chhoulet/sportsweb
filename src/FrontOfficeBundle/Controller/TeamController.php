@@ -99,16 +99,17 @@ class TeamController extends Controller
 	}
 
 	/*Ajout d'un user dans une team*/
-	public function addUserAction(Request $request,$id)
+	/*public function addUserAction(Request $request,$idUser, $idTeam)
 	{
 		$em = $this -> getDoctrine()->getmanager();
-		$team = $em -> getRepository('FrontOfficeBundle:Team')->find($id);
-		$team -> setUser($this -> getUser());
-		$em -> persist($team);
+		$user = $this -> getRepository('UserBundle:User')-> find($idUser);
+		$team = $em -> getRepository('FrontOfficeBundle:Team')->find($idTeam);
+		$idUser = $user -> addTeam($team);			
+		$em -> persist($idUser);
 		$em -> flush();
 
 		return $this -> redirect($request->headers->get('referer'));		
-	}
+	}*/
 
 	/*Retrait d'un joueur d'une team:*/
 	public function userDeleteAction(Request $request, $idUser, $idTeam)

@@ -97,6 +97,7 @@ front_office_user_getFriend:
     requirements: 
         id: "[0-9]+"
 
+    # Retirer un user de sa liste d'amis:
 front_office_user_getOutFriend:
     path:     /getOutFriend/{id}
     defaults: { _controller: FrontOfficeBundle:User:getOutFriend}
@@ -138,21 +139,24 @@ front_office_team_new:
     path:     /newTeam
     defaults: { _controller: FrontOfficeBundle:Team:new}
 
+    # Demande d'intégration d'un user dans une team:
 front_office_team_userAskingTeam:
     path:     /userAskingTeam/{id}
     defaults: { _controller: FrontOfficeBundle:Team:userAskingTeam}
 
     # Ajout d'un user à une team:
-front_office_team_addUser:
-    path:     /addUser/{id}
-    defaults: { _controller: FrontOfficeBundle:Team:addUser}
-    requirements: 
-        id: "[0-9]+"
+# front_office_team_addUser:
+#     path:     /addUser/{idUser, idTeam}
+#     defaults: { _controller: FrontOfficeBundle:Team:addUser}
+#     requirements: 
+#         id: "[0-9]+"
 
     # Suppression d'un user d'une team:
 front_office_team_user_delete:
     path:     /userDelete/{idUser,idTeam}
     defaults: { _controller: FrontOfficeBundle:Team:userDelete}
+    requirements: 
+        id: "[0-9]+"
 
     # Suppression d'une team complète:
 front_office_team_delete:
@@ -181,6 +185,7 @@ front_office_ground_one:
     path:    /oneGround/{id}
     defaults: { _controller: FrontOfficeBundle:Ground:oneGround}
 
+    # Creation d'un terrain :
 front_office_ground_new:
     path:    /newGround 
     defaults: { _controller:FrontOfficeBundle:Ground:newGround}
