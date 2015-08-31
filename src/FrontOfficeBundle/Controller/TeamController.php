@@ -70,6 +70,7 @@ class TeamController extends Controller
 			$team -> setDateCreated(new \datetime('now'));
 			$team -> setValidationAdmin(false);
 			$team -> setAdmin($this -> getUser());
+			$team -> setActive(true);
 			//$team -> addUser($this ->getUser());
 			//La join_table est située du coté User, on appelle la team en se plaçant du coté de cette table. Le créateur fait automatiquement partie de la team.
 			$this -> getUser() -> addTeam($team);

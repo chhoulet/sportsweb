@@ -30,6 +30,7 @@ class TeamRepository extends EntityRepository
 		$query = $this -> getEntityManager()-> createQuery('
 			SELECT t 
 			FROM FrontOfficeBundle:Team t 
+			WHERE t.active = true
 			ORDER BY t.dateCreated DESC')
 		
 		->setMaxResults(20);
@@ -41,7 +42,8 @@ class TeamRepository extends EntityRepository
 	{
 		$query = $this -> getEntityManager()-> createQuery('
 			SELECT COUNT(t.id) 
-			FROM FrontOfficeBundle:Team t');
+			FROM FrontOfficeBundle:Team t
+			WHERE t.active = true');
 
 		return $query -> getSingleScalarResult();
 	}
@@ -52,7 +54,8 @@ class TeamRepository extends EntityRepository
 			SELECT t
 			FROM FrontOfficeBundle:Team t
 			JOIN t.sportPracticed s 
-			WHERE s.name LIKE :sportPracticed')
+			WHERE s.name LIKE :sportPracticed
+			AND t.active = true')
 		->setParameter('sportPracticed', $sportPracticed)
 		->setMaxResults(30);
 
@@ -67,6 +70,7 @@ class TeamRepository extends EntityRepository
 			JOIN t.sportPracticed s 
 			JOIN t.groung g 
 			WHERE s.name LIKE :sportPracticed
+			AND t.active = true
 			AND g.name LIKE :ground
 			AND g.validAdmin = true
 			ORDER BY t.dateCreated DESC')

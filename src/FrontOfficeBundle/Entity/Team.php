@@ -138,6 +138,13 @@ class Team
     private $teamComment;
 
      /**
+     * @var boolean
+     *     
+     * @ORM\Column(name="active", type="boolean")
+     */
+    private $active;
+
+     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Ground", inversedBy="team")
@@ -647,5 +654,29 @@ class Team
     public function getAskingUsers()
     {
         return $this->askingUsers;
+    }
+    
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Team
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
     }
 }
