@@ -42,7 +42,7 @@ class InvitationRepository extends EntityRepository
 		return $query ->getResult();
 	}
 
-	# Query affichant les invitations acceptées par un user:
+	# Query affichant les invitations reçues par un user:
 	public function seeInvitationsForOneUser($user)
 	{
 		$query = $this -> getEntityManager() -> createQuery('

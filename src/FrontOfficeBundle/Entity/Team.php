@@ -152,6 +152,13 @@ class Team
      */
     private $users;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", mappedBy="askedTeams")
+     */
+    private $askingUsers;
+
      /**
      * @var string
      *
@@ -606,5 +613,39 @@ class Team
     public function getComment()
     {
         return $this->comment;
+    }
+
+
+    /**
+     * Add askingUsers
+     *
+     * @param \UserBundle\Entity\User $askingUsers
+     * @return Team
+     */
+    public function addAskingUser(\UserBundle\Entity\User $askingUsers)
+    {
+        $this->askingUsers[] = $askingUsers;
+
+        return $this;
+    }
+
+    /**
+     * Remove askingUsers
+     *
+     * @param \UserBundle\Entity\User $askingUsers
+     */
+    public function removeAskingUser(\UserBundle\Entity\User $askingUsers)
+    {
+        $this->askingUsers->removeElement($askingUsers);
+    }
+
+    /**
+     * Get askingUsers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAskingUsers()
+    {
+        return $this->askingUsers;
     }
 }

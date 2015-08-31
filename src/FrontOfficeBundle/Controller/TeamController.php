@@ -83,6 +83,19 @@ class TeamController extends Controller
 			array('form' => $form->createView()));
 	}
 
+	/*Demande d'intégration d'un joueur dans une team*/
+	public function userAskingTeamAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$session = $request -> getSession();
+		$teamAsked = $em -> getRepository('FrontOfficeBundle:Team')->find($id);
+		$this -> getUser() -> addAskedTeam($teamAsked);		
+		$em -> flush();
+
+		$session -> getFlashbag()-> add('succes', 'Votre demande est prise en compte !');
+		return $this -> redirect($request -> headers -> get('referer'));
+	}
+
 	/*Ajout d'un user dans une team*/
 	public function addUserAction(Request $request,$id)
 	{
@@ -95,6 +108,7 @@ class TeamController extends Controller
 		return $this -> redirect($request->headers->get('referer'));		
 	}
 
+	/*Retrait d'un joueur d'une team:*/
 	public function userDeleteAction(Request $request, $idUser, $idTeam)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -106,6 +120,7 @@ class TeamController extends Controller
 		return $this -> redirect($request->headers->get('referer'));
 	}
 
+	/*Suppression d'une team*/
 	public function teamDeleteAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
@@ -116,6 +131,7 @@ class TeamController extends Controller
 		return $this -> redirect($request->headers->get('referer'));
 	}
 
+	/*Tri des teams par sport pratiqué*/
 	public function triBySportAction($sportPracticed)
 	{
 		$em = $this -> getDoctrine()-> getManager();
@@ -125,6 +141,7 @@ class TeamController extends Controller
 			array('listTeams'=> $triBySport));
 	}
 
+	/*Tri des teams par Ground et Sport:*/
 	public function getTeamsByGroundAndSportAction($ground, $sportPracticed)
 	{
 		$em = $this -> getDoctrine()-> getManager();

@@ -172,6 +172,14 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="askingUsers")
+     * @ORM\JoinTable(name="askingUsers_teams")
+     */
+    protected $askedTeams;
+
+    /**
+     * @var string
+     *
      * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Team", mappedBy="admin")
      */
     protected $teamsAdmin;
@@ -839,5 +847,40 @@ class User extends BaseUser
     public function getInvitation()
     {
         return $this->invitation;
+    }
+
+    
+
+    /**
+     * Add askedTeams
+     *
+     * @param \FrontOfficeBundle\Entity\Team $askedTeams
+     * @return User
+     */
+    public function addAskedTeam(\FrontOfficeBundle\Entity\Team $askedTeams)
+    {
+        $this->askedTeams[] = $askedTeams;
+
+        return $this;
+    }
+
+    /**
+     * Remove askedTeams
+     *
+     * @param \FrontOfficeBundle\Entity\Team $askedTeams
+     */
+    public function removeAskedTeam(\FrontOfficeBundle\Entity\Team $askedTeams)
+    {
+        $this->askedTeams->removeElement($askedTeams);
+    }
+
+    /**
+     * Get askedTeams
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAskedTeams()
+    {
+        return $this->askedTeams;
     }
 }

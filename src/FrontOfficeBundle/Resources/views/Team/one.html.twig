@@ -7,9 +7,19 @@
               		
 					<h2> {{ oneTeam.name }} </h2>
 
+						{# Paramétrage du message flash lors de la creation d'un commentaire #}
+			            {% for message in app.session.flashbag.get('notice') %}
+			            	{{ message }}
+			            {% endfor %}
+
+			            {# Message flash lors de la demande d'intégration à une equipe #}
+			            {% for messa in app.session.flashbag.get('succes') %}
+			            	{{ messa }}
+			            {% endfor %}
+
 			        	<p class="lead">
 			                Sport pratiqué :<a href="{{ path('front_office_team_triBySport',{sportPracticed:oneTeam.sportPracticed}) }}"> 
-			                 {{ oneTeam.sportPracticed }}
+			                {{ oneTeam.sportPracticed }}
 			                	</a><br>
 			              
 
@@ -23,9 +33,9 @@
 			            <p>{{ oneTeam.habitsOfGame }}</p><br>
 
 			            {% if (is_granted('ROLE_USER')) %}
-			            	<a href="{{ path('front_office_team_addUser',{id:oneTeam.id}) }}">Rejoins l'équipe !</a><br><br>
+			            	<a href="{{ path('front_office_team_userAskingTeam',{id:oneTeam.id}) }}">Rejoins l'équipe !</a><br><br>
 			            {% else %}
-			            	<a href="{{ path('fos_user_security_login') }}">Connectez-vous !</a> ou bien <a href="{{ path('fos_user_registration_register')}}">Créér votre compte :</a>
+			            	<a href="{{ path('fos_user_security_login') }}">Vous voulez rejoindre cette équipe ? Connectez-vous !</a>Pas encore de compte ? <a href="{{ path('fos_user_registration_register')}}">Créér votre compte :</a>
 			            {% endif %}
 
 			            {# {% if(is_granted('ROLE_USER')) and app.user.teamsAdmin is not null %}	
@@ -46,26 +56,29 @@
                     					Sports pratiqués : 
                     					{% for sport in user.sportPracticed %}
                     							<small>  {{ sport.name }} </small>
-                    					{% endfor %}
+                    					{% endfor %}<br>
                     									                      
 			                           			                     
                         				<small>AGE : {{ user.age }} ans</small><br>
 
                         				
-                    						{% if (app.user and app.user.id == oneTeam.admin.id) %}
-                    						
-                    					
+                    					{% if (app.user and app.user.id == oneTeam.admin.id) %}       					
                         					<a href="{{ path('front_office_team_user_delete',{idUser:user.id, idTeam:oneTeam.id}) }}">Quitter l'équipe</a>
                         				{% endif %}
                         				
 
                         			{% endfor %}
                         			
-
                     			</h3>
 
                 			</div>
-            			</div>		
+            			</div>
+
+            		<h3>Les demandes d'intégration :</h3>
+
+            			{% for user in oneTeam.askingUsers %}		
+            				<a href="{{ path('front_office_user_one',{id:user.id}) }}">{{ user.username }}</a>
+            			{% endfor %}
 
             		<h3>Invitations reçues :</h3>
 
@@ -94,12 +107,7 @@
 			                <a class="btn btn-primary" href="{{ path('back_office_team_delete',{id:oneTeam.id}) }}">Suppression team<span class="glyphicon glyphicon-chevron-right"></span></a>
 			            {% endif %}	    		             
 			                
-		                	<hr>	
-
-		                	{# Paramétrage du message flash #}
-		            {% for message in app.session.flashbag.get('notice') %}
-		            	{{ message }}
-		            {% endfor %}
+		                	<hr>			                
 
 		            		{# Contrôle d'acces avec FosUserBundle #}
 		            {% if (is_granted('ROLE_USER')) %}
