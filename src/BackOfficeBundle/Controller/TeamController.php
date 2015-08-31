@@ -18,6 +18,16 @@ class TeamController extends Controller
 			array('team'=> $team));
 	}
 
+	# Liste des équipes inactives:
+	public function getUnactiveTeamsAction()
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$unactiveTeams = $em -> getRepository('FrontOfficeBundle:Team')->getUnactiveTeams();
+
+		return $this -> render('BackOfficeBundle:Team:list.html.twig', 
+			array('team'=>$unactiveTeams));
+	}
+
 	# Validation admin de la team selectionnee:
 	public function responseAction($id)
 	{
@@ -46,7 +56,7 @@ class TeamController extends Controller
 	{
 		$em = $this -> getDoctrine()-> getManager();
 		$teamsByInvitationsSent = $em -> getRepository('FrontOfficeBundle:Team')->getTeamsByInvitationsSent();
-		$teamsByInvitationsReceived = $em -> getRepository('FrontOfficeBundle:Team')->getTeamsByInvitationsReceived();
+		$teamsByInvitationsReceived = $em -> getRepository('FrontOfficeBundle:Team')->getTeamsByInvitationsReceived();		
 
 		return $this -> render('BackOfficeBundle:Team:statistiquesTeams.html.twig', 
 			array('teamsByInvitationsSent'    => $teamsByInvitationsSent,

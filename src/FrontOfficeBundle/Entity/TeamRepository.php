@@ -18,7 +18,8 @@ class TeamRepository extends EntityRepository
 		$query = $this -> getEntityManager()-> createQuery('
 			SELECT t 
 			FROM FrontOfficeBundle:Team t 
-			WHERE t.validationAdmin = false');
+			WHERE t.validationAdmin = false
+			AND t.active = true');
 
 		return $query -> getResult();
 	}
@@ -104,6 +105,16 @@ class TeamRepository extends EntityRepository
 			GROUP BY t.name
 			ORDER BY nb DESC
 			');
+
+		return $query -> getResult();
+	}
+
+	public function getUnactiveTeams()
+	{
+		$query = $this -> getEntitymanager()->createQuery('
+			SELECT t 
+			FROM FrontOfficeBundle:Team t 
+			WHERE t.active = false');
 
 		return $query -> getResult();
 	}
