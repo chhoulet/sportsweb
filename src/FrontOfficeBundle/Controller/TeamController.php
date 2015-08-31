@@ -137,6 +137,19 @@ class TeamController extends Controller
 		return $this -> redirect($this -> generateUrl('front_office_team_list'));
 	}
 
+	public function dissolveTeamAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()-> getManager();
+		$session = $request -> getSession();
+		$dissolveTeam = $em -> getRepository('FrontOfficeBundle:Team')-> find($id);
+		$dissolveTeam -> setAdmin();
+		$dissolveTeam -> setActive(false);
+		$em -> flush();
+
+		$session -> getFlashbag()-> add('disolve','Vous n\'êtes plus administrateur de cette équipe !');
+		return $this -> redirect($request -> headers -> get('referer'));
+	}
+
 	/*Tri des teams par sport pratiqué*/
 	public function triBySportAction($sportPracticed)
 	{

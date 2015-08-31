@@ -17,13 +17,25 @@
 			            	{{ messa }}
 			            {% endfor %}
 
-			        	<p class="lead">
-			                Sport pratiqué :<a href="{{ path('front_office_team_triBySport',{sportPracticed:oneTeam.sportPracticed}) }}"> 
-			                {{ oneTeam.sportPracticed }}
-			                	</a><br>
-			              
+			            {% for mess in app.session.flashbag.get('disolve') %}
+			            	{{ mess }}
+			            {% endfor %}
 
-			                Equipe créée par : <a href="{{ path('front_office_user_one',{id:oneTeam.admin.id})}}">{{ oneTeam.admin }}<br>
+			        	<p class="lead">
+			                Sport pratiqué :<a href="{{ path('front_office_team_triBySport',{sportPracticed:oneTeam.sportPracticed}) }}"> {{ oneTeam.sportPracticed }} </a><br>			                		    
+			                
+			                Equipe créée par : 
+			                	{% for admin in oneTeam.admin %}<a href="{{ path('front_office_user_one',{id:admin.id})}}">{{ 	admin.username }}<br>
+			                	
+
+					                {% if (app.user.id == admin.id) %}			              
+						                	<a href="{{ path('front_office_team_dissolveTeam',{id:oneTeam.id}) }}">Se retirer du poste d'administrateur</a>				               			       
+						            {% endif %}
+
+						            {% endfor %}	
+
+						        
+
 			            </p>
 			            <p><span class="glyphicon glyphicon-time"></span>{{ oneTeam.dateCreated | date('d-m-Y')}}</p>
 			                <hr>
@@ -61,10 +73,11 @@
 			                           			                     
                         				<small>AGE : {{ user.age }} ans</small><br>
 
-                        				
-                    					{% if (app.user and app.user.id == oneTeam.admin.id) %}       					
-                        					<a href="{{ path('front_office_team_user_delete',{idUser:user.id, idTeam:oneTeam.id}) }}">Quitter l'équipe</a>
-                        				{% endif %}
+                        				{% for admin in oneTeam.admin %}
+	                    					{% if (app.user and app.user.id == admin.id) %}       					
+	                        					<a href="{{ path('front_office_team_user_delete',{idUser:user.id, idTeam:oneTeam.id}) }}">Quitter l'équipe</a>
+	                        				{% endif %}
+	                        			{% endfor %}
                         				
 
                         			{% endfor %}
@@ -76,12 +89,15 @@
 
             		<h3>Les demandes d'intégration :</h3>
 
-            			{% for user in oneTeam.askingUsers %}		
+            			{% for user in oneTeam.askingUsers %}	
+
             				<a href="{{ path('front_office_user_one',{id:user.id}) }}">{{ user.username }}</a>
 
-            				{% if (app.user.id == oneTeam.admin.id) %}
-            					{# <a href="{{ path('front_office_team_addUser',{idUser:user.id, idTeam:oneTeam.id}) }}"> #}Accepter ce joueur dans l'équipe</a><br>
-            				{% endif %}
+            				{% for admin in oneTeam.admin %}
+            					{% if (app.user.id == admin.id) %}
+            						{# <a href="{{ path('front_office_team_addUser',{idUser:user.id, idTeam:oneTeam.id}) }}"> #}Accepter ce joueur dans l'équipe</a><br>
+            					{% endif %}
+            				{% endfor %}
 
             			{% endfor %}
 

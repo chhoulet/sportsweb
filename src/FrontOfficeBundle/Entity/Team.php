@@ -170,7 +170,7 @@ class Team
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="teamsAdmin")
-     * @ORM\JoinColumn(name="admin_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="admin_id", referencedColumnName="id", nullable = true)
      */
     private $admin;
 
