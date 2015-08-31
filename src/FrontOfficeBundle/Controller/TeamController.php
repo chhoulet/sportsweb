@@ -59,6 +59,7 @@ class TeamController extends Controller
 	public function newAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getmanager();
+		$session = $request -> getSession();
 		$team = new Team();
 		$form = $this -> createForm(new TeamType(), $team);
 
@@ -73,6 +74,7 @@ class TeamController extends Controller
 			//La join_table est située du coté User, on appelle la team en se plaçant du coté de cette table. Le créateur fait automatiquement partie de la team.
 			$this -> getUser() -> addTeam($team);
 
+			$session -> getFlashbag()->add('creation','Cette équipe est maintenant enregistrée !');
 			$em -> persist($team);
 			$em -> flush();
 

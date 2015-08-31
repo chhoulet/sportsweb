@@ -7,6 +7,11 @@
 		
 					<h2> Liste des teams </h2>
 
+						{# Message lors de la creation d'une team #}
+						{% for message in app.session.flashbag.get('creation') %}
+							{{ message }}
+						{% endfor %}
+
 						{% for tea in listTeams %}
 
 			                <h2>
