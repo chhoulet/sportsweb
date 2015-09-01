@@ -15,7 +15,7 @@ class RegistrationFormType extends AbstractType
                                                 'attr'     => array('placeholder'=>'Halle Carpentier, gymnase Serge Blanco ...')))
             ->add('place','text',         array('label'    =>'Ville:',
                                                 'attr'     => array('placeholder'=>'Paris, Marseille,Le Mirail ...')))
-           /* ->add('favouriteSport', null, array('label'    =>'Sport favori:',
+            ->add('favouriteSport', null, array('label'    =>'Sport favori:',
                                                 'expanded' => true,
                                                 'multiple' => true))
             ->add('sportPracticed', null, array('label'    =>'Sports pratiqués:',
@@ -23,7 +23,9 @@ class RegistrationFormType extends AbstractType
                                                 'multiple' => true))
             ->add('sportViewed',    null, array('label'    =>'Sports éditoriaux:',
                                                 'multiple' => true,
-                                                'expanded' => true))*/
+                                                'expanded' => true))
+            ->add('postCode', 'integer',  array('label'    =>'Code Postal:',
+                                                'attr'     => array('placeholder'=>'75,13,59,91, 2 chiffres uniquement merci !')))
             ->add('age')
         ;
 
