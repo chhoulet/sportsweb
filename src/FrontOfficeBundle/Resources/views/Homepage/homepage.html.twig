@@ -67,9 +67,9 @@
 
                                 <hr>
 
-                            <h3 class="section-heading" style="padding-top:20px;">Sélectionner les invitations :</h3>
+                            <h3 class="section-heading" style="padding-top:20px;">Sélectionner les invitations {% for sport in app.user.sportPracticed %}{{ sport.name }} {% endfor %} :</h3>
                                
-                                {% for invit in invitationsBySportPracticed %}
+                               {#  {% for invit in invitationsBySportPracticed %}
 
                                     <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p><br>
                                     <p class="section-paragraph">{{ invit.content }}</p><br>
@@ -82,7 +82,7 @@
                                         <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}"><button>Supprimer cette invitation</button></a>
                                     {% endif %}
 
-                                {% endfor %}
+                                {% endfor %} #}
 
                                 <hr>
                                    

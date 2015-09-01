@@ -26,12 +26,12 @@ class HomepageController extends Controller
             $triInvitsBySport = $em -> getRepository('FrontOfficeBundle:Invitation') 
                 -> triInvitsBySport($this -> getUser(), $sport);    
              
-            $invitationsBySportPracticed = $em -> getRepository('FrontOfficeBundle:Invitation') 
-                ->getInvitsBySportsPracticed($this -> getUser(),$sportPracticed, $region);
+            /*$invitationsBySportPracticed = $em -> getRepository('FrontOfficeBundle:Invitation') 
+                ->getInvitsBySportsPracticed($this -> getUser(),$sportPracticed, $region);*/
            
             return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
-                array('invitForConnectedUser' => $triInvitsBySport,
-                      'invitationsBySportPracticed' => $invitationsBySportPracticed));
+                array('invitForConnectedUser' => $triInvitsBySport/*,*/
+                      /*'invitationsBySportPracticed' => $invitationsBySportPracticed*/));
         }
 
         else
