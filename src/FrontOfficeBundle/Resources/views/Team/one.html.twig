@@ -93,11 +93,11 @@
 
             				<a href="{{ path('front_office_user_one',{id:user.id}) }}">{{ user.username }}</a>
 
-            				{% for admin in oneTeam.admin %}
-            					{% if (app.user.id == admin.id) %}
-            						{# <a href="{{ path('front_office_team_addUser',{idUser:user.id, idTeam:oneTeam.id}) }}"> #}Accepter ce joueur dans l'équipe</a><br>
+            				
+            					{# {% if (app.user.id == oneTeam.admin.id) %}
+            						<a href="{{ path('front_office_team_addUser',{idTeam:oneTeam.id}) }}">Accepter ce joueur dans l'équipe</a><br>
             					{% endif %}
-            				{% endfor %}
+            				 #}
 
             			{% endfor %}
 

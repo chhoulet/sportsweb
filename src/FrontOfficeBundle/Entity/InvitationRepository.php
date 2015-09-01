@@ -148,4 +148,24 @@ class InvitationRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getInvitsBySportsPracticed($user, $sportPracticed, $region)
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT i 
+			FROM FrontOfficeBundle:Invitation i 
+			JOIN i.user u 
+			JOIN i.sport s
+			WHERE i.accepted = false 
+			AND i.denied = false
+			AND i.region LIKE :region
+			AND u.id LIKE :user
+			AND s.id LIKE :sport
+			ORDER BY i.dateInvit DESC')
+		->setParameter('region', $region)
+		->setParameter('user', $user)
+		->setParameter('sport', $sportPracticed );
+
+		return $query -> getResult();
+	}
 }
