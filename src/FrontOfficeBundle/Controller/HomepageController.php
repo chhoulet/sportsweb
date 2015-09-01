@@ -18,12 +18,20 @@ class HomepageController extends Controller
             # Recuperation du sport favori de l'user connecte:
             $sport = $this -> getUser() -> getFavouriteSport();
 
+            # Récupération automatique des sportpracticed et de la region de l'user:
+            $sportPracticed = $this -> getUser() -> getSportPracticed();
+            $region = $this -> getUser()-> getRegion();
+        
         	# Appel des functions triant les invitations :
             $triInvitsBySport = $em -> getRepository('FrontOfficeBundle:Invitation') 
                 -> triInvitsBySport($this -> getUser(), $sport);    
-          
+             
+            $invitationsBySportPracticed = $em -> getRepository('FrontOfficeBundle:Invitation') 
+                ->getInvitsBySportsPracticed($this -> getUser(),$sportPracticed, $region);
+           
             return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
-                array('invitForConnectedUser' => $triInvitsBySport));
+                array('invitForConnectedUser' => $triInvitsBySport,
+                      'invitationsBySportPracticed' => $invitationsBySportPracticed));
         }
 
         else

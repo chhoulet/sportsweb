@@ -46,14 +46,33 @@
                             {#  Message flashbag lors de la creation d'une invit #}
                             {% for message in app.session.flashbag.get('succes') %}
                                 <p>{{ message }}</p>
-                            {% endfor %}                                
+                            {% endfor %}                            
 
                             <h3 class="section-heading" style="padding-top:20px;">Voir les invitations de {{ app.user.favouriteSport }} :</h3>
-                            
-                                {% for invit in invitForConnectedUser %}    
 
-                                    <p class="section-paragraph">{{ invit.content }}</p>
-                                    <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p>
+                                {% for invit in invitForConnectedUser %}    
+                                    
+                                    <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p><br>
+                                    <p class="section-paragraph">{{ invit.content }}</p><br>
+
+                                    <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}"><button>Voir cette invitation</button></a>
+
+                                    <a href="{{ path('front_office_invitation_response',{id:invit.id}) }}"><button>Accepter l'invitation</button></a>
+                                    
+                                    {% if (is_granted('ROLE_SUPER_ADMIN')) %}
+                                        <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}"><button>Supprimer cette invitation</button></a>
+                                    {% endif %}                                    
+
+                                {% endfor %}
+
+                                <hr>
+
+                            <h3 class="section-heading" style="padding-top:20px;">Sélectionner les invitations :</h3>
+                               
+                                {% for invit in invitationsBySportPracticed %}
+
+                                    <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p><br>
+                                    <p class="section-paragraph">{{ invit.content }}</p><br>
 
                                     <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}"><button>Voir cette invitation</button></a>
 
@@ -64,6 +83,8 @@
                                     {% endif %}
 
                                 {% endfor %}
+
+                                <hr>
                                    
                         </div>
                     </div>
