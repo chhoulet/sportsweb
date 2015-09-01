@@ -48,8 +48,8 @@
                                 <p>{{ message }}</p>
                             {% endfor %}                                
 
-                            <h3 class="section-heading" style="padding-top:20px;">Voir les invitations :</h3>
-
+                            <h3 class="section-heading" style="padding-top:20px;">Voir les invitations de {{ app.user.favouriteSport }} :</h3>
+                            
                                 {% for invit in invitForConnectedUser %}    
 
                                     <p class="section-paragraph">{{ invit.content }}</p>
