@@ -154,17 +154,16 @@ class InvitationRepository extends EntityRepository
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT i 
 			FROM FrontOfficeBundle:Invitation i 
-			JOIN i.user u 
-			JOIN i.sport s
+			JOIN i.user u 			
 			WHERE i.accepted = false 
 			AND i.denied = false
 			AND i.region LIKE :region
 			AND u.id LIKE :user
-			AND s.id LIKE :sport
+			AND u.sportPracticed LIKE :sportPracticed
 			ORDER BY i.dateInvit DESC')
 		->setParameter('region', $region)
 		->setParameter('user', $user)
-		->setParameter('sport', $sportPracticed );
+		->setParameter('sportPracticed', $sportPracticed );
 
 		return $query -> getResult();
 	}

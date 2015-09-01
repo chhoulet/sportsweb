@@ -46,6 +46,20 @@ class User extends BaseUser
 
     /**
      * @var string
+     *    
+     * @ORM\Column(name="postCode", type="string", length=255))
+     */
+    protected $postCode;
+
+    /**
+     * @var string
+     *    
+     * @ORM\Column(name="region", type="string", length=255))
+     */
+    protected $region;
+
+    /**
+     * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Ground", inversedBy="userGround")
      * @ORM\JoinColumn(name="ground_id", referencedColumnName="id", nullable =true)
@@ -882,5 +896,51 @@ class User extends BaseUser
     public function getAskedTeams()
     {
         return $this->askedTeams;
+    }
+
+    /**
+     * Set postCode
+     *
+     * @param string $postCode
+     * @return User
+     */
+    public function setPostCode($postCode)
+    {
+        $this->postCode = $postCode;
+
+        return $this;
+    }
+
+    /**
+     * Get postCode
+     *
+     * @return string 
+     */
+    public function getPostCode()
+    {
+        return $this->postCode;
+    }
+
+    /**
+     * Set region
+     *
+     * @param string $region
+     * @return User
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return string 
+     */
+    public function getRegion()
+    {
+        return $this->region;
     }
 }

@@ -30,8 +30,7 @@
                                 <p>{{ message }}</p>
                             {% endfor %}
 
-                            <h3 class="section-heading" style="padding-top:20px;">Sélectionner les invitations :</h3>
-                                {{ form(form) }}
+                            
                         </div>
                     </div>
                 </div>
@@ -47,20 +46,21 @@
                             {#  Message flashbag lors de la creation d'une invit #}
                             {% for message in app.session.flashbag.get('succes') %}
                                 <p>{{ message }}</p>
-                            {% endfor %}    
+                            {% endfor %}                                
 
-                            <h3 class="section-heading" style="padding-top:20px;">Accepter une invitation :</h3>
+                            <h3 class="section-heading" style="padding-top:20px;">Voir les invitations :</h3>
+
                                 {% for invit in invitForConnectedUser %}    
 
                                     <p class="section-paragraph">{{ invit.content }}</p>
                                     <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p>
 
-                                    <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}">Voir cette invitation</a>
+                                    <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}"><button>Voir cette invitation</button></a>
 
-                                    <a href="{{ path('front_office_invitation_response',{id:invit.id}) }}"><button>Accepter l'invitation</button></a><br>
+                                    <a href="{{ path('front_office_invitation_response',{id:invit.id}) }}"><button>Accepter l'invitation</button></a>
                                     
                                     {% if (is_granted('ROLE_SUPER_ADMIN')) %}
-                                        <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}">Supprimer cette invitation</a>
+                                        <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}"><button>Supprimer cette invitation</button></a>
                                     {% endif %}
 
                                 {% endfor %}
@@ -76,8 +76,12 @@
             <section>
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <h3 class="section-heading" style="padding-top:70px;">Accepter une invitation :</h3>
+                        <div class="col-lg-12">                           
+                            <h3 class="section-heading" style="padding-top:20px;">Sélectionner les invitations :</h3>
+                                {{ form(form) }}
+
+                                <hr>
+
         	                    {% for invit in allInvit %} 
 
         		                    <p class="section-paragraph">{{ invit.content }}</p>
@@ -88,7 +92,7 @@
                                         <a href="{{ path('front_office_invitation_response',{id:invit.id}) }}"><button>Accepter l'invitation</button></a>
                                     {% endif %}
                                     {% if (is_granted('ROLE_SUPER_ADMIN')) %}
-                                        <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}">Supprimer cette invitation</a>
+                                        <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}"><button>Supprimer cette invitation</button></a>
                                     {% endif %}
 
         		                {% endfor %}

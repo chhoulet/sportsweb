@@ -10,11 +10,26 @@ use Symfony\Component\HttpFoundation\Request;
 class HomepageController extends Controller
 {
     public function homepageAction(Request $request)
-    {
-    	$em = $this -> getDoctrine()->getManager();
+    {    	  
+        $em = $this -> getDoctrine()->getManager();      
 
-        # Tri des invitations:
-            $form = $this -> createForm(new TriInvitationType);
+        if ($this -> getUser())
+        {
+            # Recuperation du sport favori de l'user connecte:
+            $sport = $this -> getUser() -> getFavouriteSport();
+
+        	# Appel des functions triant les invitations :
+            $triInvitsBySport = $em -> getRepository('FrontOfficeBundle:Invitation') 
+                -> triInvitsBySport($this -> getUser(), $sport);    
+          
+            return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
+                array('invitForConnectedUser' => $triInvitsBySport));
+        }
+
+        else
+        {              
+            # Tri des invitations:
+            $form = $this -> createForm(new TriInvitationType());
 
             $form -> handleRequest($request);
 
@@ -25,23 +40,7 @@ class HomepageController extends Controller
 
                 return $this -> render('FrontOfficeBundle:Invitation:triBySportPlace.html.twig', array('invits'=>$invits));
             }
-            
 
-        if ($this -> getUser())
-        {
-            # Recuperation du sport favori de l'user connecte:
-            $sport = $this -> getUser() -> getFavouriteSport();
-            
-        	# Appel des functions triant les invitations par sport et par:
-            $triInvitsBySport = $em -> getRepository('FrontOfficeBundle:Invitation') -> triInvitsBySport($this -> getUser(), $sport);                  
-
-            return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
-                array('invitForConnectedUser' => $triInvitsBySport,
-                      'form'    => $form ->createView()));
-        }
-
-        else
-        {
     	    $allInvit = $em -> getRepository('FrontOfficeBundle:Invitation') -> getInvitation();            
 
             return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 

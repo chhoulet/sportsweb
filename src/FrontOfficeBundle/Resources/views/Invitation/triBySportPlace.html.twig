@@ -18,6 +18,8 @@
 	                                <small>MODE : {{ invit.mode }} </small><br>
                                     <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}">Détail </a>
 	                                <a href="{{ path('front_office_invitation_response', {id:invit.id}) }}">Accepter l'invitation</a><br>
+                                {% else %}
+                                    <p>Aucune invitation ne correspond aux critères sélectionnés !</p>
 	                            {% endif %}
                                
                             {% endfor %}
