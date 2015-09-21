@@ -212,6 +212,14 @@ class User extends BaseUser
      */
     protected $message;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToOne(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="organizer")
+     * @ORM\JoinColumn(name="matche_id", referencedColumnName="id", nullable = true)
+     */
+    private $matche;
+
 
     /**
      * Get id
@@ -942,5 +950,29 @@ class User extends BaseUser
     public function getRegion()
     {
         return $this->region;
+    }
+    
+
+    /**
+     * Set matche
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matche
+     * @return User
+     */
+    public function setMatche(\FrontOfficeBundle\Entity\Matche $matche = null)
+    {
+        $this->matche = $matche;
+
+        return $this;
+    }
+
+    /**
+     * Get matche
+     *
+     * @return \FrontOfficeBundle\Entity\Matche 
+     */
+    public function getMatche()
+    {
+        return $this->matche;
     }
 }

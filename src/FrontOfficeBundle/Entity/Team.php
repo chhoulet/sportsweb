@@ -195,6 +195,20 @@ class Team
      */
     private $comment;
 
+     /**
+     * @var string
+     *
+     * @ORM\OneToOne(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="team1")    
+     */
+    private $matche1;
+
+     /**
+     * @var string
+     *
+     * @ORM\OneToOne(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="team2")    
+     */
+    private $matche2;
+
 
     /**
      * Get id
@@ -678,5 +692,53 @@ class Team
     public function getActive()
     {
         return $this->active;
+    }
+
+    
+
+    /**
+     * Set matche1
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matche1
+     * @return Team
+     */
+    public function setMatche1(\FrontOfficeBundle\Entity\Matche $matche1 = null)
+    {
+        $this->matche1 = $matche1;
+
+        return $this;
+    }
+
+    /**
+     * Get matche1
+     *
+     * @return \FrontOfficeBundle\Entity\Matche 
+     */
+    public function getMatche1()
+    {
+        return $this->matche1;
+    }
+
+    /**
+     * Set matche2
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matche2
+     * @return Team
+     */
+    public function setMatche2(\FrontOfficeBundle\Entity\Matche $matche2 = null)
+    {
+        $this->matche2 = $matche2;
+
+        return $this;
+    }
+
+    /**
+     * Get matche2
+     *
+     * @return \FrontOfficeBundle\Entity\Matche 
+     */
+    public function getMatche2()
+    {
+        return $this->matche2;
     }
 }

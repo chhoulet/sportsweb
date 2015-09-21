@@ -1,0 +1,76 @@
+{% extends 'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">                	
+		
+					<h2> Liste des commentaires censurés : Team</h2>						
+
+						{% for com in CommentsTeamsCensored %}
+
+			                <h5>
+			                    {{ com.title }}
+			                </h5>
+			                
+			                    by <a href="index.php">{{ com.author }}</a>
+			               
+			                <p><span class="glyphicon glyphicon-time"></span> {{ com.dateCreated | date('d-m-Y H:i:s')}}</p><br>			                
+			                <p>{{ com.content }}</p>			                
+
+			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}			                	
+			                	<a class="btn btn-primary" href="{{ path('back_office_comment_delete',{id:com.id}) }}">	Suppression commentaire<span class="glyphicon glyphicon-chevron-right"></span></a>
+			            	{% endif %}
+
+		                	<hr>
+
+	            		{% endfor %}
+
+	            	<h2> Liste des commentaires censurés : Article</h2>
+
+						{% for com in CommentsArticlesCensored %}
+
+			                <h5>
+			                    {{ com.title }}
+			                </h5>
+			                
+			                    by <a href="index.php">{{ com.author }}</a>
+			                
+			                <p><span class="glyphicon glyphicon-time"></span> {{ com.dateCreated | date('d-m-Y H:i:s')}}</p><br>			                
+			                <p>{{ com.content }}</p>			                
+
+			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}			                	
+			                	<a class="btn btn-primary" href="{{ path('back_office_comment_delete',{id:com.id}) }}">	Suppression commentaire<span class="glyphicon glyphicon-chevron-right"></span></a>
+			            	{% endif %}
+
+		                	<hr>
+
+	            		{% endfor %}
+
+	            	<h2> Liste des commentaires censurés : Ground</h2>
+
+						{% for com in CommentsGroundsCensored %}
+
+			                <h5>
+			                    {{ com.title }}
+			                </h5>
+			                
+			                    by <a href="index.php">{{ com.author }}</a>
+			                
+			                <p><span class="glyphicon glyphicon-time"></span> {{ com.dateCreated | date('d-m-Y H:i:s')}}</p><br>			                			              	     
+			                <p>{{ com.content }}</p>			               
+
+			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}			                	
+			                	<a class="btn btn-primary" href="{{ path('back_office_comment_delete',{id:com.id}) }}">	Suppression commentaire<span class="glyphicon glyphicon-chevron-right"></span></a>
+			            	{% endif %}
+
+		                	<hr>
+
+	            		{% endfor %}
+
+	            </div>			
+			</div>
+		</div>
+		
+	{% endblock %}

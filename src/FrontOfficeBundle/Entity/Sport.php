@@ -83,6 +83,13 @@ class Sport
      * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Team", mappedBy="sportPracticed")
      */
     private $team;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="sport")
+     */
+    private $matche;
    
     /**
      * Get id
@@ -382,5 +389,38 @@ class Sport
     public function getTeam()
     {
         return $this->team;
+    }
+
+    /**
+     * Add matche
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matche
+     * @return Sport
+     */
+    public function addMatche(\FrontOfficeBundle\Entity\Matche $matche)
+    {
+        $this->matche[] = $matche;
+
+        return $this;
+    }
+
+    /**
+     * Remove matche
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matche
+     */
+    public function removeMatche(\FrontOfficeBundle\Entity\Matche $matche)
+    {
+        $this->matche->removeElement($matche);
+    }
+
+    /**
+     * Get matche
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMatche()
+    {
+        return $this->matche;
     }
 }

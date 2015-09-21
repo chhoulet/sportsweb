@@ -202,6 +202,13 @@ class Ground
      */
     private $com;
 
+     /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="ground")
+     */
+    private $matche;
+
     /**
      * Get id
      *
@@ -747,5 +754,38 @@ class Ground
     public function getRegion()
     {
         return $this->region;
+    }
+
+    /**
+     * Add matche
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matche
+     * @return Ground
+     */
+    public function addMatche(\FrontOfficeBundle\Entity\Matche $matche)
+    {
+        $this->matche[] = $matche;
+
+        return $this;
+    }
+
+    /**
+     * Remove matche
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matche
+     */
+    public function removeMatche(\FrontOfficeBundle\Entity\Matche $matche)
+    {
+        $this->matche->removeElement($matche);
+    }
+
+    /**
+     * Get matche
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMatche()
+    {
+        return $this->matche;
     }
 }
