@@ -130,11 +130,10 @@ class InvitationController extends Controller
 	{
 		/*Attribution automatique de valeur aux attributs de l'objet Invitation*/
 		$em = $this -> getDoctrine()->getManager();
-		$invitationDenied = $em -> getRepository('FrontOfficeBundle:Invitation')->find($id);
+		$invitationDenied = $em -> getRepository('FrontOfficeBundle:Invitation')->find($id);		
+		$invitationDenied -> setUserTo($this ->  getUser());
 		$invitationDenied -> setDenied(true);
-		$invitationDenied -> setDateDenied(new \datetime('now'));
-		$invitationDenied -> setUserTo($this->getUser());
-		$em -> persist($invitationDenied);
+		$invitationDenied -> setDateDenied(new \datetime('now'));		
 		$em -> flush();
 
 		/*Redirection sur la page d'où vient l'user*/

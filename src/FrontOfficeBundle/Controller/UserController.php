@@ -13,9 +13,9 @@ class UserController extends Controller
 	public function updateAction(Request $request)
 	{
 		$em = $this -> getDoctrine()->getManager();
-		$user = $this ->getUser();
+		$user = $this ->getUser();		
 		$form = $this -> createForm(new RegistrationFormType(), $user);
-
+		
 		$form -> handleRequest($request);
 
 		if($form -> isValid())
