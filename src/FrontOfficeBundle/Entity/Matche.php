@@ -24,13 +24,20 @@ class Matche
     /**
      * @var string
      *
-     * @ORM\Column(name="place", type="string", length=255)
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "50",
+     *      minMessage = "La ville ne peut compter que {{ limit }} caractères",
+     *      maxMessage = "La ville ne peut compter que {{ limit }} caractères"
+     * )
+     * @ORM\Column(name="place", type="string", length=255, nullable = true)
      */
     private $place;
 
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
      * @ORM\Column(name="dateplay", type="datetime")
      */
     private $dateplay;
