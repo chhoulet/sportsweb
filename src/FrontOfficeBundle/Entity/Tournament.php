@@ -28,8 +28,8 @@ class Tournament
      * @Assert\Length(
      *      min = "2",
      *      max = "50",
-     *      minMessage = "Le nom de la ville doit faire au moins {{ limit }} caractères",
-     *      maxMessage = "Le nom de la ville ne peut pas être plus long que {{ limit }} caractères"
+     *      minMessage = "Le nom du tournoi doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom du tournoi ne peut pas être plus long que {{ limit }} caractères"
      * )
      * @ORM\Column(name="name", type="string", length=255)
      */
@@ -38,12 +38,26 @@ class Tournament
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "70",
+     *      minMessage = "Le nom de la ville doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom de la ville ne peut pas être plus long que {{ limit }} caractères"
+     * )
+     *
      * @ORM\Column(name="place", type="string", length=255)
      */
     private $place;
 
     /**
      * @var integer
+     *
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "2",
+     *      minMessage = "Le département ne peut compter que {{ limit }} caractères",
+     *      maxMessage = "Le département ne peut compter que {{ limit }} caractères"
+     * )
      *
      * @ORM\Column(name="department", type="integer")
      */
@@ -59,12 +73,16 @@ class Tournament
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
+     *
      * @ORM\Column(name="dateBegining", type="datetime")
      */
     private $dateBegining;
 
     /**
      * @var \DateTime
+     *
+     * @Assert\DateTime()
      *
      * @ORM\Column(name="dateEnding", type="datetime")
      */
@@ -73,6 +91,8 @@ class Tournament
     /**
      * @var \DateTime
      *
+     * @Assert\DateTime()
+     *
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;
@@ -80,12 +100,19 @@ class Tournament
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "500",
+     *      minMessage = "Le département ne peut compter que {{ limit }} caractères",
+     *      maxMessage = "Le département ne peut compter que {{ limit }} caractères"
+     * )
+     *
      * @ORM\Column(name="description", type="string", length=500)
      */
     private $description;    
 
     /**
-     * @var boolean
+     * @var boolean     
      *
      * @ORM\Column(name="current", type="boolean")
      */
