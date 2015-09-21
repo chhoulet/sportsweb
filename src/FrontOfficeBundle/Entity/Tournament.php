@@ -3,6 +3,7 @@
 namespace FrontOfficeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tournament
@@ -24,6 +25,12 @@ class Tournament
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "50",
+     *      minMessage = "Le nom de la ville doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom de la ville ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -75,7 +82,28 @@ class Tournament
      *
      * @ORM\Column(name="description", type="string", length=500)
      */
-    private $description;
+    private $description;    
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="current", type="boolean")
+     */
+    private $current;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="played", type="boolean")
+     */
+    private $played;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="playedFuture", type="boolean")
+     */
+    private $playedFuture;
 
     /**
      * @var string
@@ -83,6 +111,37 @@ class Tournament
      * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="tournament")
      */
     private $matche;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\User", inversedBy="tournament")
+     * @ORM\JoinColumn(name="organizer_id", referencedColumnName="id")
+     */
+    private $organizer;
+
+     /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Sport", inversedBy="tournament")
+     * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
+     */
+    private $sport;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="tournament")
+     * @ORM\JoinTable(name="tournament_teams")
+     */
+    private $teams;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="tournament")
+     */
+    private $invitation;
 
 
     /**
@@ -317,5 +376,186 @@ class Tournament
     public function getMatche()
     {
         return $this->matche;
+    }
+
+    /**
+     * Set current
+     *
+     * @param boolean $current
+     * @return Tournament
+     */
+    public function setCurrent($current)
+    {
+        $this->current = $current;
+
+        return $this;
+    }
+
+    /**
+     * Get current
+     *
+     * @return boolean 
+     */
+    public function getCurrent()
+    {
+        return $this->current;
+    }
+
+    /**
+     * Set played
+     *
+     * @param boolean $played
+     * @return Tournament
+     */
+    public function setPlayed($played)
+    {
+        $this->played = $played;
+
+        return $this;
+    }
+
+    /**
+     * Get played
+     *
+     * @return boolean 
+     */
+    public function getPlayed()
+    {
+        return $this->played;
+    }
+
+    /**
+     * Set playedFuture
+     *
+     * @param boolean $playedFuture
+     * @return Tournament
+     */
+    public function setPlayedFuture($playedFuture)
+    {
+        $this->playedFuture = $playedFuture;
+
+        return $this;
+    }
+
+    /**
+     * Get playedFuture
+     *
+     * @return boolean 
+     */
+    public function getPlayedFuture()
+    {
+        return $this->playedFuture;
+    }
+
+    /**
+     * Set organizer
+     *
+     * @param \UserBundle\Entity\User $organizer
+     * @return Tournament
+     */
+    public function setOrganizer(\UserBundle\Entity\User $organizer = null)
+    {
+        $this->organizer = $organizer;
+
+        return $this;
+    }
+
+    /**
+     * Get organizer
+     *
+     * @return \UserBundle\Entity\User 
+     */
+    public function getOrganizer()
+    {
+        return $this->organizer;
+    }
+
+    /**
+     * Set sport
+     *
+     * @param \FrontOfficeBundle\Entity\Sport $sport
+     * @return Tournament
+     */
+    public function setSport(\FrontOfficeBundle\Entity\Sport $sport = null)
+    {
+        $this->sport = $sport;
+
+        return $this;
+    }
+
+    /**
+     * Get sport
+     *
+     * @return \FrontOfficeBundle\Entity\Sport 
+     */
+    public function getSport()
+    {
+        return $this->sport;
+    }
+
+    /**
+     * Add teams
+     *
+     * @param \FrontOfficeBundle\Entity\Team $teams
+     * @return Tournament
+     */
+    public function addTeam(\FrontOfficeBundle\Entity\Team $teams)
+    {
+        $this->teams[] = $teams;
+
+        return $this;
+    }
+
+    /**
+     * Remove teams
+     *
+     * @param \FrontOfficeBundle\Entity\Team $teams
+     */
+    public function removeTeam(\FrontOfficeBundle\Entity\Team $teams)
+    {
+        $this->teams->removeElement($teams);
+    }
+
+    /**
+     * Get teams
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeams()
+    {
+        return $this->teams;
+    }
+
+    /**
+     * Add invitation
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitation
+     * @return Tournament
+     */
+    public function addInvitation(\FrontOfficeBundle\Entity\Invitation $invitation)
+    {
+        $this->invitation[] = $invitation;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitation
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitation
+     */
+    public function removeInvitation(\FrontOfficeBundle\Entity\Invitation $invitation)
+    {
+        $this->invitation->removeElement($invitation);
+    }
+
+    /**
+     * Get invitation
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitation()
+    {
+        return $this->invitation;
     }
 }

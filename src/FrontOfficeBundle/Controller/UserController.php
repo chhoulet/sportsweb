@@ -24,7 +24,7 @@ class UserController extends Controller
 			$user -> setDateValidated(new \DateTime());
 			$em -> flush();
 
-			return $this -> redirect($this -> generateUrl('front_office_user_update'));
+			return $this -> redirect($request -> headers -> get('referer'));
 		}
 
 		return $this -> render('FrontOfficeBundle:User:update.html.twig', 

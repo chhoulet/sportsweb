@@ -173,6 +173,14 @@ class Invitation
      */
     private $ground;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Tournament", inversedBy="invitation")
+     * @ORM\JoinColumn(name="tournament_id", referencedColumnName="id", nullable=true)
+     */
+    private $tournament;
+
 
     /**
      * Get id
@@ -604,5 +612,28 @@ class Invitation
     public function getPostCode()
     {
         return $this->postCode;
+    }
+
+    /**
+     * Set tournament
+     *
+     * @param \FrontOfficeBundle\Entity\Tournament $tournament
+     * @return Invitation
+     */
+    public function setTournament(\FrontOfficeBundle\Entity\Tournament $tournament = null)
+    {
+        $this->tournament = $tournament;
+
+        return $this;
+    }
+
+    /**
+     * Get tournament
+     *
+     * @return \FrontOfficeBundle\Entity\Tournament 
+     */
+    public function getTournament()
+    {
+        return $this->tournament;
     }
 }

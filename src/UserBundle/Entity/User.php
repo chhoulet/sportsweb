@@ -220,6 +220,13 @@ class User extends BaseUser
      */
     private $matche;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToOne(targetEntity="FrontOfficeBundle\Entity\Tournament", mappedBy="organizer")
+     */
+    private $tournament;
+
 
     /**
      * Get id
@@ -974,5 +981,28 @@ class User extends BaseUser
     public function getMatche()
     {
         return $this->matche;
+    }
+
+    /**
+     * Set tournament
+     *
+     * @param \FrontOfficeBundle\Entity\Tournament $tournament
+     * @return User
+     */
+    public function setTournament(\FrontOfficeBundle\Entity\Tournament $tournament = null)
+    {
+        $this->tournament = $tournament;
+
+        return $this;
+    }
+
+    /**
+     * Get tournament
+     *
+     * @return \FrontOfficeBundle\Entity\Tournament 
+     */
+    public function getTournament()
+    {
+        return $this->tournament;
     }
 }

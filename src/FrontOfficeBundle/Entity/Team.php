@@ -209,6 +209,13 @@ class Team
      */
     private $matche2;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Tournament", mappedBy="teams")
+     */
+    private $tournament;
+
 
     /**
      * Get id
@@ -740,5 +747,38 @@ class Team
     public function getMatche2()
     {
         return $this->matche2;
+    }
+
+    /**
+     * Add tournament
+     *
+     * @param \FrontOfficeBundle\Entity\Tournament $tournament
+     * @return Team
+     */
+    public function addTournament(\FrontOfficeBundle\Entity\Tournament $tournament)
+    {
+        $this->tournament[] = $tournament;
+
+        return $this;
+    }
+
+    /**
+     * Remove tournament
+     *
+     * @param \FrontOfficeBundle\Entity\Tournament $tournament
+     */
+    public function removeTournament(\FrontOfficeBundle\Entity\Tournament $tournament)
+    {
+        $this->tournament->removeElement($tournament);
+    }
+
+    /**
+     * Get tournament
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTournament()
+    {
+        return $this->tournament;
     }
 }
