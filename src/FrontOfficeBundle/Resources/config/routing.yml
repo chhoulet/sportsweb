@@ -194,3 +194,8 @@ front_office_ground_one:
 front_office_ground_new:
     path:    /newGround 
     defaults: { _controller:FrontOfficeBundle:Ground:newGround}
+
+    # Creation d'un tournoi:
+front_office_tournament_new:
+    path:     /newTournament
+    defaults: { _controller: FrontOfficeBundle:Tournament:newTournament}

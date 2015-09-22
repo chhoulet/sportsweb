@@ -1,6 +1,6 @@
 <?php
 
-UserBundle\Controller;
+namespace UserBundle\Controller;
 
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 

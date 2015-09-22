@@ -59,9 +59,9 @@ class Tournament
      *      maxMessage = "Le département ne peut compter que {{ limit }} caractères"
      * )
      *
-     * @ORM\Column(name="department", type="integer")
+     * @ORM\Column(name="postCode", type="integer")
      */
-    private $department;
+    private $postCode;
 
     /**
      * @var integer
@@ -69,6 +69,15 @@ class Tournament
      * @ORM\Column(name="region", type="integer")
      */
     private $region;
+
+    /**
+     * @var \DateTime
+     *
+     * @Assert\DateTime()
+     *
+     * @ORM\Column(name="dateCreated", type="datetime")
+     */
+    private $dateCreated;
 
     /**
      * @var \DateTime
@@ -86,16 +95,7 @@ class Tournament
      *
      * @ORM\Column(name="dateEnding", type="datetime")
      */
-    private $dateEnding;
-
-    /**
-     * @var \DateTime
-     *
-     * @Assert\DateTime()
-     *
-     * @ORM\Column(name="dateCreated", type="datetime")
-     */
-    private $dateCreated;
+    private $dateEnding;   
 
     /**
      * @var string
@@ -225,30 +225,7 @@ class Tournament
     public function getPlace()
     {
         return $this->place;
-    }
-
-    /**
-     * Set department
-     *
-     * @param integer $department
-     * @return Tournament
-     */
-    public function setDepartment($department)
-    {
-        $this->department = $department;
-
-        return $this;
-    }
-
-    /**
-     * Get department
-     *
-     * @return integer 
-     */
-    public function getDepartment()
-    {
-        return $this->department;
-    }
+    }    
 
     /**
      * Set region
@@ -319,28 +296,6 @@ class Tournament
         return $this->dateEnding;
     }
 
-    /**
-     * Set dateCreated
-     *
-     * @param \DateTime $dateCreated
-     * @return Tournament
-     */
-    public function setDateCreated($dateCreated)
-    {
-        $this->dateCreated = $dateCreated;
-
-        return $this;
-    }
-
-    /**
-     * Get dateCreated
-     *
-     * @return \DateTime 
-     */
-    public function getDateCreated()
-    {
-        return $this->dateCreated;
-    }
 
     /**
      * Set description
@@ -370,6 +325,7 @@ class Tournament
     public function __construct()
     {
         $this->matche = new \Doctrine\Common\Collections\ArrayCollection();
+        $this -> setDateCreated(new \DateTime('now'));
     }
 
     /**
@@ -584,5 +540,51 @@ class Tournament
     public function getInvitation()
     {
         return $this->invitation;
+    }
+
+    /**
+     * Set postCode
+     *
+     * @param integer $postCode
+     * @return Tournament
+     */
+    public function setPostCode($postCode)
+    {
+        $this->postCode = $postCode;
+
+        return $this;
+    }
+
+    /**
+     * Get postCode
+     *
+     * @return integer 
+     */
+    public function getPostCode()
+    {
+        return $this->postCode;
+    }
+
+    /**
+     * Set dateCreated
+     *
+     * @param \DateTime $dateCreated
+     * @return Tournament
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreated
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
     }
 }
