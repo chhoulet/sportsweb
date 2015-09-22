@@ -15,9 +15,7 @@ class RegistrationFormType extends AbstractType
                                                 'attr'     => array('placeholder'=>'Halle Carpentier, gymnase Serge Blanco ...')))
             ->add('place','text',         array('label'    =>'Ville:',
                                                 'attr'     => array('placeholder'=>'Paris, Marseille,Le Mirail ...')))
-            ->add('favouriteSport', null, array('label'    =>'Sport favori:',
-                                                'expanded' => true,
-                                                'multiple' => true))
+            ->add('favouriteSport', null, array('label'    =>'Sport favori:'))
             ->add('sportPracticed', null, array('label'    =>'Sports pratiqués:',
                                                 'expanded' => true,
                                                 'multiple' => true))
