@@ -241,6 +241,10 @@ back_office_admin_invitations_stats:
     path:     /statsInvits
     defaults: { _controller: BackOfficeBundle:Invitation:stats}
 
+# Routes gerant les tournament:
+back_office_admin_tournament_stats:
+    path:     /statsTournaments
+    defaults: { _controller: BackOfficeBundle:Tournament:stats}
 
 
 

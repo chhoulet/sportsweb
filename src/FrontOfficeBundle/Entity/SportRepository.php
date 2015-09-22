@@ -70,4 +70,16 @@ class SportRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getTournamentsBySport()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT s.name, COUNT(t.id) AS nb
+			FROM FrontOfficeBundle:Sport s 
+			JOIN s.tournament t
+			GROUP BY s.name
+			ORDER BY nb DESC');
+
+		return $query -> getResult();
+	}
 }
