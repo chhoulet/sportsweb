@@ -38,6 +38,7 @@ class TeamController extends Controller
 			$comment -> setValidationAdmin(false);
 			$comment -> setTeam($oneTeam);
 			$comment -> setTeamComment(true);
+			$comment -> setTournamentComment(false);
 			$comment -> setGroundComment(false);
 			$comment -> setArticleComment(false);
 			$comment -> setCensored(false);

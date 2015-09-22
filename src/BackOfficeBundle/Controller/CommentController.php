@@ -15,11 +15,13 @@ class CommentController extends Controller
 		$commentsTeam = $em -> getRepository('FrontOfficeBundle:Comment') -> getUnvalidatedCommentTeam();
 		$commentsArticle = $em -> getRepository('FrontOfficeBundle:Comment') -> getUnvalidatedCommentArticle();
 		$commentsGround = $em -> getRepository('FrontOfficeBundle:Comment') -> getUnvalidatedCommentGround();
+		$commentsTournament = $em -> getRepository('FrontOfficeBundle:Comment') -> getUnvalidatedCommentsTournament();
 
 		return $this -> render('BackOfficeBundle:Comment:admin.html.twig', 
-			array('commentsTeam'   => $commentsTeam,
-				  'commentsArticle'=> $commentsArticle,
-				  'commentsGround' => $commentsGround));
+			array('commentsTeam'       => $commentsTeam,
+				  'commentsArticle'    => $commentsArticle,
+				  'commentsGround'     => $commentsGround,
+				  'commentsTournament' => $commentsTournament));
 	}
 
 	# Suppression des non-validés:

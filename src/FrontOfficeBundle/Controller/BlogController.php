@@ -68,6 +68,7 @@ class BlogController extends Controller
 			$comment -> setAuthor($this -> getUser());
 			$comment -> setTeamComment(false);
 			$comment -> setGroundComment(false);
+			$comment -> setTournamentComment(false);
 			$comment -> setCensored(false);
 			$comment -> setArticleComment(true);
 			$em -> persist($comment);

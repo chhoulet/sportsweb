@@ -80,6 +80,29 @@
 
 	            		{% endfor %}
 
+	            	<h2> Liste des commentaires non-controlés : Tournois</h2>
+
+						{% for com in commentsTournament %}
+
+			                <h5>
+			                    {{ com.title }}
+			                </h5>
+			                
+			                    by <a href="index.php">{{ com.author }}</a>
+			                
+			                <p><span class="glyphicon glyphicon-time"></span> {{ com.dateCreated | date('d-m-Y H:i:s')}}</p><br>			                			              	     
+			                <p>{{ com.content }}</p>
+			                <a class="btn btn-primary" href="{{ path('back_office_comment_response',{id:com.id}) }}">OK Admin <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
+			                	<a class="btn btn-primary" href="{{ path('back_office_comment_censoreComment',{id:com.id}) }}">Censurer ce commentaire<span class="glyphicon glyphicon-chevron-right"></span></a>
+			                	<a class="btn btn-primary" href="{{ path('back_office_comment_delete',{id:com.id}) }}">	Suppression commentaire<span class="glyphicon glyphicon-chevron-right"></span></a>
+			            	{% endif %}
+
+		                	<hr>
+
+	            		{% endfor %}
+
 	            </div>			
 			</div>
 		</div>
