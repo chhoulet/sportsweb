@@ -199,3 +199,7 @@ front_office_ground_new:
 front_office_tournament_new:
     path:     /newTournament
     defaults: { _controller: FrontOfficeBundle:Tournament:newTournament}
+
+front_office_tournament_list:
+    path:     /listTournament
+    defaults: { _controller: FrontOfficeBundle:Tournament:listTournament}

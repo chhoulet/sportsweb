@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class TournamentRepository extends EntityRepository
 {
+	public function getTournaments()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT t 
+			FROM FrontOfficeBundle:Tournament t
+			WHERE t.played = false 
+			ORDER BY t.dateCreated DESC')
+		->setMaxResults(8);
+
+		return $query -> getResult();		
+	}
 }
