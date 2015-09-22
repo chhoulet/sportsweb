@@ -64,9 +64,9 @@ class Tournament
     private $postCode;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="region", type="integer")
+     * @ORM\Column(name="region", type="string")
      */
     private $region;
 
@@ -170,6 +170,13 @@ class Tournament
      */
     private $invitation;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Comment", mappedBy="tournament")
+     */
+    private $comment;
+
 
     /**
      * Get id
@@ -226,30 +233,7 @@ class Tournament
     {
         return $this->place;
     }    
-
-    /**
-     * Set region
-     *
-     * @param integer $region
-     * @return Tournament
-     */
-    public function setRegion($region)
-    {
-        $this->region = $region;
-
-        return $this;
-    }
-
-    /**
-     * Get region
-     *
-     * @return integer 
-     */
-    public function getRegion()
-    {
-        return $this->region;
-    }
-
+    
     /**
      * Set dateBegining
      *
@@ -586,5 +570,61 @@ class Tournament
     public function getDateCreated()
     {
         return $this->dateCreated;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \FrontOfficeBundle\Entity\Comment $comment
+     * @return Tournament
+     */
+    public function addComment(\FrontOfficeBundle\Entity\Comment $comment)
+    {
+        $this->comment[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \FrontOfficeBundle\Entity\Comment $comment
+     */
+    public function removeComment(\FrontOfficeBundle\Entity\Comment $comment)
+    {
+        $this->comment->removeElement($comment);
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Set region
+     *
+     * @param string $region
+     * @return Tournament
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return string 
+     */
+    public function getRegion()
+    {
+        return $this->region;
     }
 }

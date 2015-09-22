@@ -98,6 +98,14 @@ class Comment
      * @var boolean
      *
      *
+     * @ORM\Column(name="tournamentComment", type="boolean")
+     */
+    private $tournamentComment;
+
+    /**
+     * @var boolean
+     *
+     *
      * @ORM\Column(name="censored", type="boolean")
      */
     private $censored;
@@ -149,6 +157,14 @@ class Comment
      * @ORM\JoinColumn(name="team_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $team;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Tournament", inversedBy="comment")
+     * @ORM\JoinColumn(name="tournament_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $tournament;
 
 
     /**
@@ -481,5 +497,51 @@ class Comment
     public function getDateCensored()
     {
         return $this->dateCensored;
+    }
+
+    /**
+     * Set tournament
+     *
+     * @param \FrontOfficeBundle\Entity\Tournament $tournament
+     * @return Comment
+     */
+    public function setTournament(\FrontOfficeBundle\Entity\Tournament $tournament = null)
+    {
+        $this->tournament = $tournament;
+
+        return $this;
+    }
+
+    /**
+     * Get tournament
+     *
+     * @return \FrontOfficeBundle\Entity\Tournament 
+     */
+    public function getTournament()
+    {
+        return $this->tournament;
+    }
+
+    /**
+     * Set tournamentComment
+     *
+     * @param boolean $tournamentComment
+     * @return Comment
+     */
+    public function setTournamentComment($tournamentComment)
+    {
+        $this->tournamentComment = $tournamentComment;
+
+        return $this;
+    }
+
+    /**
+     * Get tournamentComment
+     *
+     * @return boolean 
+     */
+    public function getTournamentComment()
+    {
+        return $this->tournamentComment;
     }
 }
