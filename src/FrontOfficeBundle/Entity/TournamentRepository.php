@@ -23,4 +23,13 @@ class TournamentRepository extends EntityRepository
 
 		return $query -> getResult();		
 	}
+
+	public function nbTournaments()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT COUNT(t.id)
+			FROM FrontOfficeBundle:Tournament t');
+
+		return $query -> getSingleScalarResult();
+	}
 }

@@ -11,7 +11,7 @@ class HomepageController extends Controller
         /* Statistiques du BO*/
     	$em = $this -> getDoctrine() ->getManager();
     	$invitations             = $em -> getRepository('FrontOfficeBundle:Invitation') -> nbInvitations();
-    	$nbInvitationsAccepted   = $em -> getRepository('FrontOfficeBundle:Invitation') -> nbInvitationsAccepted();
+    	
     	$nbGrounds               = $em -> getRepository('FrontOfficeBundle:Ground')     -> nbGrounds();
       $nbUsers                 = $em -> getRepository('UserBundle:User')              -> nbUsers();
       $nbComments              = $em -> getRepository('FrontOfficeBundle:Comment')    -> nbComments();
@@ -19,16 +19,17 @@ class HomepageController extends Controller
       $nbMessages              = $em -> getRepository('FrontOfficeBundle:Message')    -> nbMessages();
       $nbTeams                 = $em -> getRepository('FrontOfficeBundle:Team')       -> nbTeams();
       $getSportsByInvitsNumber = $em -> getRepository('FrontOfficeBundle:Sport')      -> getSportsByInvitsNumber();
- 
+      $nbTournaments           = $em -> getRepository('FrontOfficeBundle:Tournament') -> nbTournaments();
+
         return $this -> render('BackOfficeBundle:Homepage:homepage.html.twig', 
-        	array('invitations'             => $invitations,
-        		    'nbInvitationsAccepted'   => $nbInvitationsAccepted,
+        	array('invitations'             => $invitations,        		    
         		    'nbGrounds'               => $nbGrounds,
                 'nbUsers'                 => $nbUsers,
                 'nbComments'              => $nbComments,
                 'nbArticles'              => $nbArticles,
                 'nbMessages'              => $nbMessages,
                 'nbTeams'                 => $nbTeams,
-                'getSportsByInvitsNumber' => $getSportsByInvitsNumber));
+                'getSportsByInvitsNumber' => $getSportsByInvitsNumber,
+                'nbTournaments'           => $nbTournaments));
     }
 }
