@@ -117,6 +117,10 @@ front_office_user_showArticles:
     path:     /showArticles 
     defaults: { _controller: FrontOfficeBundle:User:showArticles}
 
+front_office_user_showTournaments:
+    path:     /showTournaments
+    defaults: { _controller: FrontOfficeBundle:User:showTournaments}
+
     # Voir ses invitations envoyées et reçues:
 front_office_user_invitations:
     path:     /showInvitations

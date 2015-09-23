@@ -104,6 +104,11 @@ class UserController extends Controller
 
 		return $this -> render('FrontOfficeBundle:User:showArticles.html.twig', 
 			array('myArticles'=>$myArticles));
-	}	
+	}
+
+	public function showTournamentsAction()
+	{
+		return $this -> render('FrontOfficeBundle:User:showTournaments.html.twig');
+	}
 }
 
