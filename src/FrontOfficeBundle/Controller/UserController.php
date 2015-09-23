@@ -104,6 +104,6 @@ class UserController extends Controller
 
 		return $this -> render('FrontOfficeBundle:User:showArticles.html.twig', 
 			array('myArticles'=>$myArticles));
-	}
+	}	
 }
 

@@ -1,0 +1,20 @@
+{% extends 'FrontOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<h2>Tournois</h2>
+
+			{% for tour in tournaments %}
+					<a href="{{ path('front_office_tournament_edit',{id:tour.id}) }}">{{ tour.name }}</a><br>
+				{{ tour.description }}<br>
+				{% if tour.teams is not empty %}
+					{% for tea in tour.teams %}
+						{{ tea.name }}<br>
+						{{ tea.typeOfGame }}<br>
+						{{ tea.habitsOfGame }}<br>
+					{% endfor %}
+				{% endif %}
+
+			{% endfor %}
+
+	{% endblock %}

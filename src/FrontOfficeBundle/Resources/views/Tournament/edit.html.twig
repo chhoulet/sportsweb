@@ -1,0 +1,43 @@
+{% extends 'FrontOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<h2>Détail d'un tournoi:</h2>
+
+		{% for message in app.session.flashbag.get('notice') %}
+			{{ message }}
+		{% endfor %}
+
+			
+				{{ tournament.name }}<br>
+				{{ tournament.description }}<br>
+				{% if tournament.teams is not empty %}
+					{% for tea in tournament.teams %}
+						{{ tea.name }}<br>
+						{{ tea.typeOfGame }}<br>
+						{{ tea.habitsOfGame }}<br>
+					{% endfor %}
+				{% endif %}
+
+				<hr>
+
+		<h4>Vous souhaitez poster un commentaire ?</h4>
+
+			{% if (is_granted('ROLE_USER')) %}
+				{{ form(form) }}
+			{% else %}
+				<a href="{{ path('fos_user_security_login')}}">Connectez-vous !</a>
+			{% endif %}
+
+				<hr>
+
+			{% for com in tournament.comment %}
+				{{ com.title }}<br>
+				{{ com.author }}<br>
+				{{ com.dateCreated | date('d-m-Y H:i:s') }}<br>
+				{{ com.content }}<br>
+			{% endfor %}	
+
+				<hr>									
+
+	{% endblock %}

@@ -1,0 +1,35 @@
+{% extends'BackOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div id="page-wrapper">
+			<div class="row">
+
+				<h2 style ="text-align:center">Statistiques Tournois</h2>				
+
+				<div class="col-lg-4">
+
+					<h4>Nombre de Tournois par Sport</h4>
+						<ul>
+							{% for sport in tournamentBySports %}
+								<li>Le {{ sport.name }} compte {{ sport.nb }} {% if sport.nb > 1 %}tournois enregistrés. {% else %}tournoi enregistré. {% endif %}</li>
+							{% endfor %}
+						</ul>
+						<hr>
+				</div>
+
+				<div class="col-lg-4">
+
+					<h4>Nombre de Tournois par Région</h4>
+						<ul>
+							{% for region in tournamentByRegion %}
+								<li> {{ region.region }} compte {{ region.nb }} {% if region.nb > 1 %}tournois enregistrés. {% else %}tournoi enregistré. {% endif %}</li>
+							{% endfor %}
+						</ul>
+						<hr>
+				</div>				
+
+			</div>
+		</div>
+
+	{% endblock %}

@@ -32,4 +32,15 @@ class TournamentRepository extends EntityRepository
 
 		return $query -> getSingleScalarResult();
 	}
+
+	public function getTournamentsByRegion()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT t.region, COUNT(t.id) AS nb 
+			FROM FrontOfficeBundle:Tournament t
+			GROUP BY t.region 
+			ORDER BY nb DESC');
+
+		return $query ->getResult();
+	}
 }
