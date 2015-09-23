@@ -199,7 +199,7 @@ front_office_ground_new:
     path:    /newGround 
     defaults: { _controller:FrontOfficeBundle:Ground:newGround}
 
-    # Creation d'un tournoi:
+    # Routes administrant les tournois:
 front_office_tournament_new:
     path:     /newTournament
     defaults: { _controller: FrontOfficeBundle:Tournament:newTournament}
@@ -215,3 +215,8 @@ front_office_tournament_edit:
 front_office_tournament_update:
     path:     /updateTournament/{id}
     defaults: { _controller: FrontOfficeBundle:Tournament:updateTournament}
+
+    # Routes administrant les matches:
+front_office_matche_new:
+    path:     /newMatche/{id}
+    defaults: { _controller: FrontOfficeBundle:Matche:newMatche, id:null}

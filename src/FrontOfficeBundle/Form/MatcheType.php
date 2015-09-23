@@ -17,16 +17,11 @@ class MatcheType extends AbstractType
         $builder
             ->add('place')
             ->add('dateplay')
-            ->add('mode')
-            ->add('score')
-            ->add('played')
-            ->add('playedFuture')
-            ->add('organizer')
-            ->add('team1')
-            ->add('team2')
+            ->add('mode', 'choice', array('choices'=> array('compet'=>'Compétition',
+                                                            'loisir'=>'Loisir')))           
             ->add('tournament')
-            ->add('ground')
-            ->add('sport')
+            ->add('ground')           
+            ->add('Valider','submit')
         ;
     }
     

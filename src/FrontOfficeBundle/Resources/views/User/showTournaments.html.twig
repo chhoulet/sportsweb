@@ -6,21 +6,22 @@
 
 	        <div class="row">	 
 
-	        	<h2>Mes tournois</h2>  	                
-	               
+	        	<h2>Mes tournois</h2>  
 
-		         		{{ app.user.tournament.name }}<br>
+	        			{{ app.user.tournament.name }}<br>
 		         		{{ app.user.tournament.place }}<br>
 		         		{{ app.user.tournament.dateBegining | date('d-m-Y H:i:s') }}<br>
 		         		{{ app.user.tournament.dateEnding | date('d-m-Y H:i:s') }}<br>
 		         		{{ app.user.tournament.description }}<br>
 
-		         			{% if (app.user.tournament.current) %}
-		         				{{ app.user.tournament.current }}<br>
+		         			{% if (app.user.tournament.current) %}		         			
+		         				<p>Tournoi en cours !</p>
+		         				<a href="{{ path('front_office_matche_new')}}">Ajoute un match !</a>
 		         			{% elseif (app.user.tournament.played) %}
-		         				{{ app.user.tournament.played }}<br>
+		         				<p>Ce tournoi est terminé !</p>
 		         			{% elseif (app.user.tournament.playedFuture) %}
-		         				{{ app.user.tournament.playedFuture }}<br>
+		         				<p>Tournoi planifié !</p>
+		         				<a href="{{ path('front_office_matche_new',{id:app.user.tournament.id}) }}">Prévois un match !</a>
 		         			{% endif %}
 
 		         			<hr>
@@ -49,7 +50,10 @@
 		         					{{ team.habitsOfGame }}<br>		         					
 		         				{% endfor %}
 
-		         		<a href="{{ path('front_office_tournament_update',{id:app.user.tournament.id}) }}">Mettre à jour</a>		           
+		         		<a href="{{ path('front_office_tournament_update',{id:app.user.tournament.id}) }}">Mettre à jour</a>		                
+	               
+
+		         			           
     		</div>
 
     	</div>

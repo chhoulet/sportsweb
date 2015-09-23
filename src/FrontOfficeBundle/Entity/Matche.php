@@ -53,7 +53,7 @@ class Matche
     /**
      * @var string
      *
-     * @ORM\Column(name="score", type="string", length=255)
+     * @ORM\Column(name="score", type="string", length=255, nullable = true)
      */
     private $score;
 
@@ -82,7 +82,7 @@ class Matche
      * @var string
      *
      * @ORM\OneToOne(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="matche1")
-     * @ORM\JoinColumn(name="team1_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="team1_id", referencedColumnName="id", nullable = true)
      */
     private $team1;
 
@@ -90,7 +90,7 @@ class Matche
      * @var string
      *
      * @ORM\OneToOne(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="matche2")
-     * @ORM\JoinColumn(name="team2_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="team2_id", referencedColumnName="id", nullable = true)
      */
     private $team2;
 
