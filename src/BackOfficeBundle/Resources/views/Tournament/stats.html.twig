@@ -27,7 +27,18 @@
 							{% endfor %}
 						</ul>
 						<hr>
-				</div>				
+				</div>	
+
+				<div class="col-lg-4">
+
+					<h4>Nombre de Tournois par User</h4>
+						<ul>
+							{% for user in tournamentByUser %}
+								<li> {{ user.username }} a organisé {{ user.nb }} {% if user.nb > 1 %}tournois. {% else %}tournoi.{% endif %}</li>
+							{% endfor %}
+						</ul>
+						<hr>
+				</div>		
 
 			</div>
 		</div>

@@ -115,5 +115,16 @@ class UserRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
-	
+
+	public function getTournamentByUser()
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT u.username, COUNT(t.id) AS nb 
+			FROM UserBundle:User u
+			JOIN u.tournament t
+			GROUP BY u.username
+			ORDER BY nb DESC');
+
+		return $query ->getResult();
+	}
 }
