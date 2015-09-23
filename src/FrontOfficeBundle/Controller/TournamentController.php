@@ -64,13 +64,12 @@ class TournamentController extends Controller
 			{
 				$tournament -> setRegion('Ouest');
 			}
-			$tournament -> setDateCreated(new \DateTime('now'));
-			$tournament -> setDateBegining(new \DateTime('now'));
+			$tournament -> setDateCreated(new \DateTime('now'));			
 			$tournament -> setCurrent(false);
 			$tournament -> setPlayed(false);
 			$tournament -> setPlayedFuture(true);
 			$tournament -> setOrganizer($this -> getUser());
-			var_dump($tournament);
+			
 			$em -> persist($tournament);
 			$em -> flush();
 
@@ -144,6 +143,6 @@ class TournamentController extends Controller
 
 		return $this -> render('FrontOfficeBundle:Tournament:updateTournament.html.twig', 
 			array('name'=> $name,
-				  'form'=> $form));
+				  'form'=> $form -> createView()));
 	}
 }

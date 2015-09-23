@@ -18,7 +18,7 @@ class TournamentType extends AbstractType
             ->add('name')
             ->add('place')
             ->add('postCode')           
-         
+            ->add('dateBegining')
             ->add('dateEnding')            
             ->add('description')                                   
             ->add('Valider', 'submit')

@@ -73,8 +73,6 @@ class Tournament
     /**
      * @var \DateTime
      *
-     * @Assert\DateTime()
-     *
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;
@@ -82,16 +80,12 @@ class Tournament
     /**
      * @var \DateTime
      *
-     * @Assert\DateTime()
-     *
      * @ORM\Column(name="dateBegining", type="datetime", nullable = true)
      */
     private $dateBegining;
 
     /**
      * @var \DateTime
-     *
-     * @Assert\DateTime()
      *
      * @ORM\Column(name="dateEnding", type="datetime", nullable = true)
      */
