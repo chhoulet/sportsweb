@@ -37,8 +37,7 @@ class Matche
 
     /**
      * @var \DateTime
-     *
-     * @Assert\DateTime()
+     *    
      * @ORM\Column(name="dateplay", type="datetime")
      */
     private $dateplay;

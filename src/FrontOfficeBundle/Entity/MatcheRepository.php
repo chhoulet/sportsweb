@@ -12,5 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class MatcheRepository extends EntityRepository
 {
-			
+	public function nbMatches()		
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT COUNT(m.id)
+			FROM FrontOfficeBundle:Matche m');
+
+		return $query -> getSingleScalarResult();
+	}
 }

@@ -18,8 +18,7 @@ class MatcheType extends AbstractType
             ->add('place')
             ->add('dateplay')
             ->add('mode', 'choice', array('choices'=> array('compet'=>'Compétition',
-                                                            'loisir'=>'Loisir')))           
-            ->add('tournament')
+                                                            'loisir'=>'Loisir')))                       
             ->add('ground')           
             ->add('Valider','submit')
         ;
