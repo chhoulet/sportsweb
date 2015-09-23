@@ -1,0 +1,59 @@
+{% extends 'FrontOfficeBundle::layout.html.twig' %}
+
+    {% block content %}
+
+	    <div style="margin-top:45px;" class="container">
+
+	        <div class="row">	 
+
+	        	<h2>Mes tournois</h2>           
+	               
+
+		         		{{ app.user.tournament.name }}<br>
+		         		{{ app.user.tournament.place }}<br>
+		         		{{ app.user.tournament.dateBegining | date('d-m-Y H:i:s') }}<br>
+		         		{{ app.user.tournament.dateEnding | date('d-m-Y H:i:s') }}<br>
+		         		{{ app.user.tournament.description }}<br>
+
+		         			{% if (app.user.tournament.current) %}
+		         				{{ app.user.tournament.current }}<br>
+		         			{% elseif (app.user.tournament.played) %}
+		         				{{ app.user.tournament.played }}<br>
+		         			{% elseif (app.user.tournament.playedFuture) %}
+		         				{{ app.user.tournament.playedFuture }}<br>
+		         			{% endif %}
+
+		         			<hr>
+
+		         			<h4>Matches</h4>
+
+			         			{% for mat in app.user.tournament.matche %}
+			         				{{ mat.place }}<br>
+			         				{{ mat.organizer }}<br>
+			         				{{ mat.dateplay | date('d-m-Y H:i:s') }}<br>
+
+			         					{% if (mat.played) %}
+			         						{{ mat.played }}<br>
+			         					{% elseif (mat.playedFuture) %}
+			         						{{ mat.playedFuture }}<br>
+			         					{% endif %}
+			         			{% endfor %}
+
+		         			<h4>Equipes</h4>
+
+		         				{% for team in app.user.tournament.teams %}
+		         					<a href="{{ path('front_office_team_one',{id:team.id}) }}">{{ team.name }}</a><br>
+		         					{{ team.sportPracticed }}<br>
+		         					{{ team.place }}<br>
+		         					{{ team.typeOfGame }}<br>
+		         					{{ team.habitsOfGame }}<br>		         					
+		         				{% endfor %}
+
+		         		<a href="{{ path('front_office_tournament_update',{id:app.user.tournament.id}) }}">Mettre à jour</a>		           
+    		</div>
+
+    	</div>
+
+    {% endblock %}
+
+   

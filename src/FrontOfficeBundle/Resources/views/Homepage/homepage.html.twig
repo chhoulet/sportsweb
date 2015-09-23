@@ -25,9 +25,15 @@
                             {% for message in app.session.flashbag.get('repon') %}
                                 <p>{{ message }}</p>
                             {% endfor %}
+                            
                             {# Message flashbag lors de l'envoi d'un message à l'admin #}
-                            {% for message in app.session.flashbag.get('info') %}
-                                <p>{{ message }}</p>
+                            {% for messag in app.session.flashbag.get('info') %}
+                                <p>{{ messag }}</p>
+                            {% endfor %}
+
+                            {# Message lors de la creation d'un tournoi #}
+                            {% for messa in app.session.flashbag.get('creatournoi') %}
+                                {{ messa }}
                             {% endfor %}
 
                             

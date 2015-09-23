@@ -211,3 +211,7 @@ front_office_tournament_list:
 front_office_tournament_edit:
     path:     /editTournament/{id}
     defaults: { _controller: FrontOfficeBundle:Tournament:editTournament}
+
+front_office_tournament_update:
+    path:     /updateTournament/{id}
+    defaults: { _controller: FrontOfficeBundle:Tournament:updateTournament}

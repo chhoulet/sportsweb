@@ -65,15 +65,16 @@ class TournamentController extends Controller
 				$tournament -> setRegion('Ouest');
 			}
 			$tournament -> setDateCreated(new \DateTime('now'));
+			$tournament -> setDateBegining(new \DateTime('now'));
 			$tournament -> setCurrent(false);
 			$tournament -> setPlayed(false);
 			$tournament -> setPlayedFuture(true);
 			$tournament -> setOrganizer($this -> getUser());
-
+			var_dump($tournament);
 			$em -> persist($tournament);
 			$em -> flush();
 
-			$session -> getFlashbag()->add('succes','Le tournoi' . $tournament -> getName() . 'est bien créé!');
+			$session -> getFlashbag()->add('creatournoi','Le tournoi' . $tournament -> getName() . 'est bien créé!');
 			return $this -> redirect($this->generateUrl('front_office_homepage'));
 		}
 
@@ -121,5 +122,28 @@ class TournamentController extends Controller
 		return $this -> render('FrontOfficeBundle:Tournament:edit.html.twig', 
 			array('tournament'=>$tournament,
 				  'form'      =>$form ->createview()));
+	}
+
+	public function updateTournamentAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
+		$tournament = $em -> getRepository('FrontOfficeBundle:Tournament')->find($id); 
+		$name = $tournament -> getName();
+		$form = $this -> createForm(new TournamentType, $tournament);
+
+		$form -> handleRequest($request);
+
+		if($form -> isValid()){
+			$em -> persist($tournament);
+			$em -> flush();
+
+			$session -> getFlashbag()->add('update', 'Vos modifications sont prises en compte !');
+			return $this -> redirect($request -> headers -> get('referer'));
+		}
+
+		return $this -> render('FrontOfficeBundle:Tournament:updateTournament.html.twig', 
+			array('name'=> $name,
+				  'form'=> $form));
 	}
 }
