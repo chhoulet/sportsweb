@@ -54,4 +54,15 @@ class TournamentRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getTournamentsByPlace()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT t.place, COUNT(t.id) AS nb
+			FROM FrontOfficeBundle:Tournament t 
+			GROUP BY t.place 
+			ORDER BY nb DESC');
+
+		return $query -> getResult();
+	}
 }

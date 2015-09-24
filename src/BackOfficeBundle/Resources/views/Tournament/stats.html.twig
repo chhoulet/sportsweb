@@ -49,6 +49,17 @@
 							{% endfor %}
 						</ul>
 						<hr>
+				</div>	
+
+				<div class="col-lg-4">
+
+					<h4>Nombre de Tournois par Ville</h4>
+						<ul>
+							{% for ville in tournamentByPlace %}
+								<li> {{ ville.place }} a été le théatre de {{ ville.nb }} {% if ville.nb > 1 %}tournois. {% else %}tournoi.{% endif %}</li>
+							{% endfor %}
+						</ul>
+						<hr>
 				</div>		
 	
 

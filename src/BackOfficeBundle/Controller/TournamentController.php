@@ -14,12 +14,14 @@ class TournamentController extends Controller
 		$tournamentByRegion = $em -> getRepository('FrontOfficeBundle:Tournament') ->getTournamentsByRegion();		
 		$tournamentByUser = $em -> getRepository('UserBundle:User') ->getTournamentByUser();
 		$tournamentByPostCode = $em -> getRepository('FrontOfficeBundle:Tournament') ->getTournamentsByPostCode();
+		$tournamentByPlace = $em -> getRepository('FrontOfficeBundle:Tournament') ->getTournamentsByPlace();
 		
 
 		return $this -> render('BackOfficeBundle:Tournament:stats.html.twig', 
 			array('tournamentBySports'  => $tournamentBySports,
 				  'tournamentByRegion'  => $tournamentByRegion,
 				  'tournamentByUser'    => $tournamentByUser,
-				  'tournamentByPostCode'=> $tournamentByPostCode ));
+				  'tournamentByPostCode'=> $tournamentByPostCode,
+				  'tournamentByPlace'   => $tournamentByPlace));
 	}
 }
