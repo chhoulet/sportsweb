@@ -215,8 +215,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="organizer")
-     * @ORM\JoinColumn(name="matche_id", referencedColumnName="id", nullable = true)
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="organizer")
      */
     private $matche;
 
@@ -237,6 +236,7 @@ class User extends BaseUser
     {
         return $this->id;
     }
+    
     /**
      * Constructor
      */
@@ -1004,5 +1004,28 @@ class User extends BaseUser
     public function getTournament()
     {
         return $this->tournament;
+    }
+
+    /**
+     * Add matche
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matche
+     * @return User
+     */
+    public function addMatche(\FrontOfficeBundle\Entity\Matche $matche)
+    {
+        $this->matche[] = $matche;
+
+        return $this;
+    }
+
+    /**
+     * Remove matche
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matche
+     */
+    public function removeMatche(\FrontOfficeBundle\Entity\Matche $matche)
+    {
+        $this->matche->removeElement($matche);
     }
 }

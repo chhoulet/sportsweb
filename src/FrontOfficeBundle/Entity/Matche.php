@@ -101,7 +101,8 @@ class Matche
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="UserBundle\Entity\User", inversedBy="matche")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="matche")
+     * @ORM\JoinColumn(name="matche_organizer", referencedColumnName="id")
      */
     private $organizer;
 

@@ -10,9 +10,16 @@
 
 						<h2> Mon Profil :</h2>						
 				        {{ form(form) }}
-				          		                 
 
-			            <hr />	
+				        {% for message in app.session.flashbag.get('creaMatch') %}
+				        	{{ message }}
+				        {% endfor %}
+
+				        {% for messa in app.session.flashbag.get('annuMatch') %}
+				        	{{ messa }}
+				        {% endfor %}
+				          		                
+			            <hr/>	
 
 		            </div>
 					<div class="well col-lg-4">
