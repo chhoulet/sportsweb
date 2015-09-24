@@ -66,6 +66,27 @@ class Matche
     /**
      * @var boolean
      *
+     * @ORM\Column(name="matchWinned", type="boolean", nullable = true)
+     */
+    private $matchWinned;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="matchLost", type="boolean", nullable = true)
+     */
+    private $matchLost;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="matchNil", type="boolean", nullable = true)
+     */
+    private $matchNil;
+
+    /**
+     * @var boolean
+     *
      * @ORM\Column(name="playedFuture", type="boolean")
      */
     private $playedFuture;
@@ -80,18 +101,10 @@ class Matche
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="matche1")
-     * @ORM\JoinColumn(name="team1_id", referencedColumnName="id", nullable = true)
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="matche")
+     * @ORM\JoinTable(name="match_teams")
      */
-    private $team1;
-
-    /**
-     * @var string
-     *
-     * @ORM\OneToOne(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="matche2")
-     * @ORM\JoinColumn(name="team2_id", referencedColumnName="id", nullable = true)
-     */
-    private $team2;
+    private $team;   
 
     /**
      * @var string
@@ -289,53 +302,6 @@ class Matche
         return $this->organizer;
     }   
   
-
-    /**
-     * Set team1
-     *
-     * @param \FrontOfficeBundle\Entity\Team $team1
-     * @return Matche
-     */
-    public function setTeam1(\FrontOfficeBundle\Entity\Team $team1 = null)
-    {
-        $this->team1 = $team1;
-
-        return $this;
-    }
-
-    /**
-     * Get team1
-     *
-     * @return \FrontOfficeBundle\Entity\Team 
-     */
-    public function getTeam1()
-    {
-        return $this->team1;
-    }
-
-    /**
-     * Set team2
-     *
-     * @param \FrontOfficeBundle\Entity\Team $team2
-     * @return Matche
-     */
-    public function setTeam2(\FrontOfficeBundle\Entity\Team $team2 = null)
-    {
-        $this->team2 = $team2;
-
-        return $this;
-    }
-
-    /**
-     * Get team2
-     *
-     * @return \FrontOfficeBundle\Entity\Team 
-     */
-    public function getTeam2()
-    {
-        return $this->team2;
-    }
-
     /**
      * Set tournament
      *
@@ -403,5 +369,114 @@ class Matche
     public function getSport()
     {
         return $this->sport;
+    }
+
+    /**
+     * Set matchWinned
+     *
+     * @param boolean $matchWinned
+     * @return Matche
+     */
+    public function setMatchWinned($matchWinned)
+    {
+        $this->matchWinned = $matchWinned;
+
+        return $this;
+    }
+
+    /**
+     * Get matchWinned
+     *
+     * @return boolean 
+     */
+    public function getMatchWinned()
+    {
+        return $this->matchWinned;
+    }
+
+    /**
+     * Set matchLost
+     *
+     * @param boolean $matchLost
+     * @return Matche
+     */
+    public function setMatchLost($matchLost)
+    {
+        $this->matchLost = $matchLost;
+
+        return $this;
+    }
+
+    /**
+     * Get matchLost
+     *
+     * @return boolean 
+     */
+    public function getMatchLost()
+    {
+        return $this->matchLost;
+    }
+
+    /**
+     * Set matchNil
+     *
+     * @param boolean $matchNil
+     * @return Matche
+     */
+    public function setMatchNil($matchNil)
+    {
+        $this->matchNil = $matchNil;
+
+        return $this;
+    }
+
+    /**
+     * Get matchNil
+     *
+     * @return boolean 
+     */
+    public function getMatchNil()
+    {
+        return $this->matchNil;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->team = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add team
+     *
+     * @param \FrontOfficeBundle\Entity\Team $team
+     * @return Matche
+     */
+    public function addTeam(\FrontOfficeBundle\Entity\Team $team)
+    {
+        $this->team[] = $team;
+
+        return $this;
+    }
+
+    /**
+     * Remove team
+     *
+     * @param \FrontOfficeBundle\Entity\Team $team
+     */
+    public function removeTeam(\FrontOfficeBundle\Entity\Team $team)
+    {
+        $this->team->removeElement($team);
+    }
+
+    /**
+     * Get team
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeam()
+    {
+        return $this->team;
     }
 }

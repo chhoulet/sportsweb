@@ -118,6 +118,20 @@ class TeamRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getWinnersTeams()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT t.name, COUNT(m.id) AS nb 
+			FROM FrontOfficeBundle:Team t 
+			JOIN t.matche m		
+			WHERE m.matchWinned = true 
+			GROUP BY t.name')
+		->setMaxResults(25);
+
+		return $query -> getResult();
+	}
+
 }
 
 

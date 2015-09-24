@@ -198,16 +198,9 @@ class Team
      /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="team1")    
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="team")    
      */
-    private $matche1;
-
-     /**
-     * @var string
-     *
-     * @ORM\OneToOne(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="team2")    
-     */
-    private $matche2;
+    private $matche;
 
     /**
      * @var string
@@ -701,54 +694,6 @@ class Team
         return $this->active;
     }
 
-    
-
-    /**
-     * Set matche1
-     *
-     * @param \FrontOfficeBundle\Entity\Matche $matche1
-     * @return Team
-     */
-    public function setMatche1(\FrontOfficeBundle\Entity\Matche $matche1 = null)
-    {
-        $this->matche1 = $matche1;
-
-        return $this;
-    }
-
-    /**
-     * Get matche1
-     *
-     * @return \FrontOfficeBundle\Entity\Matche 
-     */
-    public function getMatche1()
-    {
-        return $this->matche1;
-    }
-
-    /**
-     * Set matche2
-     *
-     * @param \FrontOfficeBundle\Entity\Matche $matche2
-     * @return Team
-     */
-    public function setMatche2(\FrontOfficeBundle\Entity\Matche $matche2 = null)
-    {
-        $this->matche2 = $matche2;
-
-        return $this;
-    }
-
-    /**
-     * Get matche2
-     *
-     * @return \FrontOfficeBundle\Entity\Matche 
-     */
-    public function getMatche2()
-    {
-        return $this->matche2;
-    }
-
     /**
      * Add tournament
      *
@@ -780,5 +725,38 @@ class Team
     public function getTournament()
     {
         return $this->tournament;
+    }
+
+    /**
+     * Add matche
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matche
+     * @return Team
+     */
+    public function addMatche(\FrontOfficeBundle\Entity\Matche $matche)
+    {
+        $this->matche[] = $matche;
+
+        return $this;
+    }
+
+    /**
+     * Remove matche
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matche
+     */
+    public function removeMatche(\FrontOfficeBundle\Entity\Matche $matche)
+    {
+        $this->matche->removeElement($matche);
+    }
+
+    /**
+     * Get matche
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMatche()
+    {
+        return $this->matche;
     }
 }

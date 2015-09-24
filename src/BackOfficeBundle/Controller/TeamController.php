@@ -57,9 +57,11 @@ class TeamController extends Controller
 		$em = $this -> getDoctrine()-> getManager();
 		$teamsByInvitationsSent = $em -> getRepository('FrontOfficeBundle:Team')->getTeamsByInvitationsSent();
 		$teamsByInvitationsReceived = $em -> getRepository('FrontOfficeBundle:Team')->getTeamsByInvitationsReceived();		
+		$teamsByMatchesWinned = $em -> getRepository('FrontOfficeBundle:Team')-> getWinnersTeams();
 
 		return $this -> render('BackOfficeBundle:Team:statistiquesTeams.html.twig', 
 			array('teamsByInvitationsSent'    => $teamsByInvitationsSent,
-				  'teamsByInvitationsReceived'=> $teamsByInvitationsReceived));
+				  'teamsByInvitationsReceived'=> $teamsByInvitationsReceived,
+				  'teamsByMatchesWinned'      => $teamsByMatchesWinned));
 	}
 }
