@@ -136,7 +136,7 @@ class Tournament
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="UserBundle\Entity\User", inversedBy="tournament")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="tournament")
      * @ORM\JoinColumn(name="organizer_id", referencedColumnName="id")
      */
     private $organizer;

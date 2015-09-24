@@ -8,27 +8,28 @@
 
 	        	<h2>Mes tournois</h2>  
 
-	        			{{ app.user.tournament.name }}<br>
-		         		{{ app.user.tournament.place }}<br>
-		         		{{ app.user.tournament.dateBegining | date('d-m-Y H:i:s') }}<br>
-		         		{{ app.user.tournament.dateEnding | date('d-m-Y H:i:s') }}<br>
-		         		{{ app.user.tournament.description }}<br>
+	        		{% for tournament in app.user.tournament %}
+	        			<strong>{{ tournament.name }}</strong><br>
+		         		{{ tournament.place }}<br>
+		         		{{ tournament.dateBegining | date('d-m-Y H:i:s') }}<br>
+		         		{{ tournament.dateEnding | date('d-m-Y H:i:s') }}<br>
+		         		{{ tournament.description }}<br>
 
-		         			{% if (app.user.tournament.current) %}		         			
+		         			{% if (tournament.current) %}		         			
 		         				<p>Tournoi en cours !</p>
 		         				<a href="{{ path('front_office_matche_new')}}">Ajoute un match !</a>
-		         			{% elseif (app.user.tournament.played) %}
+		         			{% elseif (tournament.played) %}
 		         				<p>Ce tournoi est terminé !</p>
-		         			{% elseif (app.user.tournament.playedFuture) %}
+		         			{% elseif (tournament.playedFuture) %}
 		         				<p>Tournoi planifié !</p>
-		         				<a href="{{ path('front_office_matche_new',{id:app.user.tournament.id}) }}">Prévois un match !</a>
+		         				<a href="{{ path('front_office_matche_new',{id:tournament.id}) }}">Prévois un match !</a>
 		         			{% endif %}
 
 		         			<hr>
 
 		         			<h4>Matches</h4>
 
-			         			{% for mat in app.user.tournament.matche %}
+			         			{% for mat in tournament.matche %}
 			         				{{ mat.place }}<br>
 			         				{{ mat.organizer }}<br>
 			         				{{ mat.dateplay | date('d-m-Y H:i:s') }}<br>
@@ -42,7 +43,7 @@
 
 		         			<h4>Equipes</h4>
 
-		         				{% for team in app.user.tournament.teams %}
+		         				{% for team in tournament.teams %}
 		         					<a href="{{ path('front_office_team_one',{id:team.id}) }}">{{ team.name }}</a><br>
 		         					{{ team.sportPracticed }}<br>
 		         					{{ team.place }}<br>
@@ -50,9 +51,11 @@
 		         					{{ team.habitsOfGame }}<br>		         					
 		         				{% endfor %}
 
-		         		<a href="{{ path('front_office_tournament_update',{id:app.user.tournament.id}) }}">Mettre à jour</a>		                
-	               
+		         		<a href="{{ path('front_office_tournament_update',{id:tournament.id}) }}">Mettre à jour</a>
 
+		         		<hr/>
+
+		         	{% endfor %}		                	               
 		         			           
     		</div>
 
