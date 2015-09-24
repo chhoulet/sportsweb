@@ -218,8 +218,8 @@ front_office_tournament_update:
 
     # Routes administrant les matches:
 front_office_matche_new:
-    path:     /newMatche/{id}
-    defaults: { _controller: FrontOfficeBundle:Matche:newMatche, id:null}
+    path:     /newMatche/
+    defaults: { _controller: FrontOfficeBundle:Matche:newMatche}
 
 front_office_matche_cancel:
     path:     /cancelMatch/{id}

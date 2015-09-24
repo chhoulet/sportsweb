@@ -15,6 +15,7 @@ class TournamentController extends Controller
 	{
 		$em = $this -> getDoctrine()->getmanager();
 		$session = $request -> getSession();		
+		$sport = $this -> getUser()->getFavouriteSport();
 		$tournament = new Tournament();
 		$postCode = $tournament -> getPostCode();
 		$form = $this -> createForm(new TournamentType(), $tournament);
@@ -69,6 +70,7 @@ class TournamentController extends Controller
 			$tournament -> setPlayed(false);
 			$tournament -> setPlayedFuture(true);
 			$tournament -> setOrganizer($this -> getUser());
+			$tournament -> setSport($sport);
 			
 			$em -> persist($tournament);
 			$em -> flush();
@@ -114,7 +116,7 @@ class TournamentController extends Controller
 			$em -> persist($comment);
 			$em -> flush();
 
-			$session -> getFlashbag()-> add('notice','Merci pour votre commentraire !');
+			$session -> getFlashbag()-> add('notice','Merci pour votre commentaire !');
 			return $this -> redirect($request -> headers -> get('referer'));
 		}
 

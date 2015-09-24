@@ -10,6 +10,7 @@
 
 	        		{% for tournament in app.user.tournament %}
 	        			<strong>{{ tournament.name }}</strong><br>
+	        			{{ tournament.sport }}<br>
 		         		{{ tournament.place }}<br>
 		         		{{ tournament.dateBegining | date('d-m-Y H:i:s') }}<br>
 		         		{{ tournament.dateEnding | date('d-m-Y H:i:s') }}<br>
