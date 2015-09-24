@@ -43,4 +43,15 @@ class TournamentRepository extends EntityRepository
 
 		return $query ->getResult();
 	}
+
+	public function getTournamentsByPostCode()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT t.postCode, COUNT(t.id) AS nb
+			FROM FrontOfficeBundle:Tournament t 
+			GROUP BY t.postCode
+			ORDER BY nb DESC');
+
+		return $query -> getResult();
+	}
 }

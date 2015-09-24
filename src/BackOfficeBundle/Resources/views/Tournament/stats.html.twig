@@ -29,7 +29,7 @@
 						<hr>
 				</div>	
 
-				<div class="col-lg-4">
+				<div class="col-lg-4">tournamentByPostCode
 
 					<h4>Nombre de Tournois par User</h4>
 						<ul>
@@ -38,7 +38,19 @@
 							{% endfor %}
 						</ul>
 						<hr>
+				</div>	
+
+				<div class="col-lg-4">
+
+					<h4>Nombre de Tournois par Département</h4>
+						<ul>
+							{% for dep in tournamentByPostCode %}
+								<li> {{ dep.postCode }} a été le théatre de {{ dep.nb }} {% if dep.nb > 1 %}tournois. {% else %}tournoi.{% endif %}</li>
+							{% endfor %}
+						</ul>
+						<hr>
 				</div>		
+	
 
 			</div>
 		</div>
