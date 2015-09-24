@@ -87,6 +87,13 @@ class Matche
     /**
      * @var boolean
      *
+     * @ORM\Column(name="matchCancelled", type="boolean")
+     */
+    private $matchCancelled;
+
+    /**
+     * @var boolean
+     *
      * @ORM\Column(name="playedFuture", type="boolean")
      */
     private $playedFuture;
@@ -478,5 +485,28 @@ class Matche
     public function getTeam()
     {
         return $this->team;
+    }
+
+    /**
+     * Set matchCancelled
+     *
+     * @param boolean $matchCancelled
+     * @return Matche
+     */
+    public function setMatchCancelled($matchCancelled)
+    {
+        $this->matchCancelled = $matchCancelled;
+
+        return $this;
+    }
+
+    /**
+     * Get matchCancelled
+     *
+     * @return boolean 
+     */
+    public function getMatchCancelled()
+    {
+        return $this->matchCancelled;
     }
 }

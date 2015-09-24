@@ -220,3 +220,7 @@ front_office_tournament_update:
 front_office_matche_new:
     path:     /newMatche/{id}
     defaults: { _controller: FrontOfficeBundle:Matche:newMatche, id:null}
+
+front_office_matche_cancel:
+    path:     /cancelMatch/{id}
+    defaults: { _controller: FrontOfficeBundle:Matche:cancelMatch}
