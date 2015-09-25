@@ -75,44 +75,38 @@ class GroundController extends Controller
 			$ground -> setValidAdmin(false);
 
 			/*Attribution automatique de valeur à l'attribut Region selon la valeur de postCode*/
-			if($postCode == 75 || $postCode == 77 || $postCode == 78 || $postCode == 91 || $postCode == 92 || $postCode == 93)
+			$postcodes = array(75,77,78,91,92,93,95);
+			if(in_array($postCode, $postcodes))
 			{
 				$ground -> setRegion('Ile-de-France');
 			}
 
-			if($postCode == 16 || $postCode == 17 || $postCode == 87 || $postCode == 23 || $postCode == 63 || $postCode == 15
-				|| $postCode == 12 || $postCode == 81 || $postCode == 31 || $postCode == 32 || $postCode == 65 || $postCode == 64
-				|| $postCode == 40 || $postCode == 47 || $postCode == 33 || $postCode == 24 || $postCode == 19 || $postCode == 46 
-				|| $postCode == 82 || $postCode == 29)
+			$postcodes = array(16,17,87,23,63,15,12,81,31,32,65,64,40,47,33,24,19,46,82,29);
+			if(in_array($postCode, $postcodes))				
 			{
 				$ground -> setRegion('Sud-Ouest');
 			}
 
-			if($postCode == 09 || $postCode == 66 || $postCode == 11 || $postCode == 34 || $postCode == 48 || $postCode == 30
-				|| $postCode == 07 || $postCode == 43 || $postCode == 42 || $postCode == 69 || $postCode == 01 || $postCode == 74
-				|| $postCode == 73 || $postCode == 38 || $postCode == 26 || $postCode == 05 || $postCode == 13 || $postCode == 63
-				|| $postCode == 84 || $postCode == 04 || $postCode == 83 || $postCode == 06 || $postCode == 20)
+			$postcodes = array(09,66,11,34,48,30,07,43,42,69,01,74,73,38,26,05,13,63,84,04,83,06,20);
+			if(in_array($postCode, $postcodes))				
 			{
 				$ground -> setRegion('Sud-Est');
 			}
 
-			if($postCode == 03 || $postCode == 71 || $postCode == 39 || $postCode == 25 || $postCode == 70 || $postCode == 58
-				|| $postCode == 21 || $postCode == 68 || $postCode == 89 || $postCode == 10 || $postCode == 52 || $postCode == 88
-				|| $postCode == 10 || $postCode == 52 || $postCode == 54 || $postCode == 67 || $postCode == 55 || $postCode == 57)
+			$postcodes = array(03,71,39,25,70,58,21,10,52,54,67,55,57,67,68);
+			if(in_array($postCode, $postcodes))			
 			{
 				$ground -> setRegion('Est');
 			}
 
-			if($postCode == 59 || $postCode == 51 || $postCode == 08 || $postCode == 02 || $postCode == 60 || $postCode == 80
-				|| $postCode == 62 || $postCode == 76)
+			$postcodes = array(59,51,08,02,60,80,62,76);
+			if(in_array($postCode, $postcodes))
 			{
 				$ground -> setRegion('Nord');
 			}
 
-			if($postCode == 27 || $postCode == 14 || $postCode == 50 || $postCode == 61 || $postCode == 28 || $postCode == 45
-				|| $postCode == 18 || $postCode == 41 || $postCode == 72 || $postCode == 53 || $postCode == 35 || $postCode == 22
-				|| $postCode == 56 || $postCode == 44 || $postCode == 49 || $postCode == 37 || $postCode == 36 || $postCode == 85
-				|| $postCode == 79 || $postCode == 86)
+			$postcodes = array(27,14,50,61,28,45,18,41,72,53,35,22,56,44,49,37,36,85,79,86);
+			if(in_array($postCode, $postcodes))			
 			{
 				$ground -> setRegion('Ouest');
 			}
