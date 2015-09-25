@@ -219,6 +219,13 @@ class User extends BaseUser
      */
     private $matche;
 
+     /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="partner")
+     */
+    private $matche_partner;
+
     /**
      * @var string
      *
@@ -1050,5 +1057,38 @@ class User extends BaseUser
     public function removeTournament(\FrontOfficeBundle\Entity\Tournament $tournament)
     {
         $this->tournament->removeElement($tournament);
+    }
+
+    /**
+     * Add matche_partner
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matchePartner
+     * @return User
+     */
+    public function addMatchePartner(\FrontOfficeBundle\Entity\Matche $matchePartner)
+    {
+        $this->matche_partner[] = $matchePartner;
+
+        return $this;
+    }
+
+    /**
+     * Remove matche_partner
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matchePartner
+     */
+    public function removeMatchePartner(\FrontOfficeBundle\Entity\Matche $matchePartner)
+    {
+        $this->matche_partner->removeElement($matchePartner);
+    }
+
+    /**
+     * Get matche_partner
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMatchePartner()
+    {
+        return $this->matche_partner;
     }
 }

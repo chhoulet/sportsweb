@@ -110,5 +110,10 @@ class UserController extends Controller
 	{
 		return $this -> render('FrontOfficeBundle:User:showTournaments.html.twig');
 	}
+
+	public function showMatchesAction()
+	{
+		return $this -> render('FrontOfficeBundle:User:showMatches.html.twig');
+	}
 }
 

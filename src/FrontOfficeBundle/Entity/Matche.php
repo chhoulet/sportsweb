@@ -109,8 +109,8 @@ class Matche
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="matche")
-     * @ORM\JoinColumn(name="matche_partner", referencedColumnName="id", nullable = true)
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="matche_partner")
+     * @ORM\JoinColumn(name="partner", referencedColumnName="id", nullable = true)
      */
     private $partner;
 

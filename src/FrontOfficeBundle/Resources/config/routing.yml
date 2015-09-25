@@ -102,12 +102,12 @@ front_office_user_getOutFriend:
     path:     /getOutFriend/{id}
     defaults: { _controller: FrontOfficeBundle:User:getOutFriend}
 
-    # Voir sa liste d'amis:
+    # Voir ses amis:
 front_office_user_showFriends:
     path:     /showFriends 
     defaults: { _controller: FrontOfficeBundle:User:showFriends}
 
-    # Voir les équipes dont il est membre:
+    # Voir ses équipes:
 front_office_user_showTeams:
     path:      /showTeams
     defaults: { _controller: FrontOfficeBundle:User:showTeams}
@@ -115,16 +115,22 @@ front_office_user_showTeams:
     # Voir ses articles postés:
 front_office_user_showArticles:
     path:     /showArticles 
-    defaults: { _controller: FrontOfficeBundle:User:showArticles}
-
-front_office_user_showTournaments:
-    path:     /showTournaments
-    defaults: { _controller: FrontOfficeBundle:User:showTournaments}
+    defaults: { _controller: FrontOfficeBundle:User:showArticles}   
 
     # Voir ses invitations envoyées et reçues:
 front_office_user_invitations:
     path:     /showInvitations
     defaults: { _controller: FrontOfficeBundle:User:showInvitations}
+
+    # Voir ses tournois:
+front_office_user_showTournaments:
+    path:     /showTournaments
+    defaults: { _controller: FrontOfficeBundle:User:showTournaments}
+
+     # Voir ses matches:
+front_office_user_showMatches:
+    path:     /showMatches 
+    defaults: { _controller: FrontOfficeBundle:User:showMatches}
 
 # Routes gerant les Teams:
 front_office_team_list:
