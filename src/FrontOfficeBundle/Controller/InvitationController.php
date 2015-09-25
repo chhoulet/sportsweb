@@ -4,6 +4,7 @@ namespace FrontOfficeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FrontOfficeBundle\Entity\Invitation;
+use FrontOfficeBundle\Entity\Matche;
 use FrontOfficeBundle\Form\InvitationType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -43,12 +44,13 @@ class InvitationController extends Controller
 			$invitation ->setSport($userSport);
 
 			$postcodes = array(75,77,78,91,92,93,95);
-			if (in_array($postCode, $postcodes))
+			if(in_array($postCode, $postcodes))
+			{
 				$invitation -> setRegion('Ile-de-France');
 			}
 
-			$postcodes = array(16,17,87,23,63,15,12,81,31,32,65,64,40,47,33,24,19,46,82,29)
-			if(in_array($postCode, $postcodes)
+			$postcodes = array(16,17,87,23,63,15,12,81,31,32,65,64,40,47,33,24,19,46,82,29);
+			if(in_array($postCode, $postcodes))				
 			{
 				$invitation -> setRegion('Sud-Ouest');
 			}
@@ -76,7 +78,6 @@ class InvitationController extends Controller
 			{
 				$invitation -> setRegion('Ouest');
 			}
-
 
 			$em -> persist($invitation);
 			$em -> flush();
@@ -111,7 +112,36 @@ class InvitationController extends Controller
 		$invitation -> setAccepted(true);
 		$invitation -> setDateAccepted(new \DateTime('now'));
 		$invitation -> setUserTo($this->getUser());
-		$em -> persist($invitation);
+
+		// Récupération des données de l'invitation :
+		$placeFromInvit =     $invitation -> getPlace();
+		$dateplayFromInvi =   $invitation -> getDateInvit();
+		$modeFromInvi =       $invitation -> getMode();
+		$organizerFromInvi =  $invitation -> getUserFrom();
+		$partnerFromInvi =    $this -> getUser();
+		$sportFromInvi =      $invitation -> getSport();
+		$groundFromInvi =     $invitation -> getGround();
+		$tournamentFromInvit= $invitation -> getTournament();
+
+		// Creation d'un match entre les deux participants, celui qui a lancé l'invitation et celui qui l'a accepté,
+		// avec hydratation des données de l'invitation dans l'objet match:
+		$matche = new Matche();
+		$matche -> setPlace($placeFromInvit);
+		$matche -> setDateplay($dateplayFromInvi);
+		$matche -> setMode($modeFromInvi);
+		$matche -> setOrganizer($organizerFromInvi);
+		$matche -> setTournament($tournamentFromInvit);
+		$matche -> setGround($groundFromInvi);
+		$matche -> setSport($sportFromInvi);
+		$matche -> setPartner($partnerFromInvi);
+		$matche -> setPlayedFuture(true);
+		$matche -> setPlayed(false);
+		$matche -> setMatchWinned(false);
+		$matche -> setMatchLost(false);
+		$matche -> setMatchNil(false);
+		$matche -> setMatchCancelled(false);
+
+		$em -> persist($matche);
 		$em -> flush();
 
 		$session ->getFlashBag() ->add('repon', 'Vous venez d\'accepter cette invitation. Un e-mail de confirmation vient d\'être envoyé à l\'expéditeur. Bon match !');

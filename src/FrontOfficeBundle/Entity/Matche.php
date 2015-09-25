@@ -109,6 +109,14 @@ class Matche
     /**
      * @var string
      *
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="matche")
+     * @ORM\JoinColumn(name="matche_partner", referencedColumnName="id", nullable = true)
+     */
+    private $partner;
+
+    /**
+     * @var string
+     *
      * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="matche")
      * @ORM\JoinTable(name="match_teams")
      */
@@ -509,5 +517,28 @@ class Matche
     public function getMatchCancelled()
     {
         return $this->matchCancelled;
+    }
+
+    /**
+     * Set partner
+     *
+     * @param \UserBundle\Entity\User $partner
+     * @return Matche
+     */
+    public function setPartner(\UserBundle\Entity\User $partner = null)
+    {
+        $this->partner = $partner;
+
+        return $this;
+    }
+
+    /**
+     * Get partner
+     *
+     * @return \UserBundle\Entity\User 
+     */
+    public function getPartner()
+    {
+        return $this->partner;
     }
 }
