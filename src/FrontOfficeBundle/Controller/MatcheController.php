@@ -59,10 +59,13 @@ class MatcheController extends Controller
 		if($tournament){
 			$futuresMatches = $em -> getRepository('FrontOfficeBundle:Matche')
 				->getFuturesMatchesByTournament($tournament, $this -> getUser());
+			$playedMatches = $em -> getRepository('FrontOfficeBundle:Matche')
+				->getPlayedMatchesByTournament($tournament, $this -> getUser());
 
 			return $this -> render('FrontOfficeBundle:Matche:myProfilList.html.twig', 
 				array('tournament'    =>$tournament,
-					  'futuresMatches'=>$futuresMatches));
+					  'futuresMatches'=>$futuresMatches,
+					  'playedMatches' =>$playedMatches));
 		}
 
 		else{

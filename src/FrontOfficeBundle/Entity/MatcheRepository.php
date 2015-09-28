@@ -36,4 +36,20 @@ class MatcheRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getPlayedMatchesByTournament($id, $user)
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT m 
+			FROM FrontOfficeBundle:Matche m 
+			JOIN m.organizer u
+			JOIN m.tournament t 
+			WHERE t.id  LIKE :id
+			AND u.id LIKE :user
+			AND m.played = true')
+		->setParameter('id', $id)
+		->setParameter('user', $user);
+
+		return $query -> getResult();
+	}
 }
