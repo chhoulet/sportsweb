@@ -14,8 +14,7 @@ class MatcheController extends Controller
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$session = $request -> getSession();
-		$tournament = $em -> getRepository('FrontOfficeBundle:Tournament')->find($id);
-		/*$id_tournament = $tournament -> getId();*/
+		$tournament = $em -> getRepository('FrontOfficeBundle:Tournament')->find($id);		
 		$matche = new Matche();
 		$form = $this -> createForm(new MatcheType, $matche);
 
@@ -70,6 +69,56 @@ class MatcheController extends Controller
 
 		else{
 			return $this -> render('FrontOfficeBundle:Matche:myProfilList.html.twig');
+		}
+	}
+
+	# Attribution du score au match :
+	public function getScoreAction(Request $request, $id)
+	{
+		$em = $this-> getDoctrine()-> getManager();
+		$session = $request -> getSession();
+		$matche = $em -> getRepository('FrontOfficeBundle:Matche')-> find($id);
+		$form = $this -> createForm(new ScoreType(), $matche);
+
+		$form -> handleRequest($request);
+
+		if($form -> isValid()){
+			$matche -> setPlayed(true);
+			$matche -> setPlayedFuture(false);
+
+			$datas = $form -> getData();
+			if($datas['scoreTeam1'] > $datas['scoreTeam2']){
+				$matche -> setMatchWinnedTeam1(true);
+				$matche -> setMatchWinnedTeam2(false);
+				$matche -> setMatchLostTeam1(false);
+				$matche -> setMatchLostTeam2(true);
+				$matche -> setMatchNil(false);
+
+				$session -> getFlashbag()-> add('score', 'Merci d\'avoir renseigné le score');
+				return $this -> redirect($this -> generateUrl('front_office_matche_myProfilList',{id:$matche -> getId()}));
+			}
+
+			elseif($datas['scoreTeam2'] > $datas['scoreTeam1']){
+				$matche -> setMatchWinnedTeam1(false);
+				$matche -> setMatchWinnedTeam2(true);
+				$matche -> setMatchLostTeam1(true);
+				$matche -> setMatchLostTeam2(false);
+				$matche -> setMatchNil(false);
+
+				$session -> getFlashbag()-> add('score', 'Merci d\'avoir renseigné le score');
+				return $this -> redirect($this -> generateUrl('front_office_user_update'));
+			}
+
+			elseif($datas['scoreTeam2'] = $datas['scoreTeam1']){
+				$matche -> setMatchWinnedTeam1(false);
+				$matche -> setMatchWinnedTeam2(false);
+				$matche -> setMatchLostTeam1(false);
+				$matche -> setMatchLostTeam2(false);
+				$matche -> setMatchNil(true);
+
+				$session -> getFlashbag()-> add('score', 'Merci d\'avoir renseigné le score');
+				return $this -> redirect($this -> generateUrl('front_office_user_update'));
+			}
 		}
 	}
 }

@@ -234,3 +234,7 @@ front_office_matche_cancel:
 front_office_matche_myProfilList:
     path:     /myProfilList/{id}
     defaults: { _controller: FrontOfficeBundle:Matche:myProfilList}
+
+front_office_matche_getScore:
+    path:     /getScore/{id}
+    defaults: { _controller: FrontOfficeBundle:Matche:getScore}

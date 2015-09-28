@@ -50,11 +50,18 @@ class Matche
     private $mode;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="score", type="string", length=255, nullable = true)
+     * @ORM\Column(name="scoreTeam1", type="integer", length=255, nullable = true)
      */
-    private $score;
+    private $scoreTeam1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="scoreTeam2", type="integer", length=255, nullable = true)
+     */
+    private $scoreTeam2;
 
     /**
      * @var boolean
@@ -66,16 +73,30 @@ class Matche
     /**
      * @var boolean
      *
-     * @ORM\Column(name="matchWinned", type="boolean", nullable = true)
+     * @ORM\Column(name="matchWinnedTeam1", type="boolean", nullable = true)
      */
-    private $matchWinned;
+    private $matchWinnedTeam1;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="matchLost", type="boolean", nullable = true)
+     * @ORM\Column(name="matchWinnedTeam2", type="boolean", nullable = true)
      */
-    private $matchLost;
+    private $matchWinnedTeam2;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="matchLostTeam1", type="boolean", nullable = true)
+     */
+    private $matchLostTeam1;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="matchLostTeam2", type="boolean", nullable = true)
+     */
+    private $matchLostTeam2;
 
     /**
      * @var boolean
@@ -227,29 +248,6 @@ class Matche
     }
 
     /**
-     * Set score
-     *
-     * @param string $score
-     * @return Matche
-     */
-    public function setScore($score)
-    {
-        $this->score = $score;
-
-        return $this;
-    }
-
-    /**
-     * Get score
-     *
-     * @return string 
-     */
-    public function getScore()
-    {
-        return $this->score;
-    }
-
-    /**
      * Set played
      *
      * @param boolean $played
@@ -387,52 +385,6 @@ class Matche
         return $this->sport;
     }
 
-    /**
-     * Set matchWinned
-     *
-     * @param boolean $matchWinned
-     * @return Matche
-     */
-    public function setMatchWinned($matchWinned)
-    {
-        $this->matchWinned = $matchWinned;
-
-        return $this;
-    }
-
-    /**
-     * Get matchWinned
-     *
-     * @return boolean 
-     */
-    public function getMatchWinned()
-    {
-        return $this->matchWinned;
-    }
-
-    /**
-     * Set matchLost
-     *
-     * @param boolean $matchLost
-     * @return Matche
-     */
-    public function setMatchLost($matchLost)
-    {
-        $this->matchLost = $matchLost;
-
-        return $this;
-    }
-
-    /**
-     * Get matchLost
-     *
-     * @return boolean 
-     */
-    public function getMatchLost()
-    {
-        return $this->matchLost;
-    }
-
     public function _toString()
     {
         return $this -> id;
@@ -545,5 +497,143 @@ class Matche
     public function getPartner()
     {
         return $this->partner;
+    }
+
+    /**
+     * Set scoreTeam1
+     *
+     * @param integer $scoreTeam1
+     * @return Matche
+     */
+    public function setScoreTeam1($scoreTeam1)
+    {
+        $this->scoreTeam1 = $scoreTeam1;
+
+        return $this;
+    }
+
+    /**
+     * Get scoreTeam1
+     *
+     * @return integer 
+     */
+    public function getScoreTeam1()
+    {
+        return $this->scoreTeam1;
+    }
+
+    /**
+     * Set scoreTeam2
+     *
+     * @param integer $scoreTeam2
+     * @return Matche
+     */
+    public function setScoreTeam2($scoreTeam2)
+    {
+        $this->scoreTeam2 = $scoreTeam2;
+
+        return $this;
+    }
+
+    /**
+     * Get scoreTeam2
+     *
+     * @return integer 
+     */
+    public function getScoreTeam2()
+    {
+        return $this->scoreTeam2;
+    }
+
+    /**
+     * Set matchWinnedTeam1
+     *
+     * @param boolean $matchWinnedTeam1
+     * @return Matche
+     */
+    public function setMatchWinnedTeam1($matchWinnedTeam1)
+    {
+        $this->matchWinnedTeam1 = $matchWinnedTeam1;
+
+        return $this;
+    }
+
+    /**
+     * Get matchWinnedTeam1
+     *
+     * @return boolean 
+     */
+    public function getMatchWinnedTeam1()
+    {
+        return $this->matchWinnedTeam1;
+    }
+
+    /**
+     * Set matchWinnedTeam2
+     *
+     * @param boolean $matchWinnedTeam2
+     * @return Matche
+     */
+    public function setMatchWinnedTeam2($matchWinnedTeam2)
+    {
+        $this->matchWinnedTeam2 = $matchWinnedTeam2;
+
+        return $this;
+    }
+
+    /**
+     * Get matchWinnedTeam2
+     *
+     * @return boolean 
+     */
+    public function getMatchWinnedTeam2()
+    {
+        return $this->matchWinnedTeam2;
+    }
+
+    /**
+     * Set matchLostTeam1
+     *
+     * @param boolean $matchLostTeam1
+     * @return Matche
+     */
+    public function setMatchLostTeam1($matchLostTeam1)
+    {
+        $this->matchLostTeam1 = $matchLostTeam1;
+
+        return $this;
+    }
+
+    /**
+     * Get matchLostTeam1
+     *
+     * @return boolean 
+     */
+    public function getMatchLostTeam1()
+    {
+        return $this->matchLostTeam1;
+    }
+
+    /**
+     * Set matchLostTeam2
+     *
+     * @param boolean $matchLostTeam2
+     * @return Matche
+     */
+    public function setMatchLostTeam2($matchLostTeam2)
+    {
+        $this->matchLostTeam2 = $matchLostTeam2;
+
+        return $this;
+    }
+
+    /**
+     * Get matchLostTeam2
+     *
+     * @return boolean 
+     */
+    public function getMatchLostTeam2()
+    {
+        return $this->matchLostTeam2;
     }
 }
