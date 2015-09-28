@@ -1,0 +1,15 @@
+{% extends 'FrontOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<h3>Mes matches</h3>
+
+			{% for mat in  app.user.matche %}
+				
+				Date : {{ mat.dateplay | date('d-m-Y H:i:s') }}<br>
+				Lieu: {{ mat.place }}<br>
+				Mode : {{ mat.mode }}<br>
+				Adversaire :{{ mat.partner }}<br>
+			{% endfor %}
+
+	{% endblock %}

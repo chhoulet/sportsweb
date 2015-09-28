@@ -50,4 +50,23 @@ class MatcheController extends Controller
 		$session -> getFlashbag()->add('annuMatch','Ce match est annulé !');
 		return $this ->redirect($request-> headers ->get('referer'));
 	}
+
+	public function myProfilListAction($id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$tournament = $em -> getRepository('FrontOfficeBundle:tournament')->find($id);
+
+		if($tournament){
+			$futuresMatches = $em -> getRepository('FrontOfficeBundle:Matche')
+				->getFuturesMatchesByTournament($tournament, $this -> getUser());
+
+			return $this -> render('FrontOfficeBundle:Matche:myProfilList.html.twig', 
+				array('tournament'    =>$tournament,
+					  'futuresMatches'=>$futuresMatches));
+		}
+
+		else{
+			return $this -> render('FrontOfficeBundle:Matche:myProfilList.html.twig');
+		}
+	}
 }

@@ -124,8 +124,8 @@ front_office_user_invitations:
 
     # Voir ses tournois:
 front_office_user_showTournaments:
-    path:     /showTournaments
-    defaults: { _controller: FrontOfficeBundle:User:showTournaments}
+    path:     /showTournaments/{id_tournament}
+    defaults: { _controller: FrontOfficeBundle:User:showTournaments, id_tournament:null}
 
      # Voir ses matches:
 front_office_user_showMatches:
@@ -230,3 +230,7 @@ front_office_matche_new:
 front_office_matche_cancel:
     path:     /cancelMatch/{id}
     defaults: { _controller: FrontOfficeBundle:Matche:cancelMatch}
+
+front_office_matche_myProfilList:
+    path:     /myProfilList/{id}
+    defaults: { _controller: FrontOfficeBundle:Matche:myProfilList}

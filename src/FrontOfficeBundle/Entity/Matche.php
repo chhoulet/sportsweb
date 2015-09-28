@@ -433,6 +433,11 @@ class Matche
         return $this->matchLost;
     }
 
+    public function _toString()
+    {
+        return $this -> id;
+    }
+
     /**
      * Set matchNil
      *

@@ -1045,37 +1045,4 @@ class User extends BaseUser
     {
         return $this->matche_partner;
     }
-
-    /**
-     * Add tournament
-     *
-     * @param \FrontOfficeBundle\Entity\Tournament $tournament
-     * @return User
-     */
-    public function addTournament(\FrontOfficeBundle\Entity\Tournament $tournament)
-    {
-        $this->tournament[] = $tournament;
-
-        return $this;
-    }
-
-    /**
-     * Remove tournament
-     *
-     * @param \FrontOfficeBundle\Entity\Tournament $tournament
-     */
-    public function removeTournament(\FrontOfficeBundle\Entity\Tournament $tournament)
-    {
-        $this->tournament->removeElement($tournament);
-    }
-
-    /**
-     * Get tournament
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTournament()
-    {
-        return $this->tournament;
-    }
 }

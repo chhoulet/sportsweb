@@ -24,17 +24,17 @@
 		         				<p>Ce tournoi est terminé !</p>
 		         			{% elseif (tournament.playedFuture) %}
 		         				<p>Tournoi planifié !</p>
-		         				<a href="{{ path('front_office_matche_new',{id:tournament.id}) }}">Prévois un match !</a>
+		         				<a href="{{ path('front_office_matche_myProfilList',{id:tournament.id}) }}">Détail des matchs !</a>
 		         			{% endif %}
 
 		         			<hr>
 
-		         			<h4>Matches</h4>
+		         			{# <h4>Matches</h4>
 
 			         			{% for mat in tournament.matche %}
-			         				{{ mat.place }}<br>
-			         				{{ mat.organizer }}<br>
-			         				{{ mat.dateplay | date('d-m-Y H:i:s') }}<br>
+			         				Lieu: {{ mat.place }}<br>
+			         				Organisateur: {{ mat.organizer }}<br>
+			         				Date: {{ mat.dateplay | date('d-m-Y H:i:s') }}<br>
 
 			         					{% if (mat.played) %}
 			         						{{ mat.played }}<br>
@@ -52,7 +52,7 @@
 		         					{{ team.typeOfGame }}<br>
 		         					{{ team.habitsOfGame }}<br>		         					
 		         				{% endfor %}
-
+ #}
 		         		<a href="{{ path('front_office_tournament_update',{id:tournament.id}) }}">Mettre à jour</a>
 
 		         		<hr/>
