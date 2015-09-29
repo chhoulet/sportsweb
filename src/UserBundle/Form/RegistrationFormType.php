@@ -24,6 +24,14 @@ class RegistrationFormType extends AbstractType
                                                 'expanded' => true))
             ->add('postCode', 'integer',  array('label'    =>'Code Postal:',
                                                 'attr'     => array('placeholder'=>'75,13,59,91, 2 chiffres uniquement merci !')))
+            ->add('region', 'choice',     array('label'    =>'Région:',
+                                                'choices'  => array('Ile-de-France'=> 'Ile de France',
+                                                                    'Nord'         => 'Nord',
+                                                                    'Ouest'        => 'Ouest',
+                                                                    'Sud-Ouest'    => 'Sud-Ouest',
+                                                                    'Sud-Est'      => 'Sud-Est',
+                                                                    'Est'          => 'Est' )))
+
             ->add('age')
         ;
 

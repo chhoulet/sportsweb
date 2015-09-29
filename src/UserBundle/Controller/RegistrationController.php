@@ -9,10 +9,10 @@ class RegistrationController extends BaseController
     public function registerAction()
     {
         $response = parent::registerAction();
-        $postCode = $this -> getUser()->getPostCode();
+        /*$postCode = $this -> getUser()->getPostCode();
 
         /*Attribution automatique de valeur à l'attribut Region selon la valeur de postCode*/
-			if($postCode == 75 || $postCode == 77 || $postCode == 78 || $postCode == 91 || $postCode == 92 || $postCode == 93)
+			/*if($postCode == 75 || $postCode == 77 || $postCode == 78 || $postCode == 91 || $postCode == 92 || $postCode == 93)
 			{
 				$user -> setRegion('Ile-de-France');
 			}
@@ -52,7 +52,7 @@ class RegistrationController extends BaseController
 				|| $postCode == 79 || $postCode == 86)
 			{
 				$user -> setRegion('Ouest');
-			}
+			}*/
 
         return $response;
     }
