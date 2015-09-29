@@ -95,7 +95,7 @@ class MatcheController extends Controller
 				$matche -> setMatchNil(false);
 
 				$session -> getFlashbag()-> add('score', 'Merci d\'avoir renseigné le score');
-				return $this -> redirect($this -> generateUrl('front_office_matche_myProfilList',{id:$matche -> getId()}));
+				return $this -> redirect($this -> generateUrl('front_office_user_update'));
 			}
 
 			elseif($datas['scoreTeam2'] > $datas['scoreTeam1']){

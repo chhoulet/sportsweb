@@ -127,6 +127,13 @@ class Tournament
     private $playedFuture;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="privat", type="boolean")
+     */
+    private $privat;
+
+    /**
      * @var string
      *
      * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="tournament")
@@ -625,5 +632,28 @@ class Tournament
     public function getRegion()
     {
         return $this->region;
+    }
+
+    /**
+     * Set privat
+     *
+     * @param boolean $privat
+     * @return Tournament
+     */
+    public function setPrivat($privat)
+    {
+        $this->privat = $privat;
+
+        return $this;
+    }
+
+    /**
+     * Get privat
+     *
+     * @return boolean 
+     */
+    public function getPrivat()
+    {
+        return $this->privat;
     }
 }

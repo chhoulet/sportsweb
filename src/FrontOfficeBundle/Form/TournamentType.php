@@ -20,7 +20,8 @@ class TournamentType extends AbstractType
             ->add('postCode')           
             ->add('dateBegining')
             ->add('dateEnding')            
-            ->add('description')                                   
+            ->add('description') 
+            ->add('privat','checkbox')                                  
             ->add('Valider', 'submit')
         ;
     }

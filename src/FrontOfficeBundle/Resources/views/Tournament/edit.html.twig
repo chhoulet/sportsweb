@@ -11,13 +11,20 @@
 			
 				{{ tournament.name }}<br>
 				{{ tournament.description }}<br>
-				{% if tournament.teams is not empty %}
-					{% for tea in tournament.teams %}
-						{{ tea.name }}<br>
-						{{ tea.typeOfGame }}<br>
-						{{ tea.habitsOfGame }}<br>
-					{% endfor %}
-				{% endif %}
+				
+					{% if tournament.privat == true %}
+						<p>Tournoi privé</p><br>
+					{% else %}
+						<p>Tournoi public</p>
+					{% endif %}
+
+					{% if tournament.teams is not empty %}
+						{% for tea in tournament.teams %}
+							{{ tea.name }}<br>
+							{{ tea.typeOfGame }}<br>
+							{{ tea.habitsOfGame }}<br>
+						{% endfor %}
+					{% endif %}
 
 				<hr>
 
