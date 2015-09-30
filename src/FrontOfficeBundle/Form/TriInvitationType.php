@@ -15,9 +15,9 @@ class TriInvitationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('sport', null,     array('label'   =>'Sport:'))            
+            ->add('sport', null,      array('label'   =>'Sport:'))            
             ->add('region', 'choice', array('label'   =>'Region:',
-                                           'choices' => array('Ile-de-France' =>'Ile-de-France',
+                                            'choices' => array('Ile-de-France' =>'Ile-de-France',
                                                               'Sud-Ouest'     =>'Sud-Ouest',
                                                               'Ouest'         =>'Ouest',
                                                               'Sud-Est'       =>'Sud-Est',

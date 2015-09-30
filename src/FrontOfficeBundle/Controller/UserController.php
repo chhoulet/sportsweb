@@ -87,11 +87,16 @@ class UserController extends Controller
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$invitation = $em -> getRepository('FrontOfficeBundle:Invitation') -> seeInvitationsForOneUser($this ->getUser());
-		$invitationlaunched = $em -> getRepository('FrontOfficeBundle:Invitation') -> getInvitsLaunchedByUser($this ->getUser());
+		$invitationLaunched = $em -> getRepository('FrontOfficeBundle:Invitation') -> getInvitsLaunchedByUser($this ->getUser());
+		$invitationAccepted = $em -> getRepository('FrontOfficeBundle:Invitation') -> getInvitationsAcceptedByUser($this ->getUser());
+		$invitationReceived = $em -> getRepository('FrontOfficeBundle:Invitation') -> getInvitationsReceivedByUser($this ->getUser());
 
 		return $this -> render('FrontOfficeBundle:User:showInvitations.html.twig', 
-			array('invitationlaunched'=> $invitationlaunched,
-				  'invitation'        => $invitation));
+			array('invitation'        => $invitation,
+				  'invitationlaunched'=> $invitationLaunched,
+				  'invitationAccepted'=> $invitationAccepted,
+				  'invitationReceived'=> $invitationReceived
+				  ));
 	}
 
 	public function showTeamsAction()

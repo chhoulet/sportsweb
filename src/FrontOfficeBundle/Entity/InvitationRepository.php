@@ -182,4 +182,27 @@ class InvitationRepository extends EntityRepository
 
 		return $query -> getResult();
 	}
+
+	public function getInvitationsAcceptedByUser($user)
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT i
+			FROM FrontOfficeBundle:Invitation i 
+			JOIN i.userFrom u 
+			WHERE u.id LIKE :user 
+			AND i.denied = false
+			AND i.accepted = true')
+		->setParameter('user', $user);
+	}
+
+	public function getInvitationsReceivedByUser($user)
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT i
+			FROM FrontOfficeBundle:Invitation i 
+			JOIN i.userTo u 
+			WHERE u.id LIKE :user
+			')
+		->setParameter('user', $user);
+	}
 }

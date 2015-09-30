@@ -9,32 +9,57 @@
 
                     <h3>Invitations envoyées :</h3>
 
-                    {% for invit in invitationlaunched %}
-                        
-                        Message : {{ invit.content }}<br>
-                        Date : {{ invit.dateInvit | date('d-m-Y H:i:s') }}<br>
-                        Discipline : {{ invit.sport }}<br>
-                        Mode : {{ invit.mode }}<br>
-                        Ville : {{ invit.place }}<br>
+                        {% for invit in invitationlaunched %}
 
-                        {% if (invit.userTo) %}
-                            Adversaire: {{ invit.userTo }}<br>
-                        {% endif %}
+                            Message : {{ invit.content }}<br>
+                            Date : {{ invit.dateInvit | date('d-m-Y H:i:s') }}<br>
+                            Discipline : {{ invit.sport }}<br>
+                            Mode : {{ invit.mode }}<br>
+                            Ville : {{ invit.place }}<br>
 
-                    {% endfor %}
+                            {% if (invit.userTo) %}
+                                Adversaire: {{ invit.userTo }}<br>
+                            {% endif %}
 
-
+                        {% endfor %}
 
 
+                    <h3>Invitations acceptées :</h3>
+
+                        {% for invit in invitationAccepted %}
+
+                            Message : {{ invit.content }}<br>
+                            Date : {{ invit.dateInvit | date('d-m-Y H:i:s') }}<br>
+                            Discipline : {{ invit.sport }}<br>
+                            Mode : {{ invit.mode }}<br>
+                            Ville : {{ invit.place }}<br>
+
+                            {% if (invit.userFrom) %}
+                                Adversaire: {{ invit.userFrom }}<br>
+                            {% endif %}
+
+                        {% endfor %}
 
 
+                    <h3>Invitations reçues :</h3>
 
+                        {% for invit in invitationReceived %}
 
+                            Message : {{ invit.content }}<br>
+                            Date : {{ invit.dateInvit | date('d-m-Y H:i:s') }}<br>
+                            Discipline : {{ invit.sport }}<br>
+                            Mode : {{ invit.mode }}<br>
+                            Ville : {{ invit.place }}<br>
 
+                            {% if (invit.userFrom) %}
+                                Adversaire: {{ invit.userFrom }}<br>
+                            {% endif %}
 
-                    <h2>Invit acceptées</h2>
+                        {% endfor %}
 
-                        {% for invit in app.user.invitationsReceived if invit.dateAccepted is not null %}
+                   
+
+                        {# {% for invit in app.user.invitationsReceived if invit.dateAccepted is not null %}
 
                             <div class="row">
                                 <div class="col-lg-12">
@@ -122,7 +147,7 @@
                             </div>
                        
                         {% endfor %}
-
+ #}
                 </div>
                
             </div>

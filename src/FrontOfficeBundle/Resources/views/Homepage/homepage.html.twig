@@ -113,6 +113,7 @@
 
         		                    <p class="section-paragraph">{{ invit.content }}</p>
         		                    <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p><br>
+                                    {{ invit.userFrom }}<br>
                                     <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}">Détail</a>
                                     
                                     {% if (is_granted('ROLE_USER')) %}

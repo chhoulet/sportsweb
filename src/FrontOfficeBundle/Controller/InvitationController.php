@@ -136,8 +136,10 @@ class InvitationController extends Controller
 		$matche -> setPartner($partnerFromInvi);
 		$matche -> setPlayedFuture(true);
 		$matche -> setPlayed(false);
-		$matche -> setMatchWinned(false);
-		$matche -> setMatchLost(false);
+		$matche -> setMatchWinnedTeam1(false);
+		$matche -> setMatchWinnedTeam2(false);
+		$matche -> setMatchLostTeam1(false);
+		$matche -> setMatchLostTeam2(false);
 		$matche -> setMatchNil(false);
 		$matche -> setMatchCancelled(false);
 
