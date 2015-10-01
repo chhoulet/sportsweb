@@ -26,7 +26,7 @@
 
                     <h3>Invitations acceptées :</h3>
 
-                        {% for invit in invitationAccepted %}
+                       {#  {% for invit in invitationAccepted %}
 
                             Message : {{ invit.content }}<br>
                             Date : {{ invit.dateInvit | date('d-m-Y H:i:s') }}<br>
@@ -38,7 +38,7 @@
                                 Adversaire: {{ invit.userFrom }}<br>
                             {% endif %}
 
-                        {% endfor %}
+                        {% endfor %} #}
 
 
                     <h3>Invitations reçues :</h3>
@@ -74,9 +74,9 @@
                                 </div>
                             </div>                            
                        
-                        {% endfor %}
+                        {% endfor %} #}
 
-                </div>
+               {#  </div>
 
                 <div class="container"> 
 
@@ -147,12 +147,12 @@
                             </div>
                        
                         {% endfor %}
- #}
+
                 </div>
                
             </div>
         </div>
-        
+         #}
         <!-- /.row -->
 
 	{% endblock %}

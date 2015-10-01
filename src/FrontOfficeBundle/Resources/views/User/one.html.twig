@@ -25,9 +25,7 @@
 
                             AGE : {{ user.age }} ans<br><br> 
 
-                          DATE D'INSCRIPTION : {{ user.dateCreated | date('d-m-Y') }}<br>  
-                          <a href="{{ path('front_office_invitation_new',{userTo:user.id}) }}"><button>Invite ton ami !</button></a>                  
-
+                          DATE D'INSCRIPTION : {{ user.dateCreated | date('d-m-Y') }}<br>                            
                 </div>
             </div>
         
