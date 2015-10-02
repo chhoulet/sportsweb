@@ -54,24 +54,31 @@
                                 <p>{{ message }}</p>
                             {% endfor %}                            
 
-                            <h3 class="section-heading" style="padding-top:20px;">Voir les invitations de {{ app.user.favouriteSport }} :</h3>
+                            <h5 class="section-heading" style="padding-top:20px;">Voir les invitations de {{ app.user.favouriteSport }} :</h5>
 
-                                {% for invit in invitForConnectedUser %}    
-                                    
-                                    <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p><br>
-                                    <p class="section-paragraph">{{ invit.content }}</p><br>
+                                {% if (invitForConnectedUser is not empty) %}
+                                    {% for invit in invitForConnectedUser %}    
+                                        
+                                        <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p><br>
+                                        <p class="section-paragraph">{{ invit.content }}</p><br>
 
-                                    <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}"><button>Voir cette invitation</button></a>
+                                        <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}"><button>Voir cette invitation</button></a>
 
-                                    <a href="{{ path('front_office_invitation_response',{id:invit.id}) }}"><button>Accepter l'invitation</button></a>
-                                    
-                                    {% if (is_granted('ROLE_SUPER_ADMIN')) %}
-                                        <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}"><button>Supprimer cette invitation</button></a>
-                                    {% endif %}                                    
+                                        <a href="{{ path('front_office_invitation_response',{id:invit.id}) }}"><button>Accepter l'invitation</button></a>
+                                        
+                                        {% if (is_granted('ROLE_SUPER_ADMIN')) %}
+                                            <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}"><button>Supprimer cette invitation</button></a>
+                                        {% endif %}                                    
 
-                                {% endfor %}
+                                    {% endfor %}
 
-                                <hr>
+                                    <hr>
+                                {% else %}
+
+                                    <p>Il n'y a aucune invitation dans votre région pour la discipline demandée !</p>
+
+                                {% endif %}
+
 
                             <h3 class="section-heading" style="padding-top:20px;">Sélectionner les invitations {% for sport in app.user.sportPracticed %}{{ sport.name }} {% endfor %} :</h3>
                                

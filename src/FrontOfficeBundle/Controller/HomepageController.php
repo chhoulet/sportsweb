@@ -25,13 +25,15 @@ class HomepageController extends Controller
         	# Appel des functions triant les invitations :
             $triInvitsBySport = $em -> getRepository('FrontOfficeBundle:Invitation') 
                 -> triInvitsBySport($this -> getUser(), $sport);    
-             
-            /*$invitationsBySportPracticed = $em -> getRepository('FrontOfficeBundle:Invitation') 
-                ->getInvitsBySportsPracticed($this -> getUser(),$sportPracticed, $region);*/
-           
-            return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
-                array('invitForConnectedUser' => $triInvitsBySport/*,*/
-                      /*'invitationsBySportPracticed' => $invitationsBySportPracticed*/));
+
+            if($triInvitsBySport != ''){
+                return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
+                    array('invitForConnectedUser' => $triInvitsBySport));
+            }
+
+            else{
+                return $this -> render('FrontOfficeBundle:Homepage:homepage.html.twig');
+            }                       
         }
 
         else
@@ -51,9 +53,16 @@ class HomepageController extends Controller
 
     	    $allInvit = $em -> getRepository('FrontOfficeBundle:Invitation') -> getInvitation();            
 
-            return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
-        	    array('allInvit'=> $allInvit, 
-                      'form'    => $form ->createView()));
+            if($allInvit != ''){
+                return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
+            	    array('allInvit'=> $allInvit, 
+                          'form'    => $form ->createView()));                
+            }
+
+            else{
+                return $this ->render('FrontOfficeBundle:Homepage:homepage.html.twig',
+                    array('form'    => $form ->createView()));
+            }
         }                		  
     }
 }

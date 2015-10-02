@@ -112,7 +112,7 @@ class InvitationController extends Controller
 		$invitation -> setAccepted(true);
 		$invitation -> setDateAccepted(new \DateTime('now'));
 		$invitation -> setUserTo($this->getUser());
-		$invitation -> setUserAccepted($this -> getuser());
+		$invitation -> setUserAccepted($this -> getUser());
 
 		// Récupération des données de l'invitation :
 		$placeFromInvit =     $invitation -> getPlace();

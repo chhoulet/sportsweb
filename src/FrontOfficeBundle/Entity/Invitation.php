@@ -43,16 +43,7 @@ class Invitation
      * @ORM\Column(name="dateInvit", type="datetime")
      */
     private $dateInvit;
-
-    /**
-     * @var string
-     *
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="invitation")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     *
-     */
-    private $user;
-
+   
     /**
      * @var string
      *
@@ -80,7 +71,15 @@ class Invitation
      *
      * @ORM\Column(name="postCode", type="string", length=255)
      */
-    private $postCode;    
+    private $postCode; 
+
+     /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="invitation")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;   
 
     /**
      * @var string
@@ -90,14 +89,6 @@ class Invitation
      */
     private $userFrom;
 
-     /**
-     * @var string
-     *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="invitationsReceivedToTeam")
-     * @ORM\JoinColumn(name="team_to_id", referencedColumnName="id", nullable=true)
-     */
-    private $teamTo;
-
     /**
      * @var string
      *
@@ -105,6 +96,14 @@ class Invitation
      * @ORM\JoinColumn(name="user_to_id", referencedColumnName="id", nullable=true)
      */
     private $userTo;
+
+     /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="invitationsReceivedToTeam")
+     * @ORM\JoinColumn(name="team_to_id", referencedColumnName="id", nullable=true)
+     */
+    private $teamTo;
 
     /**
      * @var string
@@ -526,30 +525,7 @@ class Invitation
     public function getTeamFrom()
     {
         return $this->teamFrom;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \UserBundle\Entity\User $user
-     * @return Invitation
-     */
-    public function setUser(\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \UserBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
+    }    
 
     /**
      * Set teamTo
@@ -664,5 +640,28 @@ class Invitation
     public function getUserAccepted()
     {
         return $this->userAccepted;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     * @return Invitation
+     */
+    public function setUser(\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

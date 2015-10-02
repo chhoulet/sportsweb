@@ -133,6 +133,13 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="user")
+     */
+    protected $invitation;
+
+    /**
+     * @var string
+     *
      * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="userTo")
      */
     protected $invitationsReceived;
