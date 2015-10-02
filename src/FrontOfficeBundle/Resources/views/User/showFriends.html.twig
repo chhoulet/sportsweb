@@ -15,27 +15,35 @@
                     {{ messag }}
                 {% endfor %}
 
-                {% for friend in app.user.friend %}
-            		<div class="row">
-                        <div class="col-lg-12">
+                {% if app.user.friend is not empty %}
 
-                            <h1 class="page-header">{{ friend.username}}                              
+                    {% for friend in app.user.friend %}
+                		<div class="row">
+                            <div class="col-lg-12">
 
-                                {% for sport in friend.sportPracticed %}
-                                    <small>SPORT : {{ sport.name }}</small>
-                                {% endfor %}
+                                <h1 class="page-header">{{ friend.username}}                              
 
-                                    <small>AGE : {{ friend.age }} ans</small>
-                            </h1>
-                            <a href="{{ path('front_office_invitation_new',{userTo:friend.id}) }}"><button>Invite ton ami !</button></a>
-                            <a href="{{ path('front_office_user_one',{id:friend.id}) }}"><button>Voir son profil</button></a>
-                            <a href="{{ path('front_office_user_getOutFriend',{id:friend.id}) }}"><button>Retirer ce joueur de la liste d'amis</button></a>
-                            
+                                    {% for sport in friend.sportPracticed %}
+                                        <small>SPORT : {{ sport.name }}</small>
+                                    {% endfor %}
+
+                                        <small>AGE : {{ friend.age }} ans</small>
+                                </h1>
+                                <a href="{{ path('front_office_invitation_new',{userTo:friend.id}) }}"><button>Invite ton ami !</button></a>
+                                <a href="{{ path('front_office_user_one',{id:friend.id}) }}"><button>Voir son profil</button></a>
+                                <a href="{{ path('front_office_user_getOutFriend',{id:friend.id}) }}"><button>Retirer ce joueur de la liste d'amis</button></a>
+                                
+                            </div>
                         </div>
-                    </div>
 
-                   
-                {% endfor %}
+                       
+                    {% endfor %}
+
+                {% else %}
+
+                    <p>Vous n'avez sélectionné personne dans votre liste d'amis !</p>
+
+                {% endif %}
 
             </div>
         </div>
