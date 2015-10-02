@@ -140,10 +140,10 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="UserBundle\Entity\User", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="userAccepted")
      *
      */
-    protected $invitationAccepted;
+    protected $invitationsAccepted;
 
     /**
      * @var string
@@ -1091,24 +1091,38 @@ class User extends BaseUser
 
         return $this;
     }
+    
 
     /**
-     * Remove invitationAccepted
+     * Add invitationsAccepted
      *
-     * @param \UserBundle\Entity\User $invitationAccepted
+     * @param \FrontOfficeBundle\Entity\Invitation $invitationsAccepted
+     * @return User
      */
-    public function removeInvitationAccepted(\UserBundle\Entity\User $invitationAccepted)
+    public function addInvitationsAccepted(\FrontOfficeBundle\Entity\Invitation $invitationsAccepted)
     {
-        $this->invitationAccepted->removeElement($invitationAccepted);
+        $this->invitationsAccepted[] = $invitationsAccepted;
+
+        return $this;
     }
 
     /**
-     * Get invitationAccepted
+     * Remove invitationsAccepted
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitationsAccepted
+     */
+    public function removeInvitationsAccepted(\FrontOfficeBundle\Entity\Invitation $invitationsAccepted)
+    {
+        $this->invitationsAccepted->removeElement($invitationsAccepted);
+    }
+
+    /**
+     * Get invitationsAccepted
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getInvitationAccepted()
+    public function getInvitationsAccepted()
     {
-        return $this->invitationAccepted;
+        return $this->invitationsAccepted;
     }
 }

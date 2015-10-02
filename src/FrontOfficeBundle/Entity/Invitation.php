@@ -90,6 +90,14 @@ class Invitation
      */
     private $userFrom;
 
+     /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="invitationsReceivedToTeam")
+     * @ORM\JoinColumn(name="team_to_id", referencedColumnName="id", nullable=true)
+     */
+    private $teamTo;
+
     /**
      * @var string
      *
@@ -109,10 +117,10 @@ class Invitation
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="invitationsReceivedToTeam")
-     * @ORM\JoinColumn(name="team_to_id", referencedColumnName="id", nullable=true)
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="invitationsAccepted")
+     * @ORM\JoinColumn(name="userAccepted_id", referencedColumnName="id", nullable=true)
      */
-    private $teamTo;
+    private $userAccepted;
 
     /**
      * @var string
@@ -151,8 +159,7 @@ class Invitation
 
     /**
      * @var \DateTime
-     *
-     * @Assert\DateTime()
+     *    
      * @ORM\Column(name="dateDenied", type="datetime", nullable=true)
      */
     private $dateDenied;
@@ -160,7 +167,6 @@ class Invitation
     /**
      * @var \DateTime
      *
-     * @Assert\DateTime()
      * @ORM\Column(name="dateAccepted", type="datetime", nullable=true)
      */
     private $dateAccepted;
@@ -635,5 +641,28 @@ class Invitation
     public function getTournament()
     {
         return $this->tournament;
+    }
+
+    /**
+     * Set userAccepted
+     *
+     * @param \UserBundle\Entity\User $userAccepted
+     * @return Invitation
+     */
+    public function setUserAccepted(\UserBundle\Entity\User $userAccepted = null)
+    {
+        $this->userAccepted = $userAccepted;
+
+        return $this;
+    }
+
+    /**
+     * Get userAccepted
+     *
+     * @return \UserBundle\Entity\User 
+     */
+    public function getUserAccepted()
+    {
+        return $this->userAccepted;
     }
 }
