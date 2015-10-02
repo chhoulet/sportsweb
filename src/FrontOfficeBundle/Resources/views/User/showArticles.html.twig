@@ -4,27 +4,50 @@
 
 	    <div style="margin-top:45px;" class="container">
 
-	        <div class="row">
+            <div class="row">    
 
-	            
-	                <!-- First Blog Post -->
-	                {% for art in myArticles %}
-		                <h2>
-		                    <a href="{{ path('front_office_blog_one',{id:art.id}) }}">{{ art.title }}</a>
-		                </h2>
-		                <p class="lead">
-		                    by <a href="index.php">{% for at in art.author %}{{ at.username }}{% endfor %}</a>
-		                </p>
-		                <p><span class="glyphicon glyphicon-time"></span> {{ art.dateCreated | date('d-m-Y H:i:s')}}</p>
-		                <hr>
-		                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-		                <hr>
-		                <p>{{ art.content }}</p>
-		               
-		                <hr>
-	            	{% endfor %}
-	               	           
-	           	         
+                <div class="well col-lg-8">
+
+	            	<h2>Articles postés</h2>
+
+	            		{% if (myArticles is not empty) %}
+		                <!-- First Blog Post -->
+			                {% for art in myArticles %}
+				                <h2>
+				                    <a href="{{ path('front_office_blog_one',{id:art.id}) }}">{{ art.title }}</a>
+				                </h2>
+				                <p class="lead">
+				                    by <a href="index.php">{% for at in art.author %}{{ at.username }}{% endfor %}</a>
+				                </p>
+				                <p><span class="glyphicon glyphicon-time"></span> {{ art.dateCreated | date('d-m-Y H:i:s')}}</p>
+				                <hr>
+				                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+				                <hr>
+				                <p>{{ art.content }}</p>
+				               
+				                <hr>
+			            	{% endfor %}
+
+			            {% else %}
+
+			            	<p>Vous n'avez posté aucun article !<a href="{{ path('front_office_blog_homepage')}}"></p>
+
+			            {% endif %}
+
+	            </div>
+
+                <div class="well col-lg-4">
+
+                    <a href="{{ path('front_office_user_showFriends') }}">Voir mes amis</a><br><br>
+                    <a href="{{ path('front_office_user_invitations') }}">Voir mes invitations</a><br><br>
+                    <a href="{{ path('front_office_user_showTeams') }}">Voir mes équipes</a><br><br>
+                    <a href="{{ path('front_office_user_showArticles') }}">Voir mes articles</a><br><br>
+                    <a href="{{ path('front_office_user_showTournaments') }}">Voir mes tournois</a><br><br>
+                    <a href="{{ path('front_office_user_showMatches') }}">Voir mes matches</a><br><br>
+
+                    <hr />          
+
+                </div>  	               	           	           	       
 
     		</div>
 

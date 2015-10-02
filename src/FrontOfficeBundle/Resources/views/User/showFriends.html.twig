@@ -2,50 +2,69 @@
 
 	{% block content %}
 
-        <div style="margin-top:45px;" class="container">
-            <div class="well col-lg-10">
+       <div style="margin-top:45px;" class="container">
 
-                <h2>Mes amis</h2>
+            <div class="row">    
 
-                {% for message in app.session.flashbag.get('succes') %}
-                    {{ message }}
-                {% endfor %}
+                <div class="well col-lg-8">
 
-                {% for messag in app.session.flashbag.get('notice') %}
-                    {{ messag }}
-                {% endfor %}
+                    <h2>Mes amis</h2>
 
-                {% if app.user.friend is not empty %}
-
-                    {% for friend in app.user.friend %}
-                		<div class="row">
-                            <div class="col-lg-12">
-
-                                <h1 class="page-header">{{ friend.username}}                              
-
-                                    {% for sport in friend.sportPracticed %}
-                                        <small>SPORT : {{ sport.name }}</small>
-                                    {% endfor %}
-
-                                        <small>AGE : {{ friend.age }} ans</small>
-                                </h1>
-                                <a href="{{ path('front_office_invitation_new',{userTo:friend.id}) }}"><button>Invite ton ami !</button></a>
-                                <a href="{{ path('front_office_user_one',{id:friend.id}) }}"><button>Voir son profil</button></a>
-                                <a href="{{ path('front_office_user_getOutFriend',{id:friend.id}) }}"><button>Retirer ce joueur de la liste d'amis</button></a>
-                                
-                            </div>
-                        </div>
-
-                       
+                    {% for message in app.session.flashbag.get('succes') %}
+                        {{ message }}
                     {% endfor %}
 
-                {% else %}
+                    {% for messag in app.session.flashbag.get('notice') %}
+                        {{ messag }}
+                    {% endfor %}
 
-                    <p>Vous n'avez sélectionné personne dans votre liste d'amis !</p>
+                    {% if app.user.friend is not empty %}
 
-                {% endif %}
+                        {% for friend in app.user.friend %}
+                    		<div class="row">
+                                <div class="col-lg-12">
+
+                                    <h1 class="page-header">{{ friend.username}}                              
+
+                                        {% for sport in friend.sportPracticed %}
+                                            <small>SPORT : {{ sport.name }}</small>
+                                        {% endfor %}
+
+                                            <small>AGE : {{ friend.age }} ans</small>
+                                    </h1>
+                                    <a href="{{ path('front_office_invitation_new',{userTo:friend.id}) }}"><button>Invite ton ami !</button></a>
+                                    <a href="{{ path('front_office_user_one',{id:friend.id}) }}"><button>Voir son profil</button></a>
+                                    <a href="{{ path('front_office_user_getOutFriend',{id:friend.id}) }}"><button>Retirer ce joueur de la liste d'amis</button></a>
+                                    
+                                </div>
+                            </div>
+
+                           
+                        {% endfor %}
+
+                    {% else %}
+
+                        <p>Vous n'avez sélectionné personne dans votre liste d'amis !</p>
+
+                    {% endif %}
+
+                </div>
+
+                <div class="well col-lg-4">
+
+                    <a href="{{ path('front_office_user_showFriends') }}">Voir mes amis</a><br><br>
+                    <a href="{{ path('front_office_user_invitations') }}">Voir mes invitations</a><br><br>
+                    <a href="{{ path('front_office_user_showTeams') }}">Voir mes équipes</a><br><br>
+                    <a href="{{ path('front_office_user_showArticles') }}">Voir mes articles</a><br><br>
+                    <a href="{{ path('front_office_user_showTournaments') }}">Voir mes tournois</a><br><br>
+                    <a href="{{ path('front_office_user_showMatches') }}">Voir mes matches</a><br><br>
+
+                    <hr />          
+
+                </div>  
 
             </div>
+
         </div>
         
         <!-- /.row -->
