@@ -143,7 +143,7 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="UserBundle\Entity\User", mappedBy="user")
      *
      */
-    protected $invitation;
+    protected $invitationAccepted;
 
     /**
      * @var string
@@ -1077,5 +1077,38 @@ class User extends BaseUser
     public function getTournament()
     {
         return $this->tournament;
+    }
+
+    /**
+     * Add invitationAccepted
+     *
+     * @param \UserBundle\Entity\User $invitationAccepted
+     * @return User
+     */
+    public function addInvitationAccepted(\UserBundle\Entity\User $invitationAccepted)
+    {
+        $this->invitationAccepted[] = $invitationAccepted;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitationAccepted
+     *
+     * @param \UserBundle\Entity\User $invitationAccepted
+     */
+    public function removeInvitationAccepted(\UserBundle\Entity\User $invitationAccepted)
+    {
+        $this->invitationAccepted->removeElement($invitationAccepted);
+    }
+
+    /**
+     * Get invitationAccepted
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitationAccepted()
+    {
+        return $this->invitationAccepted;
     }
 }

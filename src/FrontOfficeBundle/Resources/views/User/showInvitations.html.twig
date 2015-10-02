@@ -55,6 +55,9 @@
                                 Adversaire: {{ invit.userFrom }}<br>
                             {% endif %}
 
+                            <a href="{{ path('front_office_invitation_response',{id:invit.id})}}">Accepter l'invitation</a><br>
+                        <hr>
+
                         {% endfor %}
 
                    

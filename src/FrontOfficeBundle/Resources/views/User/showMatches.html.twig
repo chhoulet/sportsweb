@@ -2,14 +2,27 @@
 
 	{% block content %}
 
-		<h3>Mes matches</h3>
+		<h3>Mes rencontres :</h3>
 
 			{% for mat in  app.user.matche %}
 				
 				Date : {{ mat.dateplay | date('d-m-Y H:i:s') }}<br>
 				Lieu: {{ mat.place }}<br>
 				Mode : {{ mat.mode }}<br>
+				Organisateur :{{ mat.organizer }}<br>
 				Adversaire :{{ mat.partner }}<br>
+				<hr>
 			{% endfor %}
+
+			{% for mat in  matchesPartner %}
+				
+				Date : {{ mat.dateplay | date('d-m-Y H:i:s') }}<br>
+				Lieu: {{ mat.place }}<br>
+				Mode : {{ mat.mode }}<br>
+				Organisateur :{{ mat.organizer }}<br>
+				Adversaire :{{ mat.partner }}<br>
+				<hr>
+			{% endfor %}
+
 
 	{% endblock %}
