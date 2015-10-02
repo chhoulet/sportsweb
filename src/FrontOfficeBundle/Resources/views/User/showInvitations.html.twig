@@ -9,155 +9,86 @@
 
                     <h3>Invitations envoyées :</h3>
 
-                        {% for invit in invitationlaunched %}
+                        {% if (invitationlaunched is not empty) %}
 
-                            Message : {{ invit.content }}<br>
-                            Date : {{ invit.dateInvit | date('d-m-Y H:i:s') }}<br>
-                            Discipline : {{ invit.sport }}<br>
-                            Mode : {{ invit.mode }}<br>
-                            Ville : {{ invit.place }}<br>
+                            {% for invit in invitationlaunched %}
 
-                            {% if (invit.userTo) %}
-                                Adversaire: {{ invit.userTo }}<br>
-                            {% endif %}
+                                Message : {{ invit.content }}<br>
+                                Date : {{ invit.dateInvit | date('d-m-Y H:i:s') }}<br>
+                                Discipline : {{ invit.sport }}<br>
+                                Mode : {{ invit.mode }}<br>
+                                Ville : {{ invit.place }}<br>
 
-                        {% endfor %}
+                                {% if (invit.userTo) %}
+                                    Adversaire: {{ invit.userTo }}<br>
+                                {% endif %}
+
+                            {% endfor %}
+
+                        {% else %}
+
+                            <p>Vous n'avez envoyé aucune invitation !</p>
+
+                        {% endif %}
 
 
                     <h3>Invitations acceptées :</h3>
 
-                        {% for invit in invitationsAccepted %}
+                        {% if (invitationsAccepted is not empty) %}
 
-                            Message : {{ invit.content }}<br>
-                            Date : {{ invit.dateInvit | date('d-m-Y H:i:s') }}<br>
-                            Discipline : {{ invit.sport }}<br>
-                            Mode : {{ invit.mode }}<br>
-                            Ville : {{ invit.place }}<br>
+                            {% for invit in invitationsAccepted %}
 
-                            {% if (invit.userFrom) %}
-                                Adversaire: {{ invit.userFrom }}<br>
-                            {% endif %}
+                                Message : {{ invit.content }}<br>
+                                Date : {{ invit.dateInvit | date('d-m-Y H:i:s') }}<br>
+                                Discipline : {{ invit.sport }}<br>
+                                Mode : {{ invit.mode }}<br>
+                                Ville : {{ invit.place }}<br>
 
-                            <hr>
+                                {% if (invit.userFrom) %}
+                                    Adversaire: {{ invit.userFrom }}<br>
+                                {% endif %}
 
-                        {% endfor %}
+                                <a href="{{ path('front_office_invitation_denied', {id:invit.id}) }}"><button>Refuser l'invitation</button></a>
+
+                                <hr>
+
+                            {% endfor %}
+
+                        {% else %}
+
+                            <p>Vous n'avez encore accepté aucune invitation !</p>
+
+                        {% endif %}
 
 
                     <h3>Invitations reçues :</h3>
 
-                        {% for invit in invitationReceived %}
+                        {% if (invitationReceived is not empty) %}
 
-                            Message : {{ invit.content }}<br>
-                            Date : {{ invit.dateInvit | date('d-m-Y H:i:s') }}<br>
-                            Discipline : {{ invit.sport }}<br>
-                            Mode : {{ invit.mode }}<br>
-                            Ville : {{ invit.place }}<br>
+                            {% for invit in invitationReceived %}
 
-                            {% if (invit.userFrom) %}
-                                Adversaire: {{ invit.userFrom }}<br>
-                            {% endif %}
+                                Message : {{ invit.content }}<br>
+                                Date : {{ invit.dateInvit | date('d-m-Y H:i:s') }}<br>
+                                Discipline : {{ invit.sport }}<br>
+                                Mode : {{ invit.mode }}<br>
+                                Ville : {{ invit.place }}<br>
 
-                            <a href="{{ path('front_office_invitation_response',{id:invit.id})}}">Accepter l'invitation</a><br>
-                        <hr>
+                                {% if (invit.userFrom) %}
+                                    Adversaire: {{ invit.userFrom }}<br>
+                                {% endif %}
 
-                        {% endfor %}
+                                <a href="{{ path('front_office_invitation_response',{id:invit.id})}}">Accepter l'invitation</a><br>                                
+                                <a href="{{ path('front_office_invitation_denied', {id:invit.id}) }}"><button>Refuser l'invitation</button></a>
+                                <a href="{{ path('front_office_invitation_deletefrom_monprofil', {id:invit.id}) }}"><button>Supprimer l'invitation</button></a>
 
-                   
+                            <hr>
 
-                        {# {% for invit in app.user.invitationsReceived if invit.dateAccepted is not null %}
+                            {% endfor %}
 
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h3 >{{ invit.userFrom}} vous invite à jouer au {{ invit.sport }}<br>
-                                        <small>{{ invit.content }}</small><br>
-                                        <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small>                      
-                                        <small>VILLE : {{ invit.place }} </small>  
-                                        <small>MODE : {{ invit.mode }} </small><br>
-                                    </h3>
-                                    <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}"><button>Détails de l'invitation</button></a>
-                                    <a href="{{ path('front_office_invitation_deletefrom_monprofil', {id:invit.id}) }}"><button>Supprimer l'invitation</button></a>
-                                </div>
-                            </div>                            
-                       
-                        {% endfor %} #}
+                        {% else %}
 
-               {#  </div>
+                            <p>Vous n'avez reçu aucune invitation ! <a href="{{ path('front_office_users_list')}}">Faîtes-vous des amis</a>
 
-                <div class="container"> 
-
-                    <h2>Invitations envoyées:</h2>
-
-                        {% for invit in app.user.invitationsSent %}
-
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h3 >{{ invit.userFrom}} vous invite à jouer au {{ invit.sport }}<br>
-                                        <small>{{ invit.content }}</small><br>
-                                        <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small>                      
-                                        <small>VILLE : {{ invit.place }} </small>  
-                                        <small>MODE : {{ invit.mode }} </small><br>
-                                    </h3>
-                                </div>
-                            </div>
-
-                            <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}"><button>Détails de l'invitation</button></a>
-                            <a href="{{ path('front_office_invitation_deletefrom_monprofil', {id:invit.id}) }}"><button>Supprimer l'invitation</button></a>
-                       
-                        {% endfor %}  
-                </div> 
-
-                <div class="container">            
-
-                    <h2>Invit reçues :</h2>
-
-                        {% for invit in invitation %}
-
-                            <div style="margin-top:45px;" class="row">
-                                <div class="col-lg-12">
-                                    <h3 >{{ invit.userFrom}} vous invite à jouer au {{ invit.sport }}<br>
-                                        <small>{{ invit.content }}</small><br>
-                                        <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small>                     
-                                        <small>VILLE : {{ invit.place }} </small>  
-                                        <small>MODE : {{ invit.mode }} </small><br>
-                                    </h3>
-                                </div>
-                            </div>
-
-                            <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}"><button>Détails de l'invitation</button></a>
-                            <a href="{{ path('front_office_invitation_response', {id:invit.id}) }}"><button>Accepter l'invitation<button></a>
-                            <a href="{{ path('front_office_invitation_denied', {id:invit.id}) }}"><button>Refuser l'invitation</button></a>
-                            <a href="{{ path('front_office_invitation_deletefrom_monprofil', {id:invit.id}) }}"><button>Supprimer l'invitation</button></a>
-
-                        {% endfor %}
-
-                </div>        
-
-                <div class="container">     
-
-                    <h2>Invit refusées</h2>
-
-                        {% for invit in app.user.invitationsReceived if invit.dateDenied is not null %}
-
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h3 >{{ invit.userFrom}} vous invite à jouer au {{ invit.sport }}<br>
-                                        <small>{{ invit.content }}</small><br>
-                                        <small>DATE : {{ invit.dateInvit | date('d-m-Y H:i') }}</small>                      
-                                        <small>VILLE : {{ invit.place }} </small>  
-                                        <small>MODE : {{ invit.mode }} </small><br>
-
-                                        <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}"><button>Détails de l'invitation</button></a>
-                                    </h3>
-                                </div>
-                            </div>
-                       
-                        {% endfor %}
-
-                </div>
-               
-            </div>
-        </div>
-         #}
-        <!-- /.row -->
+                        {% endif %}                                          
 
 	{% endblock %}
