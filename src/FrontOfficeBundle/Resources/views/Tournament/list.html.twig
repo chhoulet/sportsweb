@@ -2,25 +2,45 @@
 
 	{% block content %}
 
-		<h2>Tournois</h2>
+		<div style="margin-top:45px;" class="container">
 
-			{% for tour in tournaments %}
-					<a href="{{ path('front_office_tournament_edit',{id:tour.id}) }}">{{ tour.name }}</a><br>
-				{{ tour.description }}<br>
-					{% if tour.privat == true %}
-						<p>Tournoi privé</p><br>
-					{% else %}
-						<p>Tournoi public</p>
-					{% endif %}
+            <div class="row">    
 
-					{% if tour.teams is not empty %}
-						{% for tea in tour.teams %}
-							{{ tea.name }}<br>
-							{{ tea.typeOfGame }}<br>
-							{{ tea.habitsOfGame }}<br>
-						{% endfor %}
-					{% endif %}
+                <div class="well col-lg-12">
 
-			{% endfor %}
+					<h2>Tournois</h2>
+
+						{% if tournaments is not empty %}
+
+							{% for tour in tournaments %}
+									<a href="{{ path('front_office_tournament_edit',{id:tour.id}) }}">{{ tour.name }}</a><br>
+								{{ tour.description }}<br>
+									{% if tour.privat == true %}
+										<p>Tournoi privé</p><br>
+									{% else %}
+										<p>Tournoi public</p>
+									{% endif %}
+
+									{% if tour.teams is not empty %}
+										{% for tea in tour.teams %}
+											{{ tea.name }}<br>
+											{{ tea.typeOfGame }}<br>
+											{{ tea.habitsOfGame }}<br>
+										{% endfor %}
+									{% endif %}
+
+							{% endfor %}
+
+						{% else %}
+
+							<p>Aucun tournoi n'est encore programmé !</p>
+
+						{% endif %}
+
+				</div>
+
+			</div>
+
+		</div>
 
 	{% endblock %}

@@ -2,8 +2,11 @@
 
 	{% block content %}
 
-		<div class="container">
-            <div class="well col-lg-10">             
+		<div style="margin-top:45px;" class="container">
+
+            <div class="row">    
+
+                <div class="well col-lg-12">         
 		
 					<h2> Liste des teams </h2>
 
@@ -17,35 +20,46 @@
 							{{ messa }}
 						{% endfor %}
 
-						{% for tea in listTeams %}
+						{% if listTeams is not empty %}
 
-			                <h2>
-			                    <a href="{{ path('front_office_team_one',{id:tea.id}) }}">{{ tea.name }}</a>
-			                </h2>
-			                <p class="lead">
-			                   Sport pratiqué : {{ tea.sportPracticed }}<br>								            
-			                   Equipe créée par : <a href="{{ path('front_office_user_one',{id:tea.admin.id}) }}">{{ tea.admin }}</a><br>
-			                </p>
-			                <p><span class="glyphicon glyphicon-time"></span> {{ tea.dateCreated | date('d-m-Y') }}</p>
-			                <hr>
-			                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-			                <hr>
-			                <p>{{ tea.typeOfGame }}</p><br>
-			                  <p>{{ tea.habitsOfGame }}</p><br>	
+							{% for tea in listTeams %}
 
-			                  	{# {% if(is_granted('ROLE_USER')) and app.user.teamsAdmin is not null %}	
-			                  		<a href="{{ path('front_office_invitation_new',{teamTo:tea.id,teamFrom:app.user.teamsAdmin})}}">
-			                  	{% endif %} #}
-			                			            
-				                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
-				                	<a class="btn btn-primary" href="{{ path('back_office_team_delete',{id:tea.id}) }}">Suppression team<span class="glyphicon glyphicon-chevron-right"></span></a>
-				                {% endif %}
-			                
-		                	<hr>		                	
+				                <h2>
+				                    <a href="{{ path('front_office_team_one',{id:tea.id}) }}">{{ tea.name }}</a>
+				                </h2>
+				                <p class="lead">
+				                   Sport pratiqué : {{ tea.sportPracticed }}<br>								            
+				                   Equipe créée par : <a href="{{ path('front_office_user_one',{id:tea.admin.id}) }}">{{ tea.admin }}</a><br>
+				                </p>
+				                <p><span class="glyphicon glyphicon-time"></span> {{ tea.dateCreated | date('d-m-Y') }}</p>
+				                <hr>
+				                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+				                <hr>
+				                <p>{{ tea.typeOfGame }}</p><br>
+				                  <p>{{ tea.habitsOfGame }}</p><br>	
 
-	            		{% endfor %}
-	            			
+				                  	{# {% if(is_granted('ROLE_USER')) and app.user.teamsAdmin is not null %}	
+				                  		<a href="{{ path('front_office_invitation_new',{teamTo:tea.id,teamFrom:app.user.teamsAdmin})}}">
+				                  	{% endif %} #}
+				                			            
+					                {% if(is_granted('ROLE_SUPER_ADMIN')) %}
+					                	<a class="btn btn-primary" href="{{ path('back_office_team_delete',{id:tea.id}) }}">Suppression team<span class="glyphicon glyphicon-chevron-right"></span></a>
+					                {% endif %}
+				                
+			                	<hr>		                	
+
+		            		{% endfor %}
+
+		            	{% else %}
+
+		            		<p>Aucune équipe n'est encore enregistrée!</p>
+
+		            	{% endif %}
+
+	            </div>
+
 			</div>
+			
 		</div>
 		
 	{% endblock %}
