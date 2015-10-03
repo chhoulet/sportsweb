@@ -165,7 +165,7 @@ back_office_admin_warnedUsers:
 
     # Suppression d'un user par l'administrateur:
 back_office_admin_user_delete:
-    path:     /delete
+    path:     /delete/{id}
     defaults: { _controller: BackOfficeBundle:User:delete}
 
     # Vue des stats Users:

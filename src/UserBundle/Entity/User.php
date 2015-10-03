@@ -102,7 +102,6 @@ class User extends BaseUser
      /**
      * @var \DateTime
      *
-     * @Assert\DateTime()
      * @ORM\Column(name="dateValidated", type="datetime", nullable=true)
      */
     private $dateValidated;
@@ -117,7 +116,6 @@ class User extends BaseUser
      /**
      * @var \DateTime
      *
-     * @Assert\DateTime()
      * @ORM\Column(name="dateWarned", type="datetime", nullable=true)
      */
     private $dateWarned;
@@ -125,7 +123,6 @@ class User extends BaseUser
      /**
      * @var \DateTime
      *
-     * @Assert\DateTime()
      * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;

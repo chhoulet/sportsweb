@@ -18,6 +18,10 @@
 
                         <p>Age: {{ user.age }}</p>
 
+                        {% for sport in user.favouriteSport %}
+                            <p>Sport favori: {{ sport .name }}
+                        {% endfor %}
+
                         {% for sport in user.sportPracticed %}
                             <p>Sport pratiqué: {{ sport.name }}</p>
                         {% endfor %}

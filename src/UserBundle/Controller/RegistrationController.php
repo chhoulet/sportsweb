@@ -9,6 +9,9 @@ class RegistrationController extends BaseController
     public function registerAction()
     {
         $response = parent::registerAction();
+
+         
+
         /*$postCode = $this -> getUser()->getPostCode();
 
         /*Attribution automatique de valeur à l'attribut Region selon la valeur de postCode*/
