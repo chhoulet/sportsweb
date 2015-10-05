@@ -80,11 +80,42 @@
                     
                 </div>
 
-                {% block sidebar %}
+                 <div class="col-md-4">
 
-                    {{ include('FrontOfficeBundle:Blog:sidebar.html.twig') }}
+                    <!-- Blog Search Well -->
+                    <div class="well">
+                        <h4>Blog Search</h4>
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                            </span>
+                        </div>
+                        <!-- /.input-group -->
+                    </div>
 
-                {% endblock %}
+                    <!-- Blog Categories Well -->
+                    <div class="well">
+
+                        <h4>Blog Categories</h4>
+
+                            <div class="row">
+
+                                {% for sport in sports %}
+
+                                    <ul class="list-unstyled">                                    
+                                        <li><a href="{{ path('front_office_blog_triBySport',{sport:sport}) }}">{{sport.name}}</a></li> 
+                                    </ul>
+
+                                {% endfor %}  
+
+                            </div>
+
+                    </div>  
+
+                </div>         
 
             </div>
 

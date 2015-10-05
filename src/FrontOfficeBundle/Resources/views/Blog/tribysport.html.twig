@@ -15,29 +15,66 @@
 	                </h1>
 
 	                <!-- First Blog Post -->
-	                {% for art in articles %}
-		                <h2>
-		                    <a href="{{ path('front_office_blog_one',{id:art.id}) }}">{{ art.title }}</a>
-		                </h2>
-		                <p class="lead">
-		                    by {% for at in art.author %}<a href="{{ path('front_office_user_one',{id:at.id}) }}">{{ at.username }}{% endfor %}</a>
-		                </p>
-		                <p><span class="glyphicon glyphicon-time"></span> {{ art.dateCreated | date('d-m-Y H:i:s')}}</p>
-		                <hr>
-		                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-		                <hr>
-		                <p>{{ art.content }}</p>
-		               
-		                <hr>
-	            	{% endfor %}
+	                
+
+		                {% for art in articles %}
+			                <h2>
+			                    <a href="{{ path('front_office_blog_one',{id:art.id}) }}">{{ art.title }}</a>
+			                </h2>
+			                <p class="lead">
+			                    by {% for at in art.author %}<a href="{{ path('front_office_user_one',{id:at.id}) }}">{{ at.username }}{% endfor %}</a>
+			                </p>
+			                <p><span class="glyphicon glyphicon-time"></span> {{ art.dateCreated | date('d-m-Y H:i:s')}}</p>
+			                <hr>
+			                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+			                <hr>
+			                <p>{{ art.content }}</p>
+			               
+			                <hr>
+		            	{% endfor %}
+
+		            
 	               	                
 	            </div>
 
-	            {% block sidebar %}
+	            
+                 <div class="col-md-4">
 
-    				{{ include('FrontOfficeBundle:Blog:sidebar.html.twig') }}
+                    <!-- Blog Search Well -->
+                    <div class="well">
+                        <h4>Blog Search</h4>
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                            </span>
+                        </div>
+                        <!-- /.input-group -->
+                    </div>
 
-    			{% endblock %}
+                    <!-- Blog Categories Well -->
+                    <div class="well">
+
+                        <h4>Blog Categories</h4>
+
+                            <div class="row">
+
+                                {% for sport in sports %}
+
+                                    <ul class="list-unstyled">                                    
+                                        <li><a href="{{ path('front_office_blog_triBySport',{sport:sport}) }}">{{sport.name}}</a></li> 
+                                    </ul>
+
+                                {% endfor %}  
+
+                            </div>
+
+                    </div>  
+
+                </div>         
+
 
     		</div>
 

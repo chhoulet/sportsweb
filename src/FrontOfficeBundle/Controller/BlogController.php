@@ -15,6 +15,7 @@ class BlogController extends Controller
 	{
 		$em = $this -> getDoctrine()->getmanager();
 		$session = $request -> getSession();
+		$sports = $em -> getRepository('FrontOfficeBundle:Sport')->findAll();
 		$article = $em -> getRepository('FrontOfficeBundle:Article')-> getArticle();
 
 		#Code permettant la creation des articles du blog :
@@ -36,7 +37,8 @@ class BlogController extends Controller
 		}
 		
 		return $this -> render('FrontOfficeBundle:Blog:homepage.html.twig',
-		    array('articles' => $article,		    	 
+		    array('sports'     => $sports,
+		    	  'articles'   => $article,		    	 
 		    	  'formArticle'=> $formArticle -> createView()));
 	}
 
@@ -53,6 +55,7 @@ class BlogController extends Controller
 	{
 		$em = $this ->getDoctrine()->getManager();
 		$session = $request -> getSession();
+		$sports = $em -> getRepository('FrontOfficeBundle:Sport')->findAll();
 		$article = $em -> getRepository('FrontOfficeBundle:Article') ->find($id);
 		$comment = new Comment();
 		$form = $this -> createForm(new CommentType(), $comment);
@@ -79,15 +82,19 @@ class BlogController extends Controller
 		}
 
 		return $this -> render('FrontOfficeBundle:Blog:one.html.twig', 
-			array('article'=> $article,
+			array('sports' => $sports,
+				  'article'=> $article,
 				  'form'   => $form -> createView()));
 	}
 
 	public function triBySportAction($sport)
 	{
 		$em = $this ->getDoctrine()->getManager();
+		$sports = $em -> getRepository('FrontOfficeBundle:Sport')->findAll();
 		$triArticles = $em -> getRepository('FrontOfficeBundle:Article') -> triArticle($sport);		
 
-		return $this -> render('FrontOfficeBundle:Blog:tribysport.html.twig', array('articles'=>$triArticles));
+		return $this -> render('FrontOfficeBundle:Blog:tribysport.html.twig',
+			array('sports'     => $sports,
+				  'articles'=>$triArticles));
 	}
 }
