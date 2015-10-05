@@ -40,15 +40,7 @@ class BlogController extends Controller
 		    array('sports'     => $sports,
 		    	  'articles'   => $article,		    	 
 		    	  'formArticle'=> $formArticle -> createView()));
-	}
-
-	/*public function listAction()
-	{
-		$em = $this -> getDoctrine() -> getManager();
-		$list = $em -> getRepository('FrontOfficeBundle:Sport')->findAll();
-		return $this -> render('FrontOfficeBundle:Blog:sidebar.html.twig', 
-			array('list' => $list));
-	}*/
+	}	
 
 	/*Selection d'un article avec formulaire de creation de commentaires + message flash*/
 	public function oneAction(Request $request, $id)
@@ -87,14 +79,34 @@ class BlogController extends Controller
 				  'form'   => $form -> createView()));
 	}
 
-	public function triBySportAction($sport)
+	public function triBySportAction(Request $request, $sport)
 	{
 		$em = $this ->getDoctrine()->getManager();
 		$sports = $em -> getRepository('FrontOfficeBundle:Sport')->findAll();
-		$triArticles = $em -> getRepository('FrontOfficeBundle:Article') -> triArticle($sport);		
+		$triArticles = $em -> getRepository('FrontOfficeBundle:Article') -> triArticle($sport);	
+		$newArticle = new Article();
+		$session = $request -> getSession();
+		$form = $this -> createForm(new ArticleType(),$newArticle);
+
+		$form -> handleRequest($request);
+
+		if ($form -> isValid())
+		{
+			$newArticle -> setDateCreated(new \datetime('now'));
+			$newArticle -> setValidationAdmin(false);
+			$newArticle -> setWarned(false);
+			$newArticle -> setArchived(false);
+			$newArticle -> addAuthor($this -> getUser());
+			$em -> persist($newArticle);
+			$em -> flush();
+
+			$session -> getFlashbag()->add('articlecrea', 'Votre article est enregistré ! Il sera publié après validation. Merci !');
+			return $this -> redirect($this -> generateUrl('front_office_blog_homepage'));	
+		}
 
 		return $this -> render('FrontOfficeBundle:Blog:tribysport.html.twig',
-			array('sports'     => $sports,
-				  'articles'=>$triArticles));
+			array('form'    => $form -> createView(),
+				  'sports'  => $sports,
+				  'articles'=> $triArticles));
 	}
 }

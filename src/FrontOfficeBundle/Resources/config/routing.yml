@@ -53,12 +53,7 @@ front_office_invitation_delete:
 # Routes administrant le blog:
 front_office_blog_homepage:
     path:     /blogHomepage 
-    defaults: { _controller: FrontOfficeBundle:Blog:homepage}
-
-#     # Route administrant la sidebar:
-# front_office_blog_sidebar_list:
-#     path:     /listSport
-#     defaults: { _controller: FrontOfficeBundle:Blog:list}
+    defaults: { _controller: FrontOfficeBundle:Blog:homepage}    
 
     # Tri des Articles par category:
 front_office_blog_triBySport:

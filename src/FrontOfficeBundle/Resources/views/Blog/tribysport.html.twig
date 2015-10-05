@@ -11,11 +11,11 @@
 
 	                <h1 class="page-header">
 	                    Sports Web
-	                    <small><a href="{{ path('front_office_blog_homepage') }}">Blog :</small>
+	                    <small><a href="{{ path('front_office_blog_homepage') }}">Blog :</a></small>
 	                </h1>
 
 	                <!-- First Blog Post -->
-	                
+	                {% if articles is not empty %}
 
 		                {% for art in articles %}
 			                <h2>
@@ -33,7 +33,20 @@
 			                <hr>
 		            	{% endfor %}
 
-		            
+		            {% else %}
+
+		            	<p>Aucun article ne figure dans cette catégorie.</p>
+		            		{% if (is_granted('ROLE_USER')) %}
+
+		            			<p>Publier votre article :</p>
+
+		            				{{ form(form) }}
+
+		            		{% else %}
+		            			<a href="{{ path('fos_user_security_login')}}">Connectez-vous pour publier un article</a>
+		            		{% endif %}
+
+		            {% endif %}
 	               	                
 	            </div>
 

@@ -9,12 +9,23 @@
                 <!-- Blog Post Content Column -->
                 <div class="col-md-8">
 
+                    <h1 class="page-header">
+                        Sports Web
+                        <small><a href="{{ path('front_office_blog_homepage') }}">Blog :</a></small>
+                    </h1>
+
                 <!-- Blog Post -->
 
                     {% for message in app.session.flashbag.get('succes') %}
                         <div class="container">
                             <div class="row">
                                 <h4>{{ message }}</h4>
+                    {% endfor %}
+
+                    {% for messa in app.session.flashbag.get('articlecrea') %}
+                        <div class="container">
+                            <div class="row">
+                                <h4>{{ messa }}</h4>
                     {% endfor %}
 
                 <!-- Title -->
@@ -92,8 +103,10 @@
 
                             </div>
 
-                    </div>  
-                                                                                                          
+                     </div>  
+
+                </div> 
+
             </div>
 
         </div>
