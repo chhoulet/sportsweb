@@ -25,20 +25,23 @@ class CommentController extends Controller
 	}
 
 	# Suppression des non-validés:
-	public function deleteAction($id)
+	public function deleteAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()-> getManager();
+		$session = $request -> getSession();
 		$comment = $em -> getRepository('FrontOfficeBundle:Comment')->find($id);
 		$em -> remove($comment);
 		$em -> flush();
 		
+		$session -> getFlashbag()->add('delete','Ce commentaire est supprimé !');
 		return $this ->redirect($this -> generateUrl('back_office_comment_admin'));
 	}
 
 	# Validation des comments :
-	public function responseAction($id)
+	public function responseAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()-> getManager();
+		$session = $request -> getSession();
 		$comment = $em -> getRepository('FrontOfficeBundle:Comment')->find($id);
 		$comment -> setValidationAdmin(true);
 		$comment -> setCensored(false);
@@ -46,6 +49,7 @@ class CommentController extends Controller
 		$em -> persist($comment);
 		$em -> flush();
 
+		$session ->getFlashbag()->add('valid','Ce commentaire est validé !');
 		return $this -> redirect($this -> generateUrl('back_office_comment_admin'));
 	}
 

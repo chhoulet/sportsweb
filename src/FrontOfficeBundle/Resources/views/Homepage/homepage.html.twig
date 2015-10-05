@@ -54,13 +54,15 @@
                                 <p>{{ message }}</p>
                             {% endfor %}                            
 
-                            <h5 class="section-heading" style="padding-top:20px;">Voir les invitations de {{ app.user.favouriteSport }} :</h5>
+                            <h3 style="padding-top:20px;">Voir les invitations de {{ app.user.favouriteSport }} :</h3>
 
                                 {% if (invitForConnectedUser is not empty) %}
-                                    {% for invit in invitForConnectedUser %}    
+                                    {% for invit in invitForConnectedUser %} 
+
+                                        {{ invit.user.username }}   t'invite le 
                                         
-                                        <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p><br>
-                                        <p class="section-paragraph">{{ invit.content }}</p><br>
+                                        {{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}
+                                        {{ invit.content }}<br><br>
 
                                         <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}"><button>Voir cette invitation</button></a>
 

@@ -10,6 +10,16 @@
 					{% for message in app.session.flashbag.get('notice') %}
 						{{ message }}
 					{% endfor %}
+
+					{% for messa in app.session.flashbag.get('delete') %}
+						{{ messa }}
+					{% endfor %}
+
+					{% for mess in app.session.flashbag.get('valid') %}
+						{{ mess }}
+					{% endfor %}
+
+
 		
 					<h2> Liste des commentaires non-controlés : Team</h2>						
 
