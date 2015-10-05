@@ -64,9 +64,11 @@
 
                                         <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}"><button>Voir cette invitation</button></a>
 
-                                        <a href="{{ path('front_office_invitation_response',{id:invit.id}) }}"><button>Accepter l'invitation</button></a>
+                                        {% if (app.user.id != invit.user.id) %}
+                                            <a href="{{ path('front_office_invitation_response',{id:invit.id}) }}"><button>Accepter l'invitation</button></a>
+                                        {% endif %}
                                         
-                                        {% if (is_granted('ROLE_SUPER_ADMIN')) %}
+                                        {% if (is_granted('ROLE_SUPER_ADMIN')) or (app.user.id == invit.user.id ) %}
                                             <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}"><button>Supprimer cette invitation</button></a>
                                         {% endif %}                                    
 
@@ -80,7 +82,7 @@
                                 {% endif %}
 
 
-                            <h3 class="section-heading" style="padding-top:20px;">Sélectionner les invitations {% for sport in app.user.sportPracticed %}{{ sport.name }} {% endfor %} :</h3>
+                            <h3 style="padding-top:20px;">Sélectionner les invitations {% for sport in app.user.sportPracticed %}{{ sport.name }} {% endfor %} :</h3>
                                
                                {#  {% for invit in invitationsBySportPracticed %}
 

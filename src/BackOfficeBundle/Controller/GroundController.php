@@ -35,7 +35,7 @@ class GroundController extends Controller
 			$postCode = $ground -> getPostCode();
 
 			/*Attribution automatique de valeur à l'attribut Region selon la valeur de postCode*/
-			$postcodes = array(75,77,78,91,92,93,95);
+			$postcodes = array(75,77,78,91,92,93,94,95);
 			if(in_array($postCode, $postcodes))
 			{
 				$ground -> setRegion('Ile-de-France');

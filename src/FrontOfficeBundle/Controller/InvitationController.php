@@ -43,7 +43,7 @@ class InvitationController extends Controller
 			$invitation ->setUserTo($userTo);
 			$invitation ->setSport($userSport);
 
-			$postcodes = array(75,77,78,91,92,93,95);
+			$postcodes = array(75,77,78,91,92,93,94,95);
 			if(in_array($postCode, $postcodes))
 			{
 				$invitation -> setRegion('Ile-de-France');
