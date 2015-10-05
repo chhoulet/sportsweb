@@ -9,14 +9,22 @@
 
 					<h2> Liste des terrains de sport:</h2>
 
-						{% for message in app.session.flashbag.get('succes') %}
+						{% for message in app.session.flashbag.get('notice') %}
 							{{ message }}
+						{% endfor %}
+
+						{% for messag in app.session.flashbag.get('succes') %}
+							{{ messag }}
+						{% endfor %}
+
+						{% for messa in app.session.flashbag.get('valid') %}
+							{{ messa }}
 						{% endfor %}
 
 						{% for art in grounds %}
 
 			                <h2>
-			                    <a href="#">{{ art.name }}</a>
+			                    <a href="{{ path('front_office_ground_one',{id:art.id}) }}">{{ art.name }}</a>
 			                </h2>
 			                <p class="lead">
 			                    Sport pratiqué : <a href="index.php">{% for play in art.sport %}{{ play.name }}{% endfor %}</a>

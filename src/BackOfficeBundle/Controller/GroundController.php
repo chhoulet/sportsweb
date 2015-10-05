@@ -104,13 +104,15 @@ class GroundController extends Controller
 			array('form'=>$form->createView()));
 	}
 
-	public function deleteAction($id)
+	public function deleteAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$ground = $em -> getRepository('FrontOfficeBundle:Ground')->find($id);
 		$em -> remove($ground);
 		$em -> flush();
 
+		$session -> getFlashbag() -> add('succes','Ce terrain est supprimé !');
 		return $this -> redirect($this -> generateUrl('back_office_ground_list'));
 	}
 
@@ -125,11 +127,13 @@ class GroundController extends Controller
 	public function validGroundAction(Request $request, $id)
 	{
 		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
 		$ground = $em -> getRepository('FrontOfficeBundle:Ground')->find($id);
 		$ground -> setValidAdmin(true);
 		$ground -> setDateValidated(new \datetime('now'));
 		$em -> flush();
 
+		$session -> getFlashbag() -> add('valid','Ce terrain est validé !');
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
 
