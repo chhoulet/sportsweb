@@ -33,7 +33,10 @@
 
                         {% if (is_granted('ROLE_USER')) %}
 
-                            <a href="{{ path('front_office_user_getFriend',{id:user.id}) }}">Ajouter à ma liste d'amis</a><br>
+                            {% if (app.user.id != user.id) %}
+                                <a href="{{ path('front_office_user_getFriend',{id:user.id}) }}">Ajouter à ma liste d'amis</a><br>
+                            {% endif %}
+                            
                             <a href="{{ path('front_office_invitation_new', {userTo:user.id}) }}">Lancer une invitation !</a><br>
                         {% else %}
 

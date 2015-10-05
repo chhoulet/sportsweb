@@ -1,0 +1,72 @@
+{% extends 'FrontOfficeBundle::layout.html.twig' %}
+
+	{% block content %}		
+		<hr>
+
+		{% if (tournament) %}
+			<strong>{{tournament.name}}</strong>
+
+				{% if (futuresMatches) %}
+						
+						<hr>
+					{% for mat in futuresMatches %}
+				        Lieu: {{ mat.place }}<br>
+				        Organisateur: {{ mat.organizer }}<br>
+				        Date: {{ mat.dateplay | date('d-m-Y H:i:s') }}<br>
+
+				        	{% if (mat.played) %}
+				        		Matche joué !<br>
+				        	{% elseif (mat.playedFuture) %}
+				        		Rencontre à venir !<br>
+				        	{% endif %}			    
+
+			        	<h4>Equipes</h4>
+
+				        {% for tea in mat.team %}
+				        	<a href="{{ path('front_office_team_one',{id:tea.id}) }}">{{ tea.name }}</a><br>
+				        		{{ tea.sportPracticed }}<br>
+				         		{{ tea.place }}<br>
+				         		{{ tea.typeOfGame }}<br>
+				         		{{ tea.habitsOfGame }}<br>		         					
+				        {% endfor %}	
+				    {% endfor %}
+
+				    <hr>
+
+				{% else %}		        		
+
+			    	<p>Aucun match n'est planifié pour ce tournoi !</p>
+
+			    {% endif %}
+
+				{% if (playedMatches) %}
+					<h2>Matchs joués</h2>
+						<hr>
+					{% for mat in futuresMatches %}
+				        Lieu: {{ mat.place }}<br>
+				        Organisateur: {{ mat.organizer }}<br>
+				        Date: {{ mat.dateplay | date('d-m-Y H:i:s') }}<br>
+
+				        	{% if (mat.played) %}
+				        		Matche joué !<br>
+				        	{% elseif (mat.playedFuture) %}
+				        		Rencontre à venir !<br>
+				        	{% endif %}			    
+
+			        	<h4>Equipes</h4>
+
+				        {% for tea in mat.team %}
+				        	<a href="{{ path('front_office_team_one',{id:tea.id}) }}">{{ tea.name }}</a><br>
+				        		{{ tea.sportPracticed }}<br>
+				         		{{ tea.place }}<br>
+				         		{{ tea.typeOfGame }}<br>
+				         		{{ tea.habitsOfGame }}<br>		         					
+				        {% endfor %}	
+				    {% endfor %}
+
+				    <hr>		   
+
+			    {% endif %}
+
+
+	{% endblock %}

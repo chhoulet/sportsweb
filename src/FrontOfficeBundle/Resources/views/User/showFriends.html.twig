@@ -32,6 +32,7 @@
 
                                             <small>AGE : {{ friend.age }} ans</small>
                                     </h1>
+                                    
                                     <a href="{{ path('front_office_invitation_new',{userTo:friend.id}) }}"><button>Invite ton ami !</button></a>
                                     <a href="{{ path('front_office_user_one',{id:friend.id}) }}"><button>Voir son profil</button></a>
                                     <a href="{{ path('front_office_user_getOutFriend',{id:friend.id}) }}"><button>Retirer ce joueur de la liste d'amis</button></a>
