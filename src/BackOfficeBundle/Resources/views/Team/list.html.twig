@@ -8,10 +8,18 @@
 		
 					<h2> Liste des teams non-controlées :</h2>
 
+						{% for message in app.session.flashbag.get('succes') %}
+							{{ message }}
+						{% endfor %}
+
+						{% for messag in app.session.flashbag.get('notice') %}
+							{{ messag }}
+						{% endfor %}
+
 						{% for tea in team %}
 
 			                <h2>
-			                    <a href="#">{{ tea.name }}</a>
+			                    <a href="{{ path('front_office_team_one',{id:tea.id}) }}">{{ tea.name }}</a>
 			                </h2>
 			                <p class="lead">
 			                    by <a href="index.php">{{ tea.sportPracticed }}</a>
