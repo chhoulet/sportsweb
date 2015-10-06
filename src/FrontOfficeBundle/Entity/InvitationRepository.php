@@ -105,17 +105,17 @@ class InvitationRepository extends EntityRepository
 	}
 
 	# Tri des invits par sport et place:
-	public function triBySportPlace($sport, $region)
+	public function triBySportPlace($idsSport, $region)
 	{
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT i 
 			FROM FrontOfficeBundle:Invitation i 
 			JOIN i.sport s
-			WHERE s.name LIKE :sport 
+			WHERE s.id IN (:sport) 
 			AND i.accepted = false
 			AND i.region LIKE :region 
 			ORDER BY i.dateInvit ASC')
-		->setParameter('sport', $sport)
+		->setParameter('sport', $idsSport)
 		->setParameter('region', $region);
 
 		return $query ->getResult();

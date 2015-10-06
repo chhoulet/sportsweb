@@ -24,13 +24,13 @@ class HomepageController extends Controller
         
         	# Appel des functions triant les invitations : par le sport favori de l'user
             $triInvitsBySport = $em -> getRepository('FrontOfficeBundle:Invitation') 
-                -> triInvitsBySport($sport);    
+                -> triInvitsBySport($sport);                
 
-           /* # Par les sports pratiqués par l'user:
+            # Par les sports pratiqués par l'user:
             $triInvitsBySportPracticed = $em -> getRepository('FrontOfficeBundle:Invitation') 
-                -> triBySportPlace($sportPracticed, $region);    */
+                -> triBySportPlace($idsSport, $region);                 
 
-                
+
             if($triInvitsBySport != ''){
                 return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
                     array('invitsBySport' => $triInvitsBySport));

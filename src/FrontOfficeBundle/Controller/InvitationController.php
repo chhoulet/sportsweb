@@ -20,9 +20,13 @@ class InvitationController extends Controller
 		$userSport = $this -> getUser() -> getFavouriteSport();
 		$form = $this -> createForm(new InvitationType(), $invitation);
 
-		if ($userTo || $teamTo || $teamFrom) {
+		if ($userTo ) {
 			$userTo = $em -> getRepository('UserBundle:User') -> find($userTo); // peut-être NULL
+			}
+		if($teamTo){
 			$teamTo = $em -> getRepository('FrontOfficeBundle:Team') -> find($teamTo);
+		}
+		if($teamFrom){
 			$teamFrom = $em -> getRepository('FrontOfficeBundle:Team') -> find($teamTo);
 		}	
 		

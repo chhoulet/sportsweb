@@ -84,12 +84,14 @@
                                 {% endif %}
 
 
-                            <h3 style="padding-top:20px;">Sélectionner les invitations {% for sport in app.user.sportPracticed %}{{ sport.name }} {% endfor %} :</h3>
+                            <h3 style="padding-top:20px;">Voir les invitations de {% for sport in app.user.sportPracticed %}{{ sport.name }}{% if loop.last == false %},{% endif %} {% endfor %} :</h3>
                            
-                                {# {% for invit in triInvitsBySportPracticed %}
+                                {% for invit in invitsBySportPracticed %}
 
-                                    <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p><br>
-                                    <p class="section-paragraph">{{ invit.content }}</p><br>
+                                    {{ invit.user.username }}   t'invite le 
+                                        
+                                        {{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}
+                                        {{ invit.content }}<br><br>
 
                                     <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}"><button>Voir cette invitation</button></a>
 
@@ -98,8 +100,8 @@
                                     {% if (is_granted('ROLE_SUPER_ADMIN')) %}
                                         <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}"><button>Supprimer cette invitation</button></a>
                                     {% endif %}
-
-                                {% endfor %} #}
+                                    <br />
+                                {% endfor %}
 
                                 <hr>
                                    
