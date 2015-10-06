@@ -24,7 +24,15 @@ class HomepageController extends Controller
         
         	# Appel des functions triant les invitations : par le sport favori de l'user
             $triInvitsBySport = $em -> getRepository('FrontOfficeBundle:Invitation') 
-                -> triInvitsBySport($sport);                
+                -> triInvitsBySport($sport);    
+ 
+            # On recupere les id de tous les sports de l'user, on les stocke dans un tableau:
+            $sportPracticedList = array();
+            for($i=0;$i<count($sportPracticed);$i++){
+                array_push($sportPracticedList, $sportPracticed[$i]->getId());
+            }
+            # Transformation du tableau en chaine de caractere pour pouvoir etre lu par la requete sql:
+            $idsSport = join(',',$sportPracticedList);  
 
             # Par les sports pratiqués par l'user:
             $triInvitsBySportPracticed = $em -> getRepository('FrontOfficeBundle:Invitation') 
@@ -33,7 +41,8 @@ class HomepageController extends Controller
 
             if($triInvitsBySport != ''){
                 return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
-                    array('invitsBySport' => $triInvitsBySport));
+                    array('invitsBySport' => $triInvitsBySport,
+                          'invitsBySportPracticed'=> $triInvitsBySportPracticed));
             }
 
             else{
