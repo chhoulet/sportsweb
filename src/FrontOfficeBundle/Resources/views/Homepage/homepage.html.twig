@@ -56,8 +56,8 @@
 
                             <h3 style="padding-top:20px;">Voir les invitations de {{ app.user.favouriteSport }} :</h3>
 
-                                {% if (invitForConnectedUser is not empty) %}
-                                    {% for invit in invitForConnectedUser %} 
+                                {% if (invitsBySport is not empty) %}
+                                    {% for invit in invitsBySport %} 
 
                                         {{ invit.user.username }}   t'invite le 
                                         
@@ -85,8 +85,8 @@
 
 
                             <h3 style="padding-top:20px;">Sélectionner les invitations {% for sport in app.user.sportPracticed %}{{ sport.name }} {% endfor %} :</h3>
-                               
-                               {#  {% for invit in invitationsBySportPracticed %}
+                           
+                                {# {% for invit in triInvitsBySportPracticed %}
 
                                     <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p><br>
                                     <p class="section-paragraph">{{ invit.content }}</p><br>
