@@ -15,24 +15,22 @@ class HomepageController extends Controller
 
         if ($this -> getUser())
         {
-            # Recuperation du sport favori de l'user connecte:
-            $sport = $this -> getUser() -> getFavouriteSport();
-
-            # Récupération automatique des sportpracticed et de la region de l'user:
+            # Recuperation du sport favori des sportpracticed et de la region de l'user connecte:
+            $sport = $this -> getUser() -> getFavouriteSport();            
             $sportPracticed = $this -> getUser() -> getSportPracticed();
-            $region = $this -> getUser()-> getRegion();
-        
-        	# Appel des functions triant les invitations : par le sport favori de l'user
-            $triInvitsBySport = $em -> getRepository('FrontOfficeBundle:Invitation') 
-                -> triInvitsBySport($sport);    
+            $region = $this -> getUser()-> getRegion();            	    
  
-            # On recupere les id de tous les sports de l'user, on les stocke dans un tableau:
+            # On recupere les id de tous les sports pratiqués de l'user, on les stocke dans un tableau:
             $sportPracticedList = array();
             for($i=0;$i<count($sportPracticed);$i++){
                 array_push($sportPracticedList, $sportPracticed[$i]->getId());
             }
             # Transformation du tableau en chaine de caractere pour pouvoir etre lu par la requete sql:
             $idsSport = join(',',$sportPracticedList);  
+
+            # Appel des functions triant les invitations : par le sport favori de l'user
+            $triInvitsBySport = $em -> getRepository('FrontOfficeBundle:Invitation') 
+                -> triInvitsBySport($sport, $region);
 
             # Par les sports pratiqués par l'user:
             $triInvitsBySportPracticed = $em -> getRepository('FrontOfficeBundle:Invitation') 

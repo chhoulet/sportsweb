@@ -124,11 +124,11 @@
 
         	                    {% for invit in allInvit %} 
 
-        		                    <p class="section-paragraph">{{ invit.content }}</p>
-        		                    <p class="lead section-lead">{{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}.</p><br>
-                                    {{ invit.userFrom }}<br>
-                                    <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}">Détail</a>
-                                    
+        		                    {{ invit.user.username }}   t'invite le 
+                                        
+                                        {{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}
+                                        {{ invit.content }}<br>
+
                                     {% if (is_granted('ROLE_USER')) %}
                                         <a href="{{ path('front_office_invitation_response',{id:invit.id}) }}"><button>Accepter l'invitation</button></a>
                                     {% endif %}
@@ -136,6 +136,9 @@
                                         <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}"><button>Supprimer cette invitation</button></a>
                                     {% endif %}
 
+                                    <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}">Détail</a>
+                                    <hr>
+                                    
         		                {% endfor %}
         		                   
                         </div>
