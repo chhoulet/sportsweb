@@ -28,7 +28,7 @@ class HomepageController extends Controller
             # Transformation du tableau en chaine de caractere pour pouvoir etre lu par la requete sql:
             $idsSport = join(',',$sportPracticedList);  
 
-            # Appel des functions triant les invitations : par le sport favori de l'user
+            # Appel des functions triant les invitations par le sport favori de l'user:
             $triInvitsBySport = $em -> getRepository('FrontOfficeBundle:Invitation') 
                 -> triInvitsBySport($sport, $region);
 
@@ -38,9 +38,15 @@ class HomepageController extends Controller
 
 
             if($triInvitsBySport != ''){
-                return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
-                    array('invitsBySport' => $triInvitsBySport,
-                          'invitsBySportPracticed'=> $triInvitsBySportPracticed));
+                if($triInvitsBySportPracticed){                                    
+                    return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
+                        array('invitsBySport'         => $triInvitsBySport,
+                              'invitsBySportPracticed'=> $triInvitsBySportPracticed));
+                }
+                else{
+                    return $this -> render('FrontOfficeBundle:Homepage:homepage.html.twig',
+                        array('invitsBySport'         => $triInvitsBySport));
+                }                
             }
 
             else{

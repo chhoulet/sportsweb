@@ -54,9 +54,12 @@
                                 <p>{{ message }}</p>
                             {% endfor %}                            
 
-                            <h3 style="padding-top:20px;">Voir les invitations de {{ app.user.favouriteSport }} :</h3>
+                                {# Invitations du sport favori de l'user: #}
+                            {% if (invitsBySport is not empty) %}
 
-                                {% if (invitsBySport is not empty) %}
+                                <h3 style="padding-top:20px;">Voir les invitations de {{ app.user.favouriteSport }} :</h3>
+
+                                
                                     {% for invit in invitsBySport %} 
 
                                         {{ invit.user.username }}   t'invite le 
@@ -71,39 +74,46 @@
                                         {% endif %}
                                         
                                         {% if (is_granted('ROLE_SUPER_ADMIN')) or (app.user.id == invit.user.id ) %}
-                                            <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}"><button>Supprimer cette invitation</button></a>
+                                            <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}"><button>Supprimer cette invitation</button></a><br><br>
                                         {% endif %}                                    
 
                                     {% endfor %}
 
                                     <hr>
-                                {% else %}
+                            {% else %}
 
-                                    <p>Il n'y a aucune invitation dans votre région pour la discipline demandée !</p>
+                                <p>Il n'y a aucune invitation dans votre région pour la discipline demandée !</p>
 
-                                {% endif %}
+                            {% endif %}
 
+                            {% if (invitsBySportPracticed is not empty) %}
 
-                            <h3 style="padding-top:20px;">Voir les invitations de {% for sport in app.user.sportPracticed %}{{ sport.name }}{% if loop.last == false %},{% endif %} {% endfor %} :</h3>
-                           
-                                {% for invit in invitsBySportPracticed %}
-
-                                    {{ invit.user.username }}   t'invite le 
-                                        
-                                        {{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}
-                                        {{ invit.content }}<br><br>
-
-                                    <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}"><button>Voir cette invitation</button></a>
-
-                                    <a href="{{ path('front_office_invitation_response',{id:invit.id}) }}"><button>Accepter l'invitation</button></a>
+                                <h3 style="padding-top:20px;">Voir les invitations de {% for sport in app.user.sportPracticed %}{{ sport.name }}{% if loop.last == false %},{% endif %} {% endfor %} :</h3>
                                     
-                                    {% if (is_granted('ROLE_SUPER_ADMIN')) %}
-                                        <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}"><button>Supprimer cette invitation</button></a>
-                                    {% endif %}
-                                    <br />
-                                {% endfor %}
+                                    {# Invitations des sports pratiques par l'user: #}
+                                    {% for invit in invitsBySportPracticed %}
 
-                                <hr>
+                                        {{ invit.user.username }}   t'invite le 
+                                            
+                                            {{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}
+                                            {{ invit.content }}<br><br>
+
+                                        <a href="{{ path('front_office_invitation_one',{id:invit.id}) }}"><button>Voir cette invitation</button></a>
+
+                                        <a href="{{ path('front_office_invitation_response',{id:invit.id}) }}"><button>Accepter l'invitation</button></a>
+                                        
+                                        {% if (is_granted('ROLE_SUPER_ADMIN')) %}
+                                            <a href="{{ path('front_office_invitation_delete',{id:invit.id}) }}"><button>Supprimer cette invitation</button></a>
+                                        {% endif %}
+                                        <br>
+                                    {% endfor %}
+
+                                    <hr>
+                            {% else %}
+
+                                <p>Il n'y a aucune invitation dans votre région dans vos disciplines pratiquées !</p>
+
+                            {% endif %}
                                    
                         </div>
                     </div>
@@ -117,7 +127,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">                           
-                            <h3 class="section-heading" style="padding-top:20px;">Sélectionner les invitations :</h3>
+                            <h2 style="padding-top:20px;">Sélectionner les invitations :</h2>
                                 {{ form(form) }}
 
                                 <hr>
