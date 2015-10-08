@@ -87,9 +87,9 @@ class UserController extends Controller
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$invitation = $em -> getRepository('FrontOfficeBundle:Invitation') -> seeInvitationsForOneUser($this ->getUser());
-		$invitationLaunched = $em -> getRepository('FrontOfficeBundle:Invitation') -> getInvitsLaunchedByUser($this ->getUser());		
+		$invitationLaunched = $em -> getRepository('FrontOfficeBundle:Invitation') -> getInvitsLaunchedByUser($this ->getUser());					
 		$invitationReceived = $this -> getUser()->getInvitationsReceived();		
-		$invitationsAccepted = $this -> getUser()->getInvitationsAccepted();		
+		$invitationsAccepted = $this -> getUser()->getInvitationsAccepted();				
 
 		return $this -> render('FrontOfficeBundle:User:showInvitations.html.twig', 
 			array('invitation'        => $invitation,

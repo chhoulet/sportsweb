@@ -114,9 +114,11 @@ class InvitationController extends Controller
 		$session = $request -> getSession();
 		$invitation = $em -> getRepository('FrontOfficeBundle:Invitation') -> find($id);
 		$invitation -> setAccepted(true);
+		$invitation -> setDenied(false);
 		$invitation -> setDateAccepted(new \DateTime('now'));
-		$invitation -> setUserTo($this->getUser());
+		$invitation -> setUserTo();
 		$invitation -> setUserAccepted($this -> getUser());
+
 
 		// Récupération des données de l'invitation :
 		$placeFromInvit =     $invitation -> getPlace();
@@ -163,6 +165,7 @@ class InvitationController extends Controller
 		$invitationDenied = $em -> getRepository('FrontOfficeBundle:Invitation')->find($id);		
 		$invitationDenied -> setUserTo($this ->  getUser());
 		$invitationDenied -> setDenied(true);
+		$invitationDenied -> setAccepted(false);
 		$invitationDenied -> setDateDenied(new \datetime('now'));		
 		$em -> flush();
 

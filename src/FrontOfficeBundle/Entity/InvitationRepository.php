@@ -187,7 +187,7 @@ class InvitationRepository extends EntityRepository
 		$query = $this -> getEntityManager()->createQuery('
 			SELECT i
 			FROM FrontOfficeBundle:Invitation i 
-			JOIN i.userFrom u 
+			JOIN i.userTo u 
 			WHERE u.id LIKE :user 
 			AND i.denied = false
 			AND i.accepted = true')
@@ -201,6 +201,8 @@ class InvitationRepository extends EntityRepository
 			FROM FrontOfficeBundle:Invitation i 
 			JOIN i.userTo u 
 			WHERE u.id LIKE :user
+			AND i.accepted = false
+			AND i.denied = false
 			')
 		->setParameter('user', $user);
 	}

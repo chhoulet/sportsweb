@@ -18,11 +18,15 @@
                                 Date : {{ invit.dateInvit | date('d-m-Y H:i:s') }}<br>
                                 Discipline : {{ invit.sport }}<br>
                                 Mode : {{ invit.mode }}<br>
-                                Ville : {{ invit.place }}<br>
+                                Ville : {{ invit.place }}<br>                                
 
                                 {% if (invit.userTo) %}
                                     Adversaire: {{ invit.userTo }}<br>
                                 {% endif %}
+
+                                {% if (invit.teamTo) %}
+                                    Equipe adverse: {{ invit.teamTo }}<br>
+                                {% endif %}<br>
 
                             {% endfor %}
 
@@ -78,7 +82,7 @@
                                     Adversaire: {{ invit.userFrom }}<br>
                                 {% endif %}
 
-                                <a href="{{ path('front_office_invitation_response',{id:invit.id})}}">Accepter l'invitation</a><br>                                
+                                <a href="{{ path('front_office_invitation_response',{id:invit.id})}}"><button>Accepter l'invitation</button></a>                               
                                 <a href="{{ path('front_office_invitation_denied', {id:invit.id}) }}"><button>Refuser l'invitation</button></a>
                                 <a href="{{ path('front_office_invitation_deletefrom_monprofil', {id:invit.id}) }}"><button>Supprimer l'invitation</button></a>
 
