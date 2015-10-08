@@ -21,11 +21,11 @@
                                 Ville : {{ invit.place }}<br>                                
 
                                 {% if (invit.userTo) %}
-                                    Adversaire: {{ invit.userTo }}<br>
+                                    Adversaire: <a href="{{ path('front_office_user_one',{id:invit.userTo.id}) }}">{{ invit.userTo }}</a><br>
                                 {% endif %}
 
                                 {% if (invit.teamTo) %}
-                                    Equipe adverse: {{ invit.teamTo }}<br>
+                                    Equipe adverse:<a href="{{ path('front_office_team_one',{id:invit.teamTo.id}) }}"> {{ invit.teamTo }}</a><br>
                                 {% endif %}<br>
 
                             {% endfor %}
@@ -50,7 +50,7 @@
                                 Ville : {{ invit.place }}<br>
 
                                 {% if (invit.userFrom) %}
-                                    Adversaire: {{ invit.userFrom }}<br>
+                                    Adversaire:<a href="{{ path('front_office_user_one',{id:invit.userFrom.id}) }}">{{ invit.userFrom }}</a><br>
                                 {% endif %}
 
                                 <a href="{{ path('front_office_invitation_denied', {id:invit.id}) }}"><button>Refuser l'invitation</button></a>
@@ -79,7 +79,7 @@
                                 Ville : {{ invit.place }}<br>
 
                                 {% if (invit.userFrom) %}
-                                    Adversaire: {{ invit.userFrom }}<br>
+                                    Adversaire:<a href="{{ path('front_office_user_one',{id:invit.userFrom.id}) }}">{{ invit.userFrom }}</a><br>
                                 {% endif %}
 
                                 <a href="{{ path('front_office_invitation_response',{id:invit.id})}}"><button>Accepter l'invitation</button></a>                               
@@ -95,6 +95,26 @@
                             <p>Vous n'avez reçu aucune invitation ! <a href="{{ path('front_office_users_list')}}">Faîtes-vous des amis</a>
 
                         {% endif %}
+
+                    <h3> Invitations refusées</h3>
+                        {% for invit in invitationDenied %}
+
+                                Message : {{ invit.content }}<br>
+                                Date : {{ invit.dateInvit | date('d-m-Y H:i:s') }}<br>
+                                Discipline : {{ invit.sport }}<br>
+                                Mode : {{ invit.mode }}<br>
+                                Ville : {{ invit.place }}<br>
+
+                                {% if (invit.userFrom) %}
+                                    Adversaire: <a href="{{ path('front_office_user_one',{id:invit.userFrom.id}) }}">{{ invit.userFrom }}</a><br>
+                                {% endif %}
+
+                                <a href="{{ path('front_office_invitation_response',{id:invit.id})}}"><button>Accepter l'invitation</button></a>                                    
+                                <a href="{{ path('front_office_invitation_deletefrom_monprofil', {id:invit.id}) }}"><button>Supprimer l'invitation</button></a>
+
+                            <hr>
+
+                        {% endfor %}
 
                 </div>
 

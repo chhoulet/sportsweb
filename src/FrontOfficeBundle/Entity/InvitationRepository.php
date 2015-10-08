@@ -205,5 +205,5 @@ class InvitationRepository extends EntityRepository
 			AND i.denied = false
 			')
 		->setParameter('user', $user);
-	}
+	}	
 }

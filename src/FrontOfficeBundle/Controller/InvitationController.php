@@ -45,7 +45,7 @@ class InvitationController extends Controller
 			$invitation ->setTeamFrom($teamFrom);
 			$invitation ->setTeamTo($teamTo);
 			$invitation ->setUserTo($userTo);
-			$invitation ->setSport($userSport);
+			$invitation ->setSport($userSport);			
 
 			$postcodes = array(75,77,78,91,92,93,94,95);
 			if(in_array($postCode, $postcodes))
@@ -89,7 +89,7 @@ class InvitationController extends Controller
 			/*Parametrage du message flash*/
 			$session ->getFlashBag()->add('succes','Votre invitation a bien été lancée !');
 
-			return $this->redirect($this -> generateUrl('front_office_homepage'));
+			return $this->redirect($this -> generateUrl('front_office_user_invitations'));
 		}
 
 		return $this ->render('FrontOfficeBundle:Invitation:new.html.twig', 
@@ -113,22 +113,25 @@ class InvitationController extends Controller
 		$em = $this -> getDoctrine()->getManager();
 		$session = $request -> getSession();
 		$invitation = $em -> getRepository('FrontOfficeBundle:Invitation') -> find($id);
+
+		// Récupération de l'id de l'expéditeur de l'invit + paramétrage des attributs pour tri en pages view:
+		$organizerFromInvi   = $invitation -> getUserFrom();
 		$invitation -> setAccepted(true);
 		$invitation -> setDenied(false);
 		$invitation -> setDateAccepted(new \DateTime('now'));
 		$invitation -> setUserTo();
-		$invitation -> setUserAccepted($this -> getUser());
-
+		$invitation -> addUserAccepted($this -> getUser());
+		$invitation -> addUserAccepted($organizerFromInvi);
+		$invitation -> setUserDenied();
 
 		// Récupération des données de l'invitation :
-		$placeFromInvit =     $invitation -> getPlace();
-		$dateplayFromInvi =   $invitation -> getDateInvit();
-		$modeFromInvi =       $invitation -> getMode();
-		$organizerFromInvi =  $invitation -> getUserFrom();
-		$partnerFromInvi =    $this -> getUser();
-		$sportFromInvi =      $invitation -> getSport();
-		$groundFromInvi =     $invitation -> getGround();
-		$tournamentFromInvit= $invitation -> getTournament();
+		$placeFromInvit      = $invitation -> getPlace();
+		$dateplayFromInvi    = $invitation -> getDateInvit();
+		$modeFromInvi        = $invitation -> getMode();		
+		$partnerFromInvi     = $this -> getUser();
+		$sportFromInvi       = $invitation -> getSport();
+		$groundFromInvi      = $invitation -> getGround();
+		$tournamentFromInvit = $invitation -> getTournament();
 
 		// Creation d'un match entre les deux participants, celui qui a lancé l'invitation et celui qui l'a accepté,
 		// avec hydratation des données de l'invitation dans l'objet match:
@@ -155,7 +158,7 @@ class InvitationController extends Controller
 
 		$session ->getFlashBag() ->add('repon', 'Vous venez d\'accepter cette invitation. Un e-mail de confirmation vient d\'être envoyé à l\'expéditeur. Bon match !');
 
-		return $this-> redirect($this -> generateUrl('front_office_homepage'));
+		return $this-> redirect($this -> generateUrl('front_office_user_invitations'));
 	}
 
 	public function deniedAction(Request $request,$id)
@@ -163,10 +166,12 @@ class InvitationController extends Controller
 		/*Attribution automatique de valeur aux attributs de l'objet Invitation*/
 		$em = $this -> getDoctrine()->getManager();
 		$invitationDenied = $em -> getRepository('FrontOfficeBundle:Invitation')->find($id);		
-		$invitationDenied -> setUserTo($this ->  getUser());
+		$invitationDenied -> setUserTo();
+		$invitationDenied -> setUserDenied($this -> getUser());		
 		$invitationDenied -> setDenied(true);
 		$invitationDenied -> setAccepted(false);
-		$invitationDenied -> setDateDenied(new \datetime('now'));		
+		$invitationDenied -> setDateDenied(new \datetime('now'));
+		/*$invitationDenied -> removeUserAccepted();*/		
 		$em -> flush();
 
 		/*Redirection sur la page d'où vient l'user*/
