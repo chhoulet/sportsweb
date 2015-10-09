@@ -13,24 +13,20 @@
 						{% if app.user.matche is not empty  %}
 
 							{% for mat in  app.user.matche %}
-								
-								Date : {{ mat.dateplay | date('d-m-Y H:i:s') }}<br>
+								Sport: {{ mat.sport }}<br>
+								Date: {{ mat.dateplay | date('d-m-Y H:i:s') }}<br>
 								Lieu: {{ mat.place }}<br>
-								Mode : {{ mat.mode }}<br>
-								Organisateur :{{ mat.organizer }}<br>
-								Adversaire :{{ mat.partner }}<br>
-								<hr>
-							{% endfor %}
+								Mode: {{ mat.mode }}<br>
+								Joueurs: {% for play in mat.players %}
+											 <a href="{{ path('front_office_user_one',{id:play.id}) }}">{{ play.username }}</a>           						            	
+								          {% endfor %}
 
-							{% for mat in  matchesPartner %}
-								
-								Date : {{ mat.dateplay | date('d-m-Y H:i:s') }}<br>
-								Lieu: {{ mat.place }}<br>
-								Mode : {{ mat.mode }}<br>
-								Organisateur :{{ mat.organizer }}<br>
-								Adversaire :{{ mat.partner }}<br>
+								{% if (mat.ground) %}
+									<br>
+									Terrain: {{ mat.ground }}
+								{% endif %}
 								<hr>
-							{% endfor %}
+							{% endfor %}							
 
 						{% else %}
 

@@ -227,16 +227,10 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="organizer")
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="players")
+     * @ORM\JoinTable(name="players_matche")
      */
     private $matche;
-
-     /**
-     * @var string
-     *
-     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="partner")
-     */
-    private $matche_partner;
 
     /**
      * @var string
@@ -1003,62 +997,6 @@ class User extends BaseUser
     }
 
     /**
-     * Add matche
-     *
-     * @param \FrontOfficeBundle\Entity\Matche $matche
-     * @return User
-     */
-    public function addMatche(\FrontOfficeBundle\Entity\Matche $matche)
-    {
-        $this->matche[] = $matche;
-
-        return $this;
-    }
-
-    /**
-     * Remove matche
-     *
-     * @param \FrontOfficeBundle\Entity\Matche $matche
-     */
-    public function removeMatche(\FrontOfficeBundle\Entity\Matche $matche)
-    {
-        $this->matche->removeElement($matche);
-    }
-
-    /**
-     * Add matche_partner
-     *
-     * @param \FrontOfficeBundle\Entity\Matche $matchePartner
-     * @return User
-     */
-    public function addMatchePartner(\FrontOfficeBundle\Entity\Matche $matchePartner)
-    {
-        $this->matche_partner[] = $matchePartner;
-
-        return $this;
-    }
-
-    /**
-     * Remove matche_partner
-     *
-     * @param \FrontOfficeBundle\Entity\Matche $matchePartner
-     */
-    public function removeMatchePartner(\FrontOfficeBundle\Entity\Matche $matchePartner)
-    {
-        $this->matche_partner->removeElement($matchePartner);
-    }
-
-    /**
-     * Get matche_partner
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMatchePartner()
-    {
-        return $this->matche_partner;
-    }
-
-    /**
      * Add tournament
      *
      * @param \FrontOfficeBundle\Entity\Tournament $tournament
@@ -1089,7 +1027,8 @@ class User extends BaseUser
     public function getTournament()
     {
         return $this->tournament;
-    }    
+    }
+
 
     /**
      * Add invitationsAccepted
@@ -1155,5 +1094,28 @@ class User extends BaseUser
     public function getInvitationDenied()
     {
         return $this->invitationDenied;
+    }
+
+    /**
+     * Add matche
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matche
+     * @return User
+     */
+    public function addMatche(\FrontOfficeBundle\Entity\Matche $matche)
+    {
+        $this->matche[] = $matche;
+
+        return $this;
+    }
+
+    /**
+     * Remove matche
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matche
+     */
+    public function removeMatche(\FrontOfficeBundle\Entity\Matche $matche)
+    {
+        $this->matche->removeElement($matche);
     }
 }

@@ -141,11 +141,11 @@ class InvitationController extends Controller
 		$matche -> setPlace($placeFromInvit);
 		$matche -> setDateplay($dateplayFromInvi);
 		$matche -> setMode($modeFromInvi);
-		$matche -> setOrganizer($organizerFromInvi);
+		$matche -> addPlayer($this -> getUser());
+		$matche -> addPlayer($organizerFromInvi);
 		$matche -> setTournament($tournamentFromInvit);
 		$matche -> setGround($groundFromInvi);
-		$matche -> setSport($sportFromInvi);
-		$matche -> setPartner($partnerFromInvi);
+		$matche -> setSport($sportFromInvi);		
 		$matche -> setPlayedFuture(true);
 		$matche -> setPlayed(false);
 		$matche -> setMatchWinnedTeam1(false);

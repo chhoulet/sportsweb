@@ -122,18 +122,10 @@ class Matche
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="matche")
-     * @ORM\JoinColumn(name="matche_organizer", referencedColumnName="id")
-     */
-    private $organizer;
-
-    /**
-     * @var string
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", inversedBy="matche")
      *
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="matche_partner")
-     * @ORM\JoinColumn(name="partner", referencedColumnName="id", nullable = true)
      */
-    private $partner;
+    private $players;    
 
     /**
      * @var string
@@ -635,5 +627,38 @@ class Matche
     public function getMatchLostTeam2()
     {
         return $this->matchLostTeam2;
+    }
+
+    /**
+     * Add players
+     *
+     * @param \UserBundle\Entity\User $players
+     * @return Matche
+     */
+    public function addPlayer(\UserBundle\Entity\User $players)
+    {
+        $this->players[] = $players;
+
+        return $this;
+    }
+
+    /**
+     * Remove players
+     *
+     * @param \UserBundle\Entity\User $players
+     */
+    public function removePlayer(\UserBundle\Entity\User $players)
+    {
+        $this->players->removeElement($players);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlayers()
+    {
+        return $this->players;
     }
 }

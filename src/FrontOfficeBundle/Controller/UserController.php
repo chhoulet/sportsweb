@@ -120,11 +120,8 @@ class UserController extends Controller
 	}
 
 	public function showMatchesAction()
-	{
-		$em = $this -> getDoctrine()->getManager();
-		$matchesPartner = $this -> getUser()->getMatchePartner();
-		return $this -> render('FrontOfficeBundle:User:showMatches.html.twig', 
-			array('matchesPartner'=> $matchesPartner));
+	{		
+		return $this -> render('FrontOfficeBundle:User:showMatches.html.twig');
 	}
 }
 
