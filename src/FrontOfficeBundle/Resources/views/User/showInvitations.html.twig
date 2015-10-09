@@ -92,12 +92,15 @@
 
                         {% else %}
 
-                            <p>Vous n'avez reçu aucune invitation ! <a href="{{ path('front_office_users_list')}}">Faîtes-vous des amis</a>
+                            <p>Vous n'avez aucune invitation en attente! <a href="{{ path('front_office_users_list')}}">Faîtes-vous des amis</a>
 
                         {% endif %}
 
                     <h3> Invitations refusées</h3>
-                        {% for invit in invitationDenied %}
+
+                        {% if invitationDenied is not empty %}
+
+                            {% for invit in invitationDenied %}
 
                                 Message : {{ invit.content }}<br>
                                 Date : {{ invit.dateInvit | date('d-m-Y H:i:s') }}<br>
@@ -112,9 +115,15 @@
                                 <a href="{{ path('front_office_invitation_response',{id:invit.id})}}"><button>Accepter l'invitation</button></a>                                    
                                 <a href="{{ path('front_office_invitation_deletefrom_monprofil', {id:invit.id}) }}"><button>Supprimer l'invitation</button></a>
 
-                            <hr>
+                                <hr>
 
-                        {% endfor %}
+                            {% endfor %}
+
+                        {% else %}
+
+                            <p>Vous n'avez aucune invitation refusée !</p>
+
+                        {% endif %}
 
                 </div>
 

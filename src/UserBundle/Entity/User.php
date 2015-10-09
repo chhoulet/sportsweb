@@ -152,7 +152,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="userDenied")
+     * @ORM\ManyToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="userDenied")
      *
      */
     protected $invitationDenied;
@@ -1089,41 +1089,7 @@ class User extends BaseUser
     public function getTournament()
     {
         return $this->tournament;
-    }
-
-    
-    /**
-     * Add invitationDenied
-     *
-     * @param \FrontOfficeBundle\Entity\Invitation $invitationDenied
-     * @return User
-     */
-    public function addInvitationDenied(\FrontOfficeBundle\Entity\Invitation $invitationDenied)
-    {
-        $this->invitationDenied[] = $invitationDenied;
-
-        return $this;
-    }
-
-    /**
-     * Remove invitationDenied
-     *
-     * @param \FrontOfficeBundle\Entity\Invitation $invitationDenied
-     */
-    public function removeInvitationDenied(\FrontOfficeBundle\Entity\Invitation $invitationDenied)
-    {
-        $this->invitationDenied->removeElement($invitationDenied);
-    }
-
-    /**
-     * Get invitationDenied
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getInvitationDenied()
-    {
-        return $this->invitationDenied;
-    }
+    }    
 
     /**
      * Add invitationsAccepted
@@ -1156,5 +1122,38 @@ class User extends BaseUser
     public function getInvitationsAccepted()
     {
         return $this->invitationsAccepted;
+    }
+
+    /**
+     * Add invitationDenied
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitationDenied
+     * @return User
+     */
+    public function addInvitationDenied(\FrontOfficeBundle\Entity\Invitation $invitationDenied)
+    {
+        $this->invitationDenied[] = $invitationDenied;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitationDenied
+     *
+     * @param \FrontOfficeBundle\Entity\Invitation $invitationDenied
+     */
+    public function removeInvitationDenied(\FrontOfficeBundle\Entity\Invitation $invitationDenied)
+    {
+        $this->invitationDenied->removeElement($invitationDenied);
+    }
+
+    /**
+     * Get invitationDenied
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitationDenied()
+    {
+        return $this->invitationDenied;
     }
 }

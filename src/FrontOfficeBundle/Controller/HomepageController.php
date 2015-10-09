@@ -37,12 +37,12 @@ class HomepageController extends Controller
                 -> triBySportPlace($idsSport, $region);                 
 
 
-            if($triInvitsBySport != ''){
-                if($triInvitsBySportPracticed){                                    
+            /*if($triInvitsBySport != ''){
+                if($triInvitsBySportPracticed !=''){      */                              
                     return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
                         array('invitsBySport'         => $triInvitsBySport,
                               'invitsBySportPracticed'=> $triInvitsBySportPracticed));
-                }
+               /* }
                 else{
                     return $this -> render('FrontOfficeBundle:Homepage:homepage.html.twig',
                         array('invitsBySport'         => $triInvitsBySport));
@@ -51,7 +51,7 @@ class HomepageController extends Controller
 
             else{
                 return $this -> render('FrontOfficeBundle:Homepage:homepage.html.twig');
-            }                       
+            }*/                   
         }
 
         else

@@ -124,8 +124,8 @@ class Invitation
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="invitationsDenied")
-     * @ORM\JoinColumn(name="userDenied_id", referencedColumnName="id", nullable=true)
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", inversedBy="invitationsDenied")
+     * @ORM\JoinTable(name="userInvitDenied")
      */
     private $userDenied;
 
@@ -648,32 +648,7 @@ class Invitation
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set userDenied
-     *
-     * @param \UserBundle\Entity\User $userDenied
-     * @return Invitation
-     */
-    public function setUserDenied(\UserBundle\Entity\User $userDenied = null)
-    {
-        $this->userDenied = $userDenied;
-
-        return $this;
-    }
-
-    /**
-     * Get userDenied
-     *
-     * @return \UserBundle\Entity\User 
-     */
-    public function getUserDenied()
-    {
-        return $this->userDenied;
-    }
-
-    
+    }        
 
     /**
      * Add userAccepted
@@ -706,5 +681,38 @@ class Invitation
     public function getUserAccepted()
     {
         return $this->userAccepted;
+    }
+
+    /**
+     * Add userDenied
+     *
+     * @param \UserBundle\Entity\User $userDenied
+     * @return Invitation
+     */
+    public function addUserDenied(\UserBundle\Entity\User $userDenied)
+    {
+        $this->userDenied[] = $userDenied;
+
+        return $this;
+    }
+
+    /**
+     * Remove userDenied
+     *
+     * @param \UserBundle\Entity\User $userDenied
+     */
+    public function removeUserDenied(\UserBundle\Entity\User $userDenied)
+    {
+        $this->userDenied->removeElement($userDenied);
+    }
+
+    /**
+     * Get userDenied
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserDenied()
+    {
+        return $this->userDenied;
     }
 }

@@ -115,14 +115,13 @@ class InvitationController extends Controller
 		$invitation = $em -> getRepository('FrontOfficeBundle:Invitation') -> find($id);
 
 		// Récupération de l'id de l'expéditeur de l'invit + paramétrage des attributs pour tri en pages view:
-		$organizerFromInvi   = $invitation -> getUserFrom();
+		$organizerFromInvi   = $invitation -> getUserFrom();		
 		$invitation -> setAccepted(true);
 		$invitation -> setDenied(false);
 		$invitation -> setDateAccepted(new \DateTime('now'));
 		$invitation -> setUserTo();
 		$invitation -> addUserAccepted($this -> getUser());
-		$invitation -> addUserAccepted($organizerFromInvi);
-		$invitation -> setUserDenied();
+		$invitation -> addUserAccepted($organizerFromInvi);				
 
 		// Récupération des données de l'invitation :
 		$placeFromInvit      = $invitation -> getPlace();
@@ -165,13 +164,14 @@ class InvitationController extends Controller
 	{
 		/*Attribution automatique de valeur aux attributs de l'objet Invitation*/
 		$em = $this -> getDoctrine()->getManager();
-		$invitationDenied = $em -> getRepository('FrontOfficeBundle:Invitation')->find($id);		
+		$invitationDenied = $em -> getRepository('FrontOfficeBundle:Invitation')->find($id);
+		$userFromInvit = $invitationDenied -> getUserFrom();
 		$invitationDenied -> setUserTo();
-		$invitationDenied -> setUserDenied($this -> getUser());		
+		$invitationDenied -> addUserDenied($this -> getUser());		
+		$invitationDenied -> addUserDenied($userFromInvit);		
 		$invitationDenied -> setDenied(true);
 		$invitationDenied -> setAccepted(false);
-		$invitationDenied -> setDateDenied(new \datetime('now'));
-		/*$invitationDenied -> removeUserAccepted();*/		
+		$invitationDenied -> setDateDenied(new \datetime('now'));		
 		$em -> flush();
 
 		/*Redirection sur la page d'où vient l'user*/
