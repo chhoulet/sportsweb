@@ -111,8 +111,7 @@
                                 {% if (invit.userFrom) %}
                                     Adversaire: <a href="{{ path('front_office_user_one',{id:invit.userFrom.id}) }}">{{ invit.userFrom }}</a><br>
                                 {% endif %}
-
-                                <a href="{{ path('front_office_invitation_response',{id:invit.id})}}"><button>Accepter l'invitation</button></a>                                    
+                                                                                                 
                                 <a href="{{ path('front_office_invitation_deletefrom_monprofil', {id:invit.id}) }}"><button>Supprimer l'invitation</button></a>
 
                                 <hr>

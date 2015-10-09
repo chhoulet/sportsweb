@@ -115,7 +115,8 @@ class InvitationController extends Controller
 		$invitation = $em -> getRepository('FrontOfficeBundle:Invitation') -> find($id);
 
 		// Récupération de l'id de l'expéditeur de l'invit + paramétrage des attributs pour tri en pages view:
-		$organizerFromInvi   = $invitation -> getUserFrom();		
+		$organizerFromInvi   = $invitation -> getUserFrom();
+		$userInvitDenied = $invitation -> getUserDenied();
 		$invitation -> setAccepted(true);
 		$invitation -> setDenied(false);
 		$invitation -> setDateAccepted(new \DateTime('now'));
@@ -182,8 +183,10 @@ class InvitationController extends Controller
 	{
 		$em = $this -> getDoctrine()->getManager();
 		$deleteFromMonProfil = $em -> getRepository('FrontOfficeBundle:Invitation')-> find($id);
-		$deleteFromMonProfil -> setUserTo();
-		$em -> persist($deleteFromMonProfil);
+		$deleteFromMonProfil -> removeUserDenied($this -> getUser());
+		$deleteFromMonProfil -> removeUserAccepted($this ->getUser());
+		$deleteFromMonProfil -> setUserFrom();
+		$deleteFromMonProfil -> setUserTo();		
 		$em -> flush();
 
 		return $this -> redirect($request -> headers -> get('referer'));
@@ -192,7 +195,7 @@ class InvitationController extends Controller
 	public function deleteAction(Request $request,$id)
 	{
 		$em = $this -> getDoctrine()->getManager();
-		$deleteInvitation = $em -> getRepository('FrontOfficeBundle:Invitation')->find($id);
+		$deleteInvitation = $em -> getRepository('FrontOfficeBundle:Invitation')->find($id);					
 		$em -> remove($deleteInvitation);
 		$em -> flush();
 

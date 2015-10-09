@@ -124,7 +124,7 @@ class Invitation
     /**
      * @var string
      *
-     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", inversedBy="invitationsDenied")
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", inversedBy="invitationsDenied", cascade={"remove"})
      * @ORM\JoinTable(name="userInvitDenied")
      */
     private $userDenied;

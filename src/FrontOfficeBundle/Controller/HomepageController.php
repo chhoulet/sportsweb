@@ -25,6 +25,7 @@ class HomepageController extends Controller
             for($i=0;$i<count($sportPracticed);$i++){
                 array_push($sportPracticedList, $sportPracticed[$i]->getId());
             }
+            
             # Transformation du tableau en chaine de caractere pour pouvoir etre lu par la requete sql:
             $idsSport = join(',',$sportPracticedList);  
 
@@ -35,23 +36,10 @@ class HomepageController extends Controller
             # Par les sports pratiqués par l'user:
             $triInvitsBySportPracticed = $em -> getRepository('FrontOfficeBundle:Invitation') 
                 -> triBySportPlace($idsSport, $region);                 
-
-
-            /*if($triInvitsBySport != ''){
-                if($triInvitsBySportPracticed !=''){      */                              
-                    return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
-                        array('invitsBySport'         => $triInvitsBySport,
-                              'invitsBySportPracticed'=> $triInvitsBySportPracticed));
-               /* }
-                else{
-                    return $this -> render('FrontOfficeBundle:Homepage:homepage.html.twig',
-                        array('invitsBySport'         => $triInvitsBySport));
-                }                
-            }
-
-            else{
-                return $this -> render('FrontOfficeBundle:Homepage:homepage.html.twig');
-            }*/                   
+                                  
+            return $this->render('FrontOfficeBundle:Homepage:homepage.html.twig', 
+                array('invitsBySport'         => $triInvitsBySport,
+                      'invitsBySportPracticed'=> $triInvitsBySportPracticed));               
         }
 
         else
