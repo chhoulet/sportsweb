@@ -172,7 +172,9 @@ class InvitationController extends Controller
 		$invitationDenied -> addUserDenied($userFromInvit);		
 		$invitationDenied -> setDenied(true);
 		$invitationDenied -> setAccepted(false);
-		$invitationDenied -> setDateDenied(new \datetime('now'));		
+		$invitationDenied -> setDateDenied(new \datetime('now'));
+		$invitationDenied -> removeUserAccepted($this -> getUser());
+		$invitationDenied -> removeUserAccepted($userFromInvit);		
 		$em -> flush();
 
 		/*Redirection sur la page d'où vient l'user*/
