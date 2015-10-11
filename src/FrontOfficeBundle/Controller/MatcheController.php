@@ -87,7 +87,7 @@ class MatcheController extends Controller
 			$matche -> setPlayedFuture(false);
 
 			$datas = $form -> getData();
-			if($datas['scoreTeam1'] > $datas['scoreTeam2']){
+			if($datas['scoreTeam1'] -> $datas['scoreTeam2']){
 				$matche -> setMatchWinnedTeam1(true);
 				$matche -> setMatchWinnedTeam2(false);
 				$matche -> setMatchLostTeam1(false);
@@ -98,7 +98,7 @@ class MatcheController extends Controller
 				return $this -> redirect($this -> generateUrl('front_office_user_update'));
 			}
 
-			elseif($datas['scoreTeam2'] > $datas['scoreTeam1']){
+			elseif($datas['scoreTeam2'] -> $datas['scoreTeam1']){
 				$matche -> setMatchWinnedTeam1(false);
 				$matche -> setMatchWinnedTeam2(true);
 				$matche -> setMatchLostTeam1(true);
@@ -119,6 +119,9 @@ class MatcheController extends Controller
 				$session -> getFlashbag()-> add('score', 'Merci d\'avoir renseigné le score');
 				return $this -> redirect($this -> generateUrl('front_office_user_update'));
 			}
+
+		return $this -> render("FrontOfficeBundle:User:showMatches.html.twig", array('form'=> $form));
+
 		}
 	}
 }
