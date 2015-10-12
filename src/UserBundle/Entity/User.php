@@ -971,30 +971,6 @@ class User extends BaseUser
     {
         return $this->region;
     }
-    
-
-    /**
-     * Set matche
-     *
-     * @param \FrontOfficeBundle\Entity\Matche $matche
-     * @return User
-     */
-    public function setMatche(\FrontOfficeBundle\Entity\Matche $matche = null)
-    {
-        $this->matche = $matche;
-
-        return $this;
-    }
-
-    /**
-     * Get matche
-     *
-     * @return \FrontOfficeBundle\Entity\Matche 
-     */
-    public function getMatche()
-    {
-        return $this->matche;
-    }
 
     /**
      * Add tournament
@@ -1117,5 +1093,15 @@ class User extends BaseUser
     public function removeMatche(\FrontOfficeBundle\Entity\Matche $matche)
     {
         $this->matche->removeElement($matche);
+    }
+
+    /**
+     * Get matche
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMatche()
+    {
+        return $this->matche;
     }
 }

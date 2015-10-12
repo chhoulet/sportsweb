@@ -10,9 +10,11 @@
 
 					<h2>Mes rencontres :</h2>
 
-						{% if app.user.matche is not empty  %}
+						{% if matche is not empty  %}
 
-							{% for mat in  app.user.matche %}
+							{# {{ form(form)}} #}
+
+							{% for mat in  matche %}
 								Sport: {{ mat.sport }}<br>
 								Date: {{ mat.dateplay | date('d-m-Y H:i:s') }}<br>
 								Lieu: {{ mat.place }}<br>
@@ -23,12 +25,20 @@
 
 								{% if (mat.ground) %}
 									<br>
-									Terrain: {{ mat.ground }}
+									Terrain: {{ mat.ground }}<br>
+								{% endif %}
+								
+								{% if (mat.dateplay < date('now')) %}
+									{% if (mat.scoreTeam1 == null) or (mat.scoreTeam2 == null)  %}
+										<a href="{{ path('front_office_matche_getScore',{id:mat.id}) }}">Entrez le score</a><br>
+									{% else %}
+										{{ mat.scoreTeam1 }}<br>
+										{{ mat.scoreTeam2 }}
+									{% endif %}
 								{% endif %}
 								<hr>
-							
 							{% endfor %}							
-								{{ form(form) }}
+
 						{% else %}
 
 							<p>Vous n'avez aucun match planifié ! Sélectionnez une invitation et acceptez-la pour créer automatiquement un match.</p>

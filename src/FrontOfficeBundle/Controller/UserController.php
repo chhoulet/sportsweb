@@ -4,6 +4,7 @@ namespace FrontOfficeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BackOfficeBundle\User;
+use FrontOfficeBundle\Form\MatcheType;
 use UserBundle\Form\RegistrationFormType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -119,9 +120,34 @@ class UserController extends Controller
 		return $this -> render('FrontOfficeBundle:User:showTournaments.html.twig');
 	}
 
-	public function showMatchesAction()
-	{		
-		return $this -> render('FrontOfficeBundle:User:showMatches.html.twig');
+	public function showMatchesAction(Request $request)
+	{				
+		$em = $this -> getDoctrine()->getManager();
+		$matche = $this -> getUser()->getMatche();
+
+		# Récuperation des id de tous les matches de l'user :
+		$listMatches = array();
+		for($i=0;$i<count($listMatches);$i++){
+			array_push($listMatches, $matche[$i] -> getId());
+		}
+
+		# Transformation en chaine de caractere du tableau:
+		$idMatches = join (',', $listMatches);
+
+		for ($i=0;$i<count($idMatches);$i++){
+			$form = $this -> createForm(new MatcheType(), $matche[$i]);
+			$form -> handleRequest($request);
+
+			if ($form -> isValid()){
+				$em -> flush();
+
+				return $this ->redirect($request -> headers -> get('referer'));
+			}			
+
+		}
+
+		return $this -> render('FrontOfficeBundle:User:showMatches.html.twig', 
+			array('matche'=> $matche,'form'=>$form->createView()));
 	}
 }
 

@@ -124,7 +124,7 @@ front_office_user_showTournaments:
 
      # Voir ses matches:
 front_office_user_showMatches:
-    path:     /showMatches 
+    path:     /showMatches/
     defaults: { _controller: FrontOfficeBundle:User:showMatches}
 
 # Routes gerant les Teams:
