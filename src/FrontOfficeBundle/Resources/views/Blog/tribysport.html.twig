@@ -25,8 +25,8 @@
 			                    by {% for at in art.author %}<a href="{{ path('front_office_user_one',{id:at.id}) }}">{{ at.username }}{% endfor %}</a>
 			                </p>
 			                <p><span class="glyphicon glyphicon-time"></span> {{ art.dateCreated | date('d-m-Y H:i:s')}}</p>
-			                <hr>
-			                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+			               {#  <hr>
+			                <img class="img-responsive" src="http://placehold.it/900x300" alt=""> #}
 			                <hr>
 			                <p>{{ art.content }}</p>
 			               
@@ -53,7 +53,7 @@
 	            
                  <div class="col-md-4">
 
-                    <!-- Blog Search Well -->
+                   {#  <!-- Blog Search Well -->
                     <div class="well">
                         <h4>Blog Search</h4>
                         <div class="input-group">
@@ -65,7 +65,7 @@
                             </span>
                         </div>
                         <!-- /.input-group -->
-                    </div>
+                    </div> #}
 
                     <!-- Blog Categories Well -->
                     <div class="well">

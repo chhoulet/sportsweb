@@ -10,9 +10,7 @@
 
 					<h2>Mes rencontres :</h2>
 
-						{% if matche is not empty  %}
-
-							{# {{ form(form)}} #}
+						{% if matche is not empty  %}							
 
 							{% for mat in  matche %}
 								Sport: {{ mat.sport }}<br>
@@ -21,7 +19,7 @@
 								Mode: {{ mat.mode }}<br>
 								Joueurs: {% for play in mat.players %}
 											 <a href="{{ path('front_office_user_one',{id:play.id}) }}">{{ play.username }}</a>           						            	
-								          {% endfor %}
+								         {% endfor %}
 
 								{% if (mat.ground) %}
 									<br>

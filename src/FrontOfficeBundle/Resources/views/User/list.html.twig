@@ -18,18 +18,20 @@
 
                         <p>Age: {{ user.age }}</p>
 
-                        {% for sport in user.favouriteSport %}
-                            <p>Sport favori: {{ sport .name }}
-                        {% endfor %}
+                        <p>Sport favori:
+                            {% for sport in user.favouriteSport %}
+                                 {{ sport .name }}
+                            {% endfor %}</p>
 
-                        {% for sport in user.sportPracticed %}
-                            <p>Sport pratiqué: {{ sport.name }}</p>
-                        {% endfor %}
+                        <p>Sport pratiqué:
+                            {% for sport in user.sportPracticed %}
+                                {{ sport.name }}
+                            {% endfor %}</p>
 
-                            Sports suivis:
-                        {% for sport in user.sportViewed %}
-                             {{ sport.name }}
-                        {% endfor %}<br><br>
+                        <p>Sports suivis:
+                            {% for sport in user.sportViewed %}
+                                {{ sport.name }}
+                            {% endfor %}</p>
 
                         {% if (is_granted('ROLE_USER')) %}
 

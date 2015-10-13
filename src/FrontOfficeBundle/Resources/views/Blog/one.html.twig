@@ -29,10 +29,10 @@
                     <!-- Date/Time -->
                     <p><span class="glyphicon glyphicon-time"></span> {{ article.dateCreated | date('d-m-Y H:i:s')}}</p>
 
-                    <hr>
+                  {#   <hr>
 
                     <!-- Preview Image -->
-                    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                    <img class="img-responsive" src="http://placehold.it/900x300" alt=""> #}
 
                     <hr>
 
@@ -51,7 +51,7 @@
                         </div>
                     {% else %}
                     
-                        <p>Vous souhaitez publier un commentaire ?<a href="{{ path('fos_user_security_login') }}">Connectez-vous !</a>
+                        <p>Vous souhaitez publier un commentaire ? <a href="{{ path('fos_user_security_login') }}">Connectez-vous !</a>
                     {% endif %}
 
                     
@@ -83,7 +83,7 @@
                  <div class="col-md-4">
 
                     <!-- Blog Search Well -->
-                    <div class="well">
+                    {# <div class="well">
                         <h4>Blog Search</h4>
                         <div class="input-group">
                             <input type="text" class="form-control">
@@ -94,7 +94,7 @@
                             </span>
                         </div>
                         <!-- /.input-group -->
-                    </div>
+                    </div> #}
 
                     <!-- Blog Categories Well -->
                     <div class="well">

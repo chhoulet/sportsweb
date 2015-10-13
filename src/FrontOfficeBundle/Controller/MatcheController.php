@@ -78,52 +78,65 @@ class MatcheController extends Controller
 	{
 		$em = $this-> getDoctrine()-> getManager();
 		$session = $request -> getSession();
+
+		# Récuperation de l'id du matche dont on veut compléter le score:
 		$matche = $em -> getRepository('FrontOfficeBundle:Matche')-> find($id);
+
+		# Appel du formulaire d'implémentation du score:
 		$form = $this -> createForm(new ScoreType(), $matche);
 
 		$form -> handleRequest($request);
 
+		# Paramétrage de l'objet Matche en fonction des données du formulaire:
 		if($form -> isValid()){
-			$matche -> setPlayed(true);
-			$matche -> setPlayedFuture(false);
+				$matche -> setPlayed(true);
+				$matche -> setPlayedFuture(false);				
+				
+				# Recuperation du score des équipes :
+				$scoreTeam1 = $matche ->getScoreTeam1();
+				$scoreTeam2 = $matche ->getScoreTeam2();
 
-			$datas = $form -> getData();
-			/*if($datas){
-
-				if($datas['scoreTeam1'] -> $datas['scoreTeam2']){
+				/*var_dump($matche);*/	
+				# Paramétrage des attributs de l'objet Matche en fonction du score:
+				if($scoreTeam1 > $scoreTeam2){
 					$matche -> setMatchWinnedTeam1(true);
 					$matche -> setMatchWinnedTeam2(false);
 					$matche -> setMatchLostTeam1(false);
 					$matche -> setMatchLostTeam2(true);
 					$matche -> setMatchNil(false);
+					$em -> flush();
 
 					$session -> getFlashbag()-> add('score', 'Merci d\'avoir renseigné le score');
-					return $this -> redirect($request -> headers ->get('referer'));
-				}*/
+					return $this -> redirect($this -> generateUrl('front_office_user_showMatches'));
+				}
 
-				/*elseif($datas['scoreTeam2'] -> $datas['scoreTeam1']){
+				elseif($scoreTeam1 < $ScoreTeam2){
 					$matche -> setMatchWinnedTeam1(false);
 					$matche -> setMatchWinnedTeam2(true);
 					$matche -> setMatchLostTeam1(true);
 					$matche -> setMatchLostTeam2(false);
 					$matche -> setMatchNil(false);
+					$em -> flush();
 
 					$session -> getFlashbag()-> add('score', 'Merci d\'avoir renseigné le score');
-					return $this -> redirect($request -> headers ->get('referer'));
+					return $this -> redirect($this -> generateUrl('front_office_user_showMatches'));
 				}
-
-				elseif($datas['scoreTeam2'] = $datas['scoreTeam1']){
+			
+				elseif($scoreTeam1 = $ScoreTeam2){
 					$matche -> setMatchWinnedTeam1(false);
 					$matche -> setMatchWinnedTeam2(false);
 					$matche -> setMatchLostTeam1(false);
 					$matche -> setMatchLostTeam2(false);
 					$matche -> setMatchNil(true);
+					$em -> flush();
 
 					$session -> getFlashbag()-> add('score', 'Merci d\'avoir renseigné le score');
-					return $this -> redirect($request -> headers ->get('referer'));
-				}*/
+					return $this -> redirect($this -> generateUrl('front_office_user_showMatches'));					
+				}					
 
-				return $this -> redirect($this ->generateUrl('front_office_user_showMatches'));
+			# Redirection sur le template de presentation des matches:
+			return $this -> redirect($this ->generateUrl('front_office_user_showMatches'));
+
 			}
 
 		return $this -> render("FrontOfficeBundle:Matche:scoreMatche.html.twig", array('form'=> $form->createView()));
