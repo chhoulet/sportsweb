@@ -21,8 +21,12 @@ class UserController extends Controller
 
 		if($form -> isValid())
 		{
+
+
+
 			$user -> setValidationAdmin(false);
 			$user -> setDateValidated(new \DateTime());
+			$user->upload();
 			$em -> flush();
 
 			return $this -> redirect($request -> headers -> get('referer'));

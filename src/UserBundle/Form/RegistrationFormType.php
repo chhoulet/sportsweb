@@ -22,6 +22,7 @@ class RegistrationFormType extends AbstractType
             ->add('sportViewed',    null, array('label'    =>'Sports éditoriaux:',
                                                 'multiple' => true,
                                                 'expanded' => true))
+            ->add('file', 'file')
             ->add('postCode', 'integer',  array('label'    =>'Code Postal:',
                                                 'attr'     => array('placeholder'=>'75,13,59,91, 2 chiffres uniquement merci !')))
             ->add('region', 'choice',     array('label'    =>'Région:',
