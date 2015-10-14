@@ -1,0 +1,15 @@
+/app/bootstrap.php.cache
+/app/cache/*
+!app/cache/.gitkeep
+/app/config/parameters.yml
+/app/logs/*
+!app/logs/.gitkeep
+/app/phpunit.xml
+/bin/
+/composer.phar
+/vendor/
+/web/bundles/
+/startbootstrap-3-col-portfolio-1.0.3/
+/startbootstrap-blog-home-1.0.3/
+/startbootstrap-blog-post-1.0.3(2)/
+/startbootstrap-sb-admin-2-1.0.7(1)/
