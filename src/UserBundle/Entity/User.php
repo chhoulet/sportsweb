@@ -239,7 +239,6 @@ class User extends BaseUser
      */
     private $tournament;
 
-
     /**
      * Get id
      *

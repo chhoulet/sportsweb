@@ -14,17 +14,17 @@ class TriInvitationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('sport', null,      array('label'   =>'Sport:'))            
-            ->add('region', 'choice', array('label'   =>'Region:',
+        $builder->add('sport', 'entity', array('class'        => 'FrontOfficeBundle:Sport',
+                                               'choice_label' => 'name'))
+            
+                ->add('region', 'choice', array('label'   =>'Region:',
                                             'choices' => array('Ile-de-France' =>'Ile-de-France',
                                                               'Sud-Ouest'     =>'Sud-Ouest',
                                                               'Ouest'         =>'Ouest',
                                                               'Sud-Est'       =>'Sud-Est',
                                                               'Est'           =>'Est',
-                                                              'Nord'          =>'Nord')))            
-            ->add('Afficher la selection', 'submit')
-        ;
+                                                              'Nord'          =>'Nord'))) 
+                ->add('Afficher la selection', 'submit');
     }
     
     /**
@@ -33,5 +33,6 @@ class TriInvitationType extends AbstractType
     public function getName()
     {
         return 'frontofficebundle_triinvitation';
-    }
+    }    
+
 }

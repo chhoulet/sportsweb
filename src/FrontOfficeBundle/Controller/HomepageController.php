@@ -51,8 +51,12 @@ class HomepageController extends Controller
 
             /*Recuperation des donnees du formulaire, utilisées en parametres de la function triant les invits*/
             if ($form -> isValid()){
+
+
                 $datas = $form -> getData();
-                $invits = $em -> getRepository('FrontOfficeBundle:Invitation') -> triBySportPlace($datas['sport'], $datas['region']);
+                $invits = $em -> getRepository('FrontOfficeBundle:Invitation') -> triBySportPlace($datas['sport']->getId(), $datas['region']);
+
+//var_dump($datas);exit;
 
                 return $this -> render('FrontOfficeBundle:Invitation:triBySportPlace.html.twig', array('invits'=>$invits));
             }
