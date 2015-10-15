@@ -11,6 +11,8 @@ class HomepageController extends Controller
 {
     public function homepageAction(Request $request)
     {    	  
+       /* $serv = $this->get('nom_de_mon_service');*/
+ 
         $em = $this -> getDoctrine()->getManager();      
 
         if ($this -> getUser())

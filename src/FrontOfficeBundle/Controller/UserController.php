@@ -21,9 +21,6 @@ class UserController extends Controller
 
 		if($form -> isValid())
 		{
-
-
-
 			$user -> setValidationAdmin(false);
 			$user -> setDateValidated(new \DateTime());
 			$user->upload();

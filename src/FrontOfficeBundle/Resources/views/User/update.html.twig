@@ -8,20 +8,29 @@
 
 	            	<div class="well col-lg-8">
 
-						<h2> Mon Profil :</h2>						
-				        {{ form(form) }}
+						<h2> Mon Profil :</h2>
 
-
-
-
-				        {% for message in app.session.flashbag.get('creaMatch') %}
+						  {% for message in app.session.flashbag.get('creaMatch') %}
 				        	{{ message }}
 				        {% endfor %}
 
 				        {% for messa in app.session.flashbag.get('annuMatch') %}
 				        	{{ messa }}
 				        {% endfor %}
-				          		                
+
+						<img src="{{ asset(user.image) }}" width=100 />
+
+				        {{ form(form) }}	
+
+				        {# 
+
+				        {{ form_start(form)}} 
+							{{ form_row(form.username) }}
+							{{ form_row(form.region) }}
+				        {{ form_end(form)}} 
+
+				        #}			      
+				          	                
 			            <hr/>	
 
 		            </div>

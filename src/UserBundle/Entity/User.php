@@ -137,6 +137,13 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Ground", mappedBy="author")
+     */
+    protected $creatorGround;
+
+    /**
+     * @var string
+     *
      * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Invitation", mappedBy="userTo")
      */
     protected $invitationsReceived;
@@ -1166,5 +1173,38 @@ public function upload()
     public function getMatche()
     {
         return $this->matche;
+    }
+
+    /**
+     * Add creatorGround
+     *
+     * @param \FrontOfficeBundle\Entity\Ground $creatorGround
+     * @return User
+     */
+    public function addCreatorGround(\FrontOfficeBundle\Entity\Ground $creatorGround)
+    {
+        $this->creatorGround[] = $creatorGround;
+
+        return $this;
+    }
+
+    /**
+     * Remove creatorGround
+     *
+     * @param \FrontOfficeBundle\Entity\Ground $creatorGround
+     */
+    public function removeCreatorGround(\FrontOfficeBundle\Entity\Ground $creatorGround)
+    {
+        $this->creatorGround->removeElement($creatorGround);
+    }
+
+    /**
+     * Get creatorGround
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCreatorGround()
+    {
+        return $this->creatorGround;
     }
 }

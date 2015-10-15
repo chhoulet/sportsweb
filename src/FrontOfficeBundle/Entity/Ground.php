@@ -119,7 +119,8 @@ class Ground
     /**
      * @var string
      *     
-     * @ORM\Column(name="author", type="string")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="creatorGround")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $author;
 
@@ -678,29 +679,6 @@ class Ground
     }
 
     /**
-     * Set author
-     *
-     * @param string $author
-     * @return Ground
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string 
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
-    /**
      * Add userGround
      *
      * @param \UserBundle\Entity\User $userGround
@@ -787,5 +765,28 @@ class Ground
     public function getMatche()
     {
         return $this->matche;
+    }
+
+    /**
+     * Set author
+     *
+     * @param \UserBundle\Entity\User $author
+     * @return Ground
+     */
+    public function setAuthor(\UserBundle\Entity\User $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \UserBundle\Entity\User 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }
