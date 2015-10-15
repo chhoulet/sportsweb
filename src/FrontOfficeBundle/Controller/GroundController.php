@@ -73,6 +73,7 @@ class GroundController extends Controller
 			$ground -> setDateCreated(new \datetime('now'));
 			$ground -> setAuthor($this -> getUser());
 			$ground -> setValidAdmin(false);
+			$ground -> upload();
 
 			/*Attribution automatique de valeur à l'attribut Region selon la valeur de postCode*/
 			$postcodes = array(75,77,78,91,92,93,94,95);
@@ -115,7 +116,7 @@ class GroundController extends Controller
 			$em -> flush();
 
 			$session -> getFlashbag()->add('notice','Votre terrain vient d\'etre ajouté à la base de données ! Merci');
-			return $this -> redirect($request -> headers -> get('referer'));
+			return $this -> redirect($this->generateUrl('front_office_ground_list'));
 		}
 
 		return $this ->render('FrontOfficeBundle:Ground:newGround.html.twig', array('form'=> $form->createView()));

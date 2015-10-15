@@ -12,16 +12,17 @@
 					        <h2>
 					            <a href="{{ path('front_office_ground_one',{id:art.id}) }}">{{ art.name }}</a>
 			                </h2>
+			                
 				                <p class="lead">
-			                    Sport pratiqué : {% for play in art.sport %}{{ play.name }}{% endfor %}<br>
+			                    Sport pratiqué : {% for play in art.sport %}{{ play.name }} {% endfor %}<br>
 			                    Région : {{ art.region }}<br>
 			                    Ville : {{ art.place }}
 				                </p>				                
 				                <hr>
-				                {# <img class="img-responsive" src="http://placehold.it/900x300" alt=""> #}
+				                <img class="img-responsive" src="{{ asset(art.image) }}" alt="Terrain de Sport Robert Debré">
 				                <hr>
 				                <p>Adresse : {{ art.address }}</p><br>
-				                <p>Créé dans la base le : {{ art.dateCreated | date('d-m-Y H:i:s') }}</p><br>
+				                <p>Créé dans la base le : {{ art.dateCreated | date('d-m-Y') }}</p><br>
 				                <p>Téléphone : {{ art.phoneNumber }}</p><br>
 				                <p>Heures d'ouverture : {{ art.openingHours}}<p><br>
 				                <p>Type de jeu : {{ art.mode }}<p><br>

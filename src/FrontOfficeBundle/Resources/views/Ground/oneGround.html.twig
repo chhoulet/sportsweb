@@ -14,7 +14,7 @@
 					                </p>
 					    <p>Créé le : {{ oneGround.dateCreated | date('d-m-Y') }}</span></p>
 					    
-					    {# <img class="img-responsive" src="http://placehold.it/900x300" alt=""> #}
+					    <img class="img-responsive" src="{{ asset(art.image) }}" alt="">
 					   
 					    <p>Adresse : {{ oneGround.address }} {{ oneGround.place }}</p><br>					    
 					    <p>Téléphone : {{ oneGround.phoneNumber }}</p><br>

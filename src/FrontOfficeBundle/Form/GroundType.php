@@ -31,6 +31,7 @@ class GroundType extends AbstractType
                                                   'choices'=> array('public' =>'Public',
                                                                     'private'=>'Privé'),
                                                   'expanded'=> true))
+            ->add('file','file', array('required'=> false))
             ->add('fees','checkbox',        array('label'     => 'accès payant',
                                                   'required'  => false))
             ->add('phoneNumber','integer',  array('label'=>'Téléphone',

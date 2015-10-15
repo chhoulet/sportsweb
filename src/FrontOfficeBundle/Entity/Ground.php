@@ -4,6 +4,7 @@ namespace FrontOfficeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Ground
@@ -209,6 +210,23 @@ class Ground
      * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Matche", mappedBy="ground")
      */
     private $matche;
+
+    /**
+     * @var string
+     *     
+     * @ORM\Column(name="image", type="string", nullable=true)
+     */
+    private $image;
+
+    /**
+     * @Assert\File(
+     *     maxSize = "5000k",
+     *     mimeTypes = {"image/jpeg", "image/png", "image/gif"},
+     *     mimeTypesMessage = "Vous ne pouvez uploader que des ficihiers sous format gif, jpeg ou png!"
+     * )    
+     * 
+     */
+    private $file;
 
     /**
      * Get id
@@ -788,5 +806,52 @@ class Ground
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return Ground
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function getFile()
+    {
+        return $this ->file;
+    }
+
+    public function setFile(UploadedFile $file = null)
+    {
+        return $this -> file = $file;
+    }
+
+    public function upload()
+    {
+        if ($this->getFile() === null){
+            return;
+        }
+
+        $this -> getFile()->move(__DIR__.'/../../../web/uploads/documents',
+                                 $this -> getFile()->getClientOriginalName());
+
+        $this -> image = "uploads/documents". $this -> getFile()->getClientOriginalName();
+
+        $this -> file = null;
     }
 }

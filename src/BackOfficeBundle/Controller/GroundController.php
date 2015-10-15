@@ -32,6 +32,7 @@ class GroundController extends Controller
 			$ground -> setDateCreated(new \datetime('now'));
 			$ground -> setValidAdmin(true);
 			$ground -> setAuthor($this -> getUser());
+			$ground -> upload();
 			$postCode = $ground -> getPostCode();
 
 			/*Attribution automatique de valeur à l'attribut Region selon la valeur de postCode*/
