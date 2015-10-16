@@ -20,6 +20,8 @@ class InvitationRepository extends EntityRepository
 			FROM FrontOfficeBundle:Invitation i 
 			WHERE i.accepted = false
 			AND i.denied = false
+			AND i.userTo is null
+			AND i.teamTo is null
 			ORDER BY i.dateInvit ASC')
 		->setMaxResults(500);
 
@@ -113,6 +115,8 @@ class InvitationRepository extends EntityRepository
 			JOIN i.sport s
 			WHERE s.id IN (:sport) 
 			AND i.accepted = false
+			AND i.userTo is null
+			AND i.teamTo is null
 			AND i.region LIKE :region 
 			ORDER BY i.dateInvit ASC')
 		->setParameter('sport', $idsSport)
@@ -128,7 +132,9 @@ class InvitationRepository extends EntityRepository
 			FROM FrontOfficeBundle:Invitation i
 			JOIN i.sport s		
 			WHERE i.accepted = false 	
-			AND i.denied = false			
+			AND i.denied = false
+			AND i.userTo is null
+			AND i.teamTo is null			
 			AND s.id LIKE :id_sport
 			AND i.region LIKE :region	
 			ORDER BY i.dateInvit ASC')				
