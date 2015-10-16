@@ -62,7 +62,7 @@
                                 
                                     {% for invit in invitsBySport %} 
 
-                                        {{ invit.user.username }}   t'invite le 
+                                        {{ invit.user.favouriteSport }} {{ invit.user.username }}   t'invite le 
                                         
                                         {{ invit.dateInvit | date('d-m-Y H:i') }} à {% if (invit.ground) %} {{ invit.ground}} {% else %} {{ invit.place}} {% endif %}
                                         {{ invit.content }}<br><br>

@@ -19,6 +19,7 @@ class TeamType extends AbstractType
                                                 'attr'   => array('placeholder'=>'Papillons, Tigres, Olympique Lyonnais ...')))
             ->add('sportPracticed', null, array('label'  =>'Sport pratiqué',
                                                 'attr'   => array('placeholder'=>'Football, Handball, Basket, Rugby ...')))
+            ->add('file','file', array('required'=> false))
             ->add('typeOfGame', 'choice', array('label'  =>'Niveau de jeu',
                                                 'choices'=> array('Loisir'               => "loisir",
                                                                   'Compétition'          => "compétition",

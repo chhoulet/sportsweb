@@ -33,7 +33,7 @@
 				                </p>
 				                <p><span class="glyphicon glyphicon-time"></span> {{ tea.dateCreated | date('d-m-Y') }}</p>
 				                <hr>
-				                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+				                <img class="img-responsive" src="{{asset(tea.image)}}" alt="">
 				                <hr>
 				                <p>{{ tea.typeOfGame }}</p><br>
 				                  <p>{{ tea.habitsOfGame }}</p><br>	

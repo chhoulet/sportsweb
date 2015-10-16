@@ -126,8 +126,9 @@ class InvitationRepository extends EntityRepository
 		$query = $this -> getEntitymanager() -> createQuery('
 			SELECT i
 			FROM FrontOfficeBundle:Invitation i
-			JOIN i.sport s			
-			WHERE i.accepted = false 					
+			JOIN i.sport s		
+			WHERE i.accepted = false 	
+			AND i.denied = false			
 			AND s.id LIKE :id_sport
 			AND i.region LIKE :region	
 			ORDER BY i.dateInvit ASC')				
