@@ -23,6 +23,7 @@ class CommentRepository extends EntityRepository
 			AND c.articleComment = false
 			AND c.groundComment = false
 			AND c.tournamentComment = false
+			AND c.matche = false
 			AND c.censored = false
 			ORDER BY c.dateCreated DESC');
 
@@ -39,6 +40,7 @@ class CommentRepository extends EntityRepository
 			AND c.articleComment = true
 			AND c.groundComment = false
 			AND c.tournamentComment = false
+			AND c.matcheComment = false
 			AND c.censored = false
 			ORDER BY c.dateCreated DESC');
 
@@ -55,6 +57,7 @@ class CommentRepository extends EntityRepository
 			AND c.articleComment = false
 			AND c.groundComment = true
 			AND c.tournamentComment = false
+			AND c.matcheComment = false 
 			AND c.censored = false
 			ORDER BY c.dateCreated DESC');
 
@@ -70,8 +73,27 @@ class CommentRepository extends EntityRepository
 			AND c.teamComment = false
 			AND c.articleComment = false
 			AND c.groundComment = false
-			AND c.tournamentComment = true 
-			AND c.censored = false');
+			AND c.tournamentComment = true
+			AND c.matcheComment = false 
+			AND c.censored = false
+			ORDER BY c.dateCreated DESC');
+
+		return $query -> getResult();
+	}
+
+	public function getUnvalidatedCommentsMatche()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT c 
+			FROM FrontOfficeBundle:Comment c 
+			WHERE c.validationAdmin = false
+			AND c.teamComment = false
+			AND c.articleComment = false
+			AND c.groundComment = false
+			AND c.tournamentComment = false 
+			AND c.censored = false
+			AND c.matcheComment = true
+			ORDER BY c.dateCreated DESC');
 
 		return $query -> getResult();
 	}
@@ -119,6 +141,7 @@ class CommentRepository extends EntityRepository
 			AND c.censored = true 
 			AND c.teamComment = false
 			AND c.articleComment = false
+			AND c.matcheComment = false 
 			AND c.groundComment = true
 			ORDER BY c.dateCreated DESC');
 
@@ -134,6 +157,7 @@ class CommentRepository extends EntityRepository
 			AND c.censored = true 
 			AND c.teamComment = true
 			AND c.articleComment = false
+			AND c.matcheComment = false 
 			AND c.groundComment = false
 			ORDER BY c.dateCreated DESC');
 
@@ -149,6 +173,7 @@ class CommentRepository extends EntityRepository
 			AND c.censored = true 
 			AND c.teamComment = false
 			AND c.articleComment = true
+			AND c.matcheComment = false 
 			AND c.groundComment = false
 			ORDER BY c.dateCreated DESC');
 
@@ -164,8 +189,26 @@ class CommentRepository extends EntityRepository
 			AND c.censored = true 
 			AND c.teamComment = false
 			AND c.articleComment = false
+			AND c.matcheComment = false 
 			AND c.groundComment = false
 			AND c.tournamentComment = true 
+			ORDER BY c.dateCreated DESC');
+
+		return $query -> getResult();
+	}
+
+	public function getCommentsMatchesCensored()
+	{
+		$query = $this -> getEntityManager()->createQuery('
+			SELECT c 
+			FROM FrontOfficeBundle:Comment c 
+			WHERE c.validationAdmin = false 
+			AND c.censored = true 
+			AND c.teamComment = false
+			AND c.articleComment = false
+			AND c.matcheComment = true 
+			AND c.groundComment = false
+			AND c.tournamentComment = false 
 			ORDER BY c.dateCreated DESC');
 
 		return $query -> getResult();

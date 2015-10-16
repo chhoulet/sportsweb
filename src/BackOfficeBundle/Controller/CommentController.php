@@ -12,16 +12,18 @@ class CommentController extends Controller
 	public function adminAction()
 	{
 		$em = $this -> getDoctrine()->getManager();
-		$commentsTeam = $em -> getRepository('FrontOfficeBundle:Comment') -> getUnvalidatedCommentTeam();
-		$commentsArticle = $em -> getRepository('FrontOfficeBundle:Comment') -> getUnvalidatedCommentArticle();
-		$commentsGround = $em -> getRepository('FrontOfficeBundle:Comment') -> getUnvalidatedCommentGround();
+		$commentsTeam = $em -> getRepository('FrontOfficeBundle:Comment')       -> getUnvalidatedCommentTeam();
+		$commentsArticle = $em -> getRepository('FrontOfficeBundle:Comment')    -> getUnvalidatedCommentArticle();
+		$commentsGround = $em -> getRepository('FrontOfficeBundle:Comment')     -> getUnvalidatedCommentGround();
 		$commentsTournament = $em -> getRepository('FrontOfficeBundle:Comment') -> getUnvalidatedCommentsTournament();
+		$commentsMatche = $em -> getRepository('FrontOfficeBundle:Comment')     -> getUnvalidatedCommentsMatche();
 
 		return $this -> render('BackOfficeBundle:Comment:admin.html.twig', 
 			array('commentsTeam'       => $commentsTeam,
 				  'commentsArticle'    => $commentsArticle,
 				  'commentsGround'     => $commentsGround,
-				  'commentsTournament' => $commentsTournament));
+				  'commentsTournament' => $commentsTournament,
+				  'commentsMatche'     => $commentsMatche));
 	}
 
 	# Suppression des non-validés:
@@ -75,10 +77,15 @@ class CommentController extends Controller
 		$CommentsGroundsCensored = $em -> getRepository('FrontOfficeBundle:Comment')->getCommentsGroundsCensored();
 		$CommentsTeamsCensored = $em -> getRepository('FrontOfficeBundle:Comment')->getCommentsTeamsCensored();
 		$CommentsArticlesCensored = $em -> getRepository('FrontOfficeBundle:Comment')->getCommentsArticlesCensored();
+		$CommentsTournamentsCensored = $em -> getRepository('FrontOfficeBundle:Comment')->getCommentsTournamentsCensored();
+		$CommentsMatchesCensored = $em -> getRepository('FrontOfficeBundle:Comment')->getCommentsMatchesCensored();
 
 		return $this -> render('BackOfficeBundle:Comment:censoredComments.html.twig', 
-			array('CommentsGroundsCensored' => $CommentsGroundsCensored,
-				  'CommentsTeamsCensored'   => $CommentsTeamsCensored,
-				  'CommentsArticlesCensored'=> $CommentsArticlesCensored));
+			array('CommentsTeamsCensored'      => $CommentsTeamsCensored,
+				  'CommentsArticlesCensored'   => $CommentsArticlesCensored,
+				  'CommentsGroundsCensored'    => $CommentsGroundsCensored,
+				  'CommentsTournamentsCensored'=> $CommentsTournamentsCensored,
+				  'CommentsMatchesCensored'    => $CommentsMatchesCensored));
+
 	}
 }

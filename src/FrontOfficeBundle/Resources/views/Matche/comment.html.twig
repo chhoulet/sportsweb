@@ -1,0 +1,50 @@
+{% extends 'FrontOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div style="margin-top:45px;" class="container">
+
+            <div class="row">    
+
+                <div class="well col-lg-10">
+
+					<h4>{{ id_Matche.sport }}</h4> 
+					Date: {{ id_Matche.dateplay | date('d-m-Y H:i:s') }}<br>
+					Lieu: {{ id_Matche.place }}<br>
+					Mode: {{ id_Matche.mode }}<br>
+					Joueurs: {% for play in id_Matche.players %}
+					    		<a href="{{ path('front_office_user_one',{id:play.id}) }}">{{ play.username }}</a>
+					    	 {% endfor %}           						            	
+
+						{% if (id_Matche.ground) %}
+							<br>
+							Terrain: {{ id_Matche.ground }}<br>
+						{% endif %}					         						
+											
+						{% if (id_Matche.dateplay < date('now')) %}
+							{% if (id_Matche.scoreTeam1 == null) or (id_Matche.scoreTeam2 == null)  %}
+								<a href="{{ path('front_office_matche_getScore',{id:id_Matche.id}) }}">Entrez le score</a><br>
+							{% else %}
+								{% if (id_Matche.team is not empty) %}
+									{% for tea in id_Matche.team %}
+															
+										Equipe 1: {{ id_Matche.scoreTeam1 }}<br>
+										Equipe 2: {{ id_Matche.scoreTeam2 }}							
+																								
+									{% endfor %}
+								{% else %}
+
+										Joueur 1: {{ id_Matche.scoreTeam1 }}<br>
+										Joueur 2: {{ id_Matche.scoreTeam2 }}
+
+								{% endif %}														
+							{% endif %}
+						{% endif %}
+						
+							<hr>
+
+						<h3>Commente ce match !</h3>
+
+							{{ form(form) }}
+														
+	{% endblock %}

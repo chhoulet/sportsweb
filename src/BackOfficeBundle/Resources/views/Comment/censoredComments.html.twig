@@ -69,6 +69,48 @@
 
 	            		{% endfor %}
 
+	            	<h2> Liste des commentaires censurés : Tournois</h2>
+
+						{% for com in CommentsTournamentsCensored %}
+
+			                <h5>
+			                    {{ com.title }}
+			                </h5>
+			                
+			                    by <a href="index.php">{{ com.author }}</a>
+			                
+			                <p><span class="glyphicon glyphicon-time"></span> {{ com.dateCreated | date('d-m-Y H:i:s')}}</p><br>			                			              	     
+			                <p>{{ com.content }}</p>			               
+
+			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}			                	
+			                	<a class="btn btn-primary" href="{{ path('back_office_comment_delete',{id:com.id}) }}">	Suppression commentaire<span class="glyphicon glyphicon-chevron-right"></span></a>
+			            	{% endif %}
+
+		                	<hr>
+
+	            		{% endfor %}
+
+	            		<h2> Liste des commentaires censurés : Matche</h2>
+
+						{% for com in CommentsMatchesCensored %}
+
+			                <h5>
+			                    {{ com.title }}
+			                </h5>
+			                
+			                    by <a href="index.php">{{ com.author }}</a>
+			                
+			                <p><span class="glyphicon glyphicon-time"></span> {{ com.dateCreated | date('d-m-Y H:i:s')}}</p><br>			                			              	     
+			                <p>{{ com.content }}</p>			               
+
+			                {% if(is_granted('ROLE_SUPER_ADMIN')) %}			                	
+			                	<a class="btn btn-primary" href="{{ path('back_office_comment_delete',{id:com.id}) }}">	Suppression commentaire<span class="glyphicon glyphicon-chevron-right"></span></a>
+			            	{% endif %}
+
+		                	<hr>
+
+	            		{% endfor %}
+
 	            </div>			
 			</div>
 		</div>
