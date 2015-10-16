@@ -159,6 +159,14 @@ class Matche
      */
     private $sport;
 
+    /**
+    * @var string
+    *
+    * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Comment", mappedBy="matche")
+    *
+    */
+    private $comment;
+
 
     /**
      * Get id
@@ -660,5 +668,38 @@ class Matche
     public function getPlayers()
     {
         return $this->players;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \FrontOfficeBundle\Entity\Comment $comment
+     * @return Matche
+     */
+    public function addComment(\FrontOfficeBundle\Entity\Comment $comment)
+    {
+        $this->comment[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \FrontOfficeBundle\Entity\Comment $comment
+     */
+    public function removeComment(\FrontOfficeBundle\Entity\Comment $comment)
+    {
+        $this->comment->removeElement($comment);
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }

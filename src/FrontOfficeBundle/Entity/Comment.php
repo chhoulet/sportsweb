@@ -135,6 +135,13 @@ class Comment
     private $groundComment;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="matcheComment", type="boolean")
+     */
+    private $matcheComment;
+
+    /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Article", inversedBy="comment")
@@ -165,6 +172,14 @@ class Comment
      * @ORM\JoinColumn(name="tournament_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $tournament;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Matche", inversedBy="comment")
+     * @ORM\JoinColumn(name="match_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $matche;
 
 
     /**
@@ -543,5 +558,51 @@ class Comment
     public function getTournamentComment()
     {
         return $this->tournamentComment;
+    }
+
+    /**
+     * Set matche
+     *
+     * @param \FrontOfficeBundle\Entity\Matche $matche
+     * @return Comment
+     */
+    public function setMatche(\FrontOfficeBundle\Entity\Matche $matche = null)
+    {
+        $this->matche = $matche;
+
+        return $this;
+    }
+
+    /**
+     * Get matche
+     *
+     * @return \FrontOfficeBundle\Entity\Matche 
+     */
+    public function getMatche()
+    {
+        return $this->matche;
+    }
+
+    /**
+     * Set matcheComment
+     *
+     * @param boolean $matcheComment
+     * @return Comment
+     */
+    public function setMatcheComment($matcheComment)
+    {
+        $this->matcheComment = $matcheComment;
+
+        return $this;
+    }
+
+    /**
+     * Get matcheComment
+     *
+     * @return boolean 
+     */
+    public function getMatcheComment()
+    {
+        return $this->matcheComment;
     }
 }

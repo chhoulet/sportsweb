@@ -10,10 +10,14 @@
 
 					<h2>Mes rencontres :</h2>
 
+					{% for com in app.session.flashbag.get('succes') %}
+						{{ com }}
+					{% endfor %}
+
 						{% if matche is not empty  %}							
 
 							{% for mat in  matche %}
-								Sport: {{ mat.sport }}<br>
+								<h4>{{ mat.sport }}</h4> 
 								Date: {{ mat.dateplay | date('d-m-Y H:i:s') }}<br>
 								Lieu: {{ mat.place }}<br>
 								Mode: {{ mat.mode }}<br>
@@ -40,11 +44,23 @@
 										{% else %}
 
 											Joueur 1: {{ mat.scoreTeam1 }}<br>
-											Joueur 2: {{ mat.scoreTeam2 }}
+											Joueur 2: {{ mat.scoreTeam2 }}<br>
 
 										{% endif %}														
 									{% endif %}
 								{% endif %}
+
+								<h3><a href="{{ path('front_office_matche_comment',{id:mat.id}) }}">Commentez ce match:</a></h3>
+
+									{% if mat.comment is not empty %}
+										{% for com in mat.comment %}
+											{{ com.author }}<br>
+											{{ com.dateCreated | date('d-m-Y H:i:s')}}<br>
+											{{ com.title }}<br>
+											{{ com.content }}
+											<hr/>
+										{% endfor %}														
+									{% endif %}
 								<hr>
 							{% endfor %}							
 

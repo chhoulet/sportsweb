@@ -5,7 +5,9 @@ namespace FrontOfficeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FrontOfficeBundle\Entity\Matche;
 use FrontOfficeBundle\Entity\Tournament;
+use FrontOfficeBundle\Entity\Comment;
 use FrontOfficeBundle\Form\MatcheType;
+use FrontOfficeBundle\Form\CommentType;
 use FrontOfficeBundle\Form\ScoreType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -139,8 +141,41 @@ class MatcheController extends Controller
 
 			}
 
-		return $this -> render("FrontOfficeBundle:Matche:scoreMatche.html.twig", array('form'=> $form->createView()));
+		return $this -> render("FrontOfficeBundle:Matche:scoreMatche.html.twig", 
+			array('form'=> $form->createView()));
+		}
 
+		public function CommentAction(Request $request, $id)
+		{
+			$em = $this -> getDoctrine()-> getManager();
+			$session = $request -> getSession();
+			$id_Matche = $em -> getRepository('FrontOfficeBundle:Matche')->find($id);
+			$comment = new Comment();
+			$form = $this -> createForm(new CommentType(), $comment);
+
+			$form -> handleRequest($request);
+
+			if($form -> isValid()){
+				$comment -> setDateCreated(new \DateTime('now'));
+				$comment -> setAuthor($this -> getUser());
+				$comment -> setMatche($id_Matche);
+				$comment -> setValidationAdmin(false);
+				$comment -> setCensored(false);
+				$comment -> setTeamComment(false);
+				$comment -> setArticleComment(false);
+				$comment -> setGroundComment(false);
+				$comment -> setTournamentComment(false);
+				$comment -> setMatcheComment(true);
+				$em -> persist($comment);
+				$em -> flush();
+
+				$session -> getFlashbag()->add('succes','Merci pour votre commentaire !');
+				return $this -> redirect($this->generateUrl('front_office_user_showMatches'));
+			}
+
+			return $this -> render('FrontOfficeBundle:Matche:comment.html.twig', 
+				array('id_Matche'=> $id_Matche,
+					  'form'     => $form ->createView()));
 		}
 	
 }

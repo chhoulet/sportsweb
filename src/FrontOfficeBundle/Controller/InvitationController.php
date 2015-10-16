@@ -45,7 +45,8 @@ class InvitationController extends Controller
 			$invitation ->setTeamFrom($teamFrom);
 			$invitation ->setTeamTo($teamTo);
 			$invitation ->setUserTo($userTo);
-			$invitation ->setSport($userSport);			
+			$invitation ->setSport($userSport);				
+			
 
 			$postcodes = array(75,77,78,91,92,93,94,95);
 			if(in_array($postCode, $postcodes))

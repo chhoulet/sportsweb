@@ -233,3 +233,7 @@ front_office_matche_myProfilList:
 front_office_matche_getScore:
     path:     /getScore/{id}
     defaults: { _controller: FrontOfficeBundle:Matche:getScore}
+
+front_office_matche_comment:
+    path:     /comment/{id}
+    defaults: { _controller: FrontOfficeBundle:Matche:Comment}
