@@ -2,49 +2,67 @@
 
 	{% block content %}
 
-		<h2>Détail d'un tournoi:</h2>
+		<div style="margin-top:45px;" class="container">
 
-		{% for message in app.session.flashbag.get('notice') %}
-			{{ message }}
-		{% endfor %}
+            <div class="row">    
 
-			
-				{{ tournament.name }}<br>
-				{{ tournament.description }}<br>
-				
-					{% if tournament.privat == true %}
-						<p>Tournoi privé</p><br>
-					{% else %}
-						<p>Tournoi public</p>
-					{% endif %}
+                <div class="well col-lg-10">
 
-					{% if tournament.teams is not empty %}
-						{% for tea in tournament.teams %}
-							{{ tea.name }}<br>
-							{{ tea.typeOfGame }}<br>
-							{{ tea.habitsOfGame }}<br>
-						{% endfor %}
-					{% endif %}
+					<h2>Détail d'un tournoi:</h2>
 
-				<hr>
+					{% for message in app.session.flashbag.get('notice') %}
+						{{ message }}
+						<hr>
+					{% endfor %}
 
-		<h4>Vous souhaitez poster un commentaire ?</h4>
+						
+							{{ tournament.name }}<br>
+							{{ tournament.description }}<br>
+							
+								{% if tournament.privat == true %}
+									<p>Tournoi privé</p><br>
+								{% else %}
+									<p>Tournoi public</p>
+								{% endif %}
 
-			{% if (is_granted('ROLE_USER')) %}
-				{{ form(form) }}
-			{% else %}
-				<a href="{{ path('fos_user_security_login')}}">Connectez-vous !</a>
-			{% endif %}
+								{% if tournament.teams is not empty %}
+									{% for tea in tournament.teams %}
+										{{ tea.name }}<br>
+										{{ tea.typeOfGame }}<br>
+										{{ tea.habitsOfGame }}<br>
+									{% endfor %}
+								{% endif %}
 
-				<hr>
+							<hr>
 
-			{% for com in tournament.comment %}
-				{{ com.title }}<br>
-				{{ com.author }}<br>
-				{{ com.dateCreated | date('d-m-Y H:i:s') }}<br>
-				{{ com.content }}<br>
-			{% endfor %}	
+					<h4>Vous souhaitez poster un commentaire ?</h4>
 
-				<hr>									
+						{% if (is_granted('ROLE_USER')) %}
+							{{ form(form) }}
+						{% else %}
+							<a href="{{ path('fos_user_security_login')}}">Connectez-vous !</a>
+						{% endif %}
+
+							<hr>
+						{% if (tournament.comment) %}
+
+							<h4>Commentaires publiés:</h4>
+							{% for com in tournament.comment %}
+								{{ com.title }}<br>
+								{{ com.author }}<br>
+								{{ com.dateCreated | date('d-m-Y H:i:s') }}<br>
+								{{ com.content }}<br>
+							{% endfor %}	
+
+								<hr>	
+						{% endif %}
+
+
+
+				</div>
+
+			</div>
+
+		</div>								
 
 	{% endblock %}

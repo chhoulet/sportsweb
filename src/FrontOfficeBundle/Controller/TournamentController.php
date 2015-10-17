@@ -108,6 +108,7 @@ class TournamentController extends Controller
 			$comment -> setArticleComment(false);
 			$comment -> setTeamComment(false);
 			$comment -> setTournamentComment(true);
+			$comment -> setMatcheComment(false);
 			$comment -> setValidationAdmin(false);
 			$comment -> setAuthor($this -> getUser());
 			$em -> persist($comment);
