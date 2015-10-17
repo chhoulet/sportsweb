@@ -21,7 +21,7 @@ class TournamentType extends AbstractType
             ->add('dateBegining')
             ->add('dateEnding')            
             ->add('description') 
-            ->add('privat','checkbox')                                  
+            ->add('privat','checkbox', array('required'=>false))                                  
             ->add('Valider', 'submit')
         ;
     }

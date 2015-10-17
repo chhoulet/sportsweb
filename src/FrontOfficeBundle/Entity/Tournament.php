@@ -129,7 +129,7 @@ class Tournament
     /**
      * @var boolean
      *
-     * @ORM\Column(name="privat", type="boolean")
+     * @ORM\Column(name="privat", type="boolean", nullable = true)
      */
     private $privat;
 

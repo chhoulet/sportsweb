@@ -21,34 +21,28 @@ class MatcheRepository extends EntityRepository
 		return $query -> getSingleScalarResult();
 	}
 
-	public function getFuturesMatchesByTournament($id, $user)
+	public function getFuturesMatchesByTournament($id)
 	{
 		$query = $this -> getEntityManager()-> createQuery('
 			SELECT m 
-			FROM FrontOfficeBundle:Matche m 
-			JOIN m.organizer u
+			FROM FrontOfficeBundle:Matche m 			
 			JOIN m.tournament t 
-			WHERE t.id  LIKE :id
-			AND u.id LIKE :user
+			WHERE t.id  LIKE :id			
 			AND m.playedFuture = true')
-		->setParameter('id', $id)
-		->setParameter('user', $user);
+		->setParameter('id', $id);		
 
 		return $query -> getResult();
 	}
 
-	public function getPlayedMatchesByTournament($id, $user)
+	public function getPlayedMatchesByTournament($id)
 	{
 		$query = $this -> getEntityManager()-> createQuery('
 			SELECT m 
-			FROM FrontOfficeBundle:Matche m 
-			JOIN m.organizer u
+			FROM FrontOfficeBundle:Matche m 			
 			JOIN m.tournament t 
-			WHERE t.id  LIKE :id
-			AND u.id LIKE :user
+			WHERE t.id  LIKE :id			
 			AND m.played = true')
-		->setParameter('id', $id)
-		->setParameter('user', $user);
+		->setParameter('id', $id);		
 
 		return $query -> getResult();
 	}
