@@ -22,33 +22,40 @@
 			            {% endfor %}
 
 			        	<p class="lead">
-			                Sport pratiqué :<a href="{{ path('front_office_team_triBySport',{sportPracticed:oneTeam.sportPracticed}) }}"> {{ oneTeam.sportPracticed }} </a><br>			                		    
+			                Sport pratiqué :<a href="{{ path('front_office_team_triBySport',{sportPracticed:oneTeam.sportPracticed}) }}"> {{ oneTeam.sportPracticed }} </a></p>			                		    
 			                
 			                Equipe créée par : 
-			                	{% for admin in oneTeam.admin %}<a href="{{ path('front_office_user_one',{id:admin.id})}}">{{ 	admin.username }}<br>
+			                	<a href="{{ path('front_office_user_one',{id:oneTeam.admin.id})}}">{{ oneTeam.admin.username }}</a><br>
 			                	
 
-					                {% if (app.user.id == admin.id) %}			              
+					                {% if (app.user.id == oneTeam.admin.id) %}			              
 						                	<a href="{{ path('front_office_team_dissolveTeam',{id:oneTeam.id}) }}">Se retirer du poste d'administrateur</a>				               			       
 						            {% endif %}
 
-						            {% endfor %}	
+						            {% if (is_granted('ROLE_USER')) %}
 
-						        
+						            	{% if (app.user.id != oneTeam.admin.id) %}
 
-			            </p>
+						            		<a href="{{ path('front_office_team_userAskingTeam',{id:oneTeam.id}) }}">Rejoins l'équipe !</a><br><br>
+
+						            	{% endif %}
+
+						            {% else %}
+
+						            	<a href="{{ path('fos_user_security_login') }}">Vous voulez rejoindre cette équipe ? Connectez-vous !</a>Pas encore de compte ? <a href="{{ path('fos_user_registration_register')}}">Créér votre compte :</a>
+
+						            {% endif %}
+						      						      			        
 			            <p><span class="glyphicon glyphicon-time"></span>{{ oneTeam.dateCreated | date('d-m-Y')}}</p>
-			                <hr>
-			            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-			                <hr>
-			            <p>{{ oneTeam.typeOfGame }}</p><br>
-			            <p>{{ oneTeam.habitsOfGame }}</p><br>
+			               
+			                {% if (oneTeam.image) %}
+			            		<img class="img-responsive" src="http://placehold.it/900x300" alt="">
+			            	{% endif %}
+			               
+			            <p>{{ oneTeam.typeOfGame }}</p>
+			            <p>{{ oneTeam.habitsOfGame }}</p>
 
-			            {% if (is_granted('ROLE_USER')) %}
-			            	<a href="{{ path('front_office_team_userAskingTeam',{id:oneTeam.id}) }}">Rejoins l'équipe !</a><br><br>
-			            {% else %}
-			            	<a href="{{ path('fos_user_security_login') }}">Vous voulez rejoindre cette équipe ? Connectez-vous !</a>Pas encore de compte ? <a href="{{ path('fos_user_registration_register')}}">Créér votre compte :</a>
-			            {% endif %}
+			            
 
 			            {# {% if(is_granted('ROLE_USER')) and app.user.teamsAdmin is not null %}	
 			                  		<a href="{{ path('front_office_invitation_new',{teamTo:tea.id,teamFrom:app.user.teamsAdmin})}}">
