@@ -62,12 +62,8 @@
 			                  	{% endif %} #}
 
 			        <h3>Les joueurs :</h3>
-			        				    
-			        	<div class="container">
-                			<div class="well col-lg-5">
-
-                    			<h3 class="page-header">
-
+			        				    			        	
+			        
                     				{% for user in oneTeam.users %}
 
                     					<a href="{{ path('front_office_user_one',{id:user.id}) }}">{{ user.username }}</a><br>
@@ -80,19 +76,18 @@
 			                           			                     
                         				<small>AGE : {{ user.age }} ans</small><br>
 
-                        				{% for admin in oneTeam.admin %}
-	                    					{% if (app.user and app.user.id == admin.id) %}       					
-	                        					<a href="{{ path('front_office_team_user_delete',{idUser:user.id, idTeam:oneTeam.id}) }}">Quitter l'équipe</a>
-	                        				{% endif %}
-	                        			{% endfor %}
-                        				
+                        						{% if (app.user.id == user.id) %}
+
+			                    					{% if (app.user.id == oneTeam.admin.id) %}       					
+			                        					<a href="{{ path('front_office_team_user_delete',{idUser:user.id, idTeam:oneTeam.id}) }}">Quitter l'équipe</a>
+
+			                        				{% endif %}
+
+			                        			{% endif %}                     				
 
                         			{% endfor %}
                         			
-                    			</h3>
-
-                			</div>
-            			</div>
+                    			
 
             		<h3>Les demandes d'intégration :</h3>
 
@@ -101,10 +96,10 @@
             				<a href="{{ path('front_office_user_one',{id:user.id}) }}">{{ user.username }}</a>
 
             				
-            					{# {% if (app.user.id == oneTeam.admin.id) %}
+            					{% if (app.user.id == oneTeam.admin.id) %}
             						<a href="{{ path('front_office_team_addUser',{idTeam:oneTeam.id}) }}">Accepter ce joueur dans l'équipe</a><br>
             					{% endif %}
-            				 #}
+            				
 
             			{% endfor %}
 

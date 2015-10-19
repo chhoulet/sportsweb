@@ -41,6 +41,7 @@ class TeamController extends Controller
 			$comment -> setTournamentComment(false);
 			$comment -> setGroundComment(false);
 			$comment -> setArticleComment(false);
+			$comment -> setMatcheComment(false);
 			$comment -> setCensored(false);
 			$em -> persist($comment);
 			$em -> flush();
@@ -102,17 +103,25 @@ class TeamController extends Controller
 	}
 
 	/*Ajout d'un user dans une team*/
-	/*public function addUserAction(Request $request, $idTeam)
+	public function addUserAction(Request $request, $idTeam)
 	{
 		$em = $this -> getDoctrine()->getmanager();
 		$team = $em -> getRepository('FrontOfficeBundle:Team')->find($idTeam);
 		$askingUsers = $team ->getAskingUsers();
-		$askingUsers -> addTeam($team);					
+		var_dump($askingUsers)		;
+		die();
+
+			# Parcours du tableau pour affectation de chacun de ses éléments à l'équipe:
+			for ($i = 0; $i < count($askingUsers); $i++)
+			{
+			    $team -> addUser($askingUsers[$i]);
+			}
+	
 		$em -> flush();
 
 		return $this -> redirect($request->headers->get('referer'));		
-	}*/
-
+	}
+	
 	/*Retrait d'un joueur d'une team:*/
 	public function userDeleteAction(Request $request, $idUser, $idTeam)
 	{

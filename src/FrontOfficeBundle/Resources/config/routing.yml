@@ -150,11 +150,11 @@ front_office_team_userAskingTeam:
     defaults: { _controller: FrontOfficeBundle:Team:userAskingTeam}
 
     # Ajout d'un user à une team:
-# front_office_team_addUser:
-#     path:     /addUser/{idTeam}
-#     defaults: { _controller: FrontOfficeBundle:Team:addUser}
-#     requirements: 
-#         id: "[0-9]+"
+front_office_team_addUser:
+    path:     /addUser/{idTeam}
+    defaults: { _controller: FrontOfficeBundle:Team:addUser}
+    requirements: 
+        id: "[0-9]+"
 
     # Suppression d'un user d'une team:
 front_office_team_user_delete:
