@@ -822,5 +822,9 @@ class Team
 
         $this -> file = null;
     }
+
+    public function __toString() {
+        return $this->name;
+    }
 }
 

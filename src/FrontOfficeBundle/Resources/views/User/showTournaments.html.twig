@@ -19,7 +19,14 @@
 				         		{{ tournament.region }}<br>
 				         		{{ tournament.dateBegining | date('d-m-Y H:i:s') }}<br>
 				         		{{ tournament.dateEnding | date('d-m-Y H:i:s') }}<br>
-				         		{{ tournament.description }}<br>
+				         		{{ tournament.description }}<br><br>
+
+				         		<h4>Equipes participantes:</h4>
+
+				         			{% for team in tournament.teams %}
+				         				<a href="{{ path('front_office_team_one',{id:team.id}) }}">{{ team.name }}</a><br>
+				         			{% endfor %}
+
 
 				         			{% if (tournament.current) %}		         			
 				         				<p>Tournoi en cours !</p>

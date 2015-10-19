@@ -138,7 +138,7 @@ class TournamentController extends Controller
 			$em -> flush();
 
 			$session -> getFlashbag()->add('update', 'Vos modifications sont prises en compte !');
-			return $this -> redirect($request -> headers -> get('referer'));
+			return $this -> redirect($this -> generateUrl('front_office_user_showTournaments'));
 		}
 
 		return $this -> render('FrontOfficeBundle:Tournament:updateTournament.html.twig', 
