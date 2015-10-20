@@ -237,3 +237,8 @@ front_office_matche_getScore:
 front_office_matche_comment:
     path:     /comment/{id}
     defaults: { _controller: FrontOfficeBundle:Matche:Comment}
+
+    # Route gerant l'envoi de messages:
+front_office_message_new:
+    path:     /newMessage/{id}
+    defaults: { _controller: FrontOfficeBundle:Message:new}

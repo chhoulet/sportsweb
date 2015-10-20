@@ -38,6 +38,7 @@
                             {% if (app.user.id != user.id) %}
                                 <a href="{{ path('front_office_user_getFriend',{id:user.id}) }}">Ajouter à ma liste d'amis</a><br>
                                 <a href="{{ path('front_office_invitation_new', {userTo:user.id}) }}">Lancer une invitation !</a><br>
+                                <a href="{{ path('front_office_message_new',{id:user.id}) }}">Envoyer un message</a><br>
                             {% endif %}
                             
                         {% else %}

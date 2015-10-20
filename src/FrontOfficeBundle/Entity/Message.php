@@ -80,7 +80,7 @@ class Message
      * @ORM\Column(name="subject", type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      min = "10",
+     *      min = "2",
      *      max = "255",
      *      minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
