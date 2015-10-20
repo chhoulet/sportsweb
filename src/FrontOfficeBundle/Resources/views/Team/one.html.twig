@@ -45,6 +45,8 @@
 						            	<a href="{{ path('fos_user_security_login') }}">Vous voulez rejoindre cette équipe ? Connectez-vous !</a>Pas encore de compte ? <a href="{{ path('fos_user_registration_register')}}">Créér votre compte :</a>
 
 						            {% endif %}
+
+						            	<a href="{{ path('front_office_message_new',{id:oneTeam.admin.id})}}">Envoyer un message au capitaine de l'équipe</a>
 						      						      			        
 			            <p><span class="glyphicon glyphicon-time"></span>{{ oneTeam.dateCreated | date('d-m-Y')}}</p>
 			               

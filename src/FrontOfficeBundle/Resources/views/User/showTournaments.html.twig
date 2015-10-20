@@ -25,6 +25,7 @@
 
 				         			{% for team in tournament.teams %}
 				         				<a href="{{ path('front_office_team_one',{id:team.id}) }}">{{ team.name }}</a><br>
+				         				<a href="{{ path('front_office_message_new',{id:team.admin.id}) }}">Envoyer un message</a>
 				         			{% endfor %}
 
 

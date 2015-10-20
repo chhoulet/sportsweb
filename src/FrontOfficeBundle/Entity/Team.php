@@ -196,6 +196,13 @@ class Team
      */
     private $comment;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="FrontOfficeBundle\Entity\Message", mappedBy="team")
+     */
+    private $message;
+
      /**
      * @var string
      *
@@ -225,6 +232,8 @@ class Team
      * )
      */
     private $file;
+
+
 
     /**
      * Get id
@@ -826,5 +835,37 @@ class Team
     public function __toString() {
         return $this->name;
     }
-}
 
+    /**
+     * Add message
+     *
+     * @param \FrontOfficeBundle\Entity\Message $message
+     * @return Team
+     */
+    public function addMessage(\FrontOfficeBundle\Entity\Message $message)
+    {
+        $this->message[] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Remove message
+     *
+     * @param \FrontOfficeBundle\Entity\Message $message
+     */
+    public function removeMessage(\FrontOfficeBundle\Entity\Message $message)
+    {
+        $this->message->removeElement($message);
+    }
+
+    /**
+     * Get message
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+}

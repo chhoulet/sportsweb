@@ -44,6 +44,14 @@ class Message
      */
     private $reader;
 
+     /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Team", inversedBy="message")
+     * @ORM\JoinColumn(name="team_id", referencedColumnName="id", nullable=true)
+     */
+    private $team;
+
     /**
      * @var string
      *
@@ -269,5 +277,28 @@ class Message
     public function getReader()
     {
         return $this->reader;
+    }
+
+    /**
+     * Set team
+     *
+     * @param \FrontOfficeBundle\Entity\Team $team
+     * @return Message
+     */
+    public function setTeam(\FrontOfficeBundle\Entity\Team $team = null)
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * Get team
+     *
+     * @return \FrontOfficeBundle\Entity\Team 
+     */
+    public function getTeam()
+    {
+        return $this->team;
     }
 }

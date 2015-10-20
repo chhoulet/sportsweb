@@ -1,0 +1,26 @@
+{% extends 'FrontOfficeBundle::layout.html.twig' %}
+
+	{% block content %}
+
+		<div style="margin-top:45px;" class="container">
+
+            <div class="row">    
+
+                <div class="well col-lg-10">
+                	<h3>Envoyez un message à {{ user.username }}</h3>
+
+                	{% for messa in app.session.flashbag.get('succes') %}
+                		{{ messa }}
+                	{% endfor %}
+
+                		{{ form_start(form) }}                		
+                			{{ form_row(form.content) }}                		
+                		{{ form_end(form) }}
+                		
+                </div>
+
+            </div>
+
+        </div>
+
+	{% endblock %}
