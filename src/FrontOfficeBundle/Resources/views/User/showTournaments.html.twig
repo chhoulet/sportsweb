@@ -13,19 +13,21 @@
 		        		{% if (app.user.tournament is not empty) %} 
 
 			        		{% for tournament in app.user.tournament %}
-			        			<strong>{{ tournament.name }}</strong><br>
+			        			<h4>{{ tournament.name }}</h4>
 			        			{{ tournament.sport }}<br>
 				         		{{ tournament.place }}<br>
 				         		{{ tournament.region }}<br>
 				         		{{ tournament.dateBegining | date('d-m-Y H:i:s') }}<br>
 				         		{{ tournament.dateEnding | date('d-m-Y H:i:s') }}<br>
-				         		{{ tournament.description }}<br><br>
+				         		{{ tournament.description }}
+
+				         		</hr>
 
 				         		<h4>Equipes participantes:</h4>
 
 				         			{% for team in tournament.teams %}
 				         				<a href="{{ path('front_office_team_one',{id:team.id}) }}">{{ team.name }}</a><br>
-				         				<a href="{{ path('front_office_message_new',{id:team.admin.id}) }}">Envoyer un message</a>
+				         				<a href="{{ path('front_office_message_new',{id:team.admin.id}) }}">Envoyer un message</a><br>
 				         			{% endfor %}
 
 
@@ -37,9 +39,9 @@
 				         			{% elseif (tournament.playedFuture) %}
 				         				<p>Tournoi planifié !</p>
 				         				<a href="{{ path('front_office_matche_myProfilList',{id:tournament.id}) }}">Détail des matchs !</a>
-				         			{% endif %}
+				         			{% endif %}<br><br>
 
-				         			<hr>
+				         			
 			         			
 				         		<a href="{{ path('front_office_tournament_update',{id:tournament.id}) }}">Mettre à jour</a>
 
@@ -63,6 +65,7 @@
 	                	<a href="{{ path('front_office_user_showArticles') }}">Voir mes articles</a><br><br>
 	                	<a href="{{ path('front_office_user_showTournaments') }}">Voir mes tournois</a><br><br>
 	                	<a href="{{ path('front_office_user_showMatches') }}">Voir mes matches</a><br><br>
+	                	<a href="{{ path('front_office_user_showMessages') }}">Voir mes messages</a>
 
 				        <hr />			
 

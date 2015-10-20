@@ -127,6 +127,11 @@ front_office_user_showMatches:
     path:     /showMatches/
     defaults: { _controller: FrontOfficeBundle:User:showMatches}
 
+    # Voir ses messages:
+front_office_user_showMessages:
+    path:     /showMessages 
+    defaults: { _controller: FrontOfficeBundle:User:showMessages}
+
 # Routes gerant les Teams:
 front_office_team_list:
     path:     /listTeams

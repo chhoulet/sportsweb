@@ -121,6 +121,11 @@ class UserController extends Controller
 		return $this -> render('FrontOfficeBundle:User:showTournaments.html.twig');
 	}
 
+	public function showMessagesAction()
+	{
+		return $this -> render('FrontOfficeBundle:User:showMessages.html.twig');
+	}
+
 	public function showMatchesAction(Request $request)
 	{				
 		$em = $this -> getDoctrine()->getManager();
