@@ -63,7 +63,7 @@
 
 			        <h3>Les joueurs :</h3>
 			        				    			        	
-			        
+
                     				{% for user in oneTeam.users %}
 
                     					<a href="{{ path('front_office_user_one',{id:user.id}) }}">{{ user.username }}</a><br>
@@ -81,7 +81,7 @@
 			                    					{% if (app.user.id == oneTeam.admin.id) %}       					
 			                        					<a href="{{ path('front_office_team_user_delete',{idUser:user.id, idTeam:oneTeam.id}) }}">Quitter l'équipe</a>
 
-			                        				{% endif %}
+			                        				{% endif %}<br><br>
 
 			                        			{% endif %}                     				
 
@@ -97,7 +97,7 @@
 
             				
             					{% if (app.user.id == oneTeam.admin.id) %}
-            						<a href="{{ path('front_office_team_addUser',{idTeam:oneTeam.id}) }}">Accepter ce joueur dans l'équipe</a><br>
+            						<a href="{{ path('front_office_team_addUser',{'idTeam':oneTeam.id, 'idUser':user.id}) }}">Accepter ce joueur dans l'équipe</a><br>
             					{% endif %}
             				
 

@@ -104,8 +104,7 @@ class TournamentController extends Controller
 			$comment -> setDateCreated(new \DateTime());
 			$comment -> setCensored(false);
 			$comment -> setGroundComment(false);
-			$comment -> setArticleComment(false);
-			$comment -> setArticleComment(false);
+			$comment -> setArticleComment(false);			
 			$comment -> setTeamComment(false);
 			$comment -> setTournamentComment(true);
 			$comment -> setMatcheComment(false);

@@ -33,12 +33,14 @@
 
                                     {{ members.username }} <br>
 
+                                    Sports pratiqués:
                                     {% for sport in members.sportPracticed %}    
-                                        {{ sport.name }}<br>
-                                    {% endfor %} 
+                                        {{ sport.name }}
+                                    {% endfor %} <br> 
 
+                                    Intérêt pour:
                                     {% for sport in members.sportViewed %}
-                                        {{ sport.name }}<br>
+                                        {{ sport.name }}
                                     {% endfor %}<br><br>    
 
                                     {% if app.user == player.admin %}

@@ -151,7 +151,7 @@ front_office_team_userAskingTeam:
 
     # Ajout d'un user à une team:
 front_office_team_addUser:
-    path:     /addUser/{idTeam}
+    path:     /addUser/{idTeam}-{idUser}
     defaults: { _controller: FrontOfficeBundle:Team:addUser}
     requirements: 
         id: "[0-9]+"

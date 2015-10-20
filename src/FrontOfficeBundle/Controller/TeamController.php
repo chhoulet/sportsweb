@@ -103,19 +103,12 @@ class TeamController extends Controller
 	}
 
 	/*Ajout d'un user dans une team*/
-	public function addUserAction(Request $request, $idTeam)
+	public function addUserAction(Request $request,$idTeam, $idUser)
 	{
 		$em = $this -> getDoctrine()->getmanager();
 		$team = $em -> getRepository('FrontOfficeBundle:Team')->find($idTeam);
-		$askingUsers = $team ->getAskingUsers();
-		var_dump($askingUsers)		;
-		die();
-
-			# Parcours du tableau pour affectation de chacun de ses éléments à l'équipe:
-			for ($i = 0; $i < count($askingUsers); $i++)
-			{
-			    $team -> addUser($askingUsers[$i]);
-			}
+		$user = $em -> getRepository('UserBundle:User')-> find($idUser);
+		$user -> addTeam($team);
 	
 		$em -> flush();
 
