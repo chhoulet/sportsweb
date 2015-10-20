@@ -91,17 +91,25 @@
 
             		<h3>Les demandes d'intégration :</h3>
 
-            			{% for user in oneTeam.askingUsers %}	
+            			{% if oneTeam.askingUsers is not empty %}
 
-            				<a href="{{ path('front_office_user_one',{id:user.id}) }}">{{ user.username }}</a>
+	            			{% for user in oneTeam.askingUsers %}	
 
-            				
-            					{% if (app.user.id == oneTeam.admin.id) %}
-            						<a href="{{ path('front_office_team_addUser',{'idTeam':oneTeam.id, 'idUser':user.id}) }}">Accepter ce joueur dans l'équipe</a><br>
-            					{% endif %}
-            				
+	            				<a href="{{ path('front_office_user_one',{id:user.id}) }}">{{ user.username }}</a>
 
-            			{% endfor %}
+	            				
+	            					{% if (app.user.id == oneTeam.admin.id) %}
+	            						<a href="{{ path('front_office_team_addUser',{'idTeam':oneTeam.id, 'idUser':user.id}) }}">Accepter ce joueur dans l'équipe</a><br>
+	            					{% endif %}
+	            				
+
+	            			{% endfor %}
+
+	            		{% else %}
+
+	            			<p>Vous n'avez aucune demande en attente !</p>
+
+	            		{% endif %}
 
             		<h3>Invitations reçues :</h3>
 

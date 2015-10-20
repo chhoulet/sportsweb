@@ -107,8 +107,9 @@ class TeamController extends Controller
 	{
 		$em = $this -> getDoctrine()->getmanager();
 		$team = $em -> getRepository('FrontOfficeBundle:Team')->find($idTeam);
-		$user = $em -> getRepository('UserBundle:User')-> find($idUser);
+		$user = $em -> getRepository('UserBundle:User')-> find($idUser);		
 		$user -> addTeam($team);
+		$user -> removeAskedTeam($team);
 	
 		$em -> flush();
 
