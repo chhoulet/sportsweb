@@ -253,3 +253,7 @@ front_office_message_read:
     path:     /readMessage/{id}
     defaults: { _controller: FrontOfficeBundle:Message:readMessage}
 
+front_office_message_delete:
+    path:     /deleteMessage/{id}
+    defaults: { _controller: FrontOfficeBundle:Message:deleteMessage}
+

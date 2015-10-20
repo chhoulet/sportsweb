@@ -49,4 +49,16 @@ class MessageController extends Controller
 		$session -> getFlashbag()-> add('notice', 'Ce message est marqué comme lu !');
 		return $this -> redirect($request -> headers -> get('referer'));
 	}
+
+	public function deleteMessageAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
+		$message = $em -> getRepository('FrontOfficeBundle:Message')->find($id);
+		$em -> remove($message);
+		$em -> flush();
+
+		$session -> getFlashbag()-> add('succes','Ce message est supprimé');
+		return $this -> redirect($request -> headers -> get('referer'));
+	}
 }
