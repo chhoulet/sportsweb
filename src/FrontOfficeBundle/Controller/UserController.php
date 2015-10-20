@@ -122,8 +122,11 @@ class UserController extends Controller
 	}
 
 	public function showMessagesAction()
-	{
-		return $this -> render('FrontOfficeBundle:User:showMessages.html.twig');
+	{	
+		$em = $this -> getDoctrine()->getManager();
+		$nbMessages = $em -> getRepository('FrontOfficeBundle:Message')->countMessageByUser($this -> getUser());
+		return $this -> render('FrontOfficeBundle:User:showMessages.html.twig', 
+			array('nbMessages'=> $nbMessages));
 	}
 
 	public function showMatchesAction(Request $request)

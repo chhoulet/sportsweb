@@ -54,4 +54,16 @@ class MessageRepository extends EntityRepository
 		return $query -> getResult();
 	}
 
+	public function countMessageByUser($user)
+	{
+		$query = $this -> getEntityManager()-> createQuery('
+			SELECT COUNT(m.id) AS nb
+			FROM FrontOfficeBundle:Message m 
+			JOIN m.reader u 
+			WHERE u.id LIKE :user')
+		->setParameter('user', $user);
+
+		return $query -> getSingleScalarResult();
+	}
+
 }
