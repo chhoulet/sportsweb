@@ -205,7 +205,7 @@ front_office_ground_new:
     path:    /newGround 
     defaults: { _controller:FrontOfficeBundle:Ground:newGround}
 
-    # Routes administrant les tournois:
+# Routes administrant les tournois:
 front_office_tournament_new:
     path:     /newTournament
     defaults: { _controller: FrontOfficeBundle:Tournament:newTournament}
@@ -222,7 +222,7 @@ front_office_tournament_update:
     path:     /updateTournament/{id}
     defaults: { _controller: FrontOfficeBundle:Tournament:updateTournament}
 
-    # Routes administrant les matches:
+# Routes administrant les matches:
 front_office_matche_new:
     path:     /newMatche/
     defaults: { _controller: FrontOfficeBundle:Matche:newMatche}
@@ -243,7 +243,13 @@ front_office_matche_comment:
     path:     /comment/{id}
     defaults: { _controller: FrontOfficeBundle:Matche:Comment}
 
-    # Route gerant l'envoi de messages:
+# Route gerant l'envoi de messages:
 front_office_message_new:
     path:     /newMessage/{id}
     defaults: { _controller: FrontOfficeBundle:Message:new}
+
+    # Marquer un message comme lu:
+front_office_message_read:
+    path:     /readMessage/{id}
+    defaults: { _controller: FrontOfficeBundle:Message:readMessage}
+

@@ -75,6 +75,14 @@ class Message
     private $dateCreated;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateread", type="datetime", nullable =true)
+     * @Assert\DateTime()
+     */
+    private $dateread;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="readMessage", type="boolean")
@@ -300,5 +308,28 @@ class Message
     public function getTeam()
     {
         return $this->team;
+    }
+
+    /**
+     * Set dateread
+     *
+     * @param \DateTime $dateread
+     * @return Message
+     */
+    public function setDateread($dateread)
+    {
+        $this->dateread = $dateread;
+
+        return $this;
+    }
+
+    /**
+     * Get dateread
+     *
+     * @return \DateTime 
+     */
+    public function getDateread()
+    {
+        return $this->dateread;
     }
 }

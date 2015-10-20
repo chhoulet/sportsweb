@@ -36,4 +36,17 @@ class MessageController extends Controller
 			array('user'=> $user,
 				  'form'=> $form -> createView()));
 	}
+
+	public function readMessageAction(Request $request, $id)
+	{
+		$em = $this -> getDoctrine()->getManager();
+		$session = $request -> getSession();
+		$message = $em -> getRepository('FrontOfficeBundle:Message')->find($id);
+		$message -> setReadMessage(true);
+		$message -> setDateread(new \DateTime());
+		$em -> flush();
+
+		$session -> getFlashbag()-> add('notice', 'Ce message est marqué comme lu !');
+		return $this -> redirect($request -> headers -> get('referer'));
+	}
 }
